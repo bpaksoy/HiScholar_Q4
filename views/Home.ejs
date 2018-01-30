@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta charset="utf-8">
+   <title>HiScholar</title>
+   <style>
+     body{
+        font-family: Raleway;
+        color: #555;
+        background: #943eae;
+        margin: 10px 30px;
+     }
+     #homepage{
+        max-width: 800px;
+        margin: 60px auto;
+        padding: 10px 20px;
+        background: #fdfdfd;
+        border-radius: 4px;
+        box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+     }
+     input[type="text"]{
+        display: block;
+        width: 300px;
+        margin: 20px 0;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+    }
+    label{
+        font-weight: bold;
+    }
+    .title{
+        color: #fff;
+        text-align: center;
+        font-size: 48px;
+    }
+    #homepage h1{
+        text-align: center;
+    }
+    form{
+        max-width: 350px;
+        margin: 30px auto;
+    }
+    input[type="submit"]{
+        background: #555;
+         color: #fff;
+         border: 0;
+         padding: 10px;
+         font-size: 18px;
+         width: 200px;
+         margin: 0 auto;
+         display: block;
+         cursor: pointer;
+         border-radius: 4px;
+     }
+    ul{
+        margin: 0;
+        padding: 0;
+    }
+    li{
+        background: #eee;
+        list-style-type: none;
+        font-size: 18px;
+        font-weight: bold;
+        margin: 10px 0;
+        border-radius: 4px;
+        
+    }
+    span{
+        display: inline-block;
+        margin: 0 20px;
+    }
+    span.dist{
+        color: green;
+        float: right;
+    }
+    span.true{
+        border-radius: 10px;
+        width: 10px;
+        height: 10px;
+        background: green;
+    }
+    span.false{
+        border-radius: 10px;
+        width: 10px;
+        height: 10px;
+        background: #ff5252;
+    }
+    button{
+        float: right;
+        background: green;
+        border: 0;
+        padding: 5px 10px;
+        color: #fff;
+        display: inline-block;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button.false{display: none;}
+    nav{
+        background: #943eae;
+        padding: 20px 10px;
+    }
+    nav ul{
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0;
+    }
+    nav li{
+        list-style-type: none;
+        display: inline-block;
+        margin: 0 10px 0 0;
+    }
+    nav a{
+        color: #555;
+        font-size: 18px;
+        background: rgba(255,255,255,0.2);
+        text-decoration: none;
+        padding: 10px;
+        display: block;
+    }
+    img {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 5px;
+      width: 150px;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"/>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/auth/login">Login</a></li>
+        <li><a href="/auth/register">Register</a></li>
+      </ul>
+    </nav>
+    <h1 class="title">HiScholar</h1>
+    <div id="homepage">
+       <div id="universities">
+         <div id="uni-container">
+
+  				 <form id="university">
+  						<h2>Find your school!</h2>
+  						<input id="university_id" name="university_id" type="text" placeholder="Enter an id"/>
+  						<input type="text" ref="city" placeholder="Enter the city"/>
+  						<input type="submit" value="Search"/>
+  				 </form>
+  				   <div id="university_"></div>
+  			 </div>
+       </div>
+    </div>
+    <script
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script>
+    function createNode(element) {
+      return document.createElement(element);
+    }
+     function append(parent, el) {
+       return parent.appendChild(el);
+     }
+
+       document.getElementById("university").addEventListener("submit", (e)=>{
+         e.preventDefault();
+         const absurd = document.getElementById("university_id").value;
+         console.log("id from the input", absurd)
+         const url = "http://localhost:5000/api/universities/" + absurd;
+         console.log("url:", "http://localhost:5000/api/universities/" + absurd);
+         $.ajax({url: url, success: (result)=>{
+           console.log("result", result)
+
+           let li = createNode('li'),
+           ul = createNode('ul'),
+           img = createNode('img'),
+           span = createNode('span');
+           img.src = result.imgURL;
+           span.innerHTML = `<a href="/auth/register">${result.school_name}</a><br/> ${result.description} <br/> Ranking: ${result.ranking}`;
+           append(li, img);
+           append(li, span);
+           append(ul, li);
+           console.log("ul", ul)
+         $("#university_").html(ul);
+         }});
+       })
+    </script>
+  </body>
+</html>
