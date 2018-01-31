@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const University = require("../models/universities");
-const Personal = require("../models/personal");
+const User = require("../models/user-model");
+const Student = require("../models/student");
 
 router.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:5000/api/universities");
@@ -17,41 +18,46 @@ router.post("/universities", (req, res, next) =>{
   });
 });
 
+//post personal information to the user collection
 router.post("/personal", (req, res, next) => {
-  let username = (req.body)? req.body.username : req.session.localUser.firstName + " " + req.session.localUser.lastName;
-  const city= req.body.city;
+  const id = (req.session.localUser)? req.session.localUser._id : req.user._id;
+  let firstName = (req.session.localUser)? req.session.localUser.firstName : req.body.firstName;
+  let lastName = (req.session.localUser)? req.session.localUser.lastName : req.body.lastName;
+  const city = req.body.city;
+  const state = req.body.state;
   const country = req.body.country;
-  const postal_code = req.body.postal_code;
+  const zip_code = req.body.zip_code;
   const gpa = req.body.gpa;
   const toefl = req.body.toefl;
   const sat = req.body.sat;
   const act = req.body.act;
   const personal_statement = req.body.personal_statement;
-  const personalInfo = new Personal();
+  let collection = (req.session.localUser)? Student : User;
+  const personalInfo =  new collection();
+  personalInfo.firstName = firstName.toLowerCase().trim();
+  personalInfo.lastName = lastName.toLowerCase().trim();
+  personalInfo.city = city.toLowerCase().trim();
+  personalInfo.state = state.toLowerCase().trim();
+  personalInfo.country = country.toLowerCase().trim();
+  personalInfo.zip_code = zip_code;
+  personalInfo.gpa = gpa;
+  personalInfo.toefl = toefl;
+  personalInfo.sat = sat;
+  personalInfo.act = act;
+  personalInfo.personal_statement = personal_statement;
 
-  personalInfo = {
-    username,
-    city,
-    country,
-    postal_code,
-    gpa,
-    toefl,
-    sat,
-    act,
-    personal_statement
-  }
-  //personalInfo.firstName = firstName.toLowerCase().trim();
-  //personalInfo.lastName = lastName.toLowerCase().trim();
-
-  personalInfo.save((err, savedInfo) =>{
+  personalInfo.save((err, savedInfo) => {
     if(err){
       console.log(err);
       return res.status(500).send();
-    } else {
-      console.log("you have registered the personal information", savedInfo)
-      req.session.personalInfo = savedInfo;
-      return res.redirect("/");
      }
+      console.log("you have saved the personal information", savedInfo)
+      req.session.personalInfo = savedInfo;
+   }).then(result => {
+      collection.findOne({"_id" : id}).then(user => {
+        user.personal.push(result);
+        res.send(user.personal);
+      })
    })
 })
 

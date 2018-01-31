@@ -1,11 +1,59 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const PersonalSchema = new Schema({
+  firstName: {
+    type: String,
+    default: ""
+  },
+  lastName: {
+    type: String,
+    default: ""
+  },
+  city: {
+    type: String,
+    default: ""
+  },
+  state: {
+    type: String,
+    default: ""
+  },
+  country: {
+    type: String,
+    default: ""
+  },
+  zip_code: {
+    type: Number,
+    default: ""
+  },
+  gpa: {
+    type: Number,
+    default: ""
+  },
+  toefl:{
+    type: Number,
+    default: ""
+  },
+  sat: {
+    type: Number,
+    default: ""
+  },
+  act: {
+    type: Number,
+    default: ""
+  },
+  personal_statement: {
+    type: String,
+    default: ""
+  }
+});
+
 
 const userSchema = new Schema({
   username: String,
   googleId: String,
-  thumbnail: String
+  thumbnail: String,
+  personal: [PersonalSchema]
 });
 
 const User = mongoose.model("user", userSchema);

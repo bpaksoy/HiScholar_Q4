@@ -9,9 +9,10 @@ import "isomorphic-fetch";
 
 class Profile extends Component {
 	constructor(){
-		super()
+		super();
 		this.state = {
-     user: {}
+     user: {},
+		 personal: []
 		}
 	}
 
@@ -21,21 +22,47 @@ class Profile extends Component {
    }
 
 
-	updateUser(event){
-		if (event)
-			event.preventDefault()
+  handleChange(event){
+		if(event){
+			event.preventDefault();
+			let name = event.target.name;
+			let value = event.target.value;
+			console.log("user in the handleChange: ", this.props.user.currentUser)
+			this.setState({
+				personal: [{
+				 firstName: "",
+	 			 lastName: "",
+	 			 city: "",
+	 			 state: "",
+	 			 country: "",
+	 			 postal_code: "",
+	 			 gpa: "",
+	 			 toefl: "",
+	 			 act: "",
+	 			 sat: "",
+	 			 personal_statement: ""
+				}]
+			})
+		}
+	}
 
-		console.log('Update User: ')
+	updateUser(event){
+		if (event){
+			event.preventDefault();
+      console.log("personal:", this.state.personal);
+
+    }
+		// console.log('Updated User in the profile: ', )
 	}
 
 	render(){
 		const currentUser = this.props.user.currentUser // can be null
-	  console.log("currentUser in the profile",currentUser)
+	  //console.log("currentUser in the profile", currentUser)
 
 		return (
 			<div className="row">
 				<div className="col-md-8">
-				  { (currentUser) ? <ProfileForm onUpdate={this.updateUser.bind(this)} user={currentUser} /> : null }
+				  { (currentUser) ? <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} /> : null }
 				</div>
 
 				<div className="col-md-4">
@@ -54,7 +81,8 @@ const stateToProps = (state) => {
 
 const dispatchToProps = (dispatch) => {
 	return {
-	  currentUserReceived: (user) => dispatch(actions.currentUserReceived(user))
+	  currentUserReceived: (user) => dispatch(actions.currentUserReceived(user)),
+		personalInfoReceived: (information) => dispatch(actions.personalInfoReceived(information))
 	}
 }
 
