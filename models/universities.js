@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 //create a geolocation Schema
 const GeoSchema = new Schema({
   type: {
-    type:String,
+    type: String,
     default: "Point"
   },
   coordinates:{

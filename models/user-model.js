@@ -2,15 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const PersonalSchema = new Schema({
-  firstName: {
-    type: String,
-    default: ""
-  },
-  lastName: {
-    type: String,
-    default: ""
-  },
-  city: {
+ city: {
     type: String,
     default: ""
   },

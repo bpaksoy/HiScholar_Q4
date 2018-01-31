@@ -55,6 +55,7 @@ class Profile extends Component {
 			event.preventDefault();
       console.log("personal:", this.state.personal);
       console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
+			this.props.personalInfoReceived(this.state.personal);
     }
 		// console.log('Updated User in the profile: ', )
 	}
@@ -80,7 +81,8 @@ class Profile extends Component {
 
 const stateToProps = (state) => {
 	return {
-		user: state.user
+		user: state.user,
+		information: state.information
 	}
 }
 

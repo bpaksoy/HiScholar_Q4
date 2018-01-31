@@ -11,8 +11,13 @@ module.exports = {
 			type: constants.CURRENT_USER_RECEIVED,
 			data: user
 		};
+	},
+	personalInfoReceived: function (information) {
+		return {
+			type: constants.PERSONAL_INFO_RECEIVED,
+			data: information
+		};
 	}
-
 
 
 };

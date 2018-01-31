@@ -3,11 +3,25 @@ const University = require("../models/universities");
 const User = require("../models/user-model");
 const Student = require("../models/student");
 
-router.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:5000/api/universities");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+router.use(function (req, res, next) {
+
+      // Website you wish to allow to connect
+      res.header('Access-Control-Allow-Origin', "*")
+
+      // Request methods you wish to allow
+      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+      // Request headers you wish to allow
+      res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+      // Set to true if you need the website to include cookies in the requests sent
+      // to the API (e.g. in case you use sessions)
+      res.setHeader('Access-Control-Allow-Credentials', true);
+
+      // Pass to next layer of middleware
+      next();
+  });
+
 
 //post universities
 router.post("/universities", (req, res, next) =>{
@@ -19,10 +33,8 @@ router.post("/universities", (req, res, next) =>{
 });
 
 //post personal information to the user collection
-router.post("/personal", (req, res, next) => {
+router.put("/personal", (req, res, next) => {
   const id = (req.session.localUser)? req.session.localUser._id : req.user._id;
-  let firstName = (req.session.localUser)? req.session.localUser.firstName : req.body.firstName;
-  let lastName = (req.session.localUser)? req.session.localUser.lastName : req.body.lastName;
   const city = req.body.city;
   const state = req.body.state;
   const country = req.body.country;
@@ -34,8 +46,6 @@ router.post("/personal", (req, res, next) => {
   const personal_statement = req.body.personal_statement;
   let collection = (req.session.localUser)? Student : User;
   const personalInfo =  new collection();
-  personalInfo.firstName = firstName.toLowerCase().trim();
-  personalInfo.lastName = lastName.toLowerCase().trim();
   personalInfo.city = city.toLowerCase().trim();
   personalInfo.state = state.toLowerCase().trim();
   personalInfo.country = country.toLowerCase().trim();
@@ -54,7 +64,7 @@ router.post("/personal", (req, res, next) => {
       console.log("you have saved the personal information", savedInfo)
       req.session.personalInfo = savedInfo;
    }).then(result => {
-      collection.findOne({"_id" : id}).then(user => {
+      collection.findByIdAndUpdate({"_id" : id}).then(user => {
         user.personal.push(result);
         res.send(user.personal);
       })

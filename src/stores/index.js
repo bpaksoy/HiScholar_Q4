@@ -15,7 +15,8 @@ export default {
 	configure: (initialState) => { // initialState can be null
 
 		const reducers = combineReducers({ // insert reducers here
-			user: userReducer
+			user: userReducer,
+			information: userReducer
 		})
 
 		if (initialState){
