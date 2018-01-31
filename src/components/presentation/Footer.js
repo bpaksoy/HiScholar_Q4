@@ -5,7 +5,7 @@ export default (props) => {
 	return (
 		<footer className="footer">
 			<div className="container-fluid">
-				<nav className="pull-left">
+				<nav>
 					<ul>
 						<li>
 							<a href="#">
@@ -29,9 +29,6 @@ export default (props) => {
 						</li>
 					</ul>
 				</nav>
-				<p className="copyright pull-right">
-					&copy; 2018 <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-				</p>
 			</div>
 		</footer>
 

@@ -26261,7 +26261,7 @@ var _default = function _default(props) {
 			{ className: "container-fluid" },
 			_react2.default.createElement(
 				"nav",
-				{ className: "pull-left" },
+				null,
 				_react2.default.createElement(
 					"ul",
 					null,
@@ -26302,17 +26302,6 @@ var _default = function _default(props) {
 						)
 					)
 				)
-			),
-			_react2.default.createElement(
-				"p",
-				{ className: "copyright pull-right" },
-				"\xA9 2018 ",
-				_react2.default.createElement(
-					"a",
-					{ href: "http://www.creative-tim.com" },
-					"Creative Tim"
-				),
-				", made with love for a better web"
 			)
 		)
 	);
@@ -26443,7 +26432,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var _default = function _default(props) {
 	var user = props.user;
-	//console.log("user in Profile Form is", user);
+	//console.log("user in the profile form", user)
+	var personal = props.personal;
 
 	return _react2.default.createElement(
 		"div",
@@ -26482,9 +26472,7 @@ var _default = function _default(props) {
 								{ className: "control-label" },
 								"First Name"
 							),
-							_react2.default.createElement("input", { onChange: function onChange(event) {
-									return props.handleChange(event);
-								}, name: "firstName", style: { textTransform: "capitalize" }, defaultValue: user.firstName, type: "text", className: "form-control" })
+							_react2.default.createElement("input", { name: "firstName", onChange: props.handleChange.bind(undefined, "firstName"), style: { textTransform: "capitalize" }, defaultValue: user.firstName, type: "text", className: "form-control" })
 						)
 					),
 					_react2.default.createElement(
@@ -26498,9 +26486,7 @@ var _default = function _default(props) {
 								{ className: "control-label" },
 								"Last Name"
 							),
-							_react2.default.createElement("input", { onChange: function onChange(event) {
-									return props.handleChange(event);
-								}, name: "lastName", style: { textTransform: "capitalize" }, defaultValue: user.lastName, type: "text", className: "form-control" })
+							_react2.default.createElement("input", { name: "lastName", onChange: props.handleChange.bind(undefined, "lastName"), style: { textTransform: "capitalize" }, defaultValue: user.lastName, type: "text", className: "form-control" })
 						)
 					)
 				),
@@ -26518,9 +26504,7 @@ var _default = function _default(props) {
 								{ className: "control-label" },
 								"City"
 							),
-							_react2.default.createElement("input", { onChange: function onChange(event) {
-									return props.handleChange(event);
-								}, name: "city", type: "text", className: "form-control" })
+							_react2.default.createElement("input", { name: "city", onChange: props.handleChange.bind(undefined, "city"), value: personal.city, type: "text", className: "form-control" })
 						)
 					),
 					_react2.default.createElement(
@@ -26534,9 +26518,7 @@ var _default = function _default(props) {
 								{ className: "control-label" },
 								"State"
 							),
-							_react2.default.createElement("input", { onChange: function onChange(event) {
-									return props.handleChange(event);
-								}, name: "state", type: "text", className: "form-control" })
+							_react2.default.createElement("input", { name: "state", onChange: props.handleChange.bind(undefined, "state"), value: personal.state, type: "text", className: "form-control" })
 						)
 					),
 					_react2.default.createElement(
@@ -26550,9 +26532,7 @@ var _default = function _default(props) {
 								{ className: "control-label" },
 								"Country"
 							),
-							_react2.default.createElement("input", { onChange: function onChange(event) {
-									return props.handleChange(event);
-								}, name: "country", type: "text", className: "form-control" })
+							_react2.default.createElement("input", { name: "country", onChange: props.handleChange.bind(undefined, "country"), value: personal.country, type: "text", className: "form-control" })
 						)
 					),
 					_react2.default.createElement(
@@ -26566,9 +26546,7 @@ var _default = function _default(props) {
 								{ className: "control-label" },
 								"Zip Code"
 							),
-							_react2.default.createElement("input", { onChange: function onChange(event) {
-									return props.handleChange(event);
-								}, name: "zip_code", type: "text", className: "form-control" })
+							_react2.default.createElement("input", { name: "zip_code", onChange: props.handleChange.bind(undefined, "zip_code"), value: personal.zip_code, type: "text", className: "form-control" })
 						)
 					)
 				),
@@ -26586,9 +26564,7 @@ var _default = function _default(props) {
 								{ className: "control-label" },
 								"GPA"
 							),
-							_react2.default.createElement("input", { onChange: function onChange(event) {
-									return props.handleChange(event);
-								}, name: "gpa", type: "text", className: "form-control" })
+							_react2.default.createElement("input", { name: "gpa", onChange: props.handleChange.bind(undefined, "gpa"), value: personal.gpa, type: "text", className: "form-control" })
 						)
 					),
 					_react2.default.createElement(
@@ -26602,9 +26578,7 @@ var _default = function _default(props) {
 								{ className: "control-label" },
 								"TOEFL"
 							),
-							_react2.default.createElement("input", { onChange: function onChange(event) {
-									return props.handleChange(event);
-								}, name: "toefl", type: "text", className: "form-control" })
+							_react2.default.createElement("input", { name: "toefl", onChange: props.handleChange.bind(undefined, "toefl"), value: personal.toefl, type: "text", className: "form-control" })
 						)
 					),
 					_react2.default.createElement(
@@ -26618,9 +26592,7 @@ var _default = function _default(props) {
 								{ className: "control-label" },
 								"ACT"
 							),
-							_react2.default.createElement("input", { onChange: function onChange(event) {
-									return props.handleChange(event);
-								}, name: "act", type: "email", className: "form-control" })
+							_react2.default.createElement("input", { name: "act", onChange: props.handleChange.bind(undefined, "act"), value: personal.act, type: "email", className: "form-control" })
 						)
 					),
 					_react2.default.createElement(
@@ -26634,9 +26606,7 @@ var _default = function _default(props) {
 								{ className: "control-label" },
 								"SAT"
 							),
-							_react2.default.createElement("input", { onChange: function onChange(event) {
-									return props.handleChange(event);
-								}, name: "sat", type: "email", className: "form-control" })
+							_react2.default.createElement("input", { name: "sat", onChange: props.handleChange.bind(undefined, "sat"), value: personal.sat, type: "email", className: "form-control" })
 						)
 					)
 				),
@@ -26657,9 +26627,7 @@ var _default = function _default(props) {
 							_react2.default.createElement(
 								"div",
 								{ className: "label-floating" },
-								_react2.default.createElement("textarea", { onChange: function onChange(event) {
-										return props.handleChange(event);
-									}, name: "personal_statement", style: style.textarea, className: "form-control", rows: "15" })
+								_react2.default.createElement("textarea", { name: "personal_statement", onChange: props.handleChange.bind(undefined, "personal_statement"), value: personal.personal_statement, style: style.textarea, className: "form-control", rows: "15" })
 							)
 						)
 					)
@@ -26762,6 +26730,8 @@ __webpack_require__(160);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26782,7 +26752,19 @@ var Profile = function (_Component) {
 
 		_this.state = {
 			user: {},
-			personal: []
+			firstName: "",
+			lastName: "",
+			personal: {
+				city: "",
+				state: "",
+				country: "",
+				zip_code: "",
+				gpa: "",
+				toefl: "",
+				act: "",
+				sat: "",
+				personal_statement: ""
+			}
 		};
 		return _this;
 	}
@@ -26820,27 +26802,18 @@ var Profile = function (_Component) {
 		}()
 	}, {
 		key: 'handleChange',
-		value: function handleChange(event) {
+		value: function handleChange(propertyName, event) {
 			if (event) {
 				event.preventDefault();
 				var name = event.target.name;
 				var value = event.target.value;
-				console.log("user in the handleChange: ", this.props.user.currentUser);
-				this.setState({
-					personal: [{
-						firstName: "",
-						lastName: "",
-						city: "",
-						state: "",
-						country: "",
-						postal_code: "",
-						gpa: "",
-						toefl: "",
-						act: "",
-						sat: "",
-						personal_statement: ""
-					}]
-				});
+				var personal = Object.assign({}, this.state.personal);
+				personal[propertyName] = value;
+
+				var user = this.props.user.currentUser;
+				this.setState(_defineProperty({
+					personal: personal
+				}, propertyName, value));
 			}
 		}
 	}, {
@@ -26849,6 +26822,7 @@ var Profile = function (_Component) {
 			if (event) {
 				event.preventDefault();
 				console.log("personal:", this.state.personal);
+				console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
 			}
 			// console.log('Updated User in the profile: ', )
 		}
@@ -26856,6 +26830,7 @@ var Profile = function (_Component) {
 		key: 'render',
 		value: function render() {
 			var currentUser = this.props.user.currentUser; // can be null
+			var personal = this.state.personal;
 			//console.log("currentUser in the profile", currentUser)
 
 			return _react2.default.createElement(
@@ -26864,7 +26839,7 @@ var Profile = function (_Component) {
 				_react2.default.createElement(
 					'div',
 					{ className: 'col-md-8' },
-					currentUser ? _react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser }) : null
+					currentUser ? _react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal }) : null
 				),
 				_react2.default.createElement(
 					'div',

@@ -51,6 +51,8 @@ const PersonalSchema = new Schema({
 
 const userSchema = new Schema({
   username: String,
+  firstName: String,
+  lastName: String,
   googleId: String,
   thumbnail: String,
   personal: [PersonalSchema]
