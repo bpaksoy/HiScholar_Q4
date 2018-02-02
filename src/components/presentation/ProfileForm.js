@@ -12,7 +12,7 @@ export default (props) => {
 				<p className="category">Complete your profile</p>
 			</div>
 			<div className="card-content">
-				<form action="/api/personal" method="POST">
+				<form>
 					<div className="row">
 						<div className="col-md-6">
 							<div className="form-group label-floating">

@@ -7,7 +7,7 @@ const config = require('./package.json');
 module.exports = {
 
 	entry: {
-		app: './src/index.js'
+		app: ['babel-polyfill','./src/index.js']
 	},
 	output: {
 		path: __dirname+'/public/dist',
@@ -24,6 +24,9 @@ module.exports = {
 			name: 'commons',
 			chunks: chunks
 		}),
+		new webpack.ProvidePlugin({
+        'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
+    }),
 	    new webpack.DefinePlugin({
 	        'process.env': {
 	        	'NODE_ENV': JSON.stringify('production')

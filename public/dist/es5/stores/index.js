@@ -26,7 +26,8 @@ module.exports = {
 		// initialState can be null
 
 		var reducers = combineReducers({ // insert reducers here
-			user: userReducer
+			user: userReducer,
+			information: userReducer
 		});
 
 		if (initialState) {

@@ -2,6 +2,7 @@ const router = require("express").Router();
 const session = require("express-session");
 //const cookieSession = require("cookie-session");
 
+
 const authCheck = (req, res, next) => {
   if(!req.user && !req.session.localUser ){
     res.redirect("/auth/login")
@@ -12,7 +13,9 @@ const authCheck = (req, res, next) => {
 
 //dynamic data rendering here
 router.get("/", authCheck, (req, res) => {
-  (req.user)? res.render("index", { user: req.user }): res.render("index", { localUser: req.session.localUser,
+  (req.user)? res.render("index", {
+    user: req.user
+  }): res.render("index", { localUser: req.session.localUser,
   user: null });;
 })
 

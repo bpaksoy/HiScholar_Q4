@@ -21,8 +21,8 @@ module.exports = function (_x, action) {
 			return newState;
 
 		case constants.PERSONAL_INFO_RECEIVED:
-			console.log("PERSONAL_INFO_RECEIVED: " + JSON.stringify(action.data.information));
-			newState.currentUser.personal = action.data.information;
+			console.log("PERSONAL_INFO_RECEIVED: " + JSON.stringify(action.data));
+			newState.currentUser.personal = action.data;
 			console.log("personal information added to newState: ", newState);
 			return newState;
 

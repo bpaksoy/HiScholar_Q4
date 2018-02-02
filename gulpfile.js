@@ -50,12 +50,12 @@ gulp.task('js', function(){
         .pipe(gp_concat('vendor.min.js'))
         .pipe(gulp.dest('./public/dist/js/'))
         .pipe(gp_rename('vendor.min.js'))
-        .pipe(gp_uglify())
         .pipe(gulp.dest('./public/dist/js/'))
 });
 
 gulp.task('es6-es5', ['js'], function(){
     return gulp.src([
+                './src/server-index.js',
                 './src/*/**.js',
                 './src/*/*/**.js'
             ]
