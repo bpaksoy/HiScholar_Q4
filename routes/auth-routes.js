@@ -128,37 +128,23 @@ router.get("/currentuser", (req, res) => {
 router.put("/currentuser", (req, res, next) => {
   const id = (req.session.localUser)? req.session.localUser._id : req.user._id;
   let collection = (req.session.localUser)? Student : User;
+  const personal = req.body.personal;
+  const city = personal.city;
+  const state = personal.state;
+  const country = personal.country;
+  const zip_code = personal.zip_code;
+  const gpa = personal.gpa;
+  const toefl = personal.toefl;
+  const sat = personal.sat;
+  const act = personal.act;
+  const personal_statement = personal.personal_statement;
 
-  // const city = req.body.city;
-  // const state = req.body.state;
-  // const country = req.body.country;
-  // const zip_code = req.body.zip_code;
-  // const gpa = req.body.gpa;
-  // const toefl = req.body.toefl;
-  // const sat = req.body.sat;
-  // const act = req.body.act;
-  // const personal_statement = req.body.personal_statement;
 
-  // const personalInfo =  new collection();
-  // personalInfo.city = city.toLowerCase().trim();
-  // personalInfo.state = state.toLowerCase().trim();
-  // personalInfo.country = country.toLowerCase().trim();
-  // personalInfo.zip_code = zip_code;
-  // personalInfo.gpa = gpa;
-  // personalInfo.toefl = toefl;
-  // personalInfo.sat = sat;
-  // personalInfo.act = act;
-  // personalInfo.personal_statement = personal_statement;
-
-    collection.findByIdAndUpdate({"_id" : id}).then(user => {
-        user.personal.push(result);
-        //res.send(user.personal);
-      }).then(() =>{
-        collection.findOne({"_id" : id})
-        .then( data => {
-          res.send(data);
-        })
-      })
+  collection.findByIdAndUpdate(id, { $set: { personal }}, { new: true }, function (err, updated) {
+    console.log('updated', updated);
+    if (err) return handleError(err);
+      res.send(updated);
+  });
 })
 
 

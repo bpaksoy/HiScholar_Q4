@@ -15,15 +15,11 @@ module.exports = function (_x, action) {
 	switch (action.type) {
 
 		case constants.CURRENT_USER_RECEIVED:
-			console.log("CURRENT_USER_RECEIVED: " + JSON.stringify(action.data.user));
-			newState.currentUser = action.data.user;
-			console.log("new state", newState);
+			newState.currentUser = action.data;
 			return newState;
 
 		case constants.PERSONAL_INFO_RECEIVED:
-			console.log("PERSONAL_INFO_RECEIVED: " + JSON.stringify(action.data));
 			newState.currentUser.personal = action.data;
-			console.log("personal information added to newState: ", newState);
 			return newState;
 
 		default:

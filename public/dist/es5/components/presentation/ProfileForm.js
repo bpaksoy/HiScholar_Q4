@@ -11,7 +11,7 @@ module.exports = function (props) {
 	var user = props.user;
 	//console.log("user in the profile form", user)
 	var personal = props.personal;
-
+	console.log("props", props);
 	return React.createElement(
 		"div",
 		{ className: "card" },

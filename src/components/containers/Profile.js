@@ -35,9 +35,7 @@ class Profile extends Component {
 			if (err)
 				return
 			const payload = response.body
-			 console.log('PAYLOAD: ' + JSON.stringify(payload))
 			const user = payload.user // this is the currently logged-in user
-			 console.log('CURRENT USER: ' + JSON.stringify(user))
 			this.props.currentUserReceived(user)
 		})
 }
@@ -47,30 +45,27 @@ class Profile extends Component {
 		if(event){
 			event.preventDefault();
 			let name = event.target.name;
-			let value = event.target.value;
+			let value = event.target.value ? event.target.value : '';
       let personal = Object.assign({}, this.state.personal);
 			personal[propertyName]= value;
-
 			let user = this.props.user.currentUser;
 			this.setState({
-       personal: personal,
-			 [propertyName]: value
+        personal: personal,
+			  [propertyName]: value
 		  })
 	}
 }
  updateUser (event){
 		if (event){
 			event.preventDefault();
-      console.log("personal:", this.state.personal);
 			let personal = this.state.personal;
 			this.props.personalInfoReceived(personal);
-      //console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
-      // axios.put("/auth/currentuser", {personal})
-			// .then(result =>{
-			// 	console.log("result is ", result)
-			// }).catch(err => {
-			// 	console.log("we have not got the data!")
-			// })
+      axios.put("/auth/currentuser", {personal})
+			.then(result =>{
+				console.log("result is ", result)
+			}).catch(err => {
+				console.log("we have not got the data!")
+			})
     }
 	}
 

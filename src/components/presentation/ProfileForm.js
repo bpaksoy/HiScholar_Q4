@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 
 export default (props) => {
 	const user =  props.user;
+	user.personal = user.personal ? user.personal : {};
 	//console.log("user in the profile form", user)
 	const personal = (props.personal);
-
+	console.log('props', user);
 	return (
 		<div className="card">
 			<div className="card-header" data-background-color="purple">
@@ -31,25 +32,25 @@ export default (props) => {
 						<div className="col-md-3">
 							<div className="form-group label-floating">
 								<label className="control-label">City</label>
-								<input name="city" onChange={props.handleChange.bind(this, "city")} value={personal.city} type="text" className="form-control" />
+								<input name="city" onChange={props.handleChange.bind(this, "city")} defaultValue={user.personal.city} type="text" className="form-control" />
 							</div>
 						</div>
 							<div className="col-md-3">
 								<div className="form-group label-floating">
 									<label className="control-label">State</label>
-									<input name="state" onChange={props.handleChange.bind(this, "state")} value={personal.state} type="text" className="form-control" />
+									<input name="state" onChange={props.handleChange.bind(this, "state")} defaultValue={user.personal.state} type="text" className="form-control" />
 								</div>
 							</div>
 						<div className="col-md-3">
 							<div className="form-group label-floating">
 								<label className="control-label">Country</label>
-								<input name="country" onChange={props.handleChange.bind(this, "country")} value={personal.country} type="text" className="form-control" />
+								<input name="country" onChange={props.handleChange.bind(this, "country")} defaultValue={user.personal.country} type="text" className="form-control" />
 							</div>
 						</div>
 						<div className="col-md-3">
 							<div className="form-group label-floating">
 								<label className="control-label">Zip Code</label>
-								<input name="zip_code" onChange={props.handleChange.bind(this, "zip_code")} value={personal.zip_code} type="text" className="form-control" />
+								<input name="zip_code" onChange={props.handleChange.bind(this, "zip_code")} defaultValue={user.personal.zip_code} type="text" className="form-control" />
 							</div>
 						</div>
 					</div>
@@ -57,25 +58,25 @@ export default (props) => {
 						<div className="col-md-3">
 							<div className="form-group label-floating">
 								<label className="control-label">GPA</label>
-								<input name="gpa"  onChange={props.handleChange.bind(this, "gpa")} value={personal.gpa} type="text" className="form-control" />
+								<input name="gpa"  onChange={props.handleChange.bind(this, "gpa")} defaultValue={user.personal.gpa} type="text" className="form-control" />
 							</div>
 						</div>
 						<div className="col-md-3">
 							<div className="form-group label-floating">
 								<label className="control-label">TOEFL</label>
-								<input name="toefl" onChange={props.handleChange.bind(this, "toefl")} value={personal.toefl} type="text" className="form-control" />
+								<input name="toefl" onChange={props.handleChange.bind(this, "toefl")} defaultValue={user.personal.toefl} type="text" className="form-control" />
 							</div>
 						</div>
 						<div className="col-md-3">
 							<div className="form-group label-floating">
 								<label className="control-label">ACT</label>
-								<input name="act" onChange={props.handleChange.bind(this, "act")} value={personal.act} type="email" className="form-control" />
+								<input name="act" onChange={props.handleChange.bind(this, "act")} defaultValue={user.personal.act} type="email" className="form-control" />
 							</div>
 						</div>
 						<div className="col-md-3">
 							<div className="form-group label-floating">
 								<label className="control-label">SAT</label>
-								<input name="sat" onChange={props.handleChange.bind(this, "sat")} value={personal.sat} type="email" className="form-control" />
+								<input name="sat" onChange={props.handleChange.bind(this, "sat")} defaultValue={user.personal.sat} type="email" className="form-control" />
 							</div>
 						</div>
 					</div>
@@ -85,7 +86,7 @@ export default (props) => {
 							<div className="form-group">
 								<label>Personal Statement</label>
 								<div className="label-floating">
-									<textarea name="personal_statement" onChange={props.handleChange.bind(this, "personal_statement")} value={personal.personal_statement} style={style.textarea} className="form-control" rows="15"></textarea>
+									<textarea name="personal_statement" onChange={props.handleChange.bind(this, "personal_statement")} defaultValue={user.personal.personal_statement} style={style.textarea} className="form-control" rows="15"></textarea>
 								</div>
 							</div>
 						</div>

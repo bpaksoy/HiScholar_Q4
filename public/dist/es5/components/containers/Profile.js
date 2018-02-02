@@ -59,10 +59,8 @@ var Profile = (function (Component) {
 				var _this = this;
 				superagent.get("/auth/currentuser").query(null).set("Accept", "application/json").end(function (err, response) {
 					if (err) return;
-
 					var payload = response.body;
 					var user = payload.user; // this is the currently logged-in user
-					// console.log('CURRENT USER: ' + JSON.stringify(user))
 					_this.props.currentUserReceived(user);
 				});
 			},
@@ -93,13 +91,12 @@ var Profile = (function (Component) {
 					console.log("personal:", this.state.personal);
 					var personal = this.state.personal;
 					this.props.personalInfoReceived(personal);
-					//console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
-					// axios.put("/auth/currentuser", {personal})
-					// .then(result =>{
-					// 	console.log("result is ", result)
-					// }).catch(err => {
-					// 	console.log("we have not got the data!")
-					// })
+					console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
+					axios.put("/auth/currentuser", { personal: personal }).then(function (result) {
+						console.log("result is ", result);
+					})["catch"](function (err) {
+						console.log("we have not got the data!");
+					});
 				}
 			},
 			writable: true,
