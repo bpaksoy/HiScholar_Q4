@@ -31458,210 +31458,209 @@ exports.default = function (props) {
 	user.personal = user.personal ? user.personal : {};
 	//console.log("user in the profile form", user)
 	var personal = props.personal;
-	console.log('props', user);
 	return _react2.default.createElement(
-		'div',
-		{ className: 'card' },
+		"div",
+		{ className: "card" },
 		_react2.default.createElement(
-			'div',
-			{ className: 'card-header', 'data-background-color': 'purple' },
+			"div",
+			{ className: "card-header", "data-background-color": "purple" },
 			_react2.default.createElement(
-				'h4',
-				{ className: 'title' },
-				'Personal Info'
+				"h4",
+				{ className: "title" },
+				"Personal Info"
 			),
 			_react2.default.createElement(
-				'p',
-				{ className: 'category' },
-				'Complete your profile'
+				"p",
+				{ className: "category" },
+				"Complete your profile"
 			)
 		),
 		_react2.default.createElement(
-			'div',
-			{ className: 'card-content' },
+			"div",
+			{ className: "card-content" },
 			_react2.default.createElement(
-				'form',
+				"form",
 				null,
 				_react2.default.createElement(
-					'div',
-					{ className: 'row' },
+					"div",
+					{ className: "row" },
 					_react2.default.createElement(
-						'div',
-						{ className: 'col-md-6' },
+						"div",
+						{ className: "col-md-6" },
 						_react2.default.createElement(
-							'div',
-							{ className: 'form-group label-floating' },
+							"div",
+							{ className: "form-group label-floating" },
 							_react2.default.createElement(
-								'label',
-								{ className: 'control-label' },
-								'First Name'
+								"label",
+								{ className: "control-label" },
+								"First Name"
 							),
-							_react2.default.createElement('input', { name: 'firstName', onChange: props.handleChange.bind(undefined, "firstName"), style: { textTransform: "capitalize" }, defaultValue: user.firstName, type: 'text', className: 'form-control' })
+							_react2.default.createElement("input", { name: "firstName", onChange: props.handleChange.bind(undefined, "firstName"), style: { textTransform: "capitalize" }, defaultValue: user.firstName, type: "text", className: "form-control" })
 						)
 					),
 					_react2.default.createElement(
-						'div',
-						{ className: 'col-md-6' },
+						"div",
+						{ className: "col-md-6" },
 						_react2.default.createElement(
-							'div',
-							{ className: 'form-group label-floating' },
+							"div",
+							{ className: "form-group label-floating" },
 							_react2.default.createElement(
-								'label',
-								{ className: 'control-label' },
-								'Last Name'
+								"label",
+								{ className: "control-label" },
+								"Last Name"
 							),
-							_react2.default.createElement('input', { name: 'lastName', onChange: props.handleChange.bind(undefined, "lastName"), style: { textTransform: "capitalize" }, defaultValue: user.lastName, type: 'text', className: 'form-control' })
+							_react2.default.createElement("input", { name: "lastName", onChange: props.handleChange.bind(undefined, "lastName"), style: { textTransform: "capitalize" }, defaultValue: user.lastName, type: "text", className: "form-control" })
 						)
 					)
 				),
 				_react2.default.createElement(
-					'div',
-					{ className: 'row' },
+					"div",
+					{ className: "row" },
 					_react2.default.createElement(
-						'div',
-						{ className: 'col-md-3' },
+						"div",
+						{ className: "col-md-3" },
 						_react2.default.createElement(
-							'div',
-							{ className: 'form-group label-floating' },
+							"div",
+							{ className: "form-group label-floating" },
 							_react2.default.createElement(
-								'label',
-								{ className: 'control-label' },
-								'City'
+								"label",
+								{ className: "control-label" },
+								"City"
 							),
-							_react2.default.createElement('input', { name: 'city', onChange: props.handleChange.bind(undefined, "city"), defaultValue: user.personal.city, type: 'text', className: 'form-control' })
+							_react2.default.createElement("input", { name: "city", onChange: props.handleChange.bind(undefined, "city"), defaultValue: user.personal.city, type: "text", className: "form-control" })
 						)
 					),
 					_react2.default.createElement(
-						'div',
-						{ className: 'col-md-3' },
+						"div",
+						{ className: "col-md-3" },
 						_react2.default.createElement(
-							'div',
-							{ className: 'form-group label-floating' },
+							"div",
+							{ className: "form-group label-floating" },
 							_react2.default.createElement(
-								'label',
-								{ className: 'control-label' },
-								'State'
+								"label",
+								{ className: "control-label" },
+								"State"
 							),
-							_react2.default.createElement('input', { name: 'state', onChange: props.handleChange.bind(undefined, "state"), defaultValue: user.personal.state, type: 'text', className: 'form-control' })
+							_react2.default.createElement("input", { name: "state", onChange: props.handleChange.bind(undefined, "state"), defaultValue: user.personal.state, type: "text", className: "form-control" })
 						)
 					),
 					_react2.default.createElement(
-						'div',
-						{ className: 'col-md-3' },
+						"div",
+						{ className: "col-md-3" },
 						_react2.default.createElement(
-							'div',
-							{ className: 'form-group label-floating' },
+							"div",
+							{ className: "form-group label-floating" },
 							_react2.default.createElement(
-								'label',
-								{ className: 'control-label' },
-								'Country'
+								"label",
+								{ className: "control-label" },
+								"Country"
 							),
-							_react2.default.createElement('input', { name: 'country', onChange: props.handleChange.bind(undefined, "country"), defaultValue: user.personal.country, type: 'text', className: 'form-control' })
+							_react2.default.createElement("input", { name: "country", onChange: props.handleChange.bind(undefined, "country"), defaultValue: user.personal.country, type: "text", className: "form-control" })
 						)
 					),
 					_react2.default.createElement(
-						'div',
-						{ className: 'col-md-3' },
+						"div",
+						{ className: "col-md-3" },
 						_react2.default.createElement(
-							'div',
-							{ className: 'form-group label-floating' },
+							"div",
+							{ className: "form-group label-floating" },
 							_react2.default.createElement(
-								'label',
-								{ className: 'control-label' },
-								'Zip Code'
+								"label",
+								{ className: "control-label" },
+								"Zip Code"
 							),
-							_react2.default.createElement('input', { name: 'zip_code', onChange: props.handleChange.bind(undefined, "zip_code"), defaultValue: user.personal.zip_code, type: 'text', className: 'form-control' })
+							_react2.default.createElement("input", { name: "zip_code", onChange: props.handleChange.bind(undefined, "zip_code"), defaultValue: user.personal.zip_code, type: "text", className: "form-control" })
 						)
 					)
 				),
 				_react2.default.createElement(
-					'div',
-					{ className: 'row' },
+					"div",
+					{ className: "row" },
 					_react2.default.createElement(
-						'div',
-						{ className: 'col-md-3' },
+						"div",
+						{ className: "col-md-3" },
 						_react2.default.createElement(
-							'div',
-							{ className: 'form-group label-floating' },
+							"div",
+							{ className: "form-group label-floating" },
 							_react2.default.createElement(
-								'label',
-								{ className: 'control-label' },
-								'GPA'
+								"label",
+								{ className: "control-label" },
+								"GPA"
 							),
-							_react2.default.createElement('input', { name: 'gpa', onChange: props.handleChange.bind(undefined, "gpa"), defaultValue: user.personal.gpa, type: 'text', className: 'form-control' })
+							_react2.default.createElement("input", { name: "gpa", onChange: props.handleChange.bind(undefined, "gpa"), defaultValue: user.personal.gpa, type: "text", className: "form-control" })
 						)
 					),
 					_react2.default.createElement(
-						'div',
-						{ className: 'col-md-3' },
+						"div",
+						{ className: "col-md-3" },
 						_react2.default.createElement(
-							'div',
-							{ className: 'form-group label-floating' },
+							"div",
+							{ className: "form-group label-floating" },
 							_react2.default.createElement(
-								'label',
-								{ className: 'control-label' },
-								'TOEFL'
+								"label",
+								{ className: "control-label" },
+								"TOEFL"
 							),
-							_react2.default.createElement('input', { name: 'toefl', onChange: props.handleChange.bind(undefined, "toefl"), defaultValue: user.personal.toefl, type: 'text', className: 'form-control' })
+							_react2.default.createElement("input", { name: "toefl", onChange: props.handleChange.bind(undefined, "toefl"), defaultValue: user.personal.toefl, type: "text", className: "form-control" })
 						)
 					),
 					_react2.default.createElement(
-						'div',
-						{ className: 'col-md-3' },
+						"div",
+						{ className: "col-md-3" },
 						_react2.default.createElement(
-							'div',
-							{ className: 'form-group label-floating' },
+							"div",
+							{ className: "form-group label-floating" },
 							_react2.default.createElement(
-								'label',
-								{ className: 'control-label' },
-								'ACT'
+								"label",
+								{ className: "control-label" },
+								"ACT"
 							),
-							_react2.default.createElement('input', { name: 'act', onChange: props.handleChange.bind(undefined, "act"), defaultValue: user.personal.act, type: 'email', className: 'form-control' })
+							_react2.default.createElement("input", { name: "act", onChange: props.handleChange.bind(undefined, "act"), defaultValue: user.personal.act, type: "email", className: "form-control" })
 						)
 					),
 					_react2.default.createElement(
-						'div',
-						{ className: 'col-md-3' },
+						"div",
+						{ className: "col-md-3" },
 						_react2.default.createElement(
-							'div',
-							{ className: 'form-group label-floating' },
+							"div",
+							{ className: "form-group label-floating" },
 							_react2.default.createElement(
-								'label',
-								{ className: 'control-label' },
-								'SAT'
+								"label",
+								{ className: "control-label" },
+								"SAT"
 							),
-							_react2.default.createElement('input', { name: 'sat', onChange: props.handleChange.bind(undefined, "sat"), defaultValue: user.personal.sat, type: 'email', className: 'form-control' })
+							_react2.default.createElement("input", { name: "sat", onChange: props.handleChange.bind(undefined, "sat"), defaultValue: user.personal.sat, type: "email", className: "form-control" })
 						)
 					)
 				),
 				_react2.default.createElement(
-					'div',
-					{ className: 'row' },
+					"div",
+					{ className: "row" },
 					_react2.default.createElement(
-						'div',
-						{ className: 'col-md-12' },
+						"div",
+						{ className: "col-md-12" },
 						_react2.default.createElement(
-							'div',
-							{ className: 'form-group' },
+							"div",
+							{ className: "form-group" },
 							_react2.default.createElement(
-								'label',
+								"label",
 								null,
-								'Personal Statement'
+								"Personal Statement"
 							),
 							_react2.default.createElement(
-								'div',
-								{ className: 'label-floating' },
-								_react2.default.createElement('textarea', { name: 'personal_statement', onChange: props.handleChange.bind(undefined, "personal_statement"), defaultValue: user.personal.personal_statement, style: style.textarea, className: 'form-control', rows: '15' })
+								"div",
+								{ className: "label-floating" },
+								_react2.default.createElement("textarea", { name: "personal_statement", onChange: props.handleChange.bind(undefined, "personal_statement"), defaultValue: user.personal.personal_statement, style: style.textarea, className: "form-control", rows: "15" })
 							)
 						)
 					)
 				),
 				_react2.default.createElement(
-					'button',
-					{ onClick: props.onUpdate.bind(undefined), type: 'submit', className: 'btn btn-primary pull-right' },
-					'Update Profile'
+					"button",
+					{ onClick: props.onUpdate.bind(undefined), type: "submit", className: "btn btn-primary pull-right" },
+					"Update Profile"
 				),
-				_react2.default.createElement('div', { className: 'clearfix' })
+				_react2.default.createElement("div", { className: "clearfix" })
 			)
 		)
 	);

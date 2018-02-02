@@ -5,7 +5,6 @@ export default (props) => {
 	user.personal = user.personal ? user.personal : {};
 	//console.log("user in the profile form", user)
 	const personal = (props.personal);
-	console.log('props', user);
 	return (
 		<div className="card">
 			<div className="card-header" data-background-color="purple">

@@ -141,7 +141,6 @@ router.put("/currentuser", (req, res, next) => {
 
 
   collection.findByIdAndUpdate(id, { $set: { personal }}, { new: true }, function (err, updated) {
-    console.log('updated', updated);
     if (err) return handleError(err);
       res.send(updated);
   });
