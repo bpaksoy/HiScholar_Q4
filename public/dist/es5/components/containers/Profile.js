@@ -72,10 +72,9 @@ var Profile = (function (Component) {
 				if (event) {
 					event.preventDefault();
 					var _name = event.target.name;
-					var value = event.target.value;
+					var value = event.target.value ? event.target.value : "";
 					var personal = Object.assign({}, this.state.personal);
 					personal[propertyName] = value;
-
 					var user = this.props.user.currentUser;
 					this.setState(_defineProperty({
 						personal: personal }, propertyName, value));
@@ -88,10 +87,8 @@ var Profile = (function (Component) {
 			value: function updateUser(event) {
 				if (event) {
 					event.preventDefault();
-					console.log("personal:", this.state.personal);
 					var personal = this.state.personal;
 					this.props.personalInfoReceived(personal);
-					console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
 					axios.put("/auth/currentuser", { personal: personal }).then(function (result) {
 						console.log("result is ", result);
 					})["catch"](function (err) {
