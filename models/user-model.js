@@ -47,7 +47,7 @@ const userSchema = new Schema({
   lastName: String,
   googleId: String,
   thumbnail: String,
-  personal: [PersonalSchema]
+  personal: PersonalSchema
 });
 
 const User = mongoose.model("user", userSchema);

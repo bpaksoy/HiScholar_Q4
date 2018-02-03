@@ -60,12 +60,12 @@ class Profile extends Component {
 			event.preventDefault();
 			let personal = this.state.personal;
 			this.props.personalInfoReceived(personal);
-      axios.put("/auth/currentuser", {personal})
-			.then(result =>{
-				console.log("result is ", result)
-			}).catch(err => {
-				console.log("we have not got the data!")
-			})
+			console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
+       axios.put("/auth/currentuser", { personal: personal }).then(function (result){
+   				console.log("result is ", result);
+      		})["catch"](function (err) {
+ 				console.log("we have not got the data!");
+ 				});
     }
 	}
 
