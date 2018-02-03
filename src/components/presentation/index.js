@@ -3,6 +3,7 @@ import Nav from './Nav'
 import Footer from './Footer'
 import ProfileCard from './ProfileCard'
 import ProfileForm from './ProfileForm'
+import InfoCard from "./InfoCard"
 
 export {
 
@@ -10,6 +11,7 @@ export {
 	Nav,
 	Footer,
 	ProfileCard,
-	ProfileForm
-	
+	ProfileForm,
+	InfoCard
+
 }

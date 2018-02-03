@@ -139,11 +139,13 @@ router.put("/currentuser", (req, res, next) => {
   const act = personal.act;
   const personal_statement = personal.personal_statement;
 
-
-  collection.findByIdAndUpdate(id, { $set: { personal }}, { new: true }, function (err, updated) {
-    if (err) return handleError(err);
-      res.send(updated);
-  });
+ collection.findOne({_id: id})
+    .then(user =>{
+      user.personal.push(personal)
+      user.save().then(result=>{
+        res.send(result)
+      })
+    })
 })
 
 //auth logout
@@ -175,9 +177,11 @@ router.get("/google/redirect", passport.authenticate("google"),(req, res) => {
   res.redirect("/");
 });
 
-//callback route for google to redirect to
-// router.get("/google/redirect", passport.authenticate("google"),(req, res) => {
-//   res.redirect("/dashboard/");
-// });
 
 module.exports = router;
+
+
+// collection.findByIdAndUpdate(id, { $set: { personal }}, { new: true }, function (err, updated) {
+//    if (err) return handleError(err);
+//      res.send(updated);
+//  })

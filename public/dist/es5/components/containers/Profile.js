@@ -89,6 +89,7 @@ var Profile = (function (Component) {
 					event.preventDefault();
 					var personal = this.state.personal;
 					this.props.personalInfoReceived(personal);
+					console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
 					axios.put("/auth/currentuser", { personal: personal }).then(function (result) {
 						console.log("result is ", result);
 					})["catch"](function (err) {

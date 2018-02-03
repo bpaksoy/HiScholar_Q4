@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../../actions';
-import { ProfileForm, ProfileCard } from '../presentation';
+import { ProfileForm, ProfileCard, InfoCard } from '../presentation';
 import axios from "axios";
 import superagent from 'superagent';
 
@@ -71,17 +71,19 @@ class Profile extends Component {
 
 	render(){
 		const currentUser = this.props.user.currentUser // can be null
-		const personal = this.state.personal;
-	  //console.log("currentUser in the profile", currentUser)
+		const personal = (currentUser)? currentUser.personal[0] : "";
+	  console.log("personal in the profile", personal)
+
 
 		return (
 			<div className="row">
 				<div className="col-md-8">
-				  { (currentUser) ? <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} /> : null }
+				  { (currentUser && !personal.length) ? <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} /> : null }
 				</div>
 
 				<div className="col-md-4">
 					{ (currentUser) ? <ProfileCard user={currentUser} /> : null }
+					{ (personal.length)? <InfoCard user={currentUser} personal={personal}/> : null }
 				</div>
 			</div>
 		)

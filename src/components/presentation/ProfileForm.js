@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default (props) => {
 	const user =  props.user;
-	user.personal = user.personal ? user.personal : {};
+	user.personal = user.personal.length ? user.personal[0] : [];
 	//console.log("user in the profile form", user)
 	const personal = (props.personal);
 	return (
