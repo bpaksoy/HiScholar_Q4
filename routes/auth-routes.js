@@ -146,7 +146,6 @@ router.put("/currentuser", (req, res, next) => {
   });
 })
 
-
 //auth logout
 router.get("/logout", (req,res, next) => {
   //handle with passport
