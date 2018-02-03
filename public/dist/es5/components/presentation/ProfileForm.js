@@ -34,7 +34,7 @@ module.exports = function (props) {
 			{ className: "card-content" },
 			React.createElement(
 				"form",
-				null,
+				{ onChange: props.handleChange.bind(undefined) },
 				React.createElement(
 					"div",
 					{ className: "row" },
@@ -49,7 +49,7 @@ module.exports = function (props) {
 								{ className: "control-label" },
 								"First Name"
 							),
-							React.createElement("input", { name: "firstName", onChange: props.handleChange.bind(undefined, "firstName"), style: { textTransform: "capitalize" }, defaultValue: user.firstName, type: "text", className: "form-control" })
+							React.createElement("input", { name: "firstName", style: { textTransform: "capitalize" }, defaultValue: user.firstName, type: "text", className: "form-control" })
 						)
 					),
 					React.createElement(
@@ -63,7 +63,7 @@ module.exports = function (props) {
 								{ className: "control-label" },
 								"Last Name"
 							),
-							React.createElement("input", { name: "lastName", onChange: props.handleChange.bind(undefined, "lastName"), style: { textTransform: "capitalize" }, defaultValue: user.lastName, type: "text", className: "form-control" })
+							React.createElement("input", { name: "lastName", style: { textTransform: "capitalize" }, defaultValue: user.lastName, type: "text", className: "form-control" })
 						)
 					)
 				),
@@ -81,7 +81,7 @@ module.exports = function (props) {
 								{ className: "control-label" },
 								"City"
 							),
-							React.createElement("input", { name: "city", onChange: props.handleChange.bind(undefined, "city"), defaultValue: user.personal.city, type: "text", className: "form-control" })
+							React.createElement("input", { name: "city", defaultValue: user.personal.city, type: "text", className: "form-control" })
 						)
 					),
 					React.createElement(
@@ -95,7 +95,7 @@ module.exports = function (props) {
 								{ className: "control-label" },
 								"State"
 							),
-							React.createElement("input", { name: "state", onChange: props.handleChange.bind(undefined, "state"), defaultValue: user.personal.state, type: "text", className: "form-control" })
+							React.createElement("input", { name: "state", defaultValue: user.personal.state, type: "text", className: "form-control" })
 						)
 					),
 					React.createElement(
@@ -109,7 +109,7 @@ module.exports = function (props) {
 								{ className: "control-label" },
 								"Country"
 							),
-							React.createElement("input", { name: "country", onChange: props.handleChange.bind(undefined, "country"), defaultValue: user.personal.country, type: "text", className: "form-control" })
+							React.createElement("input", { name: "country", defaultValue: user.personal.country, type: "text", className: "form-control" })
 						)
 					),
 					React.createElement(
@@ -123,7 +123,7 @@ module.exports = function (props) {
 								{ className: "control-label" },
 								"Zip Code"
 							),
-							React.createElement("input", { name: "zip_code", onChange: props.handleChange.bind(undefined, "zip_code"), defaultValue: user.personal.zip_code, type: "text", className: "form-control" })
+							React.createElement("input", { name: "zip_code", defaultValue: user.personal.zip_code, type: "text", className: "form-control" })
 						)
 					)
 				),
@@ -141,7 +141,7 @@ module.exports = function (props) {
 								{ className: "control-label" },
 								"GPA"
 							),
-							React.createElement("input", { name: "gpa", onChange: props.handleChange.bind(undefined, "gpa"), defaultValue: user.personal.gpa, type: "text", className: "form-control" })
+							React.createElement("input", { name: "gpa", defaultValue: user.personal.gpa, type: "text", className: "form-control" })
 						)
 					),
 					React.createElement(
@@ -155,7 +155,7 @@ module.exports = function (props) {
 								{ className: "control-label" },
 								"TOEFL"
 							),
-							React.createElement("input", { name: "toefl", onChange: props.handleChange.bind(undefined, "toefl"), defaultValue: user.personal.toefl, type: "text", className: "form-control" })
+							React.createElement("input", { name: "toefl", defaultValue: user.personal.toefl, type: "text", className: "form-control" })
 						)
 					),
 					React.createElement(
@@ -169,7 +169,7 @@ module.exports = function (props) {
 								{ className: "control-label" },
 								"ACT"
 							),
-							React.createElement("input", { name: "act", onChange: props.handleChange.bind(undefined, "act"), defaultValue: user.personal.act, type: "email", className: "form-control" })
+							React.createElement("input", { name: "act", defaultValue: user.personal.act, type: "email", className: "form-control" })
 						)
 					),
 					React.createElement(
@@ -183,29 +183,7 @@ module.exports = function (props) {
 								{ className: "control-label" },
 								"SAT"
 							),
-							React.createElement("input", { name: "sat", onChange: props.handleChange.bind(undefined, "sat"), defaultValue: user.personal.sat, type: "email", className: "form-control" })
-						)
-					)
-				),
-				React.createElement(
-					"div",
-					{ className: "row" },
-					React.createElement(
-						"div",
-						{ className: "col-md-12" },
-						React.createElement(
-							"div",
-							{ className: "form-group" },
-							React.createElement(
-								"label",
-								null,
-								"Personal Statement"
-							),
-							React.createElement(
-								"div",
-								{ className: "label-floating" },
-								React.createElement("textarea", { name: "personal_statement", onChange: props.handleChange.bind(undefined, "personal_statement"), defaultValue: user.personal.personal_statement, style: style.textarea, className: "form-control", rows: "15" })
-							)
+							React.createElement("input", { name: "sat", defaultValue: user.personal.sat, type: "email", className: "form-control" })
 						)
 					)
 				),
@@ -218,15 +196,4 @@ module.exports = function (props) {
 			)
 		)
 	);
-};
-
-// onClick={props.onUpdate.bind(this)}
-// defaultValue={}
-
-var style = {
-	textarea: {
-		background: "#fffffa",
-		border: "1px solid #ddd",
-		padding: 16
-	}
 };

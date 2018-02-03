@@ -124,6 +124,23 @@ router.get("/currentuser", (req, res) => {
       })
 })
 
+
+router.put("/personal_statement", (req,res, next) => {
+ const id = (req.session.localUser)? req.session.localUser._id : req.user._id;
+ let collection = (req.session.localUser)? Student : User;
+ const personal_statement = req.body.personal_statement;
+ console.log("personal statement in the router", personal_statement)
+ collection.findOne({_id: id})
+    .then(user =>{
+      console.log("user in the router ", user.personal[0])
+      user.personal[0]["personal_statement"] = personal_statement;
+       user.save().then(result=>{
+        res.send(result)
+      })
+    })
+})
+
+
 //post personal information to the user collection
 router.put("/currentuser", (req, res, next) => {
   const id = (req.session.localUser)? req.session.localUser._id : req.user._id;
@@ -137,7 +154,6 @@ router.put("/currentuser", (req, res, next) => {
   const toefl = personal.toefl;
   const sat = personal.sat;
   const act = personal.act;
-
  collection.findOne({_id: id})
     .then(user =>{
       user.personal.push(personal)

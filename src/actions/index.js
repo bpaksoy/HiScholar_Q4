@@ -13,6 +13,12 @@ export default {
 			type: constants.PERSONAL_INFO_RECEIVED,
 			data: information
 		}
+	},
+	personalStatementReceived: (statement) => {
+		return{
+			type: constants.PERSONAL_STATEMENT_RECEIVED,
+			data: statement
+		}
 	}
 
 

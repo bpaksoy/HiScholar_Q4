@@ -34,6 +34,10 @@ const PersonalSchema = new Schema({
   act: {
     type: Number,
     default: ""
+  },
+  personal_statement: {
+    type: String,
+    default: ""
   }
 });
 

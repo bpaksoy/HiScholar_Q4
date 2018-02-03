@@ -16,7 +16,8 @@ export default {
 
 		const reducers = combineReducers({ // insert reducers here
 			user: userReducer,
-			information: userReducer
+			information: userReducer,
+			statement: userReducer
 		})
 
 		if (initialState){

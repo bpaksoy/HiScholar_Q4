@@ -2,8 +2,6 @@
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
-var _defineProperty = function (obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); };
-
 var _prototypeProperties = function (child, staticProps, instanceProps) { if (staticProps) Object.defineProperties(child, staticProps); if (instanceProps) Object.defineProperties(child.prototype, instanceProps); };
 
 var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc && desc.writable) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
@@ -25,6 +23,7 @@ var _presentation = require("../presentation");
 var ProfileForm = _presentation.ProfileForm;
 var ProfileCard = _presentation.ProfileCard;
 var InfoCard = _presentation.InfoCard;
+var PersonalStatement = _presentation.PersonalStatement;
 var axios = _interopRequire(require("axios"));
 
 var superagent = _interopRequire(require("superagent"));
@@ -38,17 +37,7 @@ var Profile = (function (Component) {
 			user: {},
 			firstName: "",
 			lastName: "",
-			personal: {
-				city: "",
-				state: "",
-				country: "",
-				zip_code: "",
-				gpa: "",
-				toefl: "",
-				act: "",
-				sat: "",
-				personal_statement: ""
-			}
+			personal: {}
 		};
 	}
 
@@ -68,17 +57,27 @@ var Profile = (function (Component) {
 			writable: true,
 			configurable: true
 		},
+		handleStatement: {
+			value: function handleStatement(event) {
+				if (event) {
+					event.preventDefault();
+				}
+			},
+			writable: true,
+			configurable: true
+		},
 		handleChange: {
-			value: function handleChange(propertyName, event) {
+			value: function handleChange(event) {
 				if (event) {
 					event.preventDefault();
 					var _name = event.target.name;
 					var value = event.target.value ? event.target.value : "";
 					var personal = Object.assign({}, this.state.personal);
-					personal[propertyName] = value;
-					var user = this.props.user.currentUser;
-					this.setState(_defineProperty({
-						personal: personal }, propertyName, value));
+					personal[_name] = value;
+					// let user = this.props.user.currentUser;
+					this.setState({
+						personal: personal
+					});
 				}
 			},
 			writable: true,
@@ -90,7 +89,7 @@ var Profile = (function (Component) {
 					event.preventDefault();
 					var personal = this.state.personal;
 					this.props.personalInfoReceived(personal);
-					console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
+					//console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
 					axios.put("/auth/currentuser", { personal: personal }).then(function (result) {
 						console.log("result is ", result);
 					})["catch"](function (err) {
@@ -105,7 +104,8 @@ var Profile = (function (Component) {
 			value: function render() {
 				var currentUser = this.props.user.currentUser; // can be null
 				var personal = currentUser ? currentUser.personal[0] : "";
-				console.log("personal in the profile", personal);
+				var formFilled = Object.keys(this.state.personal).length;
+				// console.log("personal in the profile", personal)
 
 
 				return React.createElement(
@@ -114,13 +114,14 @@ var Profile = (function (Component) {
 					React.createElement(
 						"div",
 						{ className: "col-md-8" },
-						currentUser && !personal.length ? React.createElement(ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal }) : null
+						currentUser && !personal ? React.createElement(ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal }) : null,
+						React.createElement(PersonalStatement, { handleStatement: this.handleStatement.bind(this) })
 					),
 					React.createElement(
 						"div",
 						{ className: "col-md-4" },
 						currentUser ? React.createElement(ProfileCard, { user: currentUser }) : null,
-						personal.length ? React.createElement(InfoCard, { user: currentUser, personal: personal }) : null
+						personal ? React.createElement(InfoCard, { user: currentUser, personal: personal }) : null
 					)
 				);
 			},

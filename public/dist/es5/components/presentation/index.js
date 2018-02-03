@@ -14,12 +14,15 @@ var ProfileForm = _interopRequire(require("./ProfileForm"));
 
 var InfoCard = _interopRequire(require("./InfoCard"));
 
+var PersonalStatement = _interopRequire(require("./PersonalStatement"));
+
 exports.Sidebar = Sidebar;
 exports.Nav = Nav;
 exports.Footer = Footer;
 exports.ProfileCard = ProfileCard;
 exports.ProfileForm = ProfileForm;
 exports.InfoCard = InfoCard;
+exports.PersonalStatement = PersonalStatement;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });

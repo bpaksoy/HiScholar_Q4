@@ -12,7 +12,8 @@ class Profile extends Component {
      user: {},
 		 firstName:"",
 		 lastName: "",
-		 personal: {}
+		 personal: {},
+		 value: ""
 		}
 	}
 
@@ -33,7 +34,28 @@ class Profile extends Component {
 handleStatement(event){
 	if(event){
 		event.preventDefault();
+		let name = event.target.name;
+		let value = event.target.value ? event.target.value : '';
+    this.setState({
+			[name]: value
+		})
+		console.log("this is handle personal statement", this.state.personal_statement)
 	}
+}
+
+submitStatement(event){
+	if(event){
+		event.preventDefault();
+		let personal_statement = this.state.personal_statement;
+		console.log("personal statement in the submit", personal_statement);
+		this.props.personalStatementReceived(personal_statement);
+		axios.put("/auth/personal_statement", { personal_statement : personal_statement }).then(function (result){
+			   console.log("result is ", result);
+			 })["catch"](function (err) {
+		 console.log("we have not got the data!");
+		 });
+	}
+
 }
 
   handleChange(event){
@@ -56,7 +78,7 @@ handleStatement(event){
 			this.props.personalInfoReceived(personal);
 			//console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
        axios.put("/auth/currentuser", { personal: personal }).then(function (result){
-   				console.log("result is ", result);
+   				//console.log("result is ", result);
       		})["catch"](function (err) {
  				console.log("we have not got the data!");
  				});
@@ -74,7 +96,7 @@ handleStatement(event){
 			<div className="row">
 				<div className="col-md-8">
 				  { (currentUser && !personal) ? <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} /> : null }
-          <PersonalStatement handleStatement={this.handleStatement.bind(this)}/>
+          <PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal={personal} value={this.state.value}/>
 				</div>
 
 				<div className="col-md-4">
@@ -89,14 +111,16 @@ handleStatement(event){
 const stateToProps = (state) => {
 	return {
 		user: state.user,
-		information: state.information
+		information: state.information,
+		statement: state.statement
 	}
 }
 
 const dispatchToProps = (dispatch) => {
 	return {
 	  currentUserReceived: (user) => dispatch(actions.currentUserReceived(user)),
-		personalInfoReceived: (information) => dispatch(actions.personalInfoReceived(information))
+		personalInfoReceived: (information) => dispatch(actions.personalInfoReceived(information)),
+		personalStatementReceived: (statement) => dispatch(actions.personalStatementReceived(statement))
 	}
 }
 

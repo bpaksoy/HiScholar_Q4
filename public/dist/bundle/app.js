@@ -5465,8 +5465,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
 
 	CURRENT_USER_RECEIVED: 'CURRENT_USER_RECEIVED',
-	PERSONAL_INFO_RECEIVED: 'PERSONAL_INFO_RECEIVED'
-
+	PERSONAL_INFO_RECEIVED: 'PERSONAL_INFO_RECEIVED',
+	PERSONAL_STATEMENT_RECEIVED: 'PERSONAL_STATEMENT_RECEIVED'
 };
 
 /***/ }),
@@ -28929,7 +28929,8 @@ exports.default = {
 
 		var reducers = (0, _redux.combineReducers)({ // insert reducers here
 			user: _reducers.userReducer,
-			information: _reducers.userReducer
+			information: _reducers.userReducer,
+			statement: _reducers.userReducer
 		});
 
 		if (initialState) {
@@ -29608,6 +29609,12 @@ exports.default = function () {
 
 		case _constants2.default.PERSONAL_INFO_RECEIVED:
 			newState["currentUser"]["personal"] = action.data;
+			return newState;
+
+		case _constants2.default.PERSONAL_STATEMENT_RECEIVED:
+			console.log("action.data", action.data);
+			newState["currentUser"]["personal"]["personal_statement"] = action.data;
+			console.log("newState: ", newState);
 			return newState;
 
 		default:
@@ -31801,7 +31808,7 @@ exports.default = function (props) {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _react = __webpack_require__(12);
@@ -31811,56 +31818,63 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (props) {
+	var user = props.user;
+	console.log("user in the personal_statement form", user);
+	var personal = props.personal;
 
-  return _react2.default.createElement(
-    "div",
-    null,
-    _react2.default.createElement(
-      "div",
-      { className: "card" },
-      _react2.default.createElement(
-        "div",
-        { className: "card-content" },
-        _react2.default.createElement(
-          "div",
-          { className: "row" },
-          _react2.default.createElement(
-            "div",
-            { className: "col-md-12" },
-            _react2.default.createElement(
-              "div",
-              { className: "form-group" },
-              _react2.default.createElement(
-                "h4",
-                { style: { textTransform: 'capitalize' }, className: "card-title" },
-                "Personal Statement"
-              ),
-              _react2.default.createElement(
-                "div",
-                { className: "label-floating" },
-                _react2.default.createElement("textarea", { name: "personal_statement", onChange: props.handleStatement.bind(undefined, "personal_statement"), style: style.textarea, className: "form-control", rows: "15" })
-              )
-            )
-          )
-        )
-      ),
-      _react2.default.createElement(
-        "button",
-        { type: "submit", className: "btn btn-primary pull-right" },
-        "Update Profile"
-      )
-    )
-  );
+	return _react2.default.createElement(
+		"div",
+		null,
+		_react2.default.createElement(
+			"form",
+			null,
+			_react2.default.createElement(
+				"div",
+				{ className: "card" },
+				_react2.default.createElement(
+					"div",
+					{ className: "card-content" },
+					_react2.default.createElement(
+						"div",
+						{ className: "row" },
+						_react2.default.createElement(
+							"div",
+							{ className: "col-md-12" },
+							_react2.default.createElement(
+								"div",
+								{ className: "form-group" },
+								_react2.default.createElement(
+									"h4",
+									{ style: { textTransform: 'capitalize' }, className: "card-title" },
+									"Personal Statement"
+								),
+								_react2.default.createElement(
+									"div",
+									{ className: "label-floating" },
+									user && personal ? _react2.default.createElement("textarea", { name: "personal_statement", defaultValue: personal.personal_statement, onChange: props.handleStatement.bind(undefined), style: style.textarea, className: "form-control", rows: "15" }) : _react2.default.createElement("textarea", { name: "personal_statement", value: props.value, onChange: props.handleStatement.bind(undefined), style: style.textarea, className: "form-control", rows: "15" })
+								)
+							)
+						)
+					)
+				),
+				_react2.default.createElement(
+					"button",
+					{ onClick: props.submitStatement.bind(undefined), className: "btn btn-primary pull-right" },
+					"Update Profile"
+				)
+			)
+		)
+	);
 };
 
 var style = {
-  textarea: {
-    background: '#fffffa',
-    border: '1px solid #ddd',
-    padding: 16
-  }
+	textarea: {
+		background: '#fffffa',
+		border: '1px solid #ddd',
+		padding: 16
+	}
 
-  //defaultValue={user.personal.personal_statement}
+	//defaultValue={user.personal.personal_statement}
 
 };
 
@@ -31919,6 +31933,8 @@ var _superagent2 = _interopRequireDefault(_superagent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -31937,7 +31953,8 @@ var Profile = function (_Component) {
 			user: {},
 			firstName: "",
 			lastName: "",
-			personal: {}
+			personal: {},
+			value: ""
 		};
 		return _this;
 	}
@@ -31959,6 +31976,25 @@ var Profile = function (_Component) {
 		value: function handleStatement(event) {
 			if (event) {
 				event.preventDefault();
+				var name = event.target.name;
+				var value = event.target.value ? event.target.value : '';
+				this.setState(_defineProperty({}, name, value));
+				console.log("this is handle personal statement", this.state.personal_statement);
+			}
+		}
+	}, {
+		key: 'submitStatement',
+		value: function submitStatement(event) {
+			if (event) {
+				event.preventDefault();
+				var personal_statement = this.state.personal_statement;
+				console.log("personal statement in the submit", personal_statement);
+				this.props.personalStatementReceived(personal_statement);
+				_axios2.default.put("/auth/personal_statement", { personal_statement: personal_statement }).then(function (result) {
+					console.log("result is ", result);
+				})["catch"](function (err) {
+					console.log("we have not got the data!");
+				});
 			}
 		}
 	}, {
@@ -31985,7 +32021,7 @@ var Profile = function (_Component) {
 				this.props.personalInfoReceived(personal);
 				//console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
 				_axios2.default.put("/auth/currentuser", { personal: personal }).then(function (result) {
-					console.log("result is ", result);
+					//console.log("result is ", result);
 				})["catch"](function (err) {
 					console.log("we have not got the data!");
 				});
@@ -32007,7 +32043,7 @@ var Profile = function (_Component) {
 					'div',
 					{ className: 'col-md-8' },
 					currentUser && !personal ? _react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal }) : null,
-					_react2.default.createElement(_presentation.PersonalStatement, { handleStatement: this.handleStatement.bind(this) })
+					_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal: personal, value: this.state.value })
 				),
 				_react2.default.createElement(
 					'div',
@@ -32025,7 +32061,8 @@ var Profile = function (_Component) {
 var stateToProps = function stateToProps(state) {
 	return {
 		user: state.user,
-		information: state.information
+		information: state.information,
+		statement: state.statement
 	};
 };
 
@@ -32036,6 +32073,9 @@ var dispatchToProps = function dispatchToProps(dispatch) {
 		},
 		personalInfoReceived: function personalInfoReceived(information) {
 			return dispatch(_actions2.default.personalInfoReceived(information));
+		},
+		personalStatementReceived: function personalStatementReceived(statement) {
+			return dispatch(_actions2.default.personalStatementReceived(statement));
 		}
 	};
 };
@@ -32071,6 +32111,12 @@ exports.default = {
 		return {
 			type: _constants2.default.PERSONAL_INFO_RECEIVED,
 			data: information
+		};
+	},
+	personalStatementReceived: function personalStatementReceived(statement) {
+		return {
+			type: _constants2.default.PERSONAL_STATEMENT_RECEIVED,
+			data: statement
 		};
 	}
 

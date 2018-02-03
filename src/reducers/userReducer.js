@@ -17,6 +17,12 @@ export default (state = initialState, action) => {
       newState["currentUser"]["personal"] = action.data;
 			return newState;
 
+		case constants.PERSONAL_STATEMENT_RECEIVED:
+		  console.log("action.data", action.data)
+	    newState["currentUser"]["personal"]["personal_statement"] = action.data;
+			console.log("newState: ", newState)
+	    return newState;
+
 		default:
 			return state;
 	}
