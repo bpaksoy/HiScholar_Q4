@@ -9,7 +9,7 @@ var React = _interopRequire(_react);
 var Component = _react.Component;
 module.exports = function (props) {
 	var user = props.user;
-	user.personal = user.personal ? user.personal : {};
+	user.personal = user.personal.length ? user.personal[0] : [];
 	//console.log("user in the profile form", user)
 	var personal = props.personal;
 	return React.createElement(

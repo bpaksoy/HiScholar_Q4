@@ -137,7 +137,6 @@ router.put("/currentuser", (req, res, next) => {
   const toefl = personal.toefl;
   const sat = personal.sat;
   const act = personal.act;
-  const personal_statement = personal.personal_statement;
 
  collection.findOne({_id: id})
     .then(user =>{

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../../actions';
-import { ProfileForm, ProfileCard, InfoCard } from '../presentation';
+import { ProfileForm, ProfileCard, InfoCard, PersonalStatement } from '../presentation';
 import axios from "axios";
 import superagent from 'superagent';
 
@@ -12,17 +12,7 @@ class Profile extends Component {
      user: {},
 		 firstName:"",
 		 lastName: "",
-		 personal: {
-			 city: "",
-			 state: "",
-			 country: "",
-			 zip_code: "",
-			 gpa: "",
-			 toefl: "",
-			 act: "",
-			 sat: "",
-			 personal_statement: ""
-		 }
+		 personal: {}
 		}
 	}
 
@@ -40,18 +30,22 @@ class Profile extends Component {
 		})
 }
 
+handleStatement(event){
+	if(event){
+		event.preventDefault();
+	}
+}
 
-  handleChange(propertyName, event){
+  handleChange(event){
 		if(event){
 			event.preventDefault();
 			let name = event.target.name;
 			let value = event.target.value ? event.target.value : '';
       let personal = Object.assign({}, this.state.personal);
-			personal[propertyName]= value;
-			let user = this.props.user.currentUser;
+			personal[name]= value;
+			// let user = this.props.user.currentUser;
 			this.setState({
-        personal: personal,
-			  [propertyName]: value
+        personal: personal
 		  })
 	}
 }
@@ -60,7 +54,7 @@ class Profile extends Component {
 			event.preventDefault();
 			let personal = this.state.personal;
 			this.props.personalInfoReceived(personal);
-			console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
+			//console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
        axios.put("/auth/currentuser", { personal: personal }).then(function (result){
    				console.log("result is ", result);
       		})["catch"](function (err) {
@@ -70,20 +64,22 @@ class Profile extends Component {
 	}
 
 	render(){
-		const currentUser = this.props.user.currentUser // can be null
+		const currentUser = this.props.user.currentUser; // can be null
 		const personal = (currentUser)? currentUser.personal[0] : "";
-	  console.log("personal in the profile", personal)
+		const formFilled = Object.keys(this.state.personal).length;
+	 // console.log("personal in the profile", personal)
 
 
 		return (
 			<div className="row">
 				<div className="col-md-8">
-				  { (currentUser && !personal.length) ? <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} /> : null }
+				  { (currentUser && !personal) ? <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} /> : null }
+					<PersonalStatement handleStatement={this.handleStatement.bind(this)}/>
 				</div>
 
 				<div className="col-md-4">
 					{ (currentUser) ? <ProfileCard user={currentUser} /> : null }
-					{ (personal.length)? <InfoCard user={currentUser} personal={personal}/> : null }
+					{ (personal)? <InfoCard user={currentUser} personal={personal}/> : null }
 				</div>
 			</div>
 		)

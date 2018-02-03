@@ -4,6 +4,7 @@ import Footer from './Footer'
 import ProfileCard from './ProfileCard'
 import ProfileForm from './ProfileForm'
 import InfoCard from "./InfoCard"
+import PersonalStatement from "./PersonalStatement"
 
 export {
 
@@ -12,6 +13,7 @@ export {
 	Footer,
 	ProfileCard,
 	ProfileForm,
-	InfoCard
+	InfoCard,
+	PersonalStatement
 
 }

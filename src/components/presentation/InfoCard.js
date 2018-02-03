@@ -4,37 +4,53 @@ export default (props) => {
 
 	const user = props.user // can be null
   //console.log("user", user)
-  // const personal = user.personal;
-  // let personalInfo = Object.keys(personal).map((key, index) => { <li>{key}:{personal[key]}</li>})
+  const personal = props.personal;
+	//console.log(personal)
+
+
 
 	return (
-		<div className="card card-profile">
+	 <div className="card card-profile">
+		 <form>
 			<div className="col-md-12">
-          <i className="material-icons">school</i><h4 style={{textTransform:'capitalize'}} className="card-title"> Personal</h4>
+       <h3 style={{textTransform:'capitalize'}} className="category text-gray">Personal</h3>
 			</div>
       <div className="content">
-         <ul>
-          {(user )? "" : ""}
-        </ul>
-      </div>
-		</div>
+				 <div className="col-md-12">
+	          <h4>Lives in:<br/>
+						  <p style={{textTransform:'capitalize'}}>
+								{(personal.city)? personal.city : null} <br/>
+								{(personal.state)? personal.state: null } <br/>
+								{(personal.country)? personal.country: null }<br/>
+							</p>
+						</h4>
+				  </div>
+				   <div className="col-md-12">
+					   <h4 card-profile>Academics:<br/></h4>
+					  </div>
+						<div className="col-md-12">
+						  <div style={{textTransform:'capitalize'}}>
+							   <div className="col-md-3">
+								  <label className="control-label">GPA</label><br/>
+									  {(personal.gpa)? personal.gpa : null} <br/>
+							    </div>
+							    <div className="col-md-3">
+									 <label className="control-label">TOEFL</label><br/>
+									  {(personal.toefl)? personal.toefl: null }<br/>
+								  </div>
+								  <div className="col-md-3">
+									  <label className="control-label">SAT</label><br/>
+									  {(personal.sat)? personal.sat: null }<br/>
+									</div>
+									<div className="col-md-3">
+									  <label className="control-label">ACT</label><br/>
+									  {(personal.act)? personal.act: null }<br/>
+									</div>
+                </div>
+							</div>
+					  </div>
+				 <button type="submit" className="btn btn-primary">Update Profile</button>
+			 </form>
+		 </div>
 	)
 }
-
- // {(personalInfo)? personalInfo : null}
-// <div className="col-md-4">
-//    <label className="control-label">{user.personal.city}</label><br/>
-// </div>
-// <div className="col-md-4">
-//    <label className="control-label">{user.personal.state}</label><br/>
-// </div>
-// <div className="col-md-4">
-//    <label className="control-label">{user.personal.country}</label><br/>
-// </div
-// <div className="col-md-4">
-//    <label className="control-label">{user.personal.city}</label><br/>
-// </div
-//  <label className="control-label">GPA</label><br/>
-//  <label className="control-label">TOEFL</label><br/>
-//  <label className="control-label">SAT</label><br/>
-//  <label className="control-label">ACT</label><br/>

@@ -24,6 +24,7 @@ var _presentation = require("../presentation");
 
 var ProfileForm = _presentation.ProfileForm;
 var ProfileCard = _presentation.ProfileCard;
+var InfoCard = _presentation.InfoCard;
 var axios = _interopRequire(require("axios"));
 
 var superagent = _interopRequire(require("superagent"));
@@ -103,8 +104,9 @@ var Profile = (function (Component) {
 		render: {
 			value: function render() {
 				var currentUser = this.props.user.currentUser; // can be null
-				var personal = this.state.personal;
-				//console.log("currentUser in the profile", currentUser)
+				var personal = currentUser ? currentUser.personal[0] : "";
+				console.log("personal in the profile", personal);
+
 
 				return React.createElement(
 					"div",
@@ -112,12 +114,13 @@ var Profile = (function (Component) {
 					React.createElement(
 						"div",
 						{ className: "col-md-8" },
-						currentUser ? React.createElement(ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal }) : null
+						currentUser && !personal.length ? React.createElement(ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal }) : null
 					),
 					React.createElement(
 						"div",
 						{ className: "col-md-4" },
-						currentUser ? React.createElement(ProfileCard, { user: currentUser }) : null
+						currentUser ? React.createElement(ProfileCard, { user: currentUser }) : null,
+						personal.length ? React.createElement(InfoCard, { user: currentUser, personal: personal }) : null
 					)
 				);
 			},
