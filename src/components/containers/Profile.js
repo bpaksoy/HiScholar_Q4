@@ -74,12 +74,12 @@ handleStatement(event){
 			<div className="row">
 				<div className="col-md-8">
 				  { (currentUser && !personal) ? <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} /> : null }
-					<PersonalStatement handleStatement={this.handleStatement.bind(this)}/>
+          <PersonalStatement handleStatement={this.handleStatement.bind(this)}/>
 				</div>
 
 				<div className="col-md-4">
 					{ (currentUser) ? <ProfileCard user={currentUser} /> : null }
-					{ (personal)? <InfoCard user={currentUser} personal={personal}/> : null }
+          { (personal)? <InfoCard user={currentUser} personal={personal}/> : null }
 				</div>
 			</div>
 		)

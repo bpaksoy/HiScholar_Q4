@@ -7,26 +7,23 @@ export default (props) => {
   const personal = props.personal;
 	//console.log(personal)
 
-
-
 	return (
 	 <div className="card card-profile">
-		 <form>
+
 			<div className="col-md-12">
        <h3 style={{textTransform:'capitalize'}} className="category text-gray">Personal</h3>
 			</div>
       <div className="content">
 				 <div className="col-md-12">
-	          <h4>Lives in:<br/>
+	          <h4>Lives in:<br/></h4>
 						  <p style={{textTransform:'capitalize'}}>
 								{(personal.city)? personal.city : null} <br/>
 								{(personal.state)? personal.state: null } <br/>
 								{(personal.country)? personal.country: null }<br/>
 							</p>
-						</h4>
 				  </div>
 				   <div className="col-md-12">
-					   <h4 card-profile>Academics:<br/></h4>
+					  <h4 className="card-profile">Academics:<br/></h4>
 					  </div>
 						<div className="col-md-12">
 						  <div style={{textTransform:'capitalize'}}>
@@ -49,8 +46,9 @@ export default (props) => {
                 </div>
 							</div>
 					  </div>
-				 <button type="submit" className="btn btn-primary">Update Profile</button>
-			 </form>
+         <button type="submit" className="btn btn-primary">Update Profile</button>
 		 </div>
 	)
 }
+
+// <button type="submit" className="btn btn-primary">Update Profile</button>
