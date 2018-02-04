@@ -33,10 +33,6 @@ const PersonalSchema = new Schema({
   act: {
     type: Number,
     default: ""
-  },
-  personal_statement: {
-    type: String,
-    default: ""
   }
 });
 
@@ -47,6 +43,10 @@ const userSchema = new Schema({
   lastName: String,
   googleId: String,
   thumbnail: String,
+  personal_statement: {
+    type: String,
+    default: ""
+  },
   personal: [PersonalSchema]
 });
 

@@ -2,6 +2,8 @@
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
+var _defineProperty = function (obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); };
+
 var _prototypeProperties = function (child, staticProps, instanceProps) { if (staticProps) Object.defineProperties(child, staticProps); if (instanceProps) Object.defineProperties(child.prototype, instanceProps); };
 
 var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc && desc.writable) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
@@ -37,7 +39,8 @@ var Profile = (function (Component) {
 			user: {},
 			firstName: "",
 			lastName: "",
-			personal: {}
+			personal: {},
+			value: ""
 		};
 	}
 
@@ -61,6 +64,27 @@ var Profile = (function (Component) {
 			value: function handleStatement(event) {
 				if (event) {
 					event.preventDefault();
+					var _name = event.target.name;
+					var value = event.target.value ? event.target.value : "";
+					this.setState(_defineProperty({}, _name, value));
+					console.log("this is handle personal statement", this.state.personal_statement);
+				}
+			},
+			writable: true,
+			configurable: true
+		},
+		submitStatement: {
+			value: function submitStatement(event) {
+				if (event) {
+					event.preventDefault();
+					var personal_statement = this.state.personal_statement;
+					console.log("personal statement in the submit", personal_statement);
+					this.props.personalStatementReceived(personal_statement);
+					axios.put("/auth/personal_statement", { personal_statement: personal_statement }).then(function (result) {
+						console.log("result is ", result);
+					})["catch"](function (err) {
+						console.log("we have not got the data!");
+					});
 				}
 			},
 			writable: true,
@@ -90,9 +114,7 @@ var Profile = (function (Component) {
 					var personal = this.state.personal;
 					this.props.personalInfoReceived(personal);
 					//console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
-					axios.put("/auth/currentuser", { personal: personal }).then(function (result) {
-						console.log("result is ", result);
-					})["catch"](function (err) {
+					axios.put("/auth/currentuser", { personal: personal }).then(function (result) {})["catch"](function (err) {
 						console.log("we have not got the data!");
 					});
 				}
@@ -115,7 +137,7 @@ var Profile = (function (Component) {
 						"div",
 						{ className: "col-md-8" },
 						currentUser && !personal ? React.createElement(ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal }) : null,
-						React.createElement(PersonalStatement, { handleStatement: this.handleStatement.bind(this) })
+						React.createElement(PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal: personal, value: this.state.value })
 					),
 					React.createElement(
 						"div",
@@ -136,7 +158,8 @@ var Profile = (function (Component) {
 var stateToProps = function (state) {
 	return {
 		user: state.user,
-		information: state.information
+		information: state.information,
+		statement: state.statement
 	};
 };
 
@@ -147,8 +170,12 @@ var dispatchToProps = function (dispatch) {
 		},
 		personalInfoReceived: function (information) {
 			return dispatch(actions.personalInfoReceived(information));
+		},
+		personalStatementReceived: function (statement) {
+			return dispatch(actions.personalStatementReceived(statement));
 		}
 	};
 };
 
 module.exports = connect(stateToProps, dispatchToProps)(Profile);
+//console.log("result is ", result);

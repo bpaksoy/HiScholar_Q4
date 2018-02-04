@@ -132,8 +132,8 @@ router.put("/personal_statement", (req,res, next) => {
  console.log("personal statement in the router", personal_statement)
  collection.findOne({_id: id})
     .then(user =>{
-      console.log("user in the router ", user.personal[0])
-      user.personal[0]["personal_statement"] = personal_statement;
+      console.log("user in the router ", user)
+      user["personal_statement"] = personal_statement;
        user.save().then(result=>{
         res.send(result)
       })

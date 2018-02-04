@@ -39,7 +39,7 @@ handleStatement(event){
     this.setState({
 			[name]: value
 		})
-		console.log("this is handle personal statement", this.state.personal_statement)
+		//console.log("this is handle personal statement", this.state.personal_statement)
 	}
 }
 
@@ -47,10 +47,10 @@ submitStatement(event){
 	if(event){
 		event.preventDefault();
 		let personal_statement = this.state.personal_statement;
-		console.log("personal statement in the submit", personal_statement);
+		//console.log("personal statement in the submit method", personal_statement);
 		this.props.personalStatementReceived(personal_statement);
 		axios.put("/auth/personal_statement", { personal_statement : personal_statement }).then(function (result){
-			   console.log("result is ", result);
+			  console.log("result is ", result);
 			 })["catch"](function (err) {
 		 console.log("we have not got the data!");
 		 });
@@ -85,26 +85,66 @@ submitStatement(event){
     }
 	}
 
+
+
 	render(){
 		const currentUser = this.props.user.currentUser; // can be null
-		const personal = (currentUser)? currentUser.personal[0] : "";
-		const formFilled = Object.keys(this.state.personal).length;
-	 // console.log("personal in the profile", personal)
+		const personal = (currentUser)? currentUser.personal : "";
+		console.log("personal", personal)
+		const personalLength = (currentUser)? Object.keys(personal).length : 0;
+		//console.log("personalLength", personalLength)
+		const personal_statement =(currentUser)? currentUser.personal_statement : "";
+		//console.log("personal_statement in the profile", personal_statement)
 
-
-		return (
-			<div className="row">
-				<div className="col-md-8">
-				  { (currentUser && !personal) ? <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} /> : null }
-          <PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal={personal} value={this.state.value}/>
-				</div>
-
-				<div className="col-md-4">
-					{ (currentUser) ? <ProfileCard user={currentUser} /> : null }
-          { (personal)? <InfoCard user={currentUser} personal={personal}/> : null }
-				</div>
-			</div>
-		)
+		if(currentUser && !personalLength && !personal_statement){
+			 return(
+				 <div>
+					<div className="col-md-8">
+						<ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} />
+						<PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement}/>
+					</div>
+					<div className="col-md-4">
+						 <ProfileCard user={currentUser} />
+					</div>
+				 </div>
+			   );
+			 } else if(currentUser && personalLength && !personal_statement){
+					return(
+					<div>
+						<div className="col-md-8">
+						 <PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement}/>
+						</div>
+					 <div className="col-md-4">
+						 <ProfileCard user={currentUser} />
+						 <InfoCard user={currentUser} personal={personal}/>
+					 </div>
+					</div>
+				);
+			} else if(currentUser && !personalLength && personal_statement){
+					return(
+					 <div>
+						 <div className="col-md-8">
+							 <h2>Hello Mom</h2>
+							 <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} />
+						 </div>
+						 <div className="col-md-4">
+							 <ProfileCard user={currentUser} />
+						 </div>
+					 </div>
+				 );
+			 } else{
+				 return(
+					 <div>
+						 <div className="col-md-8">
+							<InfoCard user={currentUser} personal={personal}/>
+						 </div>
+						<div className="col-md-4">
+							<ProfileCard user={currentUser} />
+							<InfoCard user={currentUser} personal={personal}/>
+						</div>
+					 </div>
+		   );
+		}
 	}
 }
 
@@ -125,3 +165,65 @@ const dispatchToProps = (dispatch) => {
 }
 
 export default connect(stateToProps, dispatchToProps)(Profile)
+
+
+
+// { (currentUser && !formsFilled)?
+//  <div className="row">
+// 	 <div>
+// 		<div className="col-md-8">
+// 			<ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} />
+// 			<PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement}/>
+// 		</div>
+// 		<div className="col-md-4">
+// 			 <ProfileCard user={currentUser} />
+// 		</div>
+// 		: {(currentUser && profileFormFilled && !statemenFilled)?
+// 		 <div>
+// 			 <div className="col-md-8">
+// 				<PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement}/>
+// 			 </div>
+// 			<div className="col-md-4">
+// 				<ProfileCard user={currentUser} />
+// 				<InfoCard user={currentUser} personal={personal}/>
+// 			</div>
+// 		 </div>
+// 		}
+// 		: {(currentUser && !profileFormFilled && statemenFilled)?
+// 	 <div>
+// 		 <div className="col-md-8">
+// 			 <h2>Hi Mom</h2>
+// 			 <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} />
+// 		 </div>
+// 		 <div className="col-md-4">
+// 			 <ProfileCard user={currentUser} />
+// 		 </div>
+// 	 </div>
+// 		:
+// 	<div>
+// 		<div className="col-md-8">
+// 		 <h2>Hi Mom!</h2>
+// 		</div>
+// 	 <div className="col-md-4">
+// 		 <ProfileCard user={currentUser} />
+// 		 <InfoCard user={currentUser} personal={personal}/>
+// 	 </div>
+// 	</div>
+// 	}
+//  </div>
+//  }
+// const currentUser = this.props.user.currentUser; // can be null
+// const personal = (currentUser)? currentUser.personal[0] : "";
+// const personal_statement = this.props.user.personal_statement;
+// console.log("personal_statement in the reducer", personal_statement)
+// const formsFilled = (personal && personal_statement);
+// const profileFormFilled = (personal)? true: false;
+// const statemenFilled = (personal_statement)? true: false;
+
+// <div>
+//  { this.renderButton.bind(this) }
+// </div>
+
+// const formsFilled = (personal && personal_statement);
+// const profileFormFilled = (personal)? true: false;
+// const statemenFilled = (personal_statement)? true: false;

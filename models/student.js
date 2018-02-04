@@ -34,11 +34,8 @@ const PersonalSchema = new Schema({
   act: {
     type: Number,
     default: ""
-  },
-  personal_statement: {
-    type: String,
-    default: ""
   }
+
 });
 
 //create a student Schema & model
@@ -55,6 +52,10 @@ const studentSchema = new Schema({
   firstName: String,
   lastName: String,
   thumbnail: {
+    type: String,
+    default: ""
+  },
+  personal_statement: {
     type: String,
     default: ""
   },

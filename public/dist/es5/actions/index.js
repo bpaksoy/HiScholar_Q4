@@ -17,6 +17,12 @@ module.exports = {
 			type: constants.PERSONAL_INFO_RECEIVED,
 			data: information
 		};
+	},
+	personalStatementReceived: function (statement) {
+		return {
+			type: constants.PERSONAL_STATEMENT_RECEIVED,
+			data: statement
+		};
 	}
 
 

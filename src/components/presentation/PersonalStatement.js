@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
 export default (props) => {
-	const user =  props.user;
-	console.log("user in the personal_statement form", user);
-	const personal = (props.personal);
-
+	const user =  props.user; // can be null
+	//console.log("user in the personal_statement form", user);
+	const personal_statement = (user)? user.personal_statement : "";
+  //console.log("personal statement in the component", personal_statement)
 return (
 	<div>
 	 <form>
@@ -15,7 +15,7 @@ return (
             <div className="form-group">
               <h4 style={{textTransform:'capitalize'}} className="card-title">Personal Statement</h4>
               <div className="label-floating">
-							 { (user && personal)? <textarea name="personal_statement" defaultValue={personal.personal_statement} onChange={props.handleStatement.bind(this)} style={style.textarea} className="form-control" rows="15"></textarea> : <textarea name="personal_statement" value={props.value} onChange={props.handleStatement.bind(this)} style={style.textarea} className="form-control" rows="15"></textarea>}
+							 { (user)? <div><textarea name="personal_statement" defaultValue={user.personal_statement} onChange={props.handleStatement.bind(this)} style={style.textarea} className="form-control" rows="15"></textarea></div> : null}
               </div>
             </div>
           </div>
@@ -37,3 +37,4 @@ const style = {
 }
 
 //defaultValue={user.personal.personal_statement}
+//<div><textarea name="personal_statement" onChange={props.handleStatement.bind(this)} style={style.textarea} className="form-control" rows="15"></textarea></div>

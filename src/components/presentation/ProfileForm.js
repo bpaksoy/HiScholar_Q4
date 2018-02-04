@@ -4,8 +4,10 @@ export default (props) => {
 	const user =  props.user;
 	user.personal = user.personal.length ? user.personal[0] : [];
 	//console.log("user in the profile form", user)
-	const personal = (props.personal);
+
 	return (
+	<div>
+	 {(!user.personal.length)?
 		<div className="card">
 			<div className="card-header" data-background-color="purple">
 				<h4 className="title">Personal Info</h4>
@@ -84,5 +86,7 @@ export default (props) => {
 				</form>
 			</div>
 		</div>
+	   : null}
+	 </div>
 	)
 }
