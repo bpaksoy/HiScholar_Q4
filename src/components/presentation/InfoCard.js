@@ -12,7 +12,9 @@ export default (props) => {
 	 {(user)?
 	  <div className="card card-profile">
 			<div className="col-md-12">
-       <h3 style={{textTransform:'capitalize'}} className="category text-gray">Personal</h3>
+			 <div style={{backgroundColor: "#A8A8A8 "}} className="card-header">
+         <h3 style={{textTransform:'capitalize'}} className="category text-gray">Personal</h3>
+			 </div>
 			</div>
       <div className="content">
 				 <div className="col-md-12">
@@ -24,7 +26,9 @@ export default (props) => {
 							</p>
 				  </div>
 				   <div className="col-md-12">
-					  <h4 className="card-profile">Academics:<br/></h4>
+					    <ul className="list-group list-group-flush">
+					      <li className="list-group-item"><h4 className="card-profile">Academics:<br/></h4></li>
+							</ul>
 					  </div>
 						<div className="col-md-12">
 						  <div style={{textTransform:'capitalize'}}>

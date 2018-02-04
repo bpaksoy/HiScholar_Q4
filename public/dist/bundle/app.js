@@ -526,7 +526,7 @@ module.exports = Object.getPrototypeOf || function (O) {
 
 
 var bind = __webpack_require__(158);
-var isBuffer = __webpack_require__(424);
+var isBuffer = __webpack_require__(425);
 
 /*global toString:true*/
 
@@ -3707,7 +3707,7 @@ function warning(message) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(20);
-var normalizeHeaderName = __webpack_require__(426);
+var normalizeHeaderName = __webpack_require__(427);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -5987,7 +5987,7 @@ var _PersonalStatement = __webpack_require__(418);
 
 var _PersonalStatement2 = _interopRequireDefault(_PersonalStatement);
 
-var _StatementCard = __webpack_require__(449);
+var _StatementCard = __webpack_require__(419);
 
 var _StatementCard2 = _interopRequireDefault(_StatementCard);
 
@@ -6028,12 +6028,12 @@ module.exports = function bind(fn, thisArg) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(20);
-var settle = __webpack_require__(427);
-var buildURL = __webpack_require__(429);
-var parseHeaders = __webpack_require__(430);
-var isURLSameOrigin = __webpack_require__(431);
+var settle = __webpack_require__(428);
+var buildURL = __webpack_require__(430);
+var parseHeaders = __webpack_require__(431);
+var isURLSameOrigin = __webpack_require__(432);
 var createError = __webpack_require__(160);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(432);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(433);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -6130,7 +6130,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(433);
+      var cookies = __webpack_require__(434);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -6215,7 +6215,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(428);
+var enhanceError = __webpack_require__(429);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -11597,7 +11597,7 @@ var _reactRedux = __webpack_require__(151);
 
 var _layouts = __webpack_require__(410);
 
-__webpack_require__(447);
+__webpack_require__(448);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30998,7 +30998,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _presentation = __webpack_require__(157);
 
-var _containers = __webpack_require__(419);
+var _containers = __webpack_require__(420);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31704,9 +31704,13 @@ exports.default = function (props) {
 				"div",
 				{ className: "col-md-12" },
 				_react2.default.createElement(
-					"h3",
-					{ style: { textTransform: 'capitalize' }, className: "category text-gray" },
-					"Personal"
+					"div",
+					{ style: { backgroundColor: "#A8A8A8 " }, className: "card-header" },
+					_react2.default.createElement(
+						"h3",
+						{ style: { textTransform: 'capitalize' }, className: "category text-gray" },
+						"Personal"
+					)
 				)
 			),
 			_react2.default.createElement(
@@ -31738,10 +31742,18 @@ exports.default = function (props) {
 					"div",
 					{ className: "col-md-12" },
 					_react2.default.createElement(
-						"h4",
-						{ className: "card-profile" },
-						"Academics:",
-						_react2.default.createElement("br", null)
+						"ul",
+						{ className: "list-group list-group-flush" },
+						_react2.default.createElement(
+							"li",
+							{ className: "list-group-item" },
+							_react2.default.createElement(
+								"h4",
+								{ className: "card-profile" },
+								"Academics:",
+								_react2.default.createElement("br", null)
+							)
+						)
 					)
 				),
 				_react2.default.createElement(
@@ -31904,11 +31916,66 @@ var style = {
 
 
 Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(12);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+exports.default = function (props) {
+  var _React$createElement;
+
+  var user = props.user; // can be null
+  console.log("user in the personal_statement form", user);
+  var personal_statement = user ? user.personal_statement : "";
+  // console.log("personal statement in the component", personal_statement)
+  return _react2.default.createElement(
+    "div",
+    null,
+    _react2.default.createElement(
+      "form",
+      null,
+      _react2.default.createElement(
+        "div",
+        { className: "card" },
+        _react2.default.createElement("img", (_React$createElement = { style: { boxSize: 200 } }, _defineProperty(_React$createElement, "style", { height: 200 }), _defineProperty(_React$createElement, "className", "card-img-top"), _defineProperty(_React$createElement, "src", "/img/purple.jpeg"), _defineProperty(_React$createElement, "alt", "Purple"), _React$createElement)),
+        _react2.default.createElement(
+          "div",
+          { style: { padding: 10 }, className: "card-block" },
+          _react2.default.createElement(
+            "h4",
+            { style: { textTransform: 'capitalize' }, className: "card-title" },
+            "Personal Statement"
+          ),
+          _react2.default.createElement(
+            "p",
+            { className: "card-text" },
+            personal_statement
+          )
+        )
+      )
+    )
+  );
+};
+
+/***/ }),
+/* 420 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 exports.Profile = undefined;
 
-var _Profile = __webpack_require__(420);
+var _Profile = __webpack_require__(421);
 
 var _Profile2 = _interopRequireDefault(_Profile);
 
@@ -31917,7 +31984,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.Profile = _Profile2.default;
 
 /***/ }),
-/* 420 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31935,17 +32002,17 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(151);
 
-var _actions = __webpack_require__(421);
+var _actions = __webpack_require__(422);
 
 var _actions2 = _interopRequireDefault(_actions);
 
 var _presentation = __webpack_require__(157);
 
-var _axios = __webpack_require__(422);
+var _axios = __webpack_require__(423);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _superagent = __webpack_require__(441);
+var _superagent = __webpack_require__(442);
 
 var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -32094,7 +32161,7 @@ var Profile = function (_Component) {
 						'div',
 						{ className: 'col-md-8' },
 						_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal }),
-						_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal: personal })
+						_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: personal_statement })
 					),
 					_react2.default.createElement(
 						'div',
@@ -32109,7 +32176,7 @@ var Profile = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'col-md-8' },
-						_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal: personal })
+						_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: personal_statement })
 					),
 					_react2.default.createElement(
 						'div',
@@ -32210,7 +32277,7 @@ exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Profil
 // const statemenFilled = (personal_statement)? true: false;
 
 /***/ }),
-/* 421 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32250,13 +32317,13 @@ exports.default = {
 };
 
 /***/ }),
-/* 422 */
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(423);
+module.exports = __webpack_require__(424);
 
 /***/ }),
-/* 423 */
+/* 424 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32264,7 +32331,7 @@ module.exports = __webpack_require__(423);
 
 var utils = __webpack_require__(20);
 var bind = __webpack_require__(158);
-var Axios = __webpack_require__(425);
+var Axios = __webpack_require__(426);
 var defaults = __webpack_require__(103);
 
 /**
@@ -32299,14 +32366,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(162);
-axios.CancelToken = __webpack_require__(439);
+axios.CancelToken = __webpack_require__(440);
 axios.isCancel = __webpack_require__(161);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(440);
+axios.spread = __webpack_require__(441);
 
 module.exports = axios;
 
@@ -32315,7 +32382,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 424 */
+/* 425 */
 /***/ (function(module, exports) {
 
 /*!
@@ -32342,7 +32409,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 425 */
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32350,8 +32417,8 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(103);
 var utils = __webpack_require__(20);
-var InterceptorManager = __webpack_require__(434);
-var dispatchRequest = __webpack_require__(435);
+var InterceptorManager = __webpack_require__(435);
+var dispatchRequest = __webpack_require__(436);
 
 /**
  * Create a new instance of Axios
@@ -32428,7 +32495,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 426 */
+/* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32447,7 +32514,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 427 */
+/* 428 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32480,7 +32547,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 428 */
+/* 429 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32508,7 +32575,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 429 */
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32583,7 +32650,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 430 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32643,7 +32710,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 431 */
+/* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32718,7 +32785,7 @@ module.exports = (
 
 
 /***/ }),
-/* 432 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32761,7 +32828,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 433 */
+/* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32821,7 +32888,7 @@ module.exports = (
 
 
 /***/ }),
-/* 434 */
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32880,18 +32947,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 435 */
+/* 436 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(20);
-var transformData = __webpack_require__(436);
+var transformData = __webpack_require__(437);
 var isCancel = __webpack_require__(161);
 var defaults = __webpack_require__(103);
-var isAbsoluteURL = __webpack_require__(437);
-var combineURLs = __webpack_require__(438);
+var isAbsoluteURL = __webpack_require__(438);
+var combineURLs = __webpack_require__(439);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -32973,7 +33040,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 436 */
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33000,7 +33067,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 437 */
+/* 438 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33021,7 +33088,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 438 */
+/* 439 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33042,7 +33109,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 439 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33106,7 +33173,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 440 */
+/* 441 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33140,7 +33207,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 441 */
+/* 442 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -33157,11 +33224,11 @@ if (typeof window !== 'undefined') { // Browser window
   root = this;
 }
 
-var Emitter = __webpack_require__(442);
-var RequestBase = __webpack_require__(443);
+var Emitter = __webpack_require__(443);
+var RequestBase = __webpack_require__(444);
 var isObject = __webpack_require__(163);
-var ResponseBase = __webpack_require__(444);
-var Agent = __webpack_require__(446);
+var ResponseBase = __webpack_require__(445);
+var Agent = __webpack_require__(447);
 
 /**
  * Noop.
@@ -34066,7 +34133,7 @@ request.put = function(url, data, fn) {
 
 
 /***/ }),
-/* 442 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -34235,7 +34302,7 @@ Emitter.prototype.hasListeners = function(event){
 
 
 /***/ }),
-/* 443 */
+/* 444 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34936,7 +35003,7 @@ RequestBase.prototype._setTimeouts = function() {
 
 
 /***/ }),
-/* 444 */
+/* 445 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34946,7 +35013,7 @@ RequestBase.prototype._setTimeouts = function() {
  * Module dependencies.
  */
 
-var utils = __webpack_require__(445);
+var utils = __webpack_require__(446);
 
 /**
  * Expose `ResponseBase`.
@@ -35077,7 +35144,7 @@ ResponseBase.prototype._setStatusProperties = function(status){
 
 
 /***/ }),
-/* 445 */
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35155,7 +35222,7 @@ exports.cleanHeader = function(header, changesOrigin){
 
 
 /***/ }),
-/* 446 */
+/* 447 */
 /***/ (function(module, exports) {
 
 function Agent() {
@@ -35181,19 +35248,19 @@ module.exports = Agent;
 
 
 /***/ }),
-/* 447 */
+/* 448 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // the whatwg-fetch polyfill installs the fetch() function
 // on the global object (window or self)
 //
 // Return that as the export for use in Webpack, Browserify etc.
-__webpack_require__(448);
+__webpack_require__(449);
 module.exports = self.fetch.bind(self);
 
 
 /***/ }),
-/* 448 */
+/* 449 */
 /***/ (function(module, exports) {
 
 (function(self) {
@@ -35658,52 +35725,6 @@ module.exports = self.fetch.bind(self);
   self.fetch.polyfill = true
 })(typeof self !== 'undefined' ? self : this);
 
-
-/***/ }),
-/* 449 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(12);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function (props) {
-  // const user =  props.user; // can be null
-  // console.log("user in the personal_statement form", user);
-  // const personal_statement = (user)? user.personal_statement : "";
-  // console.log("personal statement in the component", personal_statement)
-  return _react2.default.createElement(
-    "div",
-    null,
-    _react2.default.createElement(
-      "form",
-      null,
-      _react2.default.createElement(
-        "div",
-        { className: "card" },
-        _react2.default.createElement("img", { className: "card-img-top", src: "/img/purple.jpg", alt: "Purple" }),
-        _react2.default.createElement(
-          "div",
-          { className: "card-block" },
-          _react2.default.createElement(
-            "p",
-            { className: "card-text" },
-            "Some quick example text to build on the card title and make up the bulk of the cards content."
-          )
-        )
-      )
-    )
-  );
-};
 
 /***/ })
 ],[164]);

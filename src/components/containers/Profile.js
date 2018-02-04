@@ -123,7 +123,7 @@ submitStatement(event){
 					 <div>
 						 <div className="col-md-8">
 							 <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} />
-							 <StatementCard user={currentUser} personal={personal}/>
+							 <StatementCard user={currentUser} personal_statement={personal_statement}/>
 						 </div>
 						 <div className="col-md-4">
 							 <ProfileCard user={currentUser} />
@@ -134,7 +134,7 @@ submitStatement(event){
 				 return(
 					 <div>
 						 <div className="col-md-8">
-							<StatementCard user={currentUser} personal={personal}/>
+							<StatementCard user={currentUser} personal_statement={personal_statement}/>
 						 </div>
 						<div className="col-md-4">
 							<ProfileCard user={currentUser} />
