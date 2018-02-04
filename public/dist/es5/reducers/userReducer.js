@@ -23,8 +23,8 @@ module.exports = function (_x, action) {
 			return newState;
 
 		case constants.PERSONAL_STATEMENT_RECEIVED:
+			newState.currentUser.personal_statement = action.data;
 			console.log("action.data", action.data);
-			newState.currentUser.personal.personal_statement = action.data;
 			console.log("newState: ", newState);
 			return newState;
 

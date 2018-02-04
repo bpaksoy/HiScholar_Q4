@@ -5957,7 +5957,7 @@ function verifyPlainObject(value, displayName, methodName) {
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.PersonalStatement = exports.InfoCard = exports.ProfileForm = exports.ProfileCard = exports.Footer = exports.Nav = exports.Sidebar = undefined;
+exports.StatementCard = exports.PersonalStatement = exports.InfoCard = exports.ProfileForm = exports.ProfileCard = exports.Footer = exports.Nav = exports.Sidebar = undefined;
 
 var _Sidebar = __webpack_require__(412);
 
@@ -5987,6 +5987,10 @@ var _PersonalStatement = __webpack_require__(418);
 
 var _PersonalStatement2 = _interopRequireDefault(_PersonalStatement);
 
+var _StatementCard = __webpack_require__(449);
+
+var _StatementCard2 = _interopRequireDefault(_StatementCard);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.Sidebar = _Sidebar2.default;
@@ -5996,6 +6000,7 @@ exports.ProfileCard = _ProfileCard2.default;
 exports.ProfileForm = _ProfileForm2.default;
 exports.InfoCard = _InfoCard2.default;
 exports.PersonalStatement = _PersonalStatement2.default;
+exports.StatementCard = _StatementCard2.default;
 
 /***/ }),
 /* 158 */
@@ -29608,7 +29613,7 @@ exports.default = function () {
 			return newState;
 
 		case _constants2.default.PERSONAL_INFO_RECEIVED:
-			newState["currentUser"]["personal"] = action.data;
+			newState["currentUser"]["personal"] = [action.data];
 			return newState;
 
 		case _constants2.default.PERSONAL_STATEMENT_RECEIVED:
@@ -31685,9 +31690,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = function (props) {
 
 	var user = props.user; // can be null
-	//console.log("user", user)
-	var personal = user ? user.personal : ""; // This is an object
-	//console.log("personal in infoCard", personal)
+	console.log("user", user);
+	var personal = user ? user.personal[0] : "";
+	console.log("personal in infoCard", personal); // this is an object within an array see above
 
 	return _react2.default.createElement(
 		"div",
@@ -32045,13 +32050,11 @@ var Profile = function (_Component) {
 		value: function render() {
 			var currentUser = this.props.user.currentUser; // can be null
 			var personal = currentUser ? currentUser.personal : "";
-			console.log("personal", personal);
-			var personalLength = currentUser ? Object.keys(personal).length : 0;
-			//console.log("personalLength", personalLength)
+			//console.log("personal", personal)
 			var personal_statement = currentUser ? currentUser.personal_statement : "";
 			//console.log("personal_statement in the profile", personal_statement)
 
-			if (currentUser && !personalLength && !personal_statement) {
+			if (currentUser && !personal.length && !personal_statement) {
 				return _react2.default.createElement(
 					'div',
 					null,
@@ -32067,7 +32070,7 @@ var Profile = function (_Component) {
 						_react2.default.createElement(_presentation.ProfileCard, { user: currentUser })
 					)
 				);
-			} else if (currentUser && personalLength && !personal_statement) {
+			} else if (currentUser && personal.length && !personal_statement) {
 				return _react2.default.createElement(
 					'div',
 					null,
@@ -32083,19 +32086,15 @@ var Profile = function (_Component) {
 						_react2.default.createElement(_presentation.InfoCard, { user: currentUser, personal: personal })
 					)
 				);
-			} else if (currentUser && !personalLength && personal_statement) {
+			} else if (currentUser && !personal.length && personal_statement) {
 				return _react2.default.createElement(
 					'div',
 					null,
 					_react2.default.createElement(
 						'div',
 						{ className: 'col-md-8' },
-						_react2.default.createElement(
-							'h2',
-							null,
-							'Hello Mom'
-						),
-						_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal })
+						_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal }),
+						_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal: personal })
 					),
 					_react2.default.createElement(
 						'div',
@@ -32110,7 +32109,7 @@ var Profile = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'col-md-8' },
-						_react2.default.createElement(_presentation.InfoCard, { user: currentUser, personal: personal })
+						_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal: personal })
 					),
 					_react2.default.createElement(
 						'div',
@@ -35659,6 +35658,52 @@ module.exports = self.fetch.bind(self);
   self.fetch.polyfill = true
 })(typeof self !== 'undefined' ? self : this);
 
+
+/***/ }),
+/* 449 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(12);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (props) {
+  // const user =  props.user; // can be null
+  // console.log("user in the personal_statement form", user);
+  // const personal_statement = (user)? user.personal_statement : "";
+  // console.log("personal statement in the component", personal_statement)
+  return _react2.default.createElement(
+    "div",
+    null,
+    _react2.default.createElement(
+      "form",
+      null,
+      _react2.default.createElement(
+        "div",
+        { className: "card" },
+        _react2.default.createElement("img", { className: "card-img-top", src: "/img/purple.jpg", alt: "Purple" }),
+        _react2.default.createElement(
+          "div",
+          { className: "card-block" },
+          _react2.default.createElement(
+            "p",
+            { className: "card-text" },
+            "Some quick example text to build on the card title and make up the bulk of the cards content."
+          )
+        )
+      )
+    )
+  );
+};
 
 /***/ })
 ],[164]);

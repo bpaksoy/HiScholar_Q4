@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../../actions';
-import { ProfileForm, ProfileCard, InfoCard, PersonalStatement } from '../presentation';
+import { ProfileForm, ProfileCard, InfoCard, PersonalStatement, StatementCard } from '../presentation';
 import axios from "axios";
 import superagent from 'superagent';
 
@@ -90,13 +90,11 @@ submitStatement(event){
 	render(){
 		const currentUser = this.props.user.currentUser; // can be null
 		const personal = (currentUser)? currentUser.personal : "";
-		console.log("personal", personal)
-		const personalLength = (currentUser)? Object.keys(personal).length : 0;
-		//console.log("personalLength", personalLength)
+		//console.log("personal", personal)
 		const personal_statement =(currentUser)? currentUser.personal_statement : "";
 		//console.log("personal_statement in the profile", personal_statement)
 
-		if(currentUser && !personalLength && !personal_statement){
+		if(currentUser && !personal.length && !personal_statement){
 			 return(
 				 <div>
 					<div className="col-md-8">
@@ -108,7 +106,7 @@ submitStatement(event){
 					</div>
 				 </div>
 			   );
-			 } else if(currentUser && personalLength && !personal_statement){
+			 } else if(currentUser && personal.length && !personal_statement){
 					return(
 					<div>
 						<div className="col-md-8">
@@ -120,12 +118,12 @@ submitStatement(event){
 					 </div>
 					</div>
 				);
-			} else if(currentUser && !personalLength && personal_statement){
+			} else if(currentUser && !personal.length && personal_statement){
 					return(
 					 <div>
 						 <div className="col-md-8">
-							 <h2>Hello Mom</h2>
 							 <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} />
+							 <StatementCard user={currentUser} personal={personal}/>
 						 </div>
 						 <div className="col-md-4">
 							 <ProfileCard user={currentUser} />
@@ -136,7 +134,7 @@ submitStatement(event){
 				 return(
 					 <div>
 						 <div className="col-md-8">
-							<InfoCard user={currentUser} personal={personal}/>
+							<StatementCard user={currentUser} personal={personal}/>
 						 </div>
 						<div className="col-md-4">
 							<ProfileCard user={currentUser} />

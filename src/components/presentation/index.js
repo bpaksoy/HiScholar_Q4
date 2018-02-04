@@ -5,6 +5,7 @@ import ProfileCard from './ProfileCard'
 import ProfileForm from './ProfileForm'
 import InfoCard from "./InfoCard"
 import PersonalStatement from "./PersonalStatement"
+import StatementCard from "./StatementCard"
 
 export {
 
@@ -14,6 +15,7 @@ export {
 	ProfileCard,
 	ProfileForm,
 	InfoCard,
-	PersonalStatement
+	PersonalStatement,
+	StatementCard
 
 }

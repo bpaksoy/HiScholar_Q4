@@ -10,119 +10,123 @@ var Component = _react.Component;
 module.exports = function (props) {
 	var user = props.user; // can be null
 	//console.log("user", user)
-	var personal = props.personal;
-	//console.log(personal)
+	var personal = user ? user.personal : ""; // This is an object
+	//console.log("personal in infoCard", personal)
 
 	return React.createElement(
 		"div",
-		{ className: "card card-profile" },
-		React.createElement(
+		null,
+		user ? React.createElement(
 			"div",
-			{ className: "col-md-12" },
-			React.createElement(
-				"h3",
-				{ style: { textTransform: "capitalize" }, className: "category text-gray" },
-				"Personal"
-			)
-		),
-		React.createElement(
-			"div",
-			{ className: "content" },
+			{ className: "card card-profile" },
 			React.createElement(
 				"div",
 				{ className: "col-md-12" },
 				React.createElement(
-					"h4",
-					null,
-					"Lives in:",
-					React.createElement("br", null)
-				),
-				React.createElement(
-					"p",
-					{ style: { textTransform: "capitalize" } },
-					personal.city ? personal.city : null,
-					" ",
-					React.createElement("br", null),
-					personal.state ? personal.state : null,
-					" ",
-					React.createElement("br", null),
-					personal.country ? personal.country : null,
-					React.createElement("br", null)
+					"h3",
+					{ style: { textTransform: "capitalize" }, className: "category text-gray" },
+					"Personal"
 				)
 			),
 			React.createElement(
 				"div",
-				{ className: "col-md-12" },
-				React.createElement(
-					"h4",
-					{ className: "card-profile" },
-					"Academics:",
-					React.createElement("br", null)
-				)
-			),
-			React.createElement(
-				"div",
-				{ className: "col-md-12" },
+				{ className: "content" },
 				React.createElement(
 					"div",
-					{ style: { textTransform: "capitalize" } },
+					{ className: "col-md-12" },
 					React.createElement(
-						"div",
-						{ className: "col-md-3" },
-						React.createElement(
-							"label",
-							{ className: "control-label" },
-							"GPA"
-						),
-						React.createElement("br", null),
-						personal.gpa ? personal.gpa : null,
+						"h4",
+						null,
+						"Lives in:",
+						React.createElement("br", null)
+					),
+					React.createElement(
+						"p",
+						{ style: { textTransform: "capitalize" } },
+						personal.city ? personal.city : "N/A",
 						" ",
-						React.createElement("br", null)
-					),
-					React.createElement(
-						"div",
-						{ className: "col-md-3" },
-						React.createElement(
-							"label",
-							{ className: "control-label" },
-							"TOEFL"
-						),
 						React.createElement("br", null),
-						personal.toefl ? personal.toefl : null,
-						React.createElement("br", null)
-					),
-					React.createElement(
-						"div",
-						{ className: "col-md-3" },
-						React.createElement(
-							"label",
-							{ className: "control-label" },
-							"SAT"
-						),
+						personal.state ? personal.state : "N/A",
+						" ",
 						React.createElement("br", null),
-						personal.sat ? personal.sat : null,
-						React.createElement("br", null)
-					),
-					React.createElement(
-						"div",
-						{ className: "col-md-3" },
-						React.createElement(
-							"label",
-							{ className: "control-label" },
-							"ACT"
-						),
-						React.createElement("br", null),
-						personal.act ? personal.act : null,
+						personal.country ? personal.country : "N/A",
 						React.createElement("br", null)
 					)
+				),
+				React.createElement(
+					"div",
+					{ className: "col-md-12" },
+					React.createElement(
+						"h4",
+						{ className: "card-profile" },
+						"Academics:",
+						React.createElement("br", null)
+					)
+				),
+				React.createElement(
+					"div",
+					{ className: "col-md-12" },
+					React.createElement(
+						"div",
+						{ style: { textTransform: "capitalize" } },
+						React.createElement(
+							"div",
+							{ className: "col-md-3" },
+							React.createElement(
+								"label",
+								{ className: "control-label" },
+								"GPA"
+							),
+							React.createElement("br", null),
+							personal.gpa ? personal.gpa : "N/A",
+							" ",
+							React.createElement("br", null)
+						),
+						React.createElement(
+							"div",
+							{ className: "col-md-3" },
+							React.createElement(
+								"label",
+								{ className: "control-label" },
+								"TOEFL"
+							),
+							React.createElement("br", null),
+							personal.toefl ? personal.toefl : "N/A",
+							React.createElement("br", null)
+						),
+						React.createElement(
+							"div",
+							{ className: "col-md-3" },
+							React.createElement(
+								"label",
+								{ className: "control-label" },
+								"SAT"
+							),
+							React.createElement("br", null),
+							personal.sat ? personal.sat : "N/A",
+							React.createElement("br", null)
+						),
+						React.createElement(
+							"div",
+							{ className: "col-md-3" },
+							React.createElement(
+								"label",
+								{ className: "control-label" },
+								"ACT"
+							),
+							React.createElement("br", null),
+							personal.act ? personal.act : "N/A",
+							React.createElement("br", null)
+						)
+					)
 				)
+			),
+			React.createElement(
+				"button",
+				{ type: "submit", className: "btn btn-primary" },
+				"Update Profile"
 			)
-		),
-		React.createElement(
-			"button",
-			{ type: "submit", className: "btn btn-primary" },
-			"Update Profile"
-		)
+		) : null
 	);
 }
 

@@ -8,10 +8,10 @@ var React = _interopRequire(_react);
 
 var Component = _react.Component;
 module.exports = function (props) {
-	var user = props.user;
-	console.log("user in the personal_statement form", user);
-	var personal = props.personal;
-
+	var user = props.user; // can be null
+	//console.log("user in the personal_statement form", user);
+	var personal_statement = user ? user.personal_statement : "";
+	//console.log("personal statement in the component", personal_statement)
 	return React.createElement(
 		"div",
 		null,
@@ -41,7 +41,11 @@ module.exports = function (props) {
 								React.createElement(
 									"div",
 									{ className: "label-floating" },
-									user && personal ? React.createElement("textarea", { name: "personal_statement", defaultValue: personal.personal_statement, onChange: props.handleStatement.bind(undefined), style: style.textarea, className: "form-control", rows: "15" }) : React.createElement("textarea", { name: "personal_statement", value: props.value, onChange: props.handleStatement.bind(undefined), style: style.textarea, className: "form-control", rows: "15" })
+									user ? React.createElement(
+										"div",
+										null,
+										React.createElement("textarea", { name: "personal_statement", defaultValue: user.personal_statement, onChange: props.handleStatement.bind(undefined), style: style.textarea, className: "form-control", rows: "15" })
+									) : null
 								)
 							)
 						)
@@ -66,4 +70,5 @@ var style = {
 }
 
 //defaultValue={user.personal.personal_statement}
+//<div><textarea name="personal_statement" onChange={props.handleStatement.bind(this)} style={style.textarea} className="form-control" rows="15"></textarea></div>
 ;

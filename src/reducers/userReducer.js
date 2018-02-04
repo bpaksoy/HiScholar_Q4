@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
 			return newState;
 
     case constants.PERSONAL_INFO_RECEIVED:
-      newState["currentUser"]["personal"] = action.data;
+      newState["currentUser"]["personal"] = [action.data];
 			return newState;
 
 		case constants.PERSONAL_STATEMENT_RECEIVED:

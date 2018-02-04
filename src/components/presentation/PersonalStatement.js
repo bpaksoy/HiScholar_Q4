@@ -15,7 +15,9 @@ return (
             <div className="form-group">
               <h4 style={{textTransform:'capitalize'}} className="card-title">Personal Statement</h4>
               <div className="label-floating">
-							 { (user)? <div><textarea name="personal_statement" defaultValue={user.personal_statement} onChange={props.handleStatement.bind(this)} style={style.textarea} className="form-control" rows="15"></textarea></div> : null}
+							 { (user)? <div><textarea name="personal_statement" defaultValue={user.personal_statement} onChange={props.handleStatement.bind(this)} style={style.textarea} className="form-control" rows="15"></textarea></div>
+							 : null
+						   }
               </div>
             </div>
           </div>

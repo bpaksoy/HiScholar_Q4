@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 export default (props) => {
 
 	const user = props.user // can be null
-  //console.log("user", user)
-  const personal = (user)? user.personal : ""; // This is an object
-	//console.log("personal in infoCard", personal)
+  console.log("user", user)
+  const personal = (user)? user.personal[0] : "";
+	console.log("personal in infoCard", personal) // this is an object within an array see above
 
 	return (
 	<div>
