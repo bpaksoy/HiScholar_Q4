@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default (props) => {
 	const user =  props.user; // can be null
-	console.log("user in the personal_statement form", user);
+	//console.log("user in the personal_statement form", user);
 	const personal_statement = (user)? user.personal_statement : "";
   // console.log("personal statement in the component", personal_statement)
  return (

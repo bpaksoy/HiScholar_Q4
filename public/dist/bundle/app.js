@@ -31854,6 +31854,8 @@ exports.default = function (props) {
 	//console.log("user in the personal_statement form", user);
 	var personal_statement = user ? user.personal_statement : "";
 	//console.log("personal statement in the component", personal_statement)
+	var noStatement = props.noStatement;
+
 	return _react2.default.createElement(
 		"div",
 		null,
@@ -31895,7 +31897,7 @@ exports.default = function (props) {
 				),
 				_react2.default.createElement(
 					"button",
-					{ onClick: props.submitStatement.bind(undefined), className: "btn btn-primary pull-right" },
+					{ onClick: props.submitStatement.bind(undefined), disabled: noStatement, className: "btn btn-primary pull-right" },
 					"Update Profile"
 				)
 			)
@@ -31938,7 +31940,7 @@ exports.default = function (props) {
   var _React$createElement;
 
   var user = props.user; // can be null
-  console.log("user in the personal_statement form", user);
+  //console.log("user in the personal_statement form", user);
   var personal_statement = user ? user.personal_statement : "";
   // console.log("personal statement in the component", personal_statement)
   return _react2.default.createElement(
@@ -32045,6 +32047,10 @@ function validate(city, country) {
 	};
 }
 
+function validateStatement(statement) {
+	return statement.length === 0;
+}
+
 var Profile = function (_Component) {
 	_inherits(Profile, _Component);
 
@@ -32060,7 +32066,8 @@ var Profile = function (_Component) {
 			personal: {},
 			value: "",
 			city: "",
-			country: ""
+			country: "",
+			personal_statement: ""
 		};
 		return _this;
 	}
@@ -32159,7 +32166,7 @@ var Profile = function (_Component) {
 		value: function render() {
 			var currentUser = this.props.user.currentUser; // can be null
 			var personal = currentUser ? currentUser.personal : "";
-			console.log("personal", personal);
+			//console.log("personal", personal)
 			var personal_statement = currentUser ? currentUser.personal_statement : "";
 			//console.log("personal_statement in the profile", personal_statement)
 
@@ -32167,7 +32174,10 @@ var Profile = function (_Component) {
 			var isDisabled = Object.keys(errors).some(function (key) {
 				return errors[key];
 			});
-			console.log(errors, isDisabled);
+			//console.log(errors, isDisabled);
+			var noStatement = validateStatement(this.state.personal_statement);
+			//console.log("no statement status: ", noStatement)
+
 
 			if (currentUser && !personal.length && !personal_statement) {
 				return _react2.default.createElement(
@@ -32177,7 +32187,7 @@ var Profile = function (_Component) {
 						'div',
 						{ className: 'col-md-8' },
 						_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
-						_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement })
+						_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
 					),
 					_react2.default.createElement(
 						'div',
@@ -32192,7 +32202,7 @@ var Profile = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'col-md-8' },
-						_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement })
+						_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
 					),
 					_react2.default.createElement(
 						'div',
@@ -32263,66 +32273,6 @@ var dispatchToProps = function dispatchToProps(dispatch) {
 };
 
 exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Profile);
-
-// { (currentUser && !formsFilled)?
-//  <div className="row">
-// 	 <div>
-// 		<div className="col-md-8">
-// 			<ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} />
-// 			<PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement}/>
-// 		</div>
-// 		<div className="col-md-4">
-// 			 <ProfileCard user={currentUser} />
-// 		</div>
-// 		: {(currentUser && profileFormFilled && !statemenFilled)?
-// 		 <div>
-// 			 <div className="col-md-8">
-// 				<PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement}/>
-// 			 </div>
-// 			<div className="col-md-4">
-// 				<ProfileCard user={currentUser} />
-// 				<InfoCard user={currentUser} personal={personal}/>
-// 			</div>
-// 		 </div>
-// 		}
-// 		: {(currentUser && !profileFormFilled && statemenFilled)?
-// 	 <div>
-// 		 <div className="col-md-8">
-// 			 <h2>Hi Mom</h2>
-// 			 <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} />
-// 		 </div>
-// 		 <div className="col-md-4">
-// 			 <ProfileCard user={currentUser} />
-// 		 </div>
-// 	 </div>
-// 		:
-// 	<div>
-// 		<div className="col-md-8">
-// 		 <h2>Hi Mom!</h2>
-// 		</div>
-// 	 <div className="col-md-4">
-// 		 <ProfileCard user={currentUser} />
-// 		 <InfoCard user={currentUser} personal={personal}/>
-// 	 </div>
-// 	</div>
-// 	}
-//  </div>
-//  }
-// const currentUser = this.props.user.currentUser; // can be null
-// const personal = (currentUser)? currentUser.personal[0] : "";
-// const personal_statement = this.props.user.personal_statement;
-// console.log("personal_statement in the reducer", personal_statement)
-// const formsFilled = (personal && personal_statement);
-// const profileFormFilled = (personal)? true: false;
-// const statemenFilled = (personal_statement)? true: false;
-
-// <div>
-//  { this.renderButton.bind(this) }
-// </div>
-
-// const formsFilled = (personal && personal_statement);
-// const profileFormFilled = (personal)? true: false;
-// const statemenFilled = (personal_statement)? true: false;
 
 /***/ }),
 /* 422 */
