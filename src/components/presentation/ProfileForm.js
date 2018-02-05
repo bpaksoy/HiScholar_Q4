@@ -4,7 +4,7 @@ export default (props) => {
 	const user =  props.user;
 	user.personal = user.personal.length ? user.personal[0] : [];
 	const isDisabled = props.isDisabled;
-	console.log("isDisabled in the ProfileForm", isDisabled);
+	//console.log("isDisabled in the ProfileForm", isDisabled);
 	//console.log("user in the profile form", user)
 
 	return (

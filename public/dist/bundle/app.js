@@ -29618,8 +29618,8 @@ exports.default = function () {
 
 		case _constants2.default.PERSONAL_STATEMENT_RECEIVED:
 			newState["currentUser"].personal_statement = action.data;
-			console.log("action.data", action.data);
-			console.log("newState: ", newState);
+			//console.log("action.data", action.data)
+			//console.log("newState: ", newState)
 			return newState;
 
 		default:
@@ -31479,7 +31479,7 @@ exports.default = function (props) {
 	var user = props.user;
 	user.personal = user.personal.length ? user.personal[0] : [];
 	var isDisabled = props.isDisabled;
-	console.log("isDisabled in the ProfileForm", isDisabled);
+	//console.log("isDisabled in the ProfileForm", isDisabled);
 	//console.log("user in the profile form", user)
 
 	return _react2.default.createElement(
@@ -31694,9 +31694,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = function (props) {
 
 	var user = props.user; // can be null
-	console.log("user", user);
+	//console.log("user", user)
 	var personal = user ? user.personal[0] : "";
-	console.log("personal in infoCard", personal); // this is an object within an array see above
+	//console.log("personal in infoCard", personal) // this is an object within an array see above
 
 	return _react2.default.createElement(
 		"div",
@@ -31932,6 +31932,10 @@ var _react = __webpack_require__(12);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _PersonalStatement = __webpack_require__(418);
+
+var _PersonalStatement2 = _interopRequireDefault(_PersonalStatement);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -31943,10 +31947,12 @@ exports.default = function (props) {
   //console.log("user in the personal_statement form", user);
   var personal_statement = user ? user.personal_statement : "";
   // console.log("personal statement in the component", personal_statement)
+  var clicked = props.clicked;
+  console.log("clicked", clicked);
   return _react2.default.createElement(
     "div",
     null,
-    _react2.default.createElement(
+    !clicked ? _react2.default.createElement(
       "form",
       null,
       _react2.default.createElement(
@@ -31969,11 +31975,11 @@ exports.default = function (props) {
         ),
         _react2.default.createElement(
           "button",
-          { style: { marginRight: 10 }, className: "btn btn-primary pull-right" },
+          { style: { marginRight: 10 }, onClick: props.updateStatement.bind(undefined), className: "btn btn-primary pull-right" },
           "Update Statement"
         )
       )
-    )
+    ) : _react2.default.createElement(_PersonalStatement2.default, { user: user, personal_statement: personal_statement, handleStatement: props.handleStatement, submitStatement: props.submitStatement })
   );
 };
 
@@ -32067,7 +32073,8 @@ var Profile = function (_Component) {
 			value: "",
 			city: "",
 			country: "",
-			personal_statement: ""
+			personal_statement: "",
+			clicked: false
 		};
 		return _this;
 	}
@@ -32096,11 +32103,24 @@ var Profile = function (_Component) {
 			}
 		}
 	}, {
+		key: 'updateStatement',
+		value: function updateStatement(event) {
+			if (event) {
+				event.preventDefault();
+				this.setState({
+					clicked: !this.state.clicked
+				});
+			}
+		}
+	}, {
 		key: 'submitStatement',
 		value: function submitStatement(event) {
 			if (event) {
 				event.preventDefault();
 				var personal_statement = this.state.personal_statement;
+				this.setState({
+					clicked: !this.state.clicked
+				});
 				//console.log("personal statement in the submit method", personal_statement);
 				this.props.personalStatementReceived(personal_statement);
 				_axios2.default.put("/auth/personal_statement", { personal_statement: personal_statement }).then(function (result) {
@@ -32219,7 +32239,7 @@ var Profile = function (_Component) {
 						'div',
 						{ className: 'col-md-8' },
 						_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
-						_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: personal_statement })
+						_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: personal_statement, updateStatement: this.updateStatement.bind(this), clicked: this.state.clicked, submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this) })
 					),
 					_react2.default.createElement(
 						'div',
@@ -32234,7 +32254,7 @@ var Profile = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'col-md-8' },
-						_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: personal_statement })
+						_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: personal_statement, updateStatement: this.updateStatement.bind(this), clicked: this.state.clicked, submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this) })
 					),
 					_react2.default.createElement(
 						'div',

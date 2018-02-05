@@ -27,7 +27,8 @@ class Profile extends Component {
 		 value: "",
 		 city: "",
 		 country: "",
-		 personal_statement:""
+		 personal_statement:"",
+		 clicked: false
 		}
 	}
 
@@ -57,10 +58,22 @@ handleStatement(event){
 	}
 }
 
+updateStatement(event){
+	if(event){
+		event.preventDefault();
+		this.setState({
+			clicked: !this.state.clicked
+		})
+	}
+}
+
 submitStatement(event){
 	if(event){
 		event.preventDefault();
 		let personal_statement = this.state.personal_statement;
+		this.setState({
+			clicked: !this.state.clicked
+		})
 		//console.log("personal statement in the submit method", personal_statement);
 		this.props.personalStatementReceived(personal_statement);
 		axios.put("/auth/personal_statement", { personal_statement : personal_statement }).then(function (result){
@@ -164,7 +177,7 @@ handleCountry(event){
 					 <div>
 						 <div className="col-md-8">
 							 <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
-							 <StatementCard user={currentUser} personal_statement={personal_statement}/>
+							 <StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} clicked={this.state.clicked} submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)}/>
 						 </div>
 						 <div className="col-md-4">
 							 <ProfileCard user={currentUser} />
@@ -175,7 +188,7 @@ handleCountry(event){
 				 return(
 					 <div>
 						 <div className="col-md-8">
-							<StatementCard user={currentUser} personal_statement={personal_statement}/>
+							<StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} clicked={this.state.clicked} submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)}/>
 						 </div>
 						<div className="col-md-4">
 							<ProfileCard user={currentUser} />
