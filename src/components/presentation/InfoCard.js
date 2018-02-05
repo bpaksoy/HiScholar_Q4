@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export default (props) => {
 
 	const user = props.user // can be null
-  //console.log("user", user)
+ //console.log("user", user)
   const personal = (user)? user.personal[0] : "";
 	//console.log("personal in infoCard", personal) // this is an object within an array see above
 
@@ -51,11 +51,14 @@ export default (props) => {
                 </div>
 							</div>
 					  </div>
-         <button type="submit" className="btn btn-primary">Update Profile</button>
+         <button onClick={props.updateInformation.bind(this)} className="btn btn-primary">Update Profile</button>
 		 </div>
 	 : null }
 	 </div>
 	)
 }
 
+//onClick={props.updateInformation.bind(this)}
+//<SmallProfileForm onUpdate={props.onUpdate} user={user} clicked={clicked} handleChange={props.handleChange} handleCity={props.handleCity} handleCountry={props.handleCountry}/>
 // <button type="submit" className="btn btn-primary">Update Profile</button>
+//<ProfileForm onUpdate={props.onUpdate} user={user} personal={personal} clicked={clicked} handleChange={props.handleChange} />

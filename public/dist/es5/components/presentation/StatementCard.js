@@ -7,15 +7,19 @@ var _react = require("react");
 var React = _interopRequire(_react);
 
 var Component = _react.Component;
+var PersonalStatement = _interopRequire(require("./PersonalStatement"));
+
 module.exports = function (props) {
   var user = props.user; // can be null
-  console.log("user in the personal_statement form", user);
+  //console.log("user in the personal_statement form", user);
   var personal_statement = user ? user.personal_statement : "";
   // console.log("personal statement in the component", personal_statement)
+  var clicked = props.clicked;
+  console.log("clicked", clicked);
   return React.createElement(
     "div",
     null,
-    React.createElement(
+    !clicked ? React.createElement(
       "form",
       null,
       React.createElement(
@@ -38,10 +42,10 @@ module.exports = function (props) {
         ),
         React.createElement(
           "button",
-          { style: { marginRight: 10 }, className: "btn btn-primary pull-right" },
+          { style: { marginRight: 10 }, onClick: props.updateStatement.bind(undefined), className: "btn btn-primary pull-right" },
           "Update Statement"
         )
       )
-    )
+    ) : React.createElement(PersonalStatement, { user: user, personal_statement: personal_statement, handleStatement: props.handleStatement, submitStatement: props.submitStatement })
   );
 };

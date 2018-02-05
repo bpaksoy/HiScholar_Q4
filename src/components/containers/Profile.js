@@ -28,7 +28,8 @@ class Profile extends Component {
 		 city: "",
 		 country: "",
 		 personal_statement:"",
-		 clicked: false
+		 infoChanged: true,
+		 statementSubmitted: true
 		}
 	}
 
@@ -58,11 +59,20 @@ handleStatement(event){
 	}
 }
 
+updateInformation(event){
+	if(event){
+		event.preventDefault();
+		this.setState({
+			infoChanged: !this.state.infoChanged
+		})
+	}
+}
+
 updateStatement(event){
 	if(event){
 		event.preventDefault();
 		this.setState({
-			clicked: !this.state.clicked
+			statementSubmitted: !this.state.statementSubmitted
 		})
 	}
 }
@@ -72,7 +82,7 @@ submitStatement(event){
 		event.preventDefault();
 		let personal_statement = this.state.personal_statement;
 		this.setState({
-			clicked: !this.state.clicked
+			statementSubmitted: !this.state.statementSubmitted
 		})
 		//console.log("personal statement in the submit method", personal_statement);
 		this.props.personalStatementReceived(personal_statement);
@@ -124,6 +134,9 @@ handleCountry(event){
 			event.preventDefault();
 			let personal = this.state.personal;
 			this.props.personalInfoReceived(personal);
+			this.setState({
+				infoChanged: !this.state.infoChanged
+			})
 			//console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
        axios.put("/auth/currentuser", { personal: personal }).then(function (result){
    				//console.log("result is ", result);
@@ -138,15 +151,17 @@ handleCountry(event){
 		const currentUser = this.props.user.currentUser; // can be null
 		const personal = (currentUser)? currentUser.personal : "";
 		//console.log("personal", personal)
-		const personal_statement =(currentUser)? currentUser.personal_statement : "";
-		//console.log("personal_statement in the profile", personal_statement)
+		const personal_statement = (currentUser)? currentUser.personal_statement : null;
+		console.log("personal_statement in the profile", personal_statement)
 
 		const errors = validate(this.state.city, this.state.country);
     const isDisabled = Object.keys(errors).some(key => errors[key]);
 		//console.log(errors, isDisabled);
 		const noStatement = validateStatement(this.state.personal_statement);
 		//console.log("no statement status: ", noStatement)
-
+    const infoChanged = this.state.infoChanged;
+		const statementSubmitted = this.state.statementSubmitted;
+		console.log("infoChanged", infoChanged, "statementSubmitted", statementSubmitted)
 
 		if(currentUser && !personal.length && !personal_statement){
 			 return(
@@ -161,42 +176,96 @@ handleCountry(event){
 				 </div>
 			   );
 			 } else if(currentUser && personal.length && !personal_statement){
-					return(
-					<div>
-						<div className="col-md-8">
-						 <PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>
-						</div>
-					 <div className="col-md-4">
-						 <ProfileCard user={currentUser} />
-						 <InfoCard user={currentUser} personal={personal}/>
-					 </div>
-					</div>
-				);
+					 if(infoChanged){
+							return(
+								<div>
+									<div className="col-md-8">
+									 <PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>
+									</div>
+								 <div className="col-md-4">
+									 <ProfileCard user={currentUser} />
+									 <InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
+								 </div>
+								</div>
+						);
+				  } else{
+					 return(
+	 					<div>
+	 						<div className="col-md-8">
+	 						 <PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>
+	 						</div>
+	 					 <div className="col-md-4">
+	 						 <ProfileCard user={currentUser} />
+	 						 <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
+	 					 </div>
+	 					</div>
+	 			   );
+				  }
 			} else if(currentUser && !personal.length && personal_statement){
+				 if(statementSubmitted){
 					return(
 					 <div>
 						 <div className="col-md-8">
 							 <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
-							 <StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} clicked={this.state.clicked} submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)}/>
+							 <StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} />
 						 </div>
 						 <div className="col-md-4">
 							 <ProfileCard user={currentUser} />
 						 </div>
 					 </div>
 				 );
-			 } else{
+			 } else if(!statementSubmitted){
+					 return(
+						<div>
+							<div className="col-md-8">
+								 <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
+								 <PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>
+							</div>
+							<div className="col-md-4">
+								<ProfileCard user={currentUser} />
+							</div>
+						</div>
+						);
+			   }
+			 } else {
+				if(infoChanged && statementSubmitted){
 				 return(
 					 <div>
 						 <div className="col-md-8">
-							<StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} clicked={this.state.clicked} submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)}/>
+							<StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} />
 						 </div>
 						<div className="col-md-4">
 							<ProfileCard user={currentUser} />
-							<InfoCard user={currentUser} personal={personal}/>
+							<InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
 						</div>
 					 </div>
-		   );
-		}
+					 );
+				 } else if (!infoChanged && statementSubmitted){
+					 return(
+	 					<div>
+	 						<div className="col-md-8">
+							 <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
+	 						 <StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} />
+	 						</div>
+	 					 <div className="col-md-4">
+	 						 <ProfileCard user={currentUser} />
+	 					 </div>
+	 					</div>
+	 			   );
+			   } else if (infoChanged && !statementSubmitted) {
+					 return(
+						 <div>
+							 <div className="col-md-8">
+								<PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>
+							 </div>
+							<div className="col-md-4">
+								<ProfileCard user={currentUser} />
+								<InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
+							</div>
+						 </div>
+				   );
+				 }
+		  }
 	}
 }
 

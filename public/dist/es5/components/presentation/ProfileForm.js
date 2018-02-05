@@ -10,6 +10,8 @@ var Component = _react.Component;
 module.exports = function (props) {
 	var user = props.user;
 	user.personal = user.personal.length ? user.personal[0] : [];
+	var isDisabled = props.isDisabled;
+	//console.log("isDisabled in the ProfileForm", isDisabled);
 	//console.log("user in the profile form", user)
 
 	return React.createElement(
@@ -78,13 +80,14 @@ module.exports = function (props) {
 							{ className: "col-md-3" },
 							React.createElement(
 								"div",
-								{ className: "form-group label-floating" },
+								{ className: "form-group required label-floating" },
 								React.createElement(
 									"label",
 									{ className: "control-label" },
+									React.createElement("i", { className: "fa fa-asterisk", style: { fontSize: 6, color: "red" } }),
 									"City"
 								),
-								React.createElement("input", { name: "city", defaultValue: user.personal.city, type: "text", className: "form-control", required: true })
+								React.createElement("input", { name: "city", defaultValue: user.personal.city, onChange: props.handleCity.bind(undefined), className: "form-control", type: "text" })
 							)
 						),
 						React.createElement(
@@ -106,13 +109,14 @@ module.exports = function (props) {
 							{ className: "col-md-3" },
 							React.createElement(
 								"div",
-								{ className: "form-group label-floating" },
+								{ className: "form-group required label-floating" },
 								React.createElement(
 									"label",
 									{ className: "control-label" },
+									React.createElement("i", { className: "fa fa-asterisk", style: { fontSize: 6, color: "red" } }),
 									"Country"
 								),
-								React.createElement("input", { name: "country", defaultValue: user.personal.country, type: "text", className: "form-control", required: true })
+								React.createElement("input", { name: "country", className: "form-control", defaultValue: user.personal.country, onChange: props.handleCountry.bind(undefined), type: "text" })
 							)
 						),
 						React.createElement(
@@ -126,7 +130,7 @@ module.exports = function (props) {
 									{ className: "control-label" },
 									"Zip Code"
 								),
-								React.createElement("input", { name: "zip_code", defaultValue: user.personal.zip_code, type: "text", className: "form-control" })
+								React.createElement("input", { name: "zip_code", className: "form-control", defaultValue: user.personal.zip_code, type: "text" })
 							)
 						)
 					),
@@ -192,7 +196,7 @@ module.exports = function (props) {
 					),
 					React.createElement(
 						"button",
-						{ onClick: props.onUpdate.bind(undefined), type: "submit", className: "btn btn-primary pull-right" },
+						{ onClick: props.onUpdate.bind(undefined), type: "submit", disabled: isDisabled, className: "btn btn-primary pull-right" },
 						"Update Profile"
 					),
 					React.createElement("div", { className: "clearfix" })

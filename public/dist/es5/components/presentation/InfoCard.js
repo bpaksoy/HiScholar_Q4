@@ -9,9 +9,9 @@ var React = _interopRequire(_react);
 var Component = _react.Component;
 module.exports = function (props) {
 	var user = props.user; // can be null
-	console.log("user", user);
+	//console.log("user", user)
 	var personal = user ? user.personal[0] : "";
-	console.log("personal in infoCard", personal); // this is an object within an array see above
+	//console.log("personal in infoCard", personal) // this is an object within an array see above
 
 	return React.createElement(
 		"div",
@@ -47,12 +47,15 @@ module.exports = function (props) {
 					React.createElement(
 						"p",
 						{ style: { textTransform: "capitalize" } },
+						"City: ",
 						personal.city ? personal.city : "N/A",
 						" ",
 						React.createElement("br", null),
+						"State: ",
 						personal.state ? personal.state : "N/A",
 						" ",
 						React.createElement("br", null),
+						"Country: ",
 						personal.country ? personal.country : "N/A",
 						React.createElement("br", null)
 					)

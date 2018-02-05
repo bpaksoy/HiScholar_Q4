@@ -12,6 +12,8 @@ module.exports = function (props) {
 	//console.log("user in the personal_statement form", user);
 	var personal_statement = user ? user.personal_statement : "";
 	//console.log("personal statement in the component", personal_statement)
+	var noStatement = props.noStatement;
+
 	return React.createElement(
 		"div",
 		null,
@@ -53,7 +55,7 @@ module.exports = function (props) {
 				),
 				React.createElement(
 					"button",
-					{ onClick: props.submitStatement.bind(undefined), className: "btn btn-primary pull-right" },
+					{ onClick: props.submitStatement.bind(undefined), disabled: noStatement, className: "btn btn-primary pull-right" },
 					"Update Profile"
 				)
 			)
