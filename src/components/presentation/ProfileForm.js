@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 export default (props) => {
 	const user =  props.user;
 	user.personal = user.personal.length ? user.personal[0] : [];
+	const isDisabled = props.isDisabled;
+	console.log("isDisabled in the ProfileForm", isDisabled);
 	//console.log("user in the profile form", user)
 
 	return (
@@ -25,15 +27,15 @@ export default (props) => {
 						<div className="col-md-6">
 							<div className="form-group label-floating">
 								<label className="control-label">Last Name</label>
-								<input name="lastName" style={{textTransform:"capitalize"}} defaultValue={user.lastName} type="text" className="form-control" />
+								<input name="lastName" style={{textTransform:"capitalize"}} defaultValue={user.lastName} type="text" className="form-control"/>
 							</div>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-md-3">
-							<div className="form-group label-floating">
-								<label className="control-label">City</label>
-								<input name="city" defaultValue={user.personal.city} type="text" className="form-control" />
+							<div className="form-group required label-floating">
+								<label className="control-label"><i className="fa fa-asterisk" style={{fontSize:6,color:"red"}}></i>City</label>
+								  <input name="city" defaultValue={user.personal.city} onChange={props.handleCity.bind(this)} className="form-control" type="text"/>
 							</div>
 						</div>
 							<div className="col-md-3">
@@ -43,15 +45,15 @@ export default (props) => {
 								</div>
 							</div>
 						<div className="col-md-3">
-							<div className="form-group label-floating">
-								<label className="control-label">Country</label>
-								<input name="country" defaultValue={user.personal.country} type="text" className="form-control" />
+							<div className="form-group required label-floating">
+								<label className="control-label"><i className="fa fa-asterisk" style={{fontSize:6,color:"red"}}></i>Country</label>
+								  <input name="country" className="form-control" defaultValue={user.personal.country} onChange={props.handleCountry.bind(this)} type="text"/>
 							</div>
 						</div>
 						<div className="col-md-3">
 							<div className="form-group label-floating">
 								<label className="control-label">Zip Code</label>
-								<input name="zip_code" defaultValue={user.personal.zip_code} type="text" className="form-control" />
+								<input name="zip_code" className="form-control" defaultValue={user.personal.zip_code} type="text"  />
 							</div>
 						</div>
 					</div>
@@ -81,7 +83,7 @@ export default (props) => {
 							</div>
 						</div>
 					</div>
-					<button onClick={props.onUpdate.bind(this)} type="submit" className="btn btn-primary pull-right">Update Profile</button>
+					<button onClick={props.onUpdate.bind(this)} type="submit" disabled={isDisabled} className="btn btn-primary pull-right">Update Profile</button>
 					<div className="clearfix"></div>
 				</form>
 			</div>

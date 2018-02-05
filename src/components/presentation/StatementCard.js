@@ -14,6 +14,7 @@ export default (props) => {
            <h4 style={{textTransform:'capitalize'}} className="card-title">Personal Statement</h4>
            <p className="card-text">{personal_statement}</p>
          </div>
+        <button style={{marginRight: 10}} className="btn btn-primary pull-right">Update Statement</button>
        </div>
   	</form>
 	</div>

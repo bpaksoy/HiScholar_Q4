@@ -31478,6 +31478,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = function (props) {
 	var user = props.user;
 	user.personal = user.personal.length ? user.personal[0] : [];
+	var isDisabled = props.isDisabled;
+	console.log("isDisabled in the ProfileForm", isDisabled);
 	//console.log("user in the profile form", user)
 
 	return _react2.default.createElement(
@@ -31546,13 +31548,14 @@ exports.default = function (props) {
 							{ className: "col-md-3" },
 							_react2.default.createElement(
 								"div",
-								{ className: "form-group label-floating" },
+								{ className: "form-group required label-floating" },
 								_react2.default.createElement(
 									"label",
 									{ className: "control-label" },
+									_react2.default.createElement("i", { className: "fa fa-asterisk", style: { fontSize: 6, color: "red" } }),
 									"City"
 								),
-								_react2.default.createElement("input", { name: "city", defaultValue: user.personal.city, type: "text", className: "form-control" })
+								_react2.default.createElement("input", { name: "city", defaultValue: user.personal.city, onChange: props.handleCity.bind(undefined), className: "form-control", type: "text" })
 							)
 						),
 						_react2.default.createElement(
@@ -31574,13 +31577,14 @@ exports.default = function (props) {
 							{ className: "col-md-3" },
 							_react2.default.createElement(
 								"div",
-								{ className: "form-group label-floating" },
+								{ className: "form-group required label-floating" },
 								_react2.default.createElement(
 									"label",
 									{ className: "control-label" },
+									_react2.default.createElement("i", { className: "fa fa-asterisk", style: { fontSize: 6, color: "red" } }),
 									"Country"
 								),
-								_react2.default.createElement("input", { name: "country", defaultValue: user.personal.country, type: "text", className: "form-control" })
+								_react2.default.createElement("input", { name: "country", className: "form-control", defaultValue: user.personal.country, onChange: props.handleCountry.bind(undefined), type: "text" })
 							)
 						),
 						_react2.default.createElement(
@@ -31594,7 +31598,7 @@ exports.default = function (props) {
 									{ className: "control-label" },
 									"Zip Code"
 								),
-								_react2.default.createElement("input", { name: "zip_code", defaultValue: user.personal.zip_code, type: "text", className: "form-control" })
+								_react2.default.createElement("input", { name: "zip_code", className: "form-control", defaultValue: user.personal.zip_code, type: "text" })
 							)
 						)
 					),
@@ -31660,7 +31664,7 @@ exports.default = function (props) {
 					),
 					_react2.default.createElement(
 						"button",
-						{ onClick: props.onUpdate.bind(undefined), type: "submit", className: "btn btn-primary pull-right" },
+						{ onClick: props.onUpdate.bind(undefined), type: "submit", disabled: isDisabled, className: "btn btn-primary pull-right" },
 						"Update Profile"
 					),
 					_react2.default.createElement("div", { className: "clearfix" })
@@ -31728,12 +31732,15 @@ exports.default = function (props) {
 					_react2.default.createElement(
 						"p",
 						{ style: { textTransform: 'capitalize' } },
+						"City: ",
 						personal.city ? personal.city : "N/A",
 						" ",
 						_react2.default.createElement("br", null),
+						"State: ",
 						personal.state ? personal.state : "N/A",
 						" ",
 						_react2.default.createElement("br", null),
+						"Country: ",
 						personal.country ? personal.country : "N/A",
 						_react2.default.createElement("br", null)
 					)
@@ -31957,6 +31964,11 @@ exports.default = function (props) {
             { className: "card-text" },
             personal_statement
           )
+        ),
+        _react2.default.createElement(
+          "button",
+          { style: { marginRight: 10 }, className: "btn btn-primary pull-right" },
+          "Update Statement"
         )
       )
     )
@@ -32026,6 +32038,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+function validate(city, country) {
+	return {
+		city: city.length === 0,
+		country: country.length === 0
+	};
+}
+
 var Profile = function (_Component) {
 	_inherits(Profile, _Component);
 
@@ -32039,7 +32058,9 @@ var Profile = function (_Component) {
 			firstName: "",
 			lastName: "",
 			personal: {},
-			value: ""
+			value: "",
+			city: "",
+			country: ""
 		};
 		return _this;
 	}
@@ -32095,6 +32116,27 @@ var Profile = function (_Component) {
 				this.setState({
 					personal: personal
 				});
+				console.log("this.state", this.state);
+			}
+		}
+	}, {
+		key: 'handleCity',
+		value: function handleCity(event) {
+			if (event) {
+				event.preventDefault();
+				this.setState({
+					city: event.target.value
+				});
+			}
+		}
+	}, {
+		key: 'handleCountry',
+		value: function handleCountry(event) {
+			if (event) {
+				event.preventDefault();
+				this.setState({
+					country: event.target.value
+				});
 			}
 		}
 	}, {
@@ -32117,9 +32159,15 @@ var Profile = function (_Component) {
 		value: function render() {
 			var currentUser = this.props.user.currentUser; // can be null
 			var personal = currentUser ? currentUser.personal : "";
-			//console.log("personal", personal)
+			console.log("personal", personal);
 			var personal_statement = currentUser ? currentUser.personal_statement : "";
 			//console.log("personal_statement in the profile", personal_statement)
+
+			var errors = validate(this.state.city, this.state.country);
+			var isDisabled = Object.keys(errors).some(function (key) {
+				return errors[key];
+			});
+			console.log(errors, isDisabled);
 
 			if (currentUser && !personal.length && !personal_statement) {
 				return _react2.default.createElement(
@@ -32128,7 +32176,7 @@ var Profile = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'col-md-8' },
-						_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal }),
+						_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
 						_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement })
 					),
 					_react2.default.createElement(
@@ -32160,7 +32208,7 @@ var Profile = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'col-md-8' },
-						_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal }),
+						_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
 						_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: personal_statement })
 					),
 					_react2.default.createElement(

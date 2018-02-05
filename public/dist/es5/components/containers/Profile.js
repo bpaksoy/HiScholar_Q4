@@ -26,6 +26,7 @@ var ProfileForm = _presentation.ProfileForm;
 var ProfileCard = _presentation.ProfileCard;
 var InfoCard = _presentation.InfoCard;
 var PersonalStatement = _presentation.PersonalStatement;
+var StatementCard = _presentation.StatementCard;
 var axios = _interopRequire(require("axios"));
 
 var superagent = _interopRequire(require("superagent"));
@@ -125,13 +126,11 @@ var Profile = (function (Component) {
 			value: function render() {
 				var currentUser = this.props.user.currentUser; // can be null
 				var personal = currentUser ? currentUser.personal : "";
-				console.log("personal", personal);
-				var personalLength = currentUser ? Object.keys(personal).length : 0;
-				//console.log("personalLength", personalLength)
+				//console.log("personal", personal)
 				var personal_statement = currentUser ? currentUser.personal_statement : "";
 				//console.log("personal_statement in the profile", personal_statement)
 
-				if (currentUser && !personalLength && !personal_statement) {
+				if (currentUser && !personal.length && !personal_statement) {
 					return React.createElement(
 						"div",
 						null,
@@ -147,7 +146,7 @@ var Profile = (function (Component) {
 							React.createElement(ProfileCard, { user: currentUser })
 						)
 					);
-				} else if (currentUser && personalLength && !personal_statement) {
+				} else if (currentUser && personal.length && !personal_statement) {
 					return React.createElement(
 						"div",
 						null,
@@ -163,19 +162,15 @@ var Profile = (function (Component) {
 							React.createElement(InfoCard, { user: currentUser, personal: personal })
 						)
 					);
-				} else if (currentUser && !personalLength && personal_statement) {
+				} else if (currentUser && !personal.length && personal_statement) {
 					return React.createElement(
 						"div",
 						null,
 						React.createElement(
 							"div",
 							{ className: "col-md-8" },
-							React.createElement(
-								"h2",
-								null,
-								"Hello Mom"
-							),
-							React.createElement(ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal })
+							React.createElement(ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal }),
+							React.createElement(StatementCard, { user: currentUser, personal_statement: personal_statement })
 						),
 						React.createElement(
 							"div",
@@ -190,7 +185,7 @@ var Profile = (function (Component) {
 						React.createElement(
 							"div",
 							{ className: "col-md-8" },
-							React.createElement(InfoCard, { user: currentUser, personal: personal })
+							React.createElement(StatementCard, { user: currentUser, personal_statement: personal_statement })
 						),
 						React.createElement(
 							"div",

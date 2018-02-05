@@ -5,6 +5,13 @@ import { ProfileForm, ProfileCard, InfoCard, PersonalStatement, StatementCard } 
 import axios from "axios";
 import superagent from 'superagent';
 
+function validate(city, country){
+	return {
+    city: city.length === 0,
+    country: country.length === 0,
+  };
+}
+
 class Profile extends Component {
 	constructor(){
 		super();
@@ -13,7 +20,9 @@ class Profile extends Component {
 		 firstName:"",
 		 lastName: "",
 		 personal: {},
-		 value: ""
+		 value: "",
+		 city: "",
+		 country: ""
 		}
 	}
 
@@ -67,10 +76,31 @@ submitStatement(event){
 			personal[name]= value;
 			// let user = this.props.user.currentUser;
 			this.setState({
-        personal: personal
+        personal: personal,
 		  })
+			console.log("this.state", this.state);
 	}
 }
+
+
+handleCity(event){
+	if(event){
+		event.preventDefault();
+		this.setState({
+			city: event.target.value
+		})
+	}
+}
+
+handleCountry(event){
+	if(event){
+		event.preventDefault();
+		this.setState({
+			country: event.target.value
+		})
+	}
+}
+
  updateUser (event){
 		if (event){
 			event.preventDefault();
@@ -90,15 +120,19 @@ submitStatement(event){
 	render(){
 		const currentUser = this.props.user.currentUser; // can be null
 		const personal = (currentUser)? currentUser.personal : "";
-		//console.log("personal", personal)
+		console.log("personal", personal)
 		const personal_statement =(currentUser)? currentUser.personal_statement : "";
 		//console.log("personal_statement in the profile", personal_statement)
+
+		const errors = validate(this.state.city, this.state.country);
+    const isDisabled = Object.keys(errors).some(key => errors[key]);
+		console.log(errors, isDisabled);
 
 		if(currentUser && !personal.length && !personal_statement){
 			 return(
 				 <div>
 					<div className="col-md-8">
-						<ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} />
+						<ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
 						<PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement}/>
 					</div>
 					<div className="col-md-4">
@@ -122,7 +156,7 @@ submitStatement(event){
 					return(
 					 <div>
 						 <div className="col-md-8">
-							 <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} />
+							 <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
 							 <StatementCard user={currentUser} personal_statement={personal_statement}/>
 						 </div>
 						 <div className="col-md-4">

@@ -9,9 +9,9 @@ var React = _interopRequire(_react);
 var Component = _react.Component;
 module.exports = function (props) {
 	var user = props.user; // can be null
-	//console.log("user", user)
-	var personal = user ? user.personal : ""; // This is an object
-	//console.log("personal in infoCard", personal)
+	console.log("user", user);
+	var personal = user ? user.personal[0] : "";
+	console.log("personal in infoCard", personal); // this is an object within an array see above
 
 	return React.createElement(
 		"div",
@@ -23,9 +23,13 @@ module.exports = function (props) {
 				"div",
 				{ className: "col-md-12" },
 				React.createElement(
-					"h3",
-					{ style: { textTransform: "capitalize" }, className: "category text-gray" },
-					"Personal"
+					"div",
+					{ style: { backgroundColor: "#A8A8A8 " }, className: "card-header" },
+					React.createElement(
+						"h3",
+						{ style: { textTransform: "capitalize" }, className: "category text-gray" },
+						"Personal"
+					)
 				)
 			),
 			React.createElement(
@@ -57,10 +61,18 @@ module.exports = function (props) {
 					"div",
 					{ className: "col-md-12" },
 					React.createElement(
-						"h4",
-						{ className: "card-profile" },
-						"Academics:",
-						React.createElement("br", null)
+						"ul",
+						{ className: "list-group list-group-flush" },
+						React.createElement(
+							"li",
+							{ className: "list-group-item" },
+							React.createElement(
+								"h4",
+								{ className: "card-profile" },
+								"Academics:",
+								React.createElement("br", null)
+							)
+						)
 					)
 				),
 				React.createElement(

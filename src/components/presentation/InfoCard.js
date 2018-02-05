@@ -20,9 +20,9 @@ export default (props) => {
 				 <div className="col-md-12">
 	          <h4>Lives in:<br/></h4>
 						  <p style={{textTransform:'capitalize'}}>
-								{(personal.city)? personal.city : "N/A"} <br/>
-								{(personal.state)? personal.state: "N/A" } <br/>
-								{(personal.country)? personal.country: "N/A" }<br/>
+								City: {(personal.city)? personal.city : "N/A"} <br/>
+							  State: {(personal.state)? personal.state: "N/A" } <br/>
+							  Country: {(personal.country)? personal.country: "N/A" }<br/>
 							</p>
 				  </div>
 				   <div className="col-md-12">

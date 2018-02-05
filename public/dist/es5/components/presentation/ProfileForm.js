@@ -84,7 +84,7 @@ module.exports = function (props) {
 									{ className: "control-label" },
 									"City"
 								),
-								React.createElement("input", { name: "city", defaultValue: user.personal.city, type: "text", className: "form-control" })
+								React.createElement("input", { name: "city", defaultValue: user.personal.city, type: "text", className: "form-control", required: true })
 							)
 						),
 						React.createElement(
@@ -112,7 +112,7 @@ module.exports = function (props) {
 									{ className: "control-label" },
 									"Country"
 								),
-								React.createElement("input", { name: "country", defaultValue: user.personal.country, type: "text", className: "form-control" })
+								React.createElement("input", { name: "country", defaultValue: user.personal.country, type: "text", className: "form-control", required: true })
 							)
 						),
 						React.createElement(
