@@ -55,7 +55,7 @@ handleStatement(event){
     this.setState({
 			[name]: value
 		})
-		//console.log("this is handle personal statement", this.state.personal_statement)
+		console.log("this is handle personal statement", this.state.personal_statement)
 	}
 }
 
@@ -106,7 +106,7 @@ submitStatement(event){
 			this.setState({
         personal: personal,
 		  })
-			console.log("this.state", this.state);
+			//console.log("this.state", this.state);
 	}
 }
 
@@ -164,17 +164,17 @@ handleCountry(event){
 		console.log("infoChanged", infoChanged, "statementSubmitted", statementSubmitted)
 
 		if(currentUser && !personal.length && !personal_statement){
-			 return(
-				 <div>
-					<div className="col-md-8">
-						<ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
-						<PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>
-					</div>
-					<div className="col-md-4">
-						 <ProfileCard user={currentUser} />
-					</div>
-				 </div>
-			   );
+				return(
+					 <div>
+						<div className="col-md-8">
+							<ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
+							<PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>
+						</div>
+						<div className="col-md-4">
+							 <ProfileCard user={currentUser} />
+						</div>
+					 </div>
+				   );
 			 } else if(currentUser && personal.length && !personal_statement){
 					 if(infoChanged){
 							return(

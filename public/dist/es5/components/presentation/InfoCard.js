@@ -138,12 +138,15 @@ module.exports = function (props) {
 			),
 			React.createElement(
 				"button",
-				{ type: "submit", className: "btn btn-primary" },
+				{ onClick: props.updateInformation.bind(undefined), className: "btn btn-primary" },
 				"Update Profile"
 			)
 		) : null
 	);
 }
 
+//onClick={props.updateInformation.bind(this)}
+//<SmallProfileForm onUpdate={props.onUpdate} user={user} clicked={clicked} handleChange={props.handleChange} handleCity={props.handleCity} handleCountry={props.handleCountry}/>
 // <button type="submit" className="btn btn-primary">Update Profile</button>
+//<ProfileForm onUpdate={props.onUpdate} user={user} personal={personal} clicked={clicked} handleChange={props.handleChange} />
 ;
