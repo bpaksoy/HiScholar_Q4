@@ -45,7 +45,7 @@ class Profile extends Component {
 			const user = payload.user // this is the currently logged-in user
 			this.props.currentUserReceived(user)
 			this.setState({
-				info_ui: user.personal.length ? 'card' : 'form',
+				info_ui: user.personal.city && user.personal.country ? 'card' : 'form',
 				statement_ui: user.personal_statement ? 'card': 'form'
 			})
 		})
@@ -59,7 +59,6 @@ handleStatement(event){
     this.setState({
 			[name]: value
 		})
-		console.log("this is handle personal statement", this.state.personal_statement)
 	}
 }
 
@@ -166,22 +165,23 @@ handleCountry(event){
 		//console.log("no statement status: ", noStatement)
     const infoChanged = this.state.infoChanged;
 		const statementSubmitted = this.state.statementSubmitted;
-		console.log("infoChanged", this.state);
-
-		return(
-			<div>
-				<div className="col-md-8">
-					<h2>Hi Mom</h2>
-					{this.state.info_ui == 'form' && <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>}
-					{this.state.statement_ui == 'form' && <PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>}
-					{this.state.statement_ui == 'card' && <StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} />}
+		if (this.props.user && this.props.user.currentUser) {
+			return(
+				<div>
+					<div className="col-md-8">
+						<h2>Hi Mom</h2>
+						{this.state.info_ui == 'form' && <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>}
+						{this.state.statement_ui == 'form' && <PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>}
+						{this.state.statement_ui == 'card' && <StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} />}
+					</div>
+					<div className="col-md-4">
+						 <ProfileCard user={currentUser} />
+						{this.state.info_ui == 'card' && <InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>}
+					</div>
 				</div>
-				<div className="col-md-4">
-					 <ProfileCard user={currentUser} />
-					{this.state.info_ui == 'card' && <InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>}
-				</div>
-			</div>
-	 	);
+		 	);
+	 	}
+	 	return 'Loading...';
 	}
 }
 

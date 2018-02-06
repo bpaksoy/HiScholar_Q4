@@ -31478,201 +31478,203 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (props) {
+
 	var user = props.user ? props.user : {};
 	user.personal = user.personal && user.personal[0] ? user.personal[0] : {};
+	console.log('proppppp', user.personal);
 	var isDisabled = props.isDisabled;
 	//console.log("isDisabled in the ProfileForm", isDisabled);
 	//console.log("user in the profile form", user)
 
 	return _react2.default.createElement(
-		"div",
+		'div',
 		null,
-		!user.personal.length ? _react2.default.createElement(
-			"div",
-			{ className: "card" },
+		_react2.default.createElement(
+			'div',
+			{ className: 'card' },
 			_react2.default.createElement(
-				"div",
-				{ className: "card-header", "data-background-color": "purple" },
+				'div',
+				{ className: 'card-header', 'data-background-color': 'purple' },
 				_react2.default.createElement(
-					"h4",
-					{ className: "title" },
-					"Personal Info"
+					'h4',
+					{ className: 'title' },
+					'Personal Info'
 				),
 				_react2.default.createElement(
-					"p",
-					{ className: "category" },
-					"Complete your profile"
+					'p',
+					{ className: 'category' },
+					'Complete your profile'
 				)
 			),
 			_react2.default.createElement(
-				"div",
-				{ className: "card-content" },
+				'div',
+				{ className: 'card-content' },
 				_react2.default.createElement(
-					"form",
+					'form',
 					{ onChange: props.handleChange.bind(undefined) },
 					_react2.default.createElement(
-						"div",
-						{ className: "row" },
+						'div',
+						{ className: 'row' },
 						_react2.default.createElement(
-							"div",
-							{ className: "col-md-6" },
+							'div',
+							{ className: 'col-md-6' },
 							_react2.default.createElement(
-								"div",
-								{ className: "form-group label-floating" },
+								'div',
+								{ className: 'form-group label-floating' },
 								_react2.default.createElement(
-									"label",
-									{ className: "control-label" },
-									"First Name"
+									'label',
+									{ className: 'control-label' },
+									'First Name'
 								),
-								_react2.default.createElement("input", { name: "firstName", style: { textTransform: "capitalize" }, defaultValue: user.firstName, type: "text", className: "form-control" })
+								_react2.default.createElement('input', { name: 'firstName', style: { textTransform: "capitalize" }, defaultValue: user.firstName, type: 'text', className: 'form-control' })
 							)
 						),
 						_react2.default.createElement(
-							"div",
-							{ className: "col-md-6" },
+							'div',
+							{ className: 'col-md-6' },
 							_react2.default.createElement(
-								"div",
-								{ className: "form-group label-floating" },
+								'div',
+								{ className: 'form-group label-floating' },
 								_react2.default.createElement(
-									"label",
-									{ className: "control-label" },
-									"Last Name"
+									'label',
+									{ className: 'control-label' },
+									'Last Name'
 								),
-								_react2.default.createElement("input", { name: "lastName", style: { textTransform: "capitalize" }, defaultValue: user.lastName, type: "text", className: "form-control" })
+								_react2.default.createElement('input', { name: 'lastName', style: { textTransform: "capitalize" }, defaultValue: user.lastName, type: 'text', className: 'form-control' })
 							)
 						)
 					),
 					_react2.default.createElement(
-						"div",
-						{ className: "row" },
+						'div',
+						{ className: 'row' },
 						_react2.default.createElement(
-							"div",
-							{ className: "col-md-3" },
+							'div',
+							{ className: 'col-md-3' },
 							_react2.default.createElement(
-								"div",
-								{ className: "form-group required label-floating" },
+								'div',
+								{ className: 'form-group required label-floating' },
 								_react2.default.createElement(
-									"label",
-									{ className: "control-label" },
-									_react2.default.createElement("i", { className: "fa fa-asterisk", style: { fontSize: 6, color: "red" } }),
-									"City"
+									'label',
+									{ className: 'control-label' },
+									_react2.default.createElement('i', { className: 'fa fa-asterisk', style: { fontSize: 6, color: "red" } }),
+									'City'
 								),
-								_react2.default.createElement("input", { name: "city", defaultValue: user.personal.city, onChange: props.handleCity.bind(undefined), className: "form-control", type: "text" })
+								_react2.default.createElement('input', { name: 'city', defaultValue: user.personal.city, onChange: props.handleCity.bind(undefined), className: 'form-control', type: 'text' })
 							)
 						),
 						_react2.default.createElement(
-							"div",
-							{ className: "col-md-3" },
+							'div',
+							{ className: 'col-md-3' },
 							_react2.default.createElement(
-								"div",
-								{ className: "form-group label-floating" },
+								'div',
+								{ className: 'form-group label-floating' },
 								_react2.default.createElement(
-									"label",
-									{ className: "control-label" },
-									"State"
+									'label',
+									{ className: 'control-label' },
+									'State'
 								),
-								_react2.default.createElement("input", { name: "state", defaultValue: user.personal.state, type: "text", className: "form-control" })
+								_react2.default.createElement('input', { name: 'state', defaultValue: user.personal.state, type: 'text', className: 'form-control' })
 							)
 						),
 						_react2.default.createElement(
-							"div",
-							{ className: "col-md-3" },
+							'div',
+							{ className: 'col-md-3' },
 							_react2.default.createElement(
-								"div",
-								{ className: "form-group required label-floating" },
+								'div',
+								{ className: 'form-group required label-floating' },
 								_react2.default.createElement(
-									"label",
-									{ className: "control-label" },
-									_react2.default.createElement("i", { className: "fa fa-asterisk", style: { fontSize: 6, color: "red" } }),
-									"Country"
+									'label',
+									{ className: 'control-label' },
+									_react2.default.createElement('i', { className: 'fa fa-asterisk', style: { fontSize: 6, color: "red" } }),
+									'Country'
 								),
-								_react2.default.createElement("input", { name: "country", className: "form-control", defaultValue: user.personal.country, onChange: props.handleCountry.bind(undefined), type: "text" })
+								_react2.default.createElement('input', { name: 'country', className: 'form-control', defaultValue: user.personal.country, onChange: props.handleCountry.bind(undefined), type: 'text' })
 							)
 						),
 						_react2.default.createElement(
-							"div",
-							{ className: "col-md-3" },
+							'div',
+							{ className: 'col-md-3' },
 							_react2.default.createElement(
-								"div",
-								{ className: "form-group label-floating" },
+								'div',
+								{ className: 'form-group label-floating' },
 								_react2.default.createElement(
-									"label",
-									{ className: "control-label" },
-									"Zip Code"
+									'label',
+									{ className: 'control-label' },
+									'Zip Code'
 								),
-								_react2.default.createElement("input", { name: "zip_code", className: "form-control", defaultValue: user.personal.zip_code, type: "text" })
+								_react2.default.createElement('input', { name: 'zip_code', className: 'form-control', defaultValue: user.personal.zip_code, type: 'text' })
 							)
 						)
 					),
 					_react2.default.createElement(
-						"div",
-						{ className: "row" },
+						'div',
+						{ className: 'row' },
 						_react2.default.createElement(
-							"div",
-							{ className: "col-md-3" },
+							'div',
+							{ className: 'col-md-3' },
 							_react2.default.createElement(
-								"div",
-								{ className: "form-group label-floating" },
+								'div',
+								{ className: 'form-group label-floating' },
 								_react2.default.createElement(
-									"label",
-									{ className: "control-label" },
-									"GPA"
+									'label',
+									{ className: 'control-label' },
+									'GPA'
 								),
-								_react2.default.createElement("input", { name: "gpa", defaultValue: user.personal.gpa, type: "text", className: "form-control" })
+								_react2.default.createElement('input', { name: 'gpa', defaultValue: user.personal.gpa, type: 'text', className: 'form-control' })
 							)
 						),
 						_react2.default.createElement(
-							"div",
-							{ className: "col-md-3" },
+							'div',
+							{ className: 'col-md-3' },
 							_react2.default.createElement(
-								"div",
-								{ className: "form-group label-floating" },
+								'div',
+								{ className: 'form-group label-floating' },
 								_react2.default.createElement(
-									"label",
-									{ className: "control-label" },
-									"TOEFL"
+									'label',
+									{ className: 'control-label' },
+									'TOEFL'
 								),
-								_react2.default.createElement("input", { name: "toefl", defaultValue: user.personal.toefl, type: "text", className: "form-control" })
+								_react2.default.createElement('input', { name: 'toefl', defaultValue: user.personal.toefl, type: 'text', className: 'form-control' })
 							)
 						),
 						_react2.default.createElement(
-							"div",
-							{ className: "col-md-3" },
+							'div',
+							{ className: 'col-md-3' },
 							_react2.default.createElement(
-								"div",
-								{ className: "form-group label-floating" },
+								'div',
+								{ className: 'form-group label-floating' },
 								_react2.default.createElement(
-									"label",
-									{ className: "control-label" },
-									"ACT"
+									'label',
+									{ className: 'control-label' },
+									'ACT'
 								),
-								_react2.default.createElement("input", { name: "act", defaultValue: user.personal.act, type: "email", className: "form-control" })
+								_react2.default.createElement('input', { name: 'act', defaultValue: user.personal.act, type: 'email', className: 'form-control' })
 							)
 						),
 						_react2.default.createElement(
-							"div",
-							{ className: "col-md-3" },
+							'div',
+							{ className: 'col-md-3' },
 							_react2.default.createElement(
-								"div",
-								{ className: "form-group label-floating" },
+								'div',
+								{ className: 'form-group label-floating' },
 								_react2.default.createElement(
-									"label",
-									{ className: "control-label" },
-									"SAT"
+									'label',
+									{ className: 'control-label' },
+									'SAT'
 								),
-								_react2.default.createElement("input", { name: "sat", defaultValue: user.personal.sat, type: "email", className: "form-control" })
+								_react2.default.createElement('input', { name: 'sat', defaultValue: user.personal.sat, type: 'email', className: 'form-control' })
 							)
 						)
 					),
 					_react2.default.createElement(
-						"button",
-						{ onClick: props.onUpdate.bind(undefined), type: "submit", disabled: isDisabled, className: "btn btn-primary pull-right" },
-						"Update Profile"
+						'button',
+						{ onClick: props.onUpdate.bind(undefined), type: 'submit', disabled: isDisabled, className: 'btn btn-primary pull-right' },
+						'Update Profile'
 					),
-					_react2.default.createElement("div", { className: "clearfix" })
+					_react2.default.createElement('div', { className: 'clearfix' })
 				)
 			)
-		) : null
+		)
 	);
 };
 
@@ -31697,137 +31699,135 @@ exports.default = function (props) {
 
 	var user = props.user ? props.user : {}; // can be null
 	//console.log("user", user)
-	console.log('user', user);
 	var personal = user.personal && user.personal[0] ? user.personal[0] : {};
-	console.log("personal in infoCard", personal); // this is an object within an array see above
 
 	return _react2.default.createElement(
-		'div',
+		"div",
 		null,
 		user ? _react2.default.createElement(
-			'div',
-			{ className: 'card card-profile' },
+			"div",
+			{ className: "card card-profile" },
 			_react2.default.createElement(
-				'div',
-				{ className: 'col-md-12' },
+				"div",
+				{ className: "col-md-12" },
 				_react2.default.createElement(
-					'div',
-					{ style: { backgroundColor: "#A8A8A8 " }, className: 'card-header' },
+					"div",
+					{ style: { backgroundColor: "#A8A8A8 " }, className: "card-header" },
 					_react2.default.createElement(
-						'h3',
-						{ style: { textTransform: 'capitalize' }, className: 'category text-gray' },
-						'Personal'
+						"h3",
+						{ style: { textTransform: 'capitalize' }, className: "category text-gray" },
+						"Personal"
 					)
 				)
 			),
 			_react2.default.createElement(
-				'div',
-				{ className: 'content' },
+				"div",
+				{ className: "content" },
 				_react2.default.createElement(
-					'div',
-					{ className: 'col-md-12' },
+					"div",
+					{ className: "col-md-12" },
 					_react2.default.createElement(
-						'h4',
+						"h4",
 						null,
-						'Lives in:',
-						_react2.default.createElement('br', null)
+						"Lives in:",
+						_react2.default.createElement("br", null)
 					),
 					_react2.default.createElement(
-						'p',
+						"p",
 						{ style: { textTransform: 'capitalize' } },
-						'City: ',
+						"City: ",
 						personal.city ? personal.city : "N/A",
-						' ',
-						_react2.default.createElement('br', null),
-						'State: ',
+						" ",
+						_react2.default.createElement("br", null),
+						"State: ",
 						personal.state ? personal.state : "N/A",
-						' ',
-						_react2.default.createElement('br', null),
-						'Country: ',
+						" ",
+						_react2.default.createElement("br", null),
+						"Country: ",
 						personal.country ? personal.country : "N/A",
-						_react2.default.createElement('br', null)
+						_react2.default.createElement("br", null)
 					)
 				),
 				_react2.default.createElement(
-					'div',
-					{ className: 'col-md-12' },
+					"div",
+					{ className: "col-md-12" },
 					_react2.default.createElement(
-						'ul',
-						{ className: 'list-group list-group-flush' },
+						"ul",
+						{ className: "list-group list-group-flush" },
 						_react2.default.createElement(
-							'li',
-							{ className: 'list-group-item' },
+							"li",
+							{ className: "list-group-item" },
 							_react2.default.createElement(
-								'h4',
-								{ className: 'card-profile' },
-								'Academics:',
-								_react2.default.createElement('br', null)
+								"h4",
+								{ className: "card-profile" },
+								"Academics:",
+								_react2.default.createElement("br", null)
 							)
 						)
 					)
 				),
 				_react2.default.createElement(
-					'div',
-					{ className: 'col-md-12' },
+					"div",
+					{ className: "col-md-12" },
 					_react2.default.createElement(
-						'div',
+						"div",
 						{ style: { textTransform: 'capitalize' } },
 						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-3' },
+							"div",
+							{ className: "col-md-3" },
 							_react2.default.createElement(
-								'label',
-								{ className: 'control-label' },
-								'GPA'
+								"label",
+								{ className: "control-label" },
+								"GPA"
 							),
-							_react2.default.createElement('br', null),
+							_react2.default.createElement("br", null),
 							personal.gpa ? personal.gpa : "N/A",
-							' ',
-							_react2.default.createElement('br', null)
+							" ",
+							_react2.default.createElement("br", null)
 						),
 						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-3' },
+							"div",
+							{ className: "col-md-3" },
 							_react2.default.createElement(
-								'label',
-								{ className: 'control-label' },
-								'TOEFL'
+								"label",
+								{ className: "control-label" },
+								"TOEFL"
 							),
-							_react2.default.createElement('br', null),
+							_react2.default.createElement("br", null),
 							personal.toefl ? personal.toefl : "N/A",
-							_react2.default.createElement('br', null)
+							_react2.default.createElement("br", null)
 						),
 						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-3' },
+							"div",
+							{ className: "col-md-3" },
 							_react2.default.createElement(
-								'label',
-								{ className: 'control-label' },
-								'SAT'
+								"label",
+								{ className: "control-label" },
+								"SAT"
 							),
-							_react2.default.createElement('br', null),
+							_react2.default.createElement("br", null),
 							personal.sat ? personal.sat : "N/A",
-							_react2.default.createElement('br', null)
+							_react2.default.createElement("br", null)
 						),
 						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-3' },
+							"div",
+							{ className: "col-md-3" },
 							_react2.default.createElement(
-								'label',
-								{ className: 'control-label' },
-								'ACT'
+								"label",
+								{ className: "control-label" },
+								"ACT"
 							),
-							_react2.default.createElement('br', null),
+							_react2.default.createElement("br", null),
 							personal.act ? personal.act : "N/A",
-							_react2.default.createElement('br', null)
+							_react2.default.createElement("br", null)
 						)
 					)
 				)
 			),
 			_react2.default.createElement(
-				'button',
-				{ onClick: props.updateInformation.bind(undefined), className: 'btn btn-primary' },
-				'Update Profile'
+				"button",
+				{ onClick: props.updateInformation.bind(undefined), className: "btn btn-primary" },
+				"Update Profile"
 			)
 		) : null
 	);
@@ -32095,8 +32095,9 @@ var Profile = function (_Component) {
 				var payload = response.body;
 				var user = payload.user; // this is the currently logged-in user
 				_this2.props.currentUserReceived(user);
+				console.log('pera=son', user.personal);
 				_this2.setState({
-					info_ui: user.personal.length ? 'card' : 'form',
+					info_ui: user.personal.city && user.personal.country ? 'card' : 'form',
 					statement_ui: user.personal_statement ? 'card' : 'form'
 				});
 			});
@@ -32223,30 +32224,31 @@ var Profile = function (_Component) {
 			//console.log("no statement status: ", noStatement)
 			var infoChanged = this.state.infoChanged;
 			var statementSubmitted = this.state.statementSubmitted;
-			console.log("infoChanged", this.state);
-
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
+			if (this.props.user && this.props.user.currentUser) {
+				return _react2.default.createElement(
 					'div',
-					{ className: 'col-md-8' },
+					null,
 					_react2.default.createElement(
-						'h2',
-						null,
-						'Hi Mom'
+						'div',
+						{ className: 'col-md-8' },
+						_react2.default.createElement(
+							'h2',
+							null,
+							'Hi Mom'
+						),
+						this.state.info_ui == 'form' && _react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
+						this.state.statement_ui == 'form' && _react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement }),
+						this.state.statement_ui == 'card' && _react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: personal_statement, updateStatement: this.updateStatement.bind(this) })
 					),
-					this.state.info_ui == 'form' && _react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
-					this.state.statement_ui == 'form' && _react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement }),
-					this.state.statement_ui == 'card' && _react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: personal_statement, updateStatement: this.updateStatement.bind(this) })
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'col-md-4' },
-					_react2.default.createElement(_presentation.ProfileCard, { user: currentUser }),
-					this.state.info_ui == 'card' && _react2.default.createElement(_presentation.InfoCard, { user: currentUser, personal: personal, updateInformation: this.updateInformation.bind(this) })
-				)
-			);
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-md-4' },
+						_react2.default.createElement(_presentation.ProfileCard, { user: currentUser }),
+						this.state.info_ui == 'card' && _react2.default.createElement(_presentation.InfoCard, { user: currentUser, personal: personal, updateInformation: this.updateInformation.bind(this) })
+					)
+				);
+			}
+			return 'Loading...';
 		}
 	}]);
 
