@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
 
 export default (props) => {
-	const user =  props.user;
-	console.log("user in the profile form", user)
-	user.personal = user.personal.length ? user.personal[0] : [];
+
+	const user =  props.user ? props.user : {};
+	user.personal = user.personal && user.personal[0] ? user.personal[0] : {};
 	const isDisabled = props.isDisabled;
 	//console.log("isDisabled in the ProfileForm", isDisabled);
 	//console.log("user in the profile form", user)
 
 	return (
 	<div>
-	 {(!user.personal.length)?
 		<div className="card">
 			<div className="card-header" data-background-color="purple">
 				<h4 className="title">Personal Info</h4>
@@ -89,7 +88,7 @@ export default (props) => {
 				</form>
 			</div>
 		</div>
-	   : null}
+
 	 </div>
 	)
 }

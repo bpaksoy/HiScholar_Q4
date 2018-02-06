@@ -28,8 +28,8 @@ class Profile extends Component {
 		 city: "",
 		 country: "",
 		 personal_statement:"",
-		 infoChanged: true,
-		 statementSubmitted: true
+		 info_ui : 'form',
+		 statement_ui: 'form'
 		}
 	}
 
@@ -44,6 +44,10 @@ class Profile extends Component {
 			const payload = response.body
 			const user = payload.user // this is the currently logged-in user
 			this.props.currentUserReceived(user)
+			this.setState({
+				info_ui: user.personal.city && user.personal.country ? 'card' : 'form',
+				statement_ui: user.personal_statement ? 'card': 'form'
+			})
 		})
 }
 
@@ -55,7 +59,6 @@ handleStatement(event){
     this.setState({
 			[name]: value
 		})
-		console.log("this is handle personal statement", this.state.personal_statement)
 	}
 }
 
@@ -63,7 +66,7 @@ updateInformation(event){
 	if(event){
 		event.preventDefault();
 		this.setState({
-			infoChanged: !this.state.infoChanged
+			info_ui: 'form'
 		})
 	}
 }
@@ -72,7 +75,7 @@ updateStatement(event){
 	if(event){
 		event.preventDefault();
 		this.setState({
-			statementSubmitted: !this.state.statementSubmitted
+			statement_ui: 'form'
 		})
 	}
 }
@@ -82,7 +85,7 @@ submitStatement(event){
 		event.preventDefault();
 		let personal_statement = this.state.personal_statement;
 		this.setState({
-			statementSubmitted: !this.state.statementSubmitted
+			statement_ui: 'card'
 		})
 		//console.log("personal statement in the submit method", personal_statement);
 		this.props.personalStatementReceived(personal_statement);
@@ -134,21 +137,20 @@ handleCountry(event){
 			event.preventDefault();
 			let personal = this.state.personal;
 			this.props.personalInfoReceived(personal);
-
 			//console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
-       axios.put("/auth/currentuser", { personal: personal }).then(function (result){
-   				//console.log("result is ", result);
+      axios.put("/auth/currentuser", { personal: personal }).then(function (result){
+   				console.log("result is ", result);
 				})["catch"](function (err) {
  				console.log("we have not got the data!");
 			});
 			this.setState({
-				infoChanged: !this.state.infoChanged
+				info_ui: 'card'
 			})
     }
 	}
 
 
-	render(){
+	render() {
 		const currentUser = this.props.user.currentUser; // can be null
 		//console.log("currentUser", currentUser);
 		const personal = (currentUser)? currentUser.personal : "";
@@ -161,203 +163,24 @@ handleCountry(event){
 		//console.log(errors, isDisabled);
 		const noStatement = validateStatement(this.state.personal_statement);
 		//console.log("no statement status: ", noStatement)
-    const infoChanged = this.state.infoChanged;
-		const statementSubmitted = this.state.statementSubmitted;
-		console.log("infoChanged", infoChanged, "statementSubmitted", statementSubmitted)
 
-		if(currentUser && !personal.length && !personal_statement){
-			if(infoChanged  && statementSubmitted ){
-				return(
-				 <div>
-					 <div className="col-md-8">
-					   <h2>Hi Mom</h2>
-						 <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
-						 <PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>
-					 </div>
-					<div className="col-md-4">
-						<ProfileCard user={currentUser} />
+		
+		if (this.props.user && this.props.user.currentUser) {
+			return(
+				<div>
+					<div className="col-md-8">
+						{this.state.info_ui == 'form' && <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>}
+						{this.state.statement_ui == 'form' && <PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>}
+						{this.state.statement_ui == 'card' && <StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} />}
 					</div>
-				 </div>
-			 	);
-			 } else if(!infoChanged && statementSubmitted){
-							return(
-								<div>
-									<div className="col-md-8">
-									<h2>Hi Dad</h2>
-									 <PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>
-									</div>
-								 <div className="col-md-4">
-									 <ProfileCard user={currentUser} />
-									 <InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
-								 </div>
-								</div>
-						);
-				  } else if(infoChanged && !statementSubmitted){
-					 return(
-	 					<div>
-	 						<div className="col-md-8">
-							  <h2>Hi Bro</h2>
-	 						  <PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>
-	 						</div>
-	 					 <div className="col-md-4">
-	 						 <ProfileCard user={currentUser} />
-							 <InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
-	 					 </div>
-	 					</div>
-	 			   );
-				 } else if(!infoChanged && !statementSubmitted) {
-					 return(
- 				 	 <div>
- 				 		 <div className="col-md-8">
-						  <h2>Hi Sis</h2>
- 				 			<StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} />
- 				 		 </div>
- 				 		<div className="col-md-4">
- 				 			<ProfileCard user={currentUser} />
- 				 			<InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
- 				 		</div>
- 				 	 </div>
- 				 	 );
-				 }
-			}else if(currentUser && personal.length && !personal_statement){
-				if(!infoChanged){
-							return(
-								<div>
-									<div className="col-md-8">
-									 <h2>Hi Husband</h2>
-									 <PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>
-									</div>
-								 <div className="col-md-4">
-									 <ProfileCard user={currentUser} />
-									 <InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
-								 </div>
-								</div>
-						);
-				  } else{
-					 return(
-	 					<div>
-	 						<div className="col-md-8">
-							 <h2>Hi Aunt</h2>
-                <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
-	 						  <PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>
-	 						</div>
-	 					 <div className="col-md-4">
-	 						 <ProfileCard user={currentUser} />
-	 					 </div>
-	 					</div>
-	 			   );
-				 }
-			} else if(currentUser && !personal.length && personal_statement){
-				 if(!statementSubmitted){
-					return(
-					 <div>
-						 <div className="col-md-8">
-						  <h2>Hi Uncle</h2>
-							 <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
-							 <StatementCard user={currentUser} personal_statement={this.state.personal_statement} updateStatement={this.updateStatement.bind(this)} />
-						 </div>
-						 <div className="col-md-4">
-							 <ProfileCard user={currentUser} />
-						 </div>
-					 </div>
-				 );
-			 } else{
-						return(
-							<div>
-								<div className="col-md-8">
-								 <h2>Hi Cousin</h2>
-								 <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
-								 <PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>
-								</div>
-							 <div className="col-md-4">
-								 <ProfileCard user={currentUser} />
-							 </div>
-							</div>
-					);
-			   }
-		  } else{
-				 if(infoChanged && statementSubmitted){
-				  return(
-				 	 <div>
-				 		 <div className="col-md-8">
-						  <h2>Hi Niece</h2>
-				 			<StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} />
-				 		 </div>
-				 		<div className="col-md-4">
-				 			<ProfileCard user={currentUser} />
-				 			<InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
-				 		</div>
-				 	 </div>
-				 	 );
-				  } else if (!infoChanged && statementSubmitted){
-				 	 return(
-				 		<div>
-				 			<div className="col-md-8">
-							<h2>Hi Nephew</h2>
-               <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
-							 <StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} />
-				 			</div>
-				 		 <div className="col-md-4">
-				 			 <ProfileCard user={currentUser} />
-				 		 </div>
-				 		</div>
-				 	 );
-				  } else if (infoChanged && !statementSubmitted) {
-				 	 return(
-				 		 <div>
-				 			 <div className="col-md-8">
-							  <h2>Hi Drowsy Smurf</h2>
-				 				<PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>
-				 			 </div>
-				 			<div className="col-md-4">
-				 				<ProfileCard user={currentUser} />
-				 				<InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
-				 			</div>
-				 		 </div>
-				 	 );
-				 } else{
-					 if(!infoChanged && !statementSubmitted){
-						 return(
-  				 		 <div>
-  				 			 <div className="col-md-8">
-  							  <h2>Hi Nerdy</h2>
-  				 				<StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} />
-  				 			 </div>
-  				 			<div className="col-md-4">
-  				 				<ProfileCard user={currentUser} />
-  				 				<InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
-  				 			</div>
-  				 		 </div>
-  				 	 );
-					 } else if(!infoChanged && statementSubmitted){
-						return(
-							<div>
-								<div className="col-md-8">
-								 <h2>Hi Grouchy</h2>
-								 <PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>
-								</div>
-							 <div className="col-md-4">
-								 <ProfileCard user={currentUser} />
-								 <InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
-							 </div>
-							</div>
-							);
-					 } else {
-	 				 	 return(
-	 				 		<div>
-	 				 			<div className="col-md-8">
-	 							 <h2>Hi Lovely</h2>
-	                <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
-	 							  <StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} />
-	 				 			</div>
-	 				 		 <div className="col-md-4">
-	 				 			 <ProfileCard user={currentUser} />
-	 				 		 </div>
-	 				 		</div>
-	 				 	 );
- 				  }
-				}
-		  }
+					<div className="col-md-4">
+						 <ProfileCard user={currentUser} />
+						{this.state.info_ui == 'card' && <InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>}
+					</div>
+				</div>
+		 	);
+	 	}
+	 	return 'Loading...';
 	}
 }
 
@@ -377,75 +200,4 @@ const dispatchToProps = (dispatch) => {
 	}
  }
 
-export default connect(stateToProps, dispatchToProps)(Profile)
-
-
- //<InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
-
-// <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
-
-// if(infoChanged && statementSubmitted){
-//  return(
-// 	 <div>
-// 		 <div className="col-md-8">
-// 			<StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} />
-// 		 </div>
-// 		<div className="col-md-4">
-// 			<ProfileCard user={currentUser} />
-// 			<InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
-// 		</div>
-// 	 </div>
-// 	 );
-//  } else if (!infoChanged && statementSubmitted){
-// 	 return(
-// 		<div>
-// 			<div className="col-md-8">
-// 			 <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
-// 			 <StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} />
-// 			</div>
-// 		 <div className="col-md-4">
-// 			 <ProfileCard user={currentUser} />
-// 		 </div>
-// 		</div>
-// 	 );
-//  } else if (infoChanged && !statementSubmitted) {
-// 	 return(
-// 		 <div>
-// 			 <div className="col-md-8">
-// 				<PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>
-// 			 </div>
-// 			<div className="col-md-4">
-// 				<ProfileCard user={currentUser} />
-// 				<InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
-// 			</div>
-// 		 </div>
-// 	 );
-//  }
-
-
-// else if(!infoChanged){
-// 	 return(
-// 		 <div>
-// 			 <div className="col-md-8">
-// 				<PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>
-// 			 </div>
-// 			<div className="col-md-4">
-// 				<h3>Hello Sally</h3>
-// 				<ProfileCard user={currentUser} />
-// 				<InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
-// 			</div>
-// 		 </div>
-// 	 );
-//  } else if(!statementSubmitted){
-// 	return(
-// 		 <div>
-// 			 <div className="col-md-8">
-// 				 <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
-// 				 <StatementCard user={currentUser} personal_statement={this.state.personal_statement} updateStatement={this.updateStatement.bind(this)} />
-// 			 </div>
-// 			 <div className="col-md-4">
-// 				 <ProfileCard user={currentUser} />
-// 			 </div>
-// 		 </div>
-// 	 );
-//  }
+export default connect(stateToProps, dispatchToProps)(Profile);

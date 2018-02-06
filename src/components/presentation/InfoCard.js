@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 export default (props) => {
 
-	const user = props.user // can be null
- //console.log("user", user)
-  const personal = (user)? user.personal[0] : "";
-	console.log("personal in infoCard", personal) // this is an object within an array see above
+	const user = props.user ? props.user : {}; // can be null
+  console.log("user", user)
+  const personal = (user.personal.city && user.personal.country) ? user.personal : {};
+	console.log("personal", personal)
 
 	return (
 	<div>

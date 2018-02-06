@@ -59,7 +59,7 @@ const studentSchema = new Schema({
     type: String,
     default: ""
   },
-  personal: [PersonalSchema]
+  personal: PersonalSchema
 });
 
 const Student = mongoose.model("student", studentSchema);

@@ -47,7 +47,7 @@ const userSchema = new Schema({
     type: String,
     default: ""
   },
-  personal: [PersonalSchema]
+  personal: PersonalSchema
 });
 
 const User = mongoose.model("user", userSchema);
