@@ -29614,6 +29614,8 @@ exports.default = function () {
 
 		case _constants2.default.PERSONAL_INFO_RECEIVED:
 			newState["currentUser"]["personal"] = [action.data];
+			console.log("action.data", action.data);
+			console.log("newState: ", newState);
 			return newState;
 
 		case _constants2.default.PERSONAL_STATEMENT_RECEIVED:
@@ -31696,7 +31698,7 @@ exports.default = function (props) {
 	var user = props.user; // can be null
 	//console.log("user", user)
 	var personal = user ? user.personal[0] : "";
-	//console.log("personal in infoCard", personal) // this is an object within an array see above
+	console.log("personal in infoCard", personal); // this is an object within an array see above
 
 	return _react2.default.createElement(
 		"div",
@@ -31865,7 +31867,7 @@ exports.default = function (props) {
 		null,
 		_react2.default.createElement(
 			"form",
-			null,
+			{ onSubmit: props.submitStatement },
 			_react2.default.createElement(
 				"div",
 				{ className: "card" },
@@ -31892,7 +31894,7 @@ exports.default = function (props) {
 									user ? _react2.default.createElement(
 										"div",
 										null,
-										_react2.default.createElement("textarea", { name: "personal_statement", defaultValue: user.personal_statement, onChange: props.handleStatement.bind(undefined), style: style.textarea, className: "form-control", rows: "15" })
+										_react2.default.createElement("textarea", { name: "personal_statement", defaultValue: user.personal_statement, onChange: props.handleStatement, style: style.textarea, className: "form-control", rows: "15" })
 									) : null
 								)
 							)
@@ -31901,8 +31903,8 @@ exports.default = function (props) {
 				),
 				_react2.default.createElement(
 					"button",
-					{ onClick: props.submitStatement.bind(undefined), disabled: noStatement, className: "btn btn-primary pull-right" },
-					"Update Profile"
+					{ disabled: noStatement, className: "btn btn-primary pull-right" },
+					"Update Statement"
 				)
 			)
 		)
@@ -32218,21 +32220,23 @@ var Profile = function (_Component) {
 			console.log("infoChanged", infoChanged, "statementSubmitted", statementSubmitted);
 
 			if (currentUser && !personal.length && !personal_statement) {
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(
+				if (infoChanged && statementSubmitted) {
+					return _react2.default.createElement(
 						'div',
-						{ className: 'col-md-8' },
-						_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
-						_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'col-md-4' },
-						_react2.default.createElement(_presentation.ProfileCard, { user: currentUser })
-					)
-				);
+						null,
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-md-8' },
+							_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
+							_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-md-4' },
+							_react2.default.createElement(_presentation.ProfileCard, { user: currentUser })
+						)
+					);
+				}
 			} else if (currentUser && personal.length && !personal_statement) {
 				if (infoChanged) {
 					return _react2.default.createElement(
@@ -32257,13 +32261,13 @@ var Profile = function (_Component) {
 						_react2.default.createElement(
 							'div',
 							{ className: 'col-md-8' },
+							_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
 							_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
 						),
 						_react2.default.createElement(
 							'div',
 							{ className: 'col-md-4' },
-							_react2.default.createElement(_presentation.ProfileCard, { user: currentUser }),
-							_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) })
+							_react2.default.createElement(_presentation.ProfileCard, { user: currentUser })
 						)
 					);
 				}
@@ -32276,7 +32280,7 @@ var Profile = function (_Component) {
 							'div',
 							{ className: 'col-md-8' },
 							_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
-							_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: personal_statement, updateStatement: this.updateStatement.bind(this) })
+							_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: this.state.personal_statement, updateStatement: this.updateStatement.bind(this) })
 						),
 						_react2.default.createElement(
 							'div',
@@ -32284,7 +32288,7 @@ var Profile = function (_Component) {
 							_react2.default.createElement(_presentation.ProfileCard, { user: currentUser })
 						)
 					);
-				} else if (!statementSubmitted) {
+				} else {
 					return _react2.default.createElement(
 						'div',
 						null,
@@ -32350,6 +32354,22 @@ var Profile = function (_Component) {
 							_react2.default.createElement(_presentation.InfoCard, { user: currentUser, personal: personal, updateInformation: this.updateInformation.bind(this) })
 						)
 					);
+				} else {
+					return _react2.default.createElement(
+						'div',
+						null,
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-md-8' },
+							_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
+							_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-md-4' },
+							_react2.default.createElement(_presentation.ProfileCard, { user: currentUser })
+						)
+					);
 				}
 			}
 		}
@@ -32381,6 +32401,76 @@ var dispatchToProps = function dispatchToProps(dispatch) {
 };
 
 exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Profile);
+
+//<InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
+
+// <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
+
+// if(infoChanged && statementSubmitted){
+//  return(
+// 	 <div>
+// 		 <div className="col-md-8">
+// 			<StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} />
+// 		 </div>
+// 		<div className="col-md-4">
+// 			<ProfileCard user={currentUser} />
+// 			<InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
+// 		</div>
+// 	 </div>
+// 	 );
+//  } else if (!infoChanged && statementSubmitted){
+// 	 return(
+// 		<div>
+// 			<div className="col-md-8">
+// 			 <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
+// 			 <StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} />
+// 			</div>
+// 		 <div className="col-md-4">
+// 			 <ProfileCard user={currentUser} />
+// 		 </div>
+// 		</div>
+// 	 );
+//  } else if (infoChanged && !statementSubmitted) {
+// 	 return(
+// 		 <div>
+// 			 <div className="col-md-8">
+// 				<PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>
+// 			 </div>
+// 			<div className="col-md-4">
+// 				<ProfileCard user={currentUser} />
+// 				<InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
+// 			</div>
+// 		 </div>
+// 	 );
+//  }
+
+
+// else if(!infoChanged){
+// 	 return(
+// 		 <div>
+// 			 <div className="col-md-8">
+// 				<PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>
+// 			 </div>
+// 			<div className="col-md-4">
+// 				<h3>Hello Sally</h3>
+// 				<ProfileCard user={currentUser} />
+// 				<InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
+// 			</div>
+// 		 </div>
+// 	 );
+//  } else if(!statementSubmitted){
+// 	return(
+// 		 <div>
+// 			 <div className="col-md-8">
+// 				 <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
+// 				 <StatementCard user={currentUser} personal_statement={this.state.personal_statement} updateStatement={this.updateStatement.bind(this)} />
+// 			 </div>
+// 			 <div className="col-md-4">
+// 				 <ProfileCard user={currentUser} />
+// 			 </div>
+// 		 </div>
+// 	 );
+//  }
 
 /***/ }),
 /* 422 */

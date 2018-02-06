@@ -10,7 +10,7 @@ export default (props) => {
 
 return (
 	<div>
-	 <form>
+	 <form onSubmit={props.submitStatement}>
     <div className="card">
       <div className="card-content">
         <div className="row">
@@ -18,7 +18,7 @@ return (
             <div className="form-group">
               <h4 style={{textTransform:'capitalize'}} className="card-title">Personal Statement</h4>
               <div className="label-floating">
-							 { (user)? <div><textarea name="personal_statement" defaultValue={user.personal_statement} onChange={props.handleStatement.bind(this)} style={style.textarea} className="form-control" rows="15"></textarea></div>
+							 { (user)? <div><textarea name="personal_statement" defaultValue={user.personal_statement} onChange={props.handleStatement} style={style.textarea} className="form-control" rows="15"></textarea></div>
 							 : null
 						   }
               </div>
@@ -26,7 +26,7 @@ return (
           </div>
          </div>
        </div>
-			 <button onClick={props.submitStatement.bind(this)} disabled={noStatement} className="btn btn-primary pull-right">Update Profile</button>
+			 <button disabled={noStatement} className="btn btn-primary pull-right">Update Statement</button>
      </div>
 		</form>
 	</div>

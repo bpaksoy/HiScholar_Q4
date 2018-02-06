@@ -11,7 +11,7 @@ module.exports = function (props) {
 	var user = props.user; // can be null
 	//console.log("user", user)
 	var personal = user ? user.personal[0] : "";
-	//console.log("personal in infoCard", personal) // this is an object within an array see above
+	console.log("personal in infoCard", personal); // this is an object within an array see above
 
 	return React.createElement(
 		"div",

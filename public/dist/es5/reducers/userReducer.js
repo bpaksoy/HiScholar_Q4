@@ -20,6 +20,8 @@ module.exports = function (_x, action) {
 
 		case constants.PERSONAL_INFO_RECEIVED:
 			newState.currentUser.personal = [action.data];
+			console.log("action.data", action.data);
+			console.log("newState: ", newState);
 			return newState;
 
 		case constants.PERSONAL_STATEMENT_RECEIVED:

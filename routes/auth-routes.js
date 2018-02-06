@@ -156,8 +156,8 @@ router.put("/currentuser", (req, res, next) => {
   const act = personal.act;
  collection.findOne({_id: id})
     .then(user =>{
-      user.personal = [personal];
-      user.save().then(result=>{
+      user.personal = [ personal ];
+      user.save().then(result => {
         res.send(result)
       })
     })

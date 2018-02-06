@@ -20,7 +20,7 @@ module.exports = function (props) {
 		null,
 		React.createElement(
 			"form",
-			null,
+			{ onSubmit: props.submitStatement },
 			React.createElement(
 				"div",
 				{ className: "card" },
@@ -47,7 +47,7 @@ module.exports = function (props) {
 									user ? React.createElement(
 										"div",
 										null,
-										React.createElement("textarea", { name: "personal_statement", defaultValue: user.personal_statement, onChange: props.handleStatement.bind(undefined), style: style.textarea, className: "form-control", rows: "15" })
+										React.createElement("textarea", { name: "personal_statement", defaultValue: user.personal_statement, onChange: props.handleStatement, style: style.textarea, className: "form-control", rows: "15" })
 									) : null
 								)
 							)
@@ -56,8 +56,8 @@ module.exports = function (props) {
 				),
 				React.createElement(
 					"button",
-					{ onClick: props.submitStatement.bind(undefined), disabled: noStatement, className: "btn btn-primary pull-right" },
-					"Update Profile"
+					{ disabled: noStatement, className: "btn btn-primary pull-right" },
+					"Update Statement"
 				)
 			)
 		)
