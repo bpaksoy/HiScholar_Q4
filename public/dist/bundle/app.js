@@ -29613,7 +29613,7 @@ exports.default = function () {
 			return newState;
 
 		case _constants2.default.PERSONAL_INFO_RECEIVED:
-			newState["currentUser"]["personal"] = [action.data];
+			newState["currentUser"]["personal"] = action.data;
 			console.log("action.data", action.data);
 			console.log("newState: ", newState);
 			return newState;

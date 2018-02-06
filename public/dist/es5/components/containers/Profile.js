@@ -199,8 +199,8 @@ var Profile = (function (Component) {
 		render: {
 			value: function render() {
 				var currentUser = this.props.user.currentUser; // can be null
-				//console.log("currentUser", currentUser);
-				var personal = currentUser ? currentUser.personal : "";
+				console.log("currentUser", currentUser);
+				var personal = currentUser ? currentUser.personal : {};
 				//console.log("personal", personal)
 				var personal_statement = currentUser ? currentUser.personal_statement : null;
 				//console.log("personal_statement in the profile", personal_statement)

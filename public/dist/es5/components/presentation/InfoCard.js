@@ -10,7 +10,7 @@ var Component = _react.Component;
 module.exports = function (props) {
 	var user = props.user ? props.user : {}; // can be null
 	console.log("user", user);
-	var personal = user.personal.city && user.personal.country ? user.personal : {};
+	var personal = user ? user.personal : {};
 	console.log("personal", personal);
 
 	return React.createElement(
