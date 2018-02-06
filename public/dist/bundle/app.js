@@ -31479,6 +31479,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = function (props) {
 	var user = props.user;
+	console.log("user in the profile form", user);
 	user.personal = user.personal.length ? user.personal[0] : [];
 	var isDisabled = props.isDisabled;
 	//console.log("isDisabled in the ProfileForm", isDisabled);
@@ -32188,14 +32189,15 @@ var Profile = function (_Component) {
 				event.preventDefault();
 				var personal = this.state.personal;
 				this.props.personalInfoReceived(personal);
-				this.setState({
-					infoChanged: !this.state.infoChanged
-				});
+
 				//console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
 				_axios2.default.put("/auth/currentuser", { personal: personal }).then(function (result) {
 					//console.log("result is ", result);
 				})["catch"](function (err) {
 					console.log("we have not got the data!");
+				});
+				this.setState({
+					infoChanged: !this.state.infoChanged
 				});
 			}
 		}
@@ -32203,10 +32205,11 @@ var Profile = function (_Component) {
 		key: 'render',
 		value: function render() {
 			var currentUser = this.props.user.currentUser; // can be null
+			//console.log("currentUser", currentUser);
 			var personal = currentUser ? currentUser.personal : "";
 			//console.log("personal", personal)
 			var personal_statement = currentUser ? currentUser.personal_statement : null;
-			console.log("personal_statement in the profile", personal_statement);
+			//console.log("personal_statement in the profile", personal_statement)
 
 			var errors = validate(this.state.city, this.state.country);
 			var isDisabled = Object.keys(errors).some(function (key) {
@@ -32227,6 +32230,11 @@ var Profile = function (_Component) {
 						_react2.default.createElement(
 							'div',
 							{ className: 'col-md-8' },
+							_react2.default.createElement(
+								'h2',
+								null,
+								'Hi Mom'
+							),
 							_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
 							_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
 						),
@@ -32236,15 +32244,83 @@ var Profile = function (_Component) {
 							_react2.default.createElement(_presentation.ProfileCard, { user: currentUser })
 						)
 					);
-				}
-			} else if (currentUser && personal.length && !personal_statement) {
-				if (infoChanged) {
+				} else if (!infoChanged && statementSubmitted) {
 					return _react2.default.createElement(
 						'div',
 						null,
 						_react2.default.createElement(
 							'div',
 							{ className: 'col-md-8' },
+							_react2.default.createElement(
+								'h2',
+								null,
+								'Hi Dad'
+							),
+							_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-md-4' },
+							_react2.default.createElement(_presentation.ProfileCard, { user: currentUser }),
+							_react2.default.createElement(_presentation.InfoCard, { user: currentUser, personal: personal, updateInformation: this.updateInformation.bind(this) })
+						)
+					);
+				} else if (infoChanged && !statementSubmitted) {
+					return _react2.default.createElement(
+						'div',
+						null,
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-md-8' },
+							_react2.default.createElement(
+								'h2',
+								null,
+								'Hi Bro'
+							),
+							_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-md-4' },
+							_react2.default.createElement(_presentation.ProfileCard, { user: currentUser }),
+							_react2.default.createElement(_presentation.InfoCard, { user: currentUser, personal: personal, updateInformation: this.updateInformation.bind(this) })
+						)
+					);
+				} else if (!infoChanged && !statementSubmitted) {
+					return _react2.default.createElement(
+						'div',
+						null,
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-md-8' },
+							_react2.default.createElement(
+								'h2',
+								null,
+								'Hi Sis'
+							),
+							_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: personal_statement, updateStatement: this.updateStatement.bind(this) })
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-md-4' },
+							_react2.default.createElement(_presentation.ProfileCard, { user: currentUser }),
+							_react2.default.createElement(_presentation.InfoCard, { user: currentUser, personal: personal, updateInformation: this.updateInformation.bind(this) })
+						)
+					);
+				}
+			} else if (currentUser && personal.length && !personal_statement) {
+				if (!infoChanged) {
+					return _react2.default.createElement(
+						'div',
+						null,
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-md-8' },
+							_react2.default.createElement(
+								'h2',
+								null,
+								'Hi Husband'
+							),
 							_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
 						),
 						_react2.default.createElement(
@@ -32261,6 +32337,11 @@ var Profile = function (_Component) {
 						_react2.default.createElement(
 							'div',
 							{ className: 'col-md-8' },
+							_react2.default.createElement(
+								'h2',
+								null,
+								'Hi Aunt'
+							),
 							_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
 							_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
 						),
@@ -32272,13 +32353,18 @@ var Profile = function (_Component) {
 					);
 				}
 			} else if (currentUser && !personal.length && personal_statement) {
-				if (statementSubmitted) {
+				if (!statementSubmitted) {
 					return _react2.default.createElement(
 						'div',
 						null,
 						_react2.default.createElement(
 							'div',
 							{ className: 'col-md-8' },
+							_react2.default.createElement(
+								'h2',
+								null,
+								'Hi Uncle'
+							),
 							_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
 							_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: this.state.personal_statement, updateStatement: this.updateStatement.bind(this) })
 						),
@@ -32295,6 +32381,11 @@ var Profile = function (_Component) {
 						_react2.default.createElement(
 							'div',
 							{ className: 'col-md-8' },
+							_react2.default.createElement(
+								'h2',
+								null,
+								'Hi Cousin'
+							),
 							_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
 							_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
 						),
@@ -32313,6 +32404,11 @@ var Profile = function (_Component) {
 						_react2.default.createElement(
 							'div',
 							{ className: 'col-md-8' },
+							_react2.default.createElement(
+								'h2',
+								null,
+								'Hi Niece'
+							),
 							_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: personal_statement, updateStatement: this.updateStatement.bind(this) })
 						),
 						_react2.default.createElement(
@@ -32329,6 +32425,11 @@ var Profile = function (_Component) {
 						_react2.default.createElement(
 							'div',
 							{ className: 'col-md-8' },
+							_react2.default.createElement(
+								'h2',
+								null,
+								'Hi Nephew'
+							),
 							_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
 							_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: personal_statement, updateStatement: this.updateStatement.bind(this) })
 						),
@@ -32345,6 +32446,11 @@ var Profile = function (_Component) {
 						_react2.default.createElement(
 							'div',
 							{ className: 'col-md-8' },
+							_react2.default.createElement(
+								'h2',
+								null,
+								'Hi Drowsy Smurf'
+							),
 							_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
 						),
 						_react2.default.createElement(
@@ -32355,21 +32461,70 @@ var Profile = function (_Component) {
 						)
 					);
 				} else {
-					return _react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement(
+					if (!infoChanged && !statementSubmitted) {
+						return _react2.default.createElement(
 							'div',
-							{ className: 'col-md-8' },
-							_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
-							_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
-						),
-						_react2.default.createElement(
+							null,
+							_react2.default.createElement(
+								'div',
+								{ className: 'col-md-8' },
+								_react2.default.createElement(
+									'h2',
+									null,
+									'Hi Nerdy'
+								),
+								_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: personal_statement, updateStatement: this.updateStatement.bind(this) })
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'col-md-4' },
+								_react2.default.createElement(_presentation.ProfileCard, { user: currentUser }),
+								_react2.default.createElement(_presentation.InfoCard, { user: currentUser, personal: personal, updateInformation: this.updateInformation.bind(this) })
+							)
+						);
+					} else if (!infoChanged && statementSubmitted) {
+						return _react2.default.createElement(
 							'div',
-							{ className: 'col-md-4' },
-							_react2.default.createElement(_presentation.ProfileCard, { user: currentUser })
-						)
-					);
+							null,
+							_react2.default.createElement(
+								'div',
+								{ className: 'col-md-8' },
+								_react2.default.createElement(
+									'h2',
+									null,
+									'Hi Grouchy'
+								),
+								_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'col-md-4' },
+								_react2.default.createElement(_presentation.ProfileCard, { user: currentUser }),
+								_react2.default.createElement(_presentation.InfoCard, { user: currentUser, personal: personal, updateInformation: this.updateInformation.bind(this) })
+							)
+						);
+					} else {
+						return _react2.default.createElement(
+							'div',
+							null,
+							_react2.default.createElement(
+								'div',
+								{ className: 'col-md-8' },
+								_react2.default.createElement(
+									'h2',
+									null,
+									'Hi Lovely'
+								),
+								_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
+								_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: personal_statement, updateStatement: this.updateStatement.bind(this) })
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'col-md-4' },
+								_react2.default.createElement(_presentation.ProfileCard, { user: currentUser })
+							)
+						);
+					}
 				}
 			}
 		}
