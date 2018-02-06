@@ -31478,9 +31478,8 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (props) {
-	var user = props.user;
-	console.log("user in the profile form", user);
-	user.personal = user.personal.length ? user.personal[0] : [];
+	var user = props.user ? props.user : {};
+	user.personal = user.personal && user.personal[0] ? user.personal[0] : {};
 	var isDisabled = props.isDisabled;
 	//console.log("isDisabled in the ProfileForm", isDisabled);
 	//console.log("user in the profile form", user)
@@ -31696,138 +31695,139 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = function (props) {
 
-	var user = props.user; // can be null
+	var user = props.user ? props.user : {}; // can be null
 	//console.log("user", user)
-	var personal = user ? user.personal[0] : "";
+	console.log('user', user);
+	var personal = user.personal && user.personal[0] ? user.personal[0] : {};
 	console.log("personal in infoCard", personal); // this is an object within an array see above
 
 	return _react2.default.createElement(
-		"div",
+		'div',
 		null,
 		user ? _react2.default.createElement(
-			"div",
-			{ className: "card card-profile" },
+			'div',
+			{ className: 'card card-profile' },
 			_react2.default.createElement(
-				"div",
-				{ className: "col-md-12" },
+				'div',
+				{ className: 'col-md-12' },
 				_react2.default.createElement(
-					"div",
-					{ style: { backgroundColor: "#A8A8A8 " }, className: "card-header" },
+					'div',
+					{ style: { backgroundColor: "#A8A8A8 " }, className: 'card-header' },
 					_react2.default.createElement(
-						"h3",
-						{ style: { textTransform: 'capitalize' }, className: "category text-gray" },
-						"Personal"
+						'h3',
+						{ style: { textTransform: 'capitalize' }, className: 'category text-gray' },
+						'Personal'
 					)
 				)
 			),
 			_react2.default.createElement(
-				"div",
-				{ className: "content" },
+				'div',
+				{ className: 'content' },
 				_react2.default.createElement(
-					"div",
-					{ className: "col-md-12" },
+					'div',
+					{ className: 'col-md-12' },
 					_react2.default.createElement(
-						"h4",
+						'h4',
 						null,
-						"Lives in:",
-						_react2.default.createElement("br", null)
+						'Lives in:',
+						_react2.default.createElement('br', null)
 					),
 					_react2.default.createElement(
-						"p",
+						'p',
 						{ style: { textTransform: 'capitalize' } },
-						"City: ",
+						'City: ',
 						personal.city ? personal.city : "N/A",
-						" ",
-						_react2.default.createElement("br", null),
-						"State: ",
+						' ',
+						_react2.default.createElement('br', null),
+						'State: ',
 						personal.state ? personal.state : "N/A",
-						" ",
-						_react2.default.createElement("br", null),
-						"Country: ",
+						' ',
+						_react2.default.createElement('br', null),
+						'Country: ',
 						personal.country ? personal.country : "N/A",
-						_react2.default.createElement("br", null)
+						_react2.default.createElement('br', null)
 					)
 				),
 				_react2.default.createElement(
-					"div",
-					{ className: "col-md-12" },
+					'div',
+					{ className: 'col-md-12' },
 					_react2.default.createElement(
-						"ul",
-						{ className: "list-group list-group-flush" },
+						'ul',
+						{ className: 'list-group list-group-flush' },
 						_react2.default.createElement(
-							"li",
-							{ className: "list-group-item" },
+							'li',
+							{ className: 'list-group-item' },
 							_react2.default.createElement(
-								"h4",
-								{ className: "card-profile" },
-								"Academics:",
-								_react2.default.createElement("br", null)
+								'h4',
+								{ className: 'card-profile' },
+								'Academics:',
+								_react2.default.createElement('br', null)
 							)
 						)
 					)
 				),
 				_react2.default.createElement(
-					"div",
-					{ className: "col-md-12" },
+					'div',
+					{ className: 'col-md-12' },
 					_react2.default.createElement(
-						"div",
+						'div',
 						{ style: { textTransform: 'capitalize' } },
 						_react2.default.createElement(
-							"div",
-							{ className: "col-md-3" },
+							'div',
+							{ className: 'col-md-3' },
 							_react2.default.createElement(
-								"label",
-								{ className: "control-label" },
-								"GPA"
+								'label',
+								{ className: 'control-label' },
+								'GPA'
 							),
-							_react2.default.createElement("br", null),
+							_react2.default.createElement('br', null),
 							personal.gpa ? personal.gpa : "N/A",
-							" ",
-							_react2.default.createElement("br", null)
+							' ',
+							_react2.default.createElement('br', null)
 						),
 						_react2.default.createElement(
-							"div",
-							{ className: "col-md-3" },
+							'div',
+							{ className: 'col-md-3' },
 							_react2.default.createElement(
-								"label",
-								{ className: "control-label" },
-								"TOEFL"
+								'label',
+								{ className: 'control-label' },
+								'TOEFL'
 							),
-							_react2.default.createElement("br", null),
+							_react2.default.createElement('br', null),
 							personal.toefl ? personal.toefl : "N/A",
-							_react2.default.createElement("br", null)
+							_react2.default.createElement('br', null)
 						),
 						_react2.default.createElement(
-							"div",
-							{ className: "col-md-3" },
+							'div',
+							{ className: 'col-md-3' },
 							_react2.default.createElement(
-								"label",
-								{ className: "control-label" },
-								"SAT"
+								'label',
+								{ className: 'control-label' },
+								'SAT'
 							),
-							_react2.default.createElement("br", null),
+							_react2.default.createElement('br', null),
 							personal.sat ? personal.sat : "N/A",
-							_react2.default.createElement("br", null)
+							_react2.default.createElement('br', null)
 						),
 						_react2.default.createElement(
-							"div",
-							{ className: "col-md-3" },
+							'div',
+							{ className: 'col-md-3' },
 							_react2.default.createElement(
-								"label",
-								{ className: "control-label" },
-								"ACT"
+								'label',
+								{ className: 'control-label' },
+								'ACT'
 							),
-							_react2.default.createElement("br", null),
+							_react2.default.createElement('br', null),
 							personal.act ? personal.act : "N/A",
-							_react2.default.createElement("br", null)
+							_react2.default.createElement('br', null)
 						)
 					)
 				)
 			),
 			_react2.default.createElement(
-				"button",
-				{ onClick: props.updateInformation.bind(undefined), className: "btn btn-primary" },
-				"Update Profile"
+				'button',
+				{ onClick: props.updateInformation.bind(undefined), className: 'btn btn-primary' },
+				'Update Profile'
 			)
 		) : null
 	);
@@ -32079,8 +32079,8 @@ var Profile = function (_Component) {
 			city: "",
 			country: "",
 			personal_statement: "",
-			infoChanged: true,
-			statementSubmitted: true
+			info_ui: 'form',
+			statement_ui: 'form'
 		};
 		return _this;
 	}
@@ -32095,6 +32095,10 @@ var Profile = function (_Component) {
 				var payload = response.body;
 				var user = payload.user; // this is the currently logged-in user
 				_this2.props.currentUserReceived(user);
+				_this2.setState({
+					info_ui: user.personal.length ? 'card' : 'form',
+					statement_ui: user.personal_statement ? 'card' : 'form'
+				});
 			});
 		}
 	}, {
@@ -32114,7 +32118,7 @@ var Profile = function (_Component) {
 			if (event) {
 				event.preventDefault();
 				this.setState({
-					infoChanged: !this.state.infoChanged
+					info_ui: 'form'
 				});
 			}
 		}
@@ -32124,7 +32128,7 @@ var Profile = function (_Component) {
 			if (event) {
 				event.preventDefault();
 				this.setState({
-					statementSubmitted: !this.state.statementSubmitted
+					statement_ui: 'form'
 				});
 			}
 		}
@@ -32135,7 +32139,7 @@ var Profile = function (_Component) {
 				event.preventDefault();
 				var personal_statement = this.state.personal_statement;
 				this.setState({
-					statementSubmitted: !this.state.statementSubmitted
+					statement_ui: 'card'
 				});
 				//console.log("personal statement in the submit method", personal_statement);
 				this.props.personalStatementReceived(personal_statement);
@@ -32189,7 +32193,6 @@ var Profile = function (_Component) {
 				event.preventDefault();
 				var personal = this.state.personal;
 				this.props.personalInfoReceived(personal);
-
 				//console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
 				_axios2.default.put("/auth/currentuser", { personal: personal }).then(function (result) {
 					//console.log("result is ", result);
@@ -32197,7 +32200,7 @@ var Profile = function (_Component) {
 					console.log("we have not got the data!");
 				});
 				this.setState({
-					infoChanged: !this.state.infoChanged
+					info_ui: 'card'
 				});
 			}
 		}
@@ -32220,313 +32223,30 @@ var Profile = function (_Component) {
 			//console.log("no statement status: ", noStatement)
 			var infoChanged = this.state.infoChanged;
 			var statementSubmitted = this.state.statementSubmitted;
-			console.log("infoChanged", infoChanged, "statementSubmitted", statementSubmitted);
+			console.log("infoChanged", this.state);
 
-			if (currentUser && !personal.length && !personal_statement) {
-				if (infoChanged && statementSubmitted) {
-					return _react2.default.createElement(
-						'div',
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-md-8' },
+					_react2.default.createElement(
+						'h2',
 						null,
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-8' },
-							_react2.default.createElement(
-								'h2',
-								null,
-								'Hi Mom'
-							),
-							_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
-							_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-4' },
-							_react2.default.createElement(_presentation.ProfileCard, { user: currentUser })
-						)
-					);
-				} else if (!infoChanged && statementSubmitted) {
-					return _react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-8' },
-							_react2.default.createElement(
-								'h2',
-								null,
-								'Hi Dad'
-							),
-							_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-4' },
-							_react2.default.createElement(_presentation.ProfileCard, { user: currentUser }),
-							_react2.default.createElement(_presentation.InfoCard, { user: currentUser, personal: personal, updateInformation: this.updateInformation.bind(this) })
-						)
-					);
-				} else if (infoChanged && !statementSubmitted) {
-					return _react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-8' },
-							_react2.default.createElement(
-								'h2',
-								null,
-								'Hi Bro'
-							),
-							_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-4' },
-							_react2.default.createElement(_presentation.ProfileCard, { user: currentUser }),
-							_react2.default.createElement(_presentation.InfoCard, { user: currentUser, personal: personal, updateInformation: this.updateInformation.bind(this) })
-						)
-					);
-				} else if (!infoChanged && !statementSubmitted) {
-					return _react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-8' },
-							_react2.default.createElement(
-								'h2',
-								null,
-								'Hi Sis'
-							),
-							_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: personal_statement, updateStatement: this.updateStatement.bind(this) })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-4' },
-							_react2.default.createElement(_presentation.ProfileCard, { user: currentUser }),
-							_react2.default.createElement(_presentation.InfoCard, { user: currentUser, personal: personal, updateInformation: this.updateInformation.bind(this) })
-						)
-					);
-				}
-			} else if (currentUser && personal.length && !personal_statement) {
-				if (!infoChanged) {
-					return _react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-8' },
-							_react2.default.createElement(
-								'h2',
-								null,
-								'Hi Husband'
-							),
-							_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-4' },
-							_react2.default.createElement(_presentation.ProfileCard, { user: currentUser }),
-							_react2.default.createElement(_presentation.InfoCard, { user: currentUser, personal: personal, updateInformation: this.updateInformation.bind(this) })
-						)
-					);
-				} else {
-					return _react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-8' },
-							_react2.default.createElement(
-								'h2',
-								null,
-								'Hi Aunt'
-							),
-							_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
-							_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-4' },
-							_react2.default.createElement(_presentation.ProfileCard, { user: currentUser })
-						)
-					);
-				}
-			} else if (currentUser && !personal.length && personal_statement) {
-				if (!statementSubmitted) {
-					return _react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-8' },
-							_react2.default.createElement(
-								'h2',
-								null,
-								'Hi Uncle'
-							),
-							_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
-							_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: this.state.personal_statement, updateStatement: this.updateStatement.bind(this) })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-4' },
-							_react2.default.createElement(_presentation.ProfileCard, { user: currentUser })
-						)
-					);
-				} else {
-					return _react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-8' },
-							_react2.default.createElement(
-								'h2',
-								null,
-								'Hi Cousin'
-							),
-							_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
-							_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-4' },
-							_react2.default.createElement(_presentation.ProfileCard, { user: currentUser })
-						)
-					);
-				}
-			} else {
-				if (infoChanged && statementSubmitted) {
-					return _react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-8' },
-							_react2.default.createElement(
-								'h2',
-								null,
-								'Hi Niece'
-							),
-							_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: personal_statement, updateStatement: this.updateStatement.bind(this) })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-4' },
-							_react2.default.createElement(_presentation.ProfileCard, { user: currentUser }),
-							_react2.default.createElement(_presentation.InfoCard, { user: currentUser, personal: personal, updateInformation: this.updateInformation.bind(this) })
-						)
-					);
-				} else if (!infoChanged && statementSubmitted) {
-					return _react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-8' },
-							_react2.default.createElement(
-								'h2',
-								null,
-								'Hi Nephew'
-							),
-							_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
-							_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: personal_statement, updateStatement: this.updateStatement.bind(this) })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-4' },
-							_react2.default.createElement(_presentation.ProfileCard, { user: currentUser })
-						)
-					);
-				} else if (infoChanged && !statementSubmitted) {
-					return _react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-8' },
-							_react2.default.createElement(
-								'h2',
-								null,
-								'Hi Drowsy Smurf'
-							),
-							_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-4' },
-							_react2.default.createElement(_presentation.ProfileCard, { user: currentUser }),
-							_react2.default.createElement(_presentation.InfoCard, { user: currentUser, personal: personal, updateInformation: this.updateInformation.bind(this) })
-						)
-					);
-				} else {
-					if (!infoChanged && !statementSubmitted) {
-						return _react2.default.createElement(
-							'div',
-							null,
-							_react2.default.createElement(
-								'div',
-								{ className: 'col-md-8' },
-								_react2.default.createElement(
-									'h2',
-									null,
-									'Hi Nerdy'
-								),
-								_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: personal_statement, updateStatement: this.updateStatement.bind(this) })
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'col-md-4' },
-								_react2.default.createElement(_presentation.ProfileCard, { user: currentUser }),
-								_react2.default.createElement(_presentation.InfoCard, { user: currentUser, personal: personal, updateInformation: this.updateInformation.bind(this) })
-							)
-						);
-					} else if (!infoChanged && statementSubmitted) {
-						return _react2.default.createElement(
-							'div',
-							null,
-							_react2.default.createElement(
-								'div',
-								{ className: 'col-md-8' },
-								_react2.default.createElement(
-									'h2',
-									null,
-									'Hi Grouchy'
-								),
-								_react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'col-md-4' },
-								_react2.default.createElement(_presentation.ProfileCard, { user: currentUser }),
-								_react2.default.createElement(_presentation.InfoCard, { user: currentUser, personal: personal, updateInformation: this.updateInformation.bind(this) })
-							)
-						);
-					} else {
-						return _react2.default.createElement(
-							'div',
-							null,
-							_react2.default.createElement(
-								'div',
-								{ className: 'col-md-8' },
-								_react2.default.createElement(
-									'h2',
-									null,
-									'Hi Lovely'
-								),
-								_react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
-								_react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: personal_statement, updateStatement: this.updateStatement.bind(this) })
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'col-md-4' },
-								_react2.default.createElement(_presentation.ProfileCard, { user: currentUser })
-							)
-						);
-					}
-				}
-			}
+						'Hi Mom'
+					),
+					this.state.info_ui == 'form' && _react2.default.createElement(_presentation.ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
+					this.state.statement_ui == 'form' && _react2.default.createElement(_presentation.PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement }),
+					this.state.statement_ui == 'card' && _react2.default.createElement(_presentation.StatementCard, { user: currentUser, personal_statement: personal_statement, updateStatement: this.updateStatement.bind(this) })
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-md-4' },
+					_react2.default.createElement(_presentation.ProfileCard, { user: currentUser }),
+					this.state.info_ui == 'card' && _react2.default.createElement(_presentation.InfoCard, { user: currentUser, personal: personal, updateInformation: this.updateInformation.bind(this) })
+				)
+			);
 		}
 	}]);
 

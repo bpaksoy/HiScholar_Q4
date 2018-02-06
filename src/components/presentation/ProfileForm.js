@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 
 export default (props) => {
-	const user =  props.user;
-	console.log("user in the profile form", user)
-	user.personal = user.personal.length ? user.personal[0] : [];
+	const user =  props.user ? props.user : {};
+	user.personal = user.personal && user.personal[0] ? user.personal[0] : {};
 	const isDisabled = props.isDisabled;
 	//console.log("isDisabled in the ProfileForm", isDisabled);
 	//console.log("user in the profile form", user)
