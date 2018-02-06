@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 export default (props) => {
 
 	const user = props.user ? props.user : {}; // can be null
- //console.log("user", user)
-  const personal = ( user.personal && user.personal[0]) ? user.personal[0] : {};
+  console.log("user", user)
+  const personal = (user.personal.city && user.personal.country) ? user.personal : {};
+	console.log("personal", personal)
 
 	return (
 	<div>

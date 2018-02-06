@@ -55,8 +55,8 @@ var Profile = (function (Component) {
 			city: "",
 			country: "",
 			personal_statement: "",
-			infoChanged: true,
-			statementSubmitted: true
+			info_ui: "form",
+			statement_ui: "form"
 		};
 	}
 
@@ -71,6 +71,10 @@ var Profile = (function (Component) {
 					var payload = response.body;
 					var user = payload.user; // this is the currently logged-in user
 					_this.props.currentUserReceived(user);
+					_this.setState({
+						info_ui: user.personal.city && user.personal.country ? "card" : "form",
+						statement_ui: user.personal_statement ? "card" : "form"
+					});
 				});
 			},
 			writable: true,
@@ -83,7 +87,6 @@ var Profile = (function (Component) {
 					var _name = event.target.name;
 					var value = event.target.value ? event.target.value : "";
 					this.setState(_defineProperty({}, _name, value));
-					console.log("this is handle personal statement", this.state.personal_statement);
 				}
 			},
 			writable: true,
@@ -94,7 +97,7 @@ var Profile = (function (Component) {
 				if (event) {
 					event.preventDefault();
 					this.setState({
-						infoChanged: !this.state.infoChanged
+						info_ui: "form"
 					});
 				}
 			},
@@ -106,7 +109,7 @@ var Profile = (function (Component) {
 				if (event) {
 					event.preventDefault();
 					this.setState({
-						statementSubmitted: !this.state.statementSubmitted
+						statement_ui: "form"
 					});
 				}
 			},
@@ -119,7 +122,7 @@ var Profile = (function (Component) {
 					event.preventDefault();
 					var personal_statement = this.state.personal_statement;
 					this.setState({
-						statementSubmitted: !this.state.statementSubmitted
+						statement_ui: "card"
 					});
 					//console.log("personal statement in the submit method", personal_statement);
 					this.props.personalStatementReceived(personal_statement);
@@ -179,12 +182,14 @@ var Profile = (function (Component) {
 					event.preventDefault();
 					var personal = this.state.personal;
 					this.props.personalInfoReceived(personal);
-					this.setState({
-						infoChanged: !this.state.infoChanged
-					});
 					//console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
-					axios.put("/auth/currentuser", { personal: personal }).then(function (result) {})["catch"](function (err) {
+					axios.put("/auth/currentuser", { personal: personal }).then(function (result) {
+						console.log("result is ", result);
+					})["catch"](function (err) {
 						console.log("we have not got the data!");
+					});
+					this.setState({
+						info_ui: "card"
 					});
 				}
 			},
@@ -194,10 +199,11 @@ var Profile = (function (Component) {
 		render: {
 			value: function render() {
 				var currentUser = this.props.user.currentUser; // can be null
+				//console.log("currentUser", currentUser);
 				var personal = currentUser ? currentUser.personal : "";
 				//console.log("personal", personal)
 				var personal_statement = currentUser ? currentUser.personal_statement : null;
-				console.log("personal_statement in the profile", personal_statement);
+				//console.log("personal_statement in the profile", personal_statement)
 
 				var errors = validate(this.state.city, this.state.country);
 				var isDisabled = Object.keys(errors).some(function (key) {
@@ -206,163 +212,28 @@ var Profile = (function (Component) {
 				//console.log(errors, isDisabled);
 				var noStatement = validateStatement(this.state.personal_statement);
 				//console.log("no statement status: ", noStatement)
-				var infoChanged = this.state.infoChanged;
-				var statementSubmitted = this.state.statementSubmitted;
-				console.log("infoChanged", infoChanged, "statementSubmitted", statementSubmitted);
 
-				if (currentUser && !personal.length && !personal_statement) {
-					if (infoChanged && statementSubmitted) {
-						return React.createElement(
+
+				if (this.props.user && this.props.user.currentUser) {
+					return React.createElement(
+						"div",
+						null,
+						React.createElement(
 							"div",
-							null,
-							React.createElement(
-								"div",
-								{ className: "col-md-8" },
-								React.createElement(ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
-								React.createElement(PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
-							),
-							React.createElement(
-								"div",
-								{ className: "col-md-4" },
-								React.createElement(ProfileCard, { user: currentUser })
-							)
-						);
-					}
-				} else if (currentUser && personal.length && !personal_statement) {
-					if (infoChanged) {
-						return React.createElement(
+							{ className: "col-md-8" },
+							this.state.info_ui == "form" && React.createElement(ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
+							this.state.statement_ui == "form" && React.createElement(PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement }),
+							this.state.statement_ui == "card" && React.createElement(StatementCard, { user: currentUser, personal_statement: personal_statement, updateStatement: this.updateStatement.bind(this) })
+						),
+						React.createElement(
 							"div",
-							null,
-							React.createElement(
-								"div",
-								{ className: "col-md-8" },
-								React.createElement(PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
-							),
-							React.createElement(
-								"div",
-								{ className: "col-md-4" },
-								React.createElement(ProfileCard, { user: currentUser }),
-								React.createElement(InfoCard, { user: currentUser, personal: personal, updateInformation: this.updateInformation.bind(this) })
-							)
-						);
-					} else {
-						return React.createElement(
-							"div",
-							null,
-							React.createElement(
-								"div",
-								{ className: "col-md-8" },
-								React.createElement(ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
-								React.createElement(PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
-							),
-							React.createElement(
-								"div",
-								{ className: "col-md-4" },
-								React.createElement(ProfileCard, { user: currentUser })
-							)
-						);
-					}
-				} else if (currentUser && !personal.length && personal_statement) {
-					if (statementSubmitted) {
-						return React.createElement(
-							"div",
-							null,
-							React.createElement(
-								"div",
-								{ className: "col-md-8" },
-								React.createElement(ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
-								React.createElement(StatementCard, { user: currentUser, personal_statement: this.state.personal_statement, updateStatement: this.updateStatement.bind(this) })
-							),
-							React.createElement(
-								"div",
-								{ className: "col-md-4" },
-								React.createElement(ProfileCard, { user: currentUser })
-							)
-						);
-					} else {
-						return React.createElement(
-							"div",
-							null,
-							React.createElement(
-								"div",
-								{ className: "col-md-8" },
-								React.createElement(ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
-								React.createElement(PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
-							),
-							React.createElement(
-								"div",
-								{ className: "col-md-4" },
-								React.createElement(ProfileCard, { user: currentUser })
-							)
-						);
-					}
-				} else {
-					if (infoChanged && statementSubmitted) {
-						return React.createElement(
-							"div",
-							null,
-							React.createElement(
-								"div",
-								{ className: "col-md-8" },
-								React.createElement(StatementCard, { user: currentUser, personal_statement: personal_statement, updateStatement: this.updateStatement.bind(this) })
-							),
-							React.createElement(
-								"div",
-								{ className: "col-md-4" },
-								React.createElement(ProfileCard, { user: currentUser }),
-								React.createElement(InfoCard, { user: currentUser, personal: personal, updateInformation: this.updateInformation.bind(this) })
-							)
-						);
-					} else if (!infoChanged && statementSubmitted) {
-						return React.createElement(
-							"div",
-							null,
-							React.createElement(
-								"div",
-								{ className: "col-md-8" },
-								React.createElement(ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
-								React.createElement(StatementCard, { user: currentUser, personal_statement: personal_statement, updateStatement: this.updateStatement.bind(this) })
-							),
-							React.createElement(
-								"div",
-								{ className: "col-md-4" },
-								React.createElement(ProfileCard, { user: currentUser })
-							)
-						);
-					} else if (infoChanged && !statementSubmitted) {
-						return React.createElement(
-							"div",
-							null,
-							React.createElement(
-								"div",
-								{ className: "col-md-8" },
-								React.createElement(PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
-							),
-							React.createElement(
-								"div",
-								{ className: "col-md-4" },
-								React.createElement(ProfileCard, { user: currentUser }),
-								React.createElement(InfoCard, { user: currentUser, personal: personal, updateInformation: this.updateInformation.bind(this) })
-							)
-						);
-					} else {
-						return React.createElement(
-							"div",
-							null,
-							React.createElement(
-								"div",
-								{ className: "col-md-8" },
-								React.createElement(ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
-								React.createElement(PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement })
-							),
-							React.createElement(
-								"div",
-								{ className: "col-md-4" },
-								React.createElement(ProfileCard, { user: currentUser })
-							)
-						);
-					}
+							{ className: "col-md-4" },
+							React.createElement(ProfileCard, { user: currentUser }),
+							this.state.info_ui == "card" && React.createElement(InfoCard, { user: currentUser, personal: personal, updateInformation: this.updateInformation.bind(this) })
+						)
+					);
 				}
+				return "Loading...";
 			},
 			writable: true,
 			configurable: true
@@ -394,78 +265,5 @@ var dispatchToProps = function (dispatch) {
 	};
 };
 
-module.exports = connect(stateToProps, dispatchToProps)(Profile)
-
-
-//<InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
-
-// <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
-
-// if(infoChanged && statementSubmitted){
-//  return(
-// 	 <div>
-// 		 <div className="col-md-8">
-// 			<StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} />
-// 		 </div>
-// 		<div className="col-md-4">
-// 			<ProfileCard user={currentUser} />
-// 			<InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
-// 		</div>
-// 	 </div>
-// 	 );
-//  } else if (!infoChanged && statementSubmitted){
-// 	 return(
-// 		<div>
-// 			<div className="col-md-8">
-// 			 <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
-// 			 <StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} />
-// 			</div>
-// 		 <div className="col-md-4">
-// 			 <ProfileCard user={currentUser} />
-// 		 </div>
-// 		</div>
-// 	 );
-//  } else if (infoChanged && !statementSubmitted) {
-// 	 return(
-// 		 <div>
-// 			 <div className="col-md-8">
-// 				<PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>
-// 			 </div>
-// 			<div className="col-md-4">
-// 				<ProfileCard user={currentUser} />
-// 				<InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
-// 			</div>
-// 		 </div>
-// 	 );
-//  }
-
-
-// else if(!infoChanged){
-// 	 return(
-// 		 <div>
-// 			 <div className="col-md-8">
-// 				<PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>
-// 			 </div>
-// 			<div className="col-md-4">
-// 				<h3>Hello Sally</h3>
-// 				<ProfileCard user={currentUser} />
-// 				<InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>
-// 			</div>
-// 		 </div>
-// 	 );
-//  } else if(!statementSubmitted){
-// 	return(
-// 		 <div>
-// 			 <div className="col-md-8">
-// 				 <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>
-// 				 <StatementCard user={currentUser} personal_statement={this.state.personal_statement} updateStatement={this.updateStatement.bind(this)} />
-// 			 </div>
-// 			 <div className="col-md-4">
-// 				 <ProfileCard user={currentUser} />
-// 			 </div>
-// 		 </div>
-// 	 );
-//  }
-;
+module.exports = connect(stateToProps, dispatchToProps)(Profile);
 //console.log("this.state", this.state);
-//console.log("result is ", result);
