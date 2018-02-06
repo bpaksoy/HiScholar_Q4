@@ -4,7 +4,7 @@ export default (props) => {
 
 	const user = props.user ? props.user : {}; // can be null
   console.log("user", user)
-  const personal = (user.personal.city && user.personal.country) ? user.personal : {};
+  const personal = (user) ? user.personal : {};
 	console.log("personal", personal)
 
 	return (

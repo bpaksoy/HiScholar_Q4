@@ -152,8 +152,8 @@ handleCountry(event){
 
 	render() {
 		const currentUser = this.props.user.currentUser; // can be null
-		//console.log("currentUser", currentUser);
-		const personal = (currentUser)? currentUser.personal : "";
+		console.log("currentUser", currentUser);
+		const personal = (currentUser)? currentUser.personal : {};
 		//console.log("personal", personal)
 		const personal_statement = (currentUser)? currentUser.personal_statement : null;
 		//console.log("personal_statement in the profile", personal_statement)
@@ -164,7 +164,7 @@ handleCountry(event){
 		const noStatement = validateStatement(this.state.personal_statement);
 		//console.log("no statement status: ", noStatement)
 
-		
+
 		if (this.props.user && this.props.user.currentUser) {
 			return(
 				<div>

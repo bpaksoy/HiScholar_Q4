@@ -9,7 +9,7 @@ var React = _interopRequire(_react);
 var Component = _react.Component;
 module.exports = function (props) {
 	var user = props.user ? props.user : {};
-	user.personal = user.personal && user.personal[0] ? user.personal[0] : {};
+	user.personal = user.personal.city && user.personal.country ? user.personal : {};
 	var isDisabled = props.isDisabled;
 	//console.log("isDisabled in the ProfileForm", isDisabled);
 	//console.log("user in the profile form", user)
