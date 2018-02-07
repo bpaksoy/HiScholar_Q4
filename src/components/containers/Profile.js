@@ -45,6 +45,7 @@ class Profile extends Component {
 			const payload = response.body
 			const user = payload.user // this is the currently logged-in user
 			this.props.currentUserReceived(user)
+			console.log("hahahhahah",this.props.user.currentUser);
 			this.setState({
 				info_ui: user.personal.city && user.personal.country ? 'card' : 'form',
 				statement_ui: user.personal_statement ? 'card': 'form'
@@ -106,9 +107,10 @@ submitStatement(event){
 			let value = event.target.value ? event.target.value : '';
       let personal = Object.assign({}, this.state.personal);
 			personal[name]= value;
+
 			// let user = this.props.user.currentUser;
 			this.setState({
-        personal: personal,
+        personal: personal
 		  })
 			//console.log("this.state", this.state);
 	}
@@ -137,9 +139,10 @@ handleCountry(event){
 		if (event){
 			event.preventDefault();
 			let personal = this.state.personal;
+			console.log("personal?????", personal);
 			this.props.personalInfoReceived(personal);
 			//console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
-      axios.put("/auth/currentuser", { personal: personal }).then(function (result){
+      axios.put("/auth/currentuser", { personal: personal}).then(function (result){
    				console.log("result is ", result);
 				})["catch"](function (err) {
  				console.log("we have not got the data!");
@@ -155,7 +158,7 @@ handleCountry(event){
 		const currentUser = this.props.user.currentUser; // can be null
 		//console.log("currentUser", currentUser);
 		const personal = (currentUser)? currentUser.personal : {};
-		//console.log("personal", personal)
+		//console.log("personal in the profile form", personal)
 		const personal_statement = (currentUser)? currentUser.personal_statement : null;
 		//console.log("personal_statement in the profile", personal_statement)
 

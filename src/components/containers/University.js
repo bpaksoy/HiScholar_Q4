@@ -17,19 +17,23 @@ class University extends Component {
 
  saveSchool(university, event){
    if(event){
+     console.log("university in save school", university)
      event.preventDefault();
-     // axios.put("/auth/savedschools", { savedSchools: [...savedSchools, university] }).then(function (result){
- 			//   console.log("saved school is ", result);
- 			//  })["catch"](function (err) {
- 		 // console.log("we have not got the data!");
- 		 // });
+     //const selectedUniversities = this.props.university.selectedUniversities;
+     const universityName = university.school_name;
+     console.log("universityName", universityName);
+     axios.put("/auth/savedschools", {[universityName]: university}).then(function (result){
+ 			  console.log("saved school is ", result);
+ 			 })["catch"](function (err) {
+ 		 console.log("we have not got the data!");
+ 		 });
    }
  }
 
 
   render(){
   let selectedUniversities = (this.props.university.selectedUniversities.length) ? this.props.university.selectedUniversities : [];
-  console.log("selectedUniversities in the University component", selectedUniversities)
+  //console.log("selectedUniversities in the University component", selectedUniversities)
   selectedUniversities = selectedUniversities.map((university, index) => {
     return(
       <div key={index} className="row" onClick={this.saveSchool.bind(this, university)}>

@@ -6,7 +6,7 @@ export default (props) => {
 	const personal_statement = (user)? user.personal_statement : "";
   //console.log("personal statement in the component", personal_statement)
 	const noStatement = props.noStatement;
-	console.log("no statement", noStatement);
+	//console.log("no statement", noStatement);
 
 return (
 	<div>

@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default (props) => {
 
 	const user =  props.user ? props.user : {};
-	console.log("user in the profile form", user);
+	//console.log("user in the profile form", user);
 	user.personal = (Object.keys(user.personal).length) ? user.personal : {};
 	const isDisabled = props.isDisabled;
 	//console.log("isDisabled in the ProfileForm", isDisabled);

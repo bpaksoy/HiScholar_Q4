@@ -60,7 +60,40 @@ const studentSchema = new Schema({
     default: ""
   },
   selectedSchools: [],
-  personal: [PersonalSchema],
+  personal: {
+       city: {
+          type: String,
+          default: ""
+        },
+        state: {
+          type: String,
+          default: ""
+        },
+        country: {
+          type: String,
+          default: ""
+        },
+        zip_code: {
+          type: Number,
+          default: ""
+        },
+        gpa: {
+          type: Number,
+          default: ""
+        },
+        toefl:{
+          type: Number,
+          default: ""
+        },
+        sat: {
+          type: Number,
+          default: ""
+        },
+        act: {
+          type: Number,
+          default: ""
+        }
+   }
 
 });
 

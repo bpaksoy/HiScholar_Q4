@@ -3865,7 +3865,7 @@ var Nav = function (_Component) {
 				return axios.get(url).then(function (result) {
 					var data = result.data;
 					_this2.props.selectedUniversityReceived(data[0]);
-					console.log("result is ", result);
+					//console.log("result is ", result);
 				})["catch"](function (err) {
 					console.log("we have not got the data!");
 				});
@@ -3875,7 +3875,7 @@ var Nav = function (_Component) {
 		key: 'render',
 		value: function render() {
 			var selectedUniversity = this.props.university.selectedUniversities.length ? this.props.university.selectedUniversities[0] : [];
-			console.log("selectedUniversity", selectedUniversity);
+			//console.log("selectedUniversity", selectedUniversity)
 
 			return _react2.default.createElement(
 				'nav',
@@ -6299,6 +6299,8 @@ var _superagent2 = _interopRequireDefault(_superagent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -6322,12 +6324,16 @@ var University = function (_Component) {
     key: 'saveSchool',
     value: function saveSchool(university, event) {
       if (event) {
+        console.log("university in save school", university);
         event.preventDefault();
-        // axios.put("/auth/savedschools", { savedSchools: [...savedSchools, university] }).then(function (result){
-        //   console.log("saved school is ", result);
-        //  })["catch"](function (err) {
-        // console.log("we have not got the data!");
-        // });
+        //const selectedUniversities = this.props.university.selectedUniversities;
+        var universityName = university.school_name;
+        console.log("universityName", universityName);
+        _axios2.default.put("/auth/savedschools", _defineProperty({}, universityName, university)).then(function (result) {
+          console.log("saved school is ", result);
+        })["catch"](function (err) {
+          console.log("we have not got the data!");
+        });
       }
     }
   }, {
@@ -6336,7 +6342,7 @@ var University = function (_Component) {
       var _this2 = this;
 
       var selectedUniversities = this.props.university.selectedUniversities.length ? this.props.university.selectedUniversities : [];
-      console.log("selectedUniversities in the University component", selectedUniversities);
+      //console.log("selectedUniversities in the University component", selectedUniversities)
       selectedUniversities = selectedUniversities.map(function (university, index) {
         return _react2.default.createElement(
           'div',
@@ -30989,7 +30995,7 @@ exports.default = function () {
 
 		case _constants2.default.PERSONAL_INFO_RECEIVED:
 			newState["currentUser"]["personal"] = action.data;
-			console.log("action.data", action.data);
+			//console.log("action.data", action.data)
 			console.log("newState: ", newState);
 			return newState;
 
@@ -31036,14 +31042,14 @@ exports.default = function () {
 
 		case _constants2.default.SEARCHED_UNIVERSITY_RECEIVED:
 			newState.searchedUniversity = action.data;
-			//newState["selectedUniversities"].push(action.data);
-			console.log("action.data", action.data);
-			console.log("newState: ", newState);
+			//console.log("action.data", action.data);
+			//console.log("newState: ", newState);
 			return newState;
 
 		case _constants2.default.SELECTED_UNIVERSITY_RECEIVED:
 			newState.selectedUniversities.push(action.data);
-			console.log("newState: ", newState);
+			//console.log("action.data", action.data)
+			//console.log("newState: ", newState);
 			return newState;
 
 		default:
@@ -32810,7 +32816,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = function (props) {
 
 	var user = props.user ? props.user : {};
-	console.log("user in the profile form", user);
+	//console.log("user in the profile form", user);
 	user.personal = Object.keys(user.personal).length ? user.personal : {};
 	var isDisabled = props.isDisabled;
 	//console.log("isDisabled in the ProfileForm", isDisabled);
@@ -33029,7 +33035,7 @@ exports.default = function (props) {
 
 	var user = props.user ? props.user : {}; // can be null
 	//console.log("user", user)
-	var personal = user ? user.personal : {};
+	var personal = Object.keys(user.personal).length ? user.personal : {};
 	//console.log("personal", personal)
 
 	return _react2.default.createElement(
@@ -33192,7 +33198,7 @@ exports.default = function (props) {
 	var personal_statement = user ? user.personal_statement : "";
 	//console.log("personal statement in the component", personal_statement)
 	var noStatement = props.noStatement;
-	console.log("no statement", noStatement);
+	//console.log("no statement", noStatement);
 
 	return _react2.default.createElement(
 		"div",
@@ -33440,6 +33446,7 @@ var Profile = function (_Component) {
 				var payload = response.body;
 				var user = payload.user; // this is the currently logged-in user
 				_this2.props.currentUserReceived(user);
+				console.log("hahahhahah", _this2.props.user.currentUser);
 				_this2.setState({
 					info_ui: user.personal.city && user.personal.country ? 'card' : 'form',
 					statement_ui: user.personal_statement ? 'card' : 'form'
@@ -33503,6 +33510,7 @@ var Profile = function (_Component) {
 				var value = event.target.value ? event.target.value : '';
 				var personal = Object.assign({}, this.state.personal);
 				personal[name] = value;
+
 				// let user = this.props.user.currentUser;
 				this.setState({
 					personal: personal
@@ -33536,6 +33544,7 @@ var Profile = function (_Component) {
 			if (event) {
 				event.preventDefault();
 				var personal = this.state.personal;
+				console.log("personal?????", personal);
 				this.props.personalInfoReceived(personal);
 				//console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
 				_axios2.default.put("/auth/currentuser", { personal: personal }).then(function (result) {
@@ -33554,7 +33563,7 @@ var Profile = function (_Component) {
 			var currentUser = this.props.user.currentUser; // can be null
 			//console.log("currentUser", currentUser);
 			var personal = currentUser ? currentUser.personal : {};
-			//console.log("personal", personal)
+			//console.log("personal in the profile form", personal)
 			var personal_statement = currentUser ? currentUser.personal_statement : null;
 			//console.log("personal_statement in the profile", personal_statement)
 
