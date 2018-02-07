@@ -9,9 +9,9 @@ var React = _interopRequire(_react);
 var Component = _react.Component;
 module.exports = function (props) {
 	var user = props.user ? props.user : {}; // can be null
-	console.log("user", user);
+	//console.log("user", user)
 	var personal = user ? user.personal : {};
-	console.log("personal", personal);
+	//console.log("personal", personal)
 
 	return React.createElement(
 		"div",

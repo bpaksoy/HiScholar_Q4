@@ -2,6 +2,8 @@
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
+var _defineProperty = function (obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); };
+
 var _prototypeProperties = function (child, staticProps, instanceProps) { if (staticProps) Object.defineProperties(child, staticProps); if (instanceProps) Object.defineProperties(child.prototype, instanceProps); };
 
 var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc && desc.writable) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
@@ -15,18 +17,64 @@ var _react = require("react");
 var React = _interopRequire(_react);
 
 var Component = _react.Component;
+var connect = require("react-redux").connect;
+var actions = _interopRequire(require("../../actions"));
+
 var Nav = (function (Component) {
-	function Nav() {
+	function Nav(props) {
 		_classCallCheck(this, Nav);
 
-		_get(Object.getPrototypeOf(Nav.prototype), "constructor", this).call(this);
+		_get(Object.getPrototypeOf(Nav.prototype), "constructor", this).call(this, props);
+		this.state = {
+			searchedUniversity: ""
+		};
 	}
 
 	_inherits(Nav, Component);
 
 	_prototypeProperties(Nav, null, {
+		handleChange: {
+			value: function handleChange(event) {
+				if (event) {
+					event.preventDefault();
+					var _name = event.target.name;
+					var value = event.target.value;
+					this.setState(_defineProperty({}, _name, value));
+				}
+			},
+			writable: true,
+			configurable: true
+		},
+		handleSubmit: {
+			value: function handleSubmit(event) {
+				var _this = this;
+				var search = this.refs.search;
+				if (event) {
+					event.preventDefault();
+
+					var searchedUniversity = this.state.searchedUniversity.trim();
+					this.props.searchedUniversityReceived(searchedUniversity);
+					search.value = "";
+					console.log("searchedUniversity in the Nav", this.state.searchedUniversity);
+
+					var url = "/api/universities/name/" + searchedUniversity;
+					return axios.get(url).then(function (result) {
+						var data = result.data;
+						_this.props.selectedUniversityReceived(data[0]);
+						console.log("result is ", result);
+					})["catch"](function (err) {
+						console.log("we have not got the data!");
+					});
+				}
+			},
+			writable: true,
+			configurable: true
+		},
 		render: {
 			value: function render() {
+				var selectedUniversity = this.props.university.selectedUniversities.length ? this.props.university.selectedUniversities[0] : [];
+				console.log("selectedUniversity", selectedUniversity);
+
 				return React.createElement(
 					"nav",
 					{ className: "navbar navbar-transparent navbar-absolute" },
@@ -108,12 +156,12 @@ var Nav = (function (Component) {
 								React.createElement(
 									"div",
 									{ className: "form-group  is-empty" },
-									React.createElement("input", { type: "text", className: "form-control", placeholder: "Search schools" }),
+									React.createElement("input", { ref: "search", onChange: this.handleChange.bind(this), name: "searchedUniversity", value: this.state.value, type: "text", className: "form-control", placeholder: "Search schools" }),
 									React.createElement("span", { className: "material-input" })
 								),
 								React.createElement(
 									"button",
-									{ type: "submit", className: "btn btn-white btn-round btn-just-icon" },
+									{ onClick: this.handleSubmit.bind(this), className: "btn btn-white btn-round btn-just-icon" },
 									React.createElement(
 										"i",
 										{ className: "material-icons" },
@@ -134,4 +182,21 @@ var Nav = (function (Component) {
 	return Nav;
 })(Component);
 
-module.exports = Nav;
+var stateToProps = function (state) {
+	return {
+		university: state.university
+	};
+};
+
+var dispatchToProps = function (dispatch) {
+	return {
+		searchedUniversityReceived: function (university) {
+			return dispatch(actions.searchedUniversityReceived(university));
+		},
+		selectedUniversityReceived: function (university) {
+			return dispatch(actions.selectedUniversityReceived(university));
+		}
+	};
+};
+
+module.exports = connect(stateToProps, dispatchToProps)(Nav);

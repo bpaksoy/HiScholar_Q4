@@ -6329,7 +6329,7 @@ var University = function (_Component) {
           { key: index, className: 'row' },
           _react2.default.createElement(
             'div',
-            { className: 'col-sm-8 col-md-6' },
+            { className: 'col-sm-6 col-md-6' },
             _react2.default.createElement(
               'div',
               { className: 'thumbnail' },
@@ -6347,6 +6347,14 @@ var University = function (_Component) {
                   null,
                   university.description
                 ),
+                _react2.default.createElement(
+                  'small',
+                  { className: 'text-muted' },
+                  'Ranking #',
+                  university.ranking,
+                  ' among universities in the US.'
+                ),
+                _react2.default.createElement('br', null),
                 _react2.default.createElement(
                   'small',
                   { className: 'text-muted' },

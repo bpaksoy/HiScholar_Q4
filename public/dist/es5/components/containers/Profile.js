@@ -44,10 +44,10 @@ function validateStatement(statement) {
 }
 
 var Profile = (function (Component) {
-	function Profile() {
+	function Profile(props) {
 		_classCallCheck(this, Profile);
 
-		_get(Object.getPrototypeOf(Profile.prototype), "constructor", this).call(this);
+		_get(Object.getPrototypeOf(Profile.prototype), "constructor", this).call(this, props);
 		this.state = {
 			user: {},
 			firstName: "",
@@ -201,7 +201,7 @@ var Profile = (function (Component) {
 		render: {
 			value: function render() {
 				var currentUser = this.props.user.currentUser; // can be null
-				console.log("currentUser", currentUser);
+				//console.log("currentUser", currentUser);
 				var personal = currentUser ? currentUser.personal : {};
 				//console.log("personal", personal)
 				var personal_statement = currentUser ? currentUser.personal_statement : null;
@@ -214,7 +214,6 @@ var Profile = (function (Component) {
 				//console.log(errors, isDisabled);
 				var noStatement = validateStatement(this.state.personal_statement);
 				//console.log("no statement status: ", noStatement)
-
 
 				if (this.props.user && this.props.user.currentUser) {
 					return React.createElement(

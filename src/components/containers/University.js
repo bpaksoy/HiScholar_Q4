@@ -23,12 +23,13 @@ class University extends Component {
   selectedUniversities = selectedUniversities.map((university, index) => {
     return(
       <div key={index} className="row">
-        <div className="col-sm-8 col-md-6">
+        <div className="col-sm-6 col-md-6">
           <div className="thumbnail">
             <img src={university.imgURL} alt="university_img"/>
             <div className="caption">
               <h3>{university.school_name}</h3>
               <p>{university.description}</p>
+              <small className="text-muted">Ranking #{university.ranking} among universities in the US.</small><br/>
               <small className="text-muted">Tuition $ {university.tuition}</small><br/>
               <small className="text-muted">Acceptance rate: {university.acceptance_rate}%</small>
               <p>

@@ -24,9 +24,15 @@ module.exports = {
 			data: statement
 		};
 	},
-	universityReceived: function (university) {
+	searchedUniversityReceived: function (university) {
 		return {
-			type: constants.UNIVERSITY_RECEIVED,
+			type: constants.SEARCHED_UNIVERSITY_RECEIVED,
+			data: university
+		};
+	},
+	selectedUniversityReceived: function (university) {
+		return {
+			type: constants.SELECTED_UNIVERSITY_RECEIVED,
 			data: university
 		};
 	}

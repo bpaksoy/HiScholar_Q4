@@ -19,10 +19,9 @@ var Sidebar = _presentation.Sidebar;
 var Footer = _presentation.Footer;
 var ProfileCard = _presentation.ProfileCard;
 var ProfileForm = _presentation.ProfileForm;
-var _containers = require("../containers");
+var Profile = require("../containers").Profile;
+var Nav = _interopRequire(require("../containers/Nav"));
 
-var Profile = _containers.Profile;
-var Nav = _containers.Nav;
 var Dashboard = (function (Component) {
 	function Dashboard() {
 		_classCallCheck(this, Dashboard);
@@ -37,6 +36,9 @@ var Dashboard = (function (Component) {
 	_prototypeProperties(Dashboard, null, {
 		render: {
 			value: function render() {
+				var selectedUniversity = this.state ? this.state.selectedUniversity : "";
+				console.log("selectedUniversity in the Dashboard", selectedUniversity);
+
 				return React.createElement(
 					"div",
 					{ className: "wrapper" },
@@ -51,7 +53,7 @@ var Dashboard = (function (Component) {
 							React.createElement(
 								"div",
 								{ className: "container-fluid" },
-								React.createElement(Profile, null)
+								React.createElement(Profile, { selectedUniversity: selectedUniversity })
 							)
 						),
 						React.createElement(Footer, null)
