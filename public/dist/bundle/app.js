@@ -6319,14 +6319,28 @@ var University = function (_Component) {
   }
 
   _createClass(University, [{
+    key: 'saveSchool',
+    value: function saveSchool(university, event) {
+      if (event) {
+        event.preventDefault();
+        // axios.put("/auth/savedschools", { savedSchools: [...savedSchools, university] }).then(function (result){
+        //   console.log("saved school is ", result);
+        //  })["catch"](function (err) {
+        // console.log("we have not got the data!");
+        // });
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var selectedUniversities = this.props.university.selectedUniversities.length ? this.props.university.selectedUniversities : [];
       console.log("selectedUniversities in the University component", selectedUniversities);
       selectedUniversities = selectedUniversities.map(function (university, index) {
         return _react2.default.createElement(
           'div',
-          { key: index, className: 'row' },
+          { key: index, className: 'row', onClick: _this2.saveSchool.bind(_this2, university) },
           _react2.default.createElement(
             'div',
             { className: 'col-sm-6 col-md-6' },
@@ -6350,7 +6364,7 @@ var University = function (_Component) {
                 _react2.default.createElement(
                   'small',
                   { className: 'text-muted' },
-                  'Ranking #',
+                  'Ranked #',
                   university.ranking,
                   ' among universities in the US.'
                 ),
@@ -6422,40 +6436,6 @@ var divStyle = {
   padding: "5px 5px 5px 5px",
   margin: "10px 10px 10px 10px"
 };
-
-// <div style={divStyle} key={index} className="card" style={{width: "25rem", margin: "10"}}>
-//    <img className="card-img-top" src={university.imgURL} alt="Card image cap"/>
-//    <div  className="card-block">
-//      <span><a href="#"><b>{university.school_name}</b></a></span>
-//      <p className="card-text">{university.description}</p>
-//      <small className="text-muted">Tuition $ {university.tuition}</small><br/>
-//      <small className="text-muted">Acceptance rate: {university.acceptance_rate}%</small>
-//    </div>
-// </div>
-// <div className="card" style={{width: "30rem"}}>
-//   <img className="card-img-top" src="/img/Logo.png" alt="Card image cap"/>
-//   <div className="card-block" style={{marginLeft: "10"}}>
-//     <h4 className="card-title">Card title</h4>
-//     <p className="card-text" >Some quick example text to build on the card title and make up the bulk of the cards content.</p>
-//   </div>
-//   <ul className="list-group list-group-flush">
-//     <li className="list-group-item">Cras justo odio</li>
-//     <li className="list-group-item">Dapibus ac facilisis in</li>
-//     <li className="list-group-item">Vestibulum at eros</li>
-//   </ul>
-//   <div className="card-block">
-//     <a href="#" className="card-link">Card link</a>
-//     <a href="#" className="card-link">Another link</a>
-//   </div>
-// </div>
-
-// <div className="card" style={{width: "25rem", margin: "10"}}>
-//    <img className="card-img-top" src="" alt="Card image cap"/>
-//    <div className="card-block">
-//      <p style={pStyle} className="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
-//    </div>
-//  </div>
-// </div>
 
 /***/ }),
 /* 161 */
@@ -32830,10 +32810,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = function (props) {
 
 	var user = props.user ? props.user : {};
-	user.personal = user.personal.city && user.personal.country ? user.personal : {};
+	console.log("user in the profile form", user);
+	user.personal = Object.keys(user.personal).length ? user.personal : {};
 	var isDisabled = props.isDisabled;
 	//console.log("isDisabled in the ProfileForm", isDisabled);
-	//console.log("user in the profile form", user)
+
 
 	return _react2.default.createElement(
 		"div",

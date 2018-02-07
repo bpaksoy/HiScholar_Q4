@@ -73,6 +73,8 @@ router.get("/universities/name/:school_name", (req, res, next) => {
 
 
 
+
+
 //get all universities
 router.get("/universities", (req, res, next) => {
 

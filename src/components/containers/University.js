@@ -15,6 +15,16 @@ class University extends Component {
 
   }
 
+ saveSchool(university, event){
+   if(event){
+     event.preventDefault();
+     // axios.put("/auth/savedschools", { savedSchools: [...savedSchools, university] }).then(function (result){
+ 			//   console.log("saved school is ", result);
+ 			//  })["catch"](function (err) {
+ 		 // console.log("we have not got the data!");
+ 		 // });
+   }
+ }
 
 
   render(){
@@ -22,14 +32,14 @@ class University extends Component {
   console.log("selectedUniversities in the University component", selectedUniversities)
   selectedUniversities = selectedUniversities.map((university, index) => {
     return(
-      <div key={index} className="row">
+      <div key={index} className="row" onClick={this.saveSchool.bind(this, university)}>
         <div className="col-sm-6 col-md-6">
           <div className="thumbnail">
             <img src={university.imgURL} alt="university_img"/>
             <div className="caption">
               <h3>{university.school_name}</h3>
               <p>{university.description}</p>
-              <small className="text-muted">Ranking #{university.ranking} among universities in the US.</small><br/>
+              <small className="text-muted">Ranked #{university.ranking} among universities in the US.</small><br/>
               <small className="text-muted">Tuition $ {university.tuition}</small><br/>
               <small className="text-muted">Acceptance rate: {university.acceptance_rate}%</small>
               <p>
@@ -74,39 +84,3 @@ const divStyle ={
   padding: "5px 5px 5px 5px",
   margin: "10px 10px 10px 10px"
 };
-
-
-
-// <div style={divStyle} key={index} className="card" style={{width: "25rem", margin: "10"}}>
-//    <img className="card-img-top" src={university.imgURL} alt="Card image cap"/>
-//    <div  className="card-block">
-//      <span><a href="#"><b>{university.school_name}</b></a></span>
-//      <p className="card-text">{university.description}</p>
-//      <small className="text-muted">Tuition $ {university.tuition}</small><br/>
-//      <small className="text-muted">Acceptance rate: {university.acceptance_rate}%</small>
-//    </div>
-// </div>
-// <div className="card" style={{width: "30rem"}}>
-//   <img className="card-img-top" src="/img/Logo.png" alt="Card image cap"/>
-//   <div className="card-block" style={{marginLeft: "10"}}>
-//     <h4 className="card-title">Card title</h4>
-//     <p className="card-text" >Some quick example text to build on the card title and make up the bulk of the cards content.</p>
-//   </div>
-//   <ul className="list-group list-group-flush">
-//     <li className="list-group-item">Cras justo odio</li>
-//     <li className="list-group-item">Dapibus ac facilisis in</li>
-//     <li className="list-group-item">Vestibulum at eros</li>
-//   </ul>
-//   <div className="card-block">
-//     <a href="#" className="card-link">Card link</a>
-//     <a href="#" className="card-link">Another link</a>
-//   </div>
-// </div>
-
-// <div className="card" style={{width: "25rem", margin: "10"}}>
-//    <img className="card-img-top" src="" alt="Card image cap"/>
-//    <div className="card-block">
-//      <p style={pStyle} className="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
-//    </div>
-//  </div>
-// </div>

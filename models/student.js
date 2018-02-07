@@ -59,7 +59,9 @@ const studentSchema = new Schema({
     type: String,
     default: ""
   },
-  personal: PersonalSchema
+  selectedSchools: [],
+  personal: [PersonalSchema],
+
 });
 
 const Student = mongoose.model("student", studentSchema);

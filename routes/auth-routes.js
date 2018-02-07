@@ -125,6 +125,7 @@ router.get("/currentuser", (req, res) => {
 })
 
 
+//update personal statement
 router.put("/personal_statement", (req,res, next) => {
  const id = (req.session.localUser)? req.session.localUser._id : req.user._id;
  let collection = (req.session.localUser)? Student : User;
@@ -140,6 +141,21 @@ router.put("/personal_statement", (req,res, next) => {
     })
 })
 
+
+//save schools to the database
+// router.put("/savedschools", (req, res, next) => {
+//   const id = (req.session.localUser)? req.session.localUser._id : req.user._id;
+//   let collection = (req.session.localUser)? Student : User;
+//   const savedSchool = req.body;
+//
+//  collection.findOne({_id: id})
+//     .then(user => {
+//       user.savedSchools.push(savedSchool);
+//       user.save().then(result => {
+//         res.send(result)
+//       })
+//     })
+// })
 
 //post personal information to the user collection
 router.put("/currentuser", (req, res, next) => {
@@ -162,6 +178,7 @@ router.put("/currentuser", (req, res, next) => {
       })
     })
 })
+
 
 //auth logout
 router.get("/logout", (req,res, next) => {
