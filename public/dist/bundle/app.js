@@ -6345,6 +6345,9 @@ var University = function (_Component) {
 
       var selectedUniversities = this.props.university.selectedUniversities.length ? this.props.university.selectedUniversities : [];
       //console.log("selectedUniversities in the University component", selectedUniversities)
+      var numberWithCommas = function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      };
       console.log("isSaved: ", this.state.isSaved);
       selectedUniversities = selectedUniversities.map(function (university, index) {
         return _react2.default.createElement(
@@ -6381,8 +6384,8 @@ var University = function (_Component) {
                 _react2.default.createElement(
                   'small',
                   { className: 'text-muted' },
-                  'Tuition $ ',
-                  university.tuition
+                  'Annual tuition $ ',
+                  numberWithCommas(university.tuition)
                 ),
                 _react2.default.createElement('br', null),
                 _react2.default.createElement(

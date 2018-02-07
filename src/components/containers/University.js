@@ -34,6 +34,9 @@ class University extends Component {
   render(){
   let selectedUniversities = (this.props.university.selectedUniversities.length) ? this.props.university.selectedUniversities : [];
   //console.log("selectedUniversities in the University component", selectedUniversities)
+  const numberWithCommas = (x) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+ }
   console.log("isSaved: ", this.state.isSaved);
   selectedUniversities = selectedUniversities.map((university, index) => {
     return(
@@ -45,7 +48,7 @@ class University extends Component {
               <h3>{university.school_name}</h3>
               <p>{university.description}</p>
               <small className="text-muted">Ranked #{university.ranking} among universities in the US.</small><br/>
-              <small className="text-muted">Tuition $ {university.tuition}</small><br/>
+              <small className="text-muted">Annual tuition $ {numberWithCommas(university.tuition)}</small><br/>
               <small className="text-muted">Acceptance rate: {university.acceptance_rate}%</small>
               <p>
                   <a href="#" className="btn btn-primary" role="button">Save <i className="fa fa-heart"></i></a>
