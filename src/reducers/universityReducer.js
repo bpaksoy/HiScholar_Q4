@@ -1,7 +1,7 @@
 import constants from '../constants'
 
 var initialState = {
-  selectedUniversity: "",
+  searchedUniversity: "",
 	selectedUniversities: []
 }
 
@@ -10,12 +10,17 @@ export default (state = initialState, action) => {
 
 	switch (action.type) {
 
-		case constants.UNIVERSITY_RECEIVED:
-      newState.selectedUniversity = action.data;
-			newState["selectedUniversities"].push(action.data);
-      console.log("action.data", action.data)
-			console.log("newState: ", newState)
+		case constants.SEARCHED_UNIVERSITY_RECEIVED:
+      newState.searchedUniversity = action.data;
+			//newState["selectedUniversities"].push(action.data);
+      console.log("action.data", action.data);
+			console.log("newState: ", newState);
 			return newState;
+
+    case constants.SELECTED_UNIVERSITY_RECEIVED:
+     newState.selectedUniversities.push(action.data);
+     console.log("newState: ", newState);
+     return newState;
 
 		default:
 			return state;

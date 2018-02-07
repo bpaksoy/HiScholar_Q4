@@ -20,9 +20,15 @@ export default {
 			data: statement
 		}
 	},
-	universityReceived: (university) => {
+	searchedUniversityReceived: (university) => {
 		return {
-			type: constants.UNIVERSITY_RECEIVED,
+			type: constants.SEARCHED_UNIVERSITY_RECEIVED,
+			data: university
+		}
+	},
+	selectedUniversityReceived: (university) => {
+		return {
+			type: constants.SELECTED_UNIVERSITY_RECEIVED,
 			data: university
 		}
 	}

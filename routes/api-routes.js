@@ -58,7 +58,7 @@ router.get("/universities/:university_id", (req, res, next) => {
 
 //get university by name
 router.get("/universities/name/:school_name", (req, res, next) => {
-  const school_name = req.params.school_name;
+  const school_name = req.params.school_name.trim();
    console.log("name in the router: ", school_name)
    University.find({school_name: school_name}, (err, university) => {
      if(err){

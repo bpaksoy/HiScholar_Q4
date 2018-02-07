@@ -9,44 +9,32 @@ class University extends Component {
 
  constructor(props){
     super(props);
+    this.state = {
+
+    };
 
   }
-
- componentDidMount() {
- 	superagent.get('/api/universities')
- 		.query(null)
- 		.set('Accept', 'application/json')
- 		.end((err, response) => {
- 			if (err)
- 				return
- 			//const payload = response.body
-      console.log("university array", payload);
-      this.setState({
-        universityArray: payload
-      })
-    //  console.log("university array after payload", this.state.universityArray);
- 		})
-  }
-
 
 
 
   render(){
-    const selectedUniversity = (this.props.university.selectedUniversity)? this.props.university.selectedUniversity : ""; //can be null
-    console.log("selectedUniversity in the university component", selectedUniversity);
-    //const universityArray = (this.state.universityArray)? this.state.universityArray : [];
-    //const collegeMatch = (universityArray.length) ? universityArray.filter(university => university.school_name.toLowerCase().includes(selectedUniversity)) : "";
-    //console.log("collegeMatch", collegeMatch)
+    const match = (match) ? match.imgURL : "";
+
+
 
     return(
       <div>
-        <h3>This is University component!</h3>
-        <div className="card" style={{width: "25rem", margin: "10"}}>
-          <img className="card-img-top" src="/img/Logo.png" alt="Card image cap"/>
-          <div className="card-block">
-            <p style={pStyle} className="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
+       {(match)?
+        <div>
+         <h3>This is University component!</h3>
+         <div className="card" style={{width: "25rem", margin: "10"}}>
+            <img className="card-img-top" src="" alt="Card image cap"/>
+            <div className="card-block">
+              <p style={pStyle} className="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
+            </div>
           </div>
         </div>
+       : null }
       </div>
     );
   }

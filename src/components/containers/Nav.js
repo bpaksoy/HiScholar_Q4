@@ -8,8 +8,7 @@ class Nav extends Component {
  constructor(props){
 	 super(props);
 	 this.state = {
-		 selectedUniversity: "",
-		 getUniversity: props.getUniversity
+		 searchedUniversity: ""
 	 }
  }
 
@@ -28,14 +27,28 @@ class Nav extends Component {
 	 let search = this.refs.search;
 	 if(event){
 		 event.preventDefault();
-		 const selectedUniversity = this.state.selectedUniversity.toLowerCase().trim();
-     this.props.universityReceived(selectedUniversity)
+
+		 const searchedUniversity = this.state.searchedUniversity.trim();
+     this.props.searchedUniversityReceived(searchedUniversity)
 		 search.value = "";
-		 console.log("selectedUniversity in the Nav", this.state.selectedUniversity);
-	 }
+		 console.log("searchedUniversity in the Nav", this.state.searchedUniversity);
+
+		 const url = "/api/universities/name/" + searchedUniversity;
+			 return axios.get(url)
+				.then( result => {
+					const data = result.data
+					this.props.selectedUniversityReceived(data[0]);
+					console.log("result is ", result);
+				})["catch"]( err =>{
+				console.log("we have not got the data!");
+			 });
+		 }
  }
 
  render(){
+ const selectedUniversity = (this.props.university.selectedUniversities.length) ? this.props.university.selectedUniversities[0] : [];
+ console.log("selectedUniversity", selectedUniversity)
+
 	return (
 		<nav className="navbar navbar-transparent navbar-absolute">
 			<div className="container-fluid">
@@ -66,7 +79,7 @@ class Nav extends Component {
 					</ul>
 					<form className="navbar-form navbar-right" role="search">
 							<div className="form-group  is-empty">
-									<input ref="search" onChange={this.handleChange.bind(this)} name="selectedUniversity" value={this.state.value} type="text" className="form-control" placeholder="Search schools"/>
+									<input ref="search" onChange={this.handleChange.bind(this)} name="searchedUniversity" value={this.state.value} type="text" className="form-control" placeholder="Search schools"/>
 									<span className="material-input"></span>
 							</div>
 							<button onClick={this.handleSubmit.bind(this)} className="btn btn-white btn-round btn-just-icon">
@@ -89,7 +102,8 @@ const stateToProps = (state) => {
 
 const dispatchToProps = (dispatch) => {
 	return {
-		universityReceived: (university) => dispatch(actions.universityReceived(university))
+		searchedUniversityReceived: (university) => dispatch(actions.searchedUniversityReceived(university)),
+		selectedUniversityReceived: (university) => dispatch(actions.selectedUniversityReceived(university))
 	 }
  }
 

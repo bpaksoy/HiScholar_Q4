@@ -187,7 +187,8 @@
 
        document.getElementById("university").addEventListener("submit", (e)=>{
          e.preventDefault();
-         const school_name = document.getElementById("school_name").value;
+         const school_name = document.getElementById("school_name").value.trim();
+         document.getElementById("school_name").value = "";
          console.log("school_name from the input", school_name)
          const url = "http://localhost:5000/api/universities/name/" + school_name;
          console.log("url:", "http://localhost:5000/api/universities/" + school_name);
@@ -199,7 +200,7 @@
            img = createNode('img'),
            span = createNode('span');
            img.src = result[0].imgURL;
-           span.innerHTML = `<a href="/auth/register">${result[0].school_name}</a><br/> ${result[0].description} <br/> Ranking: ${result[0].ranking}`;
+           span.innerHTML = `<a href="/auth/register">${result[0].school_name}</a><br/> ${result[0].description} <br/> Ranking: ${result[0].ranking}<br/> Acceptance Rate: ${result[0].acceptance_rate}%`;
            append(li, img);
            append(li, span);
            append(ul, li);
