@@ -9,7 +9,10 @@ var applyMiddleware = _redux.applyMiddleware;
 var combineReducers = _redux.combineReducers;
 var thunk = _interopRequire(require("redux-thunk"));
 
-var userReducer = require("../reducers").userReducer;
+var _reducers = require("../reducers");
+
+var userReducer = _reducers.userReducer;
+var universityReducer = _reducers.universityReducer;
 
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -28,7 +31,8 @@ module.exports = {
 		var reducers = combineReducers({ // insert reducers here
 			user: userReducer,
 			information: userReducer,
-			statement: userReducer
+			statement: userReducer,
+			university: universityReducer
 		});
 
 		if (initialState) {

@@ -4,10 +4,12 @@
 */
 
 
-import userReducer from './userReducer'
+import userReducer from './userReducer';
+import universityReducer from './universityReducer';
 
 export {
-	
-	userReducer
-	
+
+	userReducer,
+	universityReducer
+
 }

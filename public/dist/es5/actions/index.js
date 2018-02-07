@@ -23,6 +23,12 @@ module.exports = {
 			type: constants.PERSONAL_STATEMENT_RECEIVED,
 			data: statement
 		};
+	},
+	universityReceived: function (university) {
+		return {
+			type: constants.UNIVERSITY_RECEIVED,
+			data: university
+		};
 	}
 
 

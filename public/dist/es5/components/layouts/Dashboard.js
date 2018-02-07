@@ -16,11 +16,13 @@ var Component = _react.Component;
 var _presentation = require("../presentation");
 
 var Sidebar = _presentation.Sidebar;
-var Nav = _presentation.Nav;
 var Footer = _presentation.Footer;
 var ProfileCard = _presentation.ProfileCard;
 var ProfileForm = _presentation.ProfileForm;
-var Profile = require("../containers").Profile;
+var _containers = require("../containers");
+
+var Profile = _containers.Profile;
+var Nav = _containers.Nav;
 var Dashboard = (function (Component) {
 	function Dashboard() {
 		_classCallCheck(this, Dashboard);

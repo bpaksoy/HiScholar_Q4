@@ -15,9 +15,15 @@ export default {
 		}
 	},
 	personalStatementReceived: (statement) => {
-		return{
+		return {
 			type: constants.PERSONAL_STATEMENT_RECEIVED,
 			data: statement
+		}
+	},
+	universityReceived: (university) => {
+		return {
+			type: constants.UNIVERSITY_RECEIVED,
+			data: university
 		}
 	}
 

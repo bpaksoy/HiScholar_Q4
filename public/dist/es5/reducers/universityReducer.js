@@ -5,7 +5,7 @@ var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["defau
 var constants = _interopRequire(require("../constants"));
 
 var initialState = {
-	currentUser: null
+	selectedUniversities: []
 };
 
 module.exports = function (_x, action) {
@@ -14,20 +14,10 @@ module.exports = function (_x, action) {
 
 	switch (action.type) {
 
-		case constants.CURRENT_USER_RECEIVED:
-			newState.currentUser = action.data;
-			return newState;
-
-		case constants.PERSONAL_INFO_RECEIVED:
-			newState.currentUser.personal = action.data;
+		case constants.UNIVERSITY_RECEIVED:
+			newState.selectedUniversities.push(action.data);
 			console.log("action.data", action.data);
 			console.log("newState: ", newState);
-			return newState;
-
-		case constants.PERSONAL_STATEMENT_RECEIVED:
-			newState.currentUser.personal_statement = action.data;
-			//console.log("action.data", action.data)
-			//console.log("newState: ", newState)
 			return newState;
 
 		default:

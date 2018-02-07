@@ -26,18 +26,41 @@ router.use(function (req, res, next) {
 //post universities
 router.post("/universities", (req, res, next) =>{
   console.log("req.body", req.body)
-  University.create(req.body).then(university => {
-    res.render("Home", {university: university})
-
+  const university = {};
+  university.school_name = req.body.school_name.toLowerCase().trim();
+  university.description = req.body.description;
+  university.ranking = req.body.ranking;
+  university.tuition = req.body.tuition;
+  university.acceptance_rate = req.body.acceptance_rate;
+  university.latitude = req.body.latitude;
+  university.longitude = req.body.longitude;
+  university.imgURL = req.body.imgURL;
+  University.create(university).then(result => {
+    res.render("Home", {university: result})
   });
 });
 
 
-// get university by name
+// get university by id
 router.get("/universities/:university_id", (req, res, next) => {
   const id = req.params.university_id;
    console.log("id in the router: ", id)
    University.findOne({_id: id}, (err, university) => {
+     if(err){
+       console.log(err);
+       return res.status(500).send();
+     }
+     console.log("university in the router:", university)
+      res.send(university);
+    })
+
+});
+
+//get university by name
+router.get("/universities/name/:school_name", (req, res, next) => {
+  const school_name = req.params.school_name;
+   console.log("name in the router: ", school_name)
+   University.find({school_name: school_name}, (err, university) => {
      if(err){
        console.log(err);
        return res.status(500).send();

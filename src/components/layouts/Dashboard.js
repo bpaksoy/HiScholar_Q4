@@ -1,20 +1,25 @@
 import React, { Component } from 'react'
-import { Sidebar, Nav, Footer, ProfileCard, ProfileForm } from '../presentation'
+import { Sidebar, Footer, ProfileCard, ProfileForm } from '../presentation'
 import { Profile } from '../containers'
+import Nav from '../containers/Nav'
 
 class Dashboard extends Component {
 
+
 	render() {
+		const selectedUniversity = (this.state)? this.state.selectedUniversity : "";
+		console.log("selectedUniversity in the Dashboard", selectedUniversity);
+
 		return (
 			<div className="wrapper">
 				<Sidebar />
 
 				<div className="main-panel">
-					<Nav />
+					<Nav/>
 
 					<div className="content">
 						<div className="container-fluid">
-							<Profile />
+							<Profile selectedUniversity={selectedUniversity}/>
 						</div>
 
 					</div>

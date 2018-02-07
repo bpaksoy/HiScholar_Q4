@@ -27,6 +27,8 @@ var ProfileCard = _presentation.ProfileCard;
 var InfoCard = _presentation.InfoCard;
 var PersonalStatement = _presentation.PersonalStatement;
 var StatementCard = _presentation.StatementCard;
+var University = _interopRequire(require("./University"));
+
 var axios = _interopRequire(require("axios"));
 
 var superagent = _interopRequire(require("superagent"));
@@ -223,7 +225,8 @@ var Profile = (function (Component) {
 							{ className: "col-md-8" },
 							this.state.info_ui == "form" && React.createElement(ProfileForm, { handleChange: this.handleChange.bind(this), onUpdate: this.updateUser.bind(this), user: currentUser, personal: personal, isDisabled: isDisabled, handleCity: this.handleCity.bind(this), handleCountry: this.handleCountry.bind(this) }),
 							this.state.statement_ui == "form" && React.createElement(PersonalStatement, { submitStatement: this.submitStatement.bind(this), handleStatement: this.handleStatement.bind(this), user: currentUser, personal_statement: this.state.personal_statement, noStatement: noStatement }),
-							this.state.statement_ui == "card" && React.createElement(StatementCard, { user: currentUser, personal_statement: personal_statement, updateStatement: this.updateStatement.bind(this) })
+							this.state.statement_ui == "card" && React.createElement(StatementCard, { user: currentUser, personal_statement: personal_statement, updateStatement: this.updateStatement.bind(this) }),
+							React.createElement(University, null)
 						),
 						React.createElement(
 							"div",

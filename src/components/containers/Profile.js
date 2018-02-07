@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../../actions';
 import { ProfileForm, ProfileCard, InfoCard, PersonalStatement, StatementCard } from '../presentation';
-import axios from "axios";
+import University from './University';
+import axios from 'axios';
 import superagent from 'superagent';
 
 function validate(city, country){
@@ -17,8 +18,8 @@ function validateStatement(statement){
 }
 
 class Profile extends Component {
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
 		this.state = {
      user: {},
 		 firstName:"",
@@ -152,7 +153,7 @@ handleCountry(event){
 
 	render() {
 		const currentUser = this.props.user.currentUser; // can be null
-		console.log("currentUser", currentUser);
+		//console.log("currentUser", currentUser);
 		const personal = (currentUser)? currentUser.personal : {};
 		//console.log("personal", personal)
 		const personal_statement = (currentUser)? currentUser.personal_statement : null;
@@ -164,7 +165,6 @@ handleCountry(event){
 		const noStatement = validateStatement(this.state.personal_statement);
 		//console.log("no statement status: ", noStatement)
 
-
 		if (this.props.user && this.props.user.currentUser) {
 			return(
 				<div>
@@ -172,6 +172,7 @@ handleCountry(event){
 						{this.state.info_ui == 'form' && <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>}
 						{this.state.statement_ui == 'form' && <PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>}
 						{this.state.statement_ui == 'card' && <StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} />}
+						<University/>
 					</div>
 					<div className="col-md-4">
 						 <ProfileCard user={currentUser} />

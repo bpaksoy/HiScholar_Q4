@@ -64,7 +64,7 @@
         font-weight: bold;
         margin: 10px 0;
         border-radius: 4px;
-        
+
     }
     span{
         display: inline-block;
@@ -142,7 +142,7 @@
 
   				 <form id="university">
   						<h2>Find your school!</h2>
-  						<input id="university_id" name="university_id" type="text" placeholder="Enter an id"/>
+  						<input id="school_name" name="school_name" type="text" placeholder="Enter a name"/>
   						<input type="text" ref="city" placeholder="Enter the city"/>
   						<input type="submit" value="Search"/>
   				 </form>
@@ -164,10 +164,10 @@
 
        document.getElementById("university").addEventListener("submit", (e)=>{
          e.preventDefault();
-         const absurd = document.getElementById("university_id").value;
-         console.log("id from the input", absurd)
-         const url = "http://localhost:5000/api/universities/" + absurd;
-         console.log("url:", "http://localhost:5000/api/universities/" + absurd);
+         const id = document.getElementById("university_id").value;
+         console.log("id from the input", id)
+         const url = "http://localhost:5000/api/universities/" + id;
+         console.log("url:", "http://localhost:5000/api/universities/" + id);
          $.ajax({url: url, success: (result)=>{
            console.log("result", result)
 
@@ -177,6 +177,29 @@
            span = createNode('span');
            img.src = result.imgURL;
            span.innerHTML = `<a href="/auth/register">${result.school_name}</a><br/> ${result.description} <br/> Ranking: ${result.ranking}`;
+           append(li, img);
+           append(li, span);
+           append(ul, li);
+           console.log("ul", ul)
+         $("#university_").html(ul);
+         }});
+       })
+
+       document.getElementById("university").addEventListener("submit", (e)=>{
+         e.preventDefault();
+         const school_name = document.getElementById("school_name").value;
+         console.log("school_name from the input", school_name)
+         const url = "http://localhost:5000/api/universities/name/" + school_name;
+         console.log("url:", "http://localhost:5000/api/universities/" + school_name);
+         $.ajax({url: url, success: (result)=>{
+           console.log("result", result[0])
+
+           let li = createNode('li'),
+           ul = createNode('ul'),
+           img = createNode('img'),
+           span = createNode('span');
+           img.src = result[0].imgURL;
+           span.innerHTML = `<a href="/auth/register">${result[0].school_name}</a><br/> ${result[0].description} <br/> Ranking: ${result[0].ranking}`;
            append(li, img);
            append(li, span);
            append(ul, li);
