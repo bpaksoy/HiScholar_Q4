@@ -18,21 +18,35 @@ class University extends Component {
 
 
   render(){
-    const match = (match) ? match.imgURL : "";
-
-
+  let selectedUniversities = (this.props.university.selectedUniversities.length) ? this.props.university.selectedUniversities : [];
+  console.log("selectedUniversities in the University component", selectedUniversities)
+  selectedUniversities = selectedUniversities.map((university, index) => {
+    return(
+      <div key={index} className="row">
+        <div className="col-sm-8 col-md-6">
+          <div className="thumbnail">
+            <img src={university.imgURL} alt="university_img"/>
+            <div className="caption">
+              <h3>{university.school_name}</h3>
+              <p>{university.description}</p>
+              <small className="text-muted">Tuition $ {university.tuition}</small><br/>
+              <small className="text-muted">Acceptance rate: {university.acceptance_rate}%</small>
+              <p>
+                  <a href="#" className="btn btn-primary" role="button">Save</a>
+             </p>
+            </div>
+          </div>
+        </div>
+     </div>
+    );
+  })
 
     return(
       <div>
-       {(match)?
+       {(selectedUniversities.length)?
         <div>
-         <h3>This is University component!</h3>
-         <div className="card" style={{width: "25rem", margin: "10"}}>
-            <img className="card-img-top" src="" alt="Card image cap"/>
-            <div className="card-block">
-              <p style={pStyle} className="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
-            </div>
-          </div>
+          <h3>This is University component!</h3>
+          {selectedUniversities}
         </div>
        : null }
       </div>
@@ -55,11 +69,22 @@ const dispatchToProps = (dispatch) => {
 
 export default connect(stateToProps, dispatchToProps)(University);
 
-const pStyle ={
-  padding: "5px",
-  margin: "5px"
+const divStyle ={
+  padding: "5px 5px 5px 5px",
+  margin: "10px 10px 10px 10px"
 };
 
+
+
+// <div style={divStyle} key={index} className="card" style={{width: "25rem", margin: "10"}}>
+//    <img className="card-img-top" src={university.imgURL} alt="Card image cap"/>
+//    <div  className="card-block">
+//      <span><a href="#"><b>{university.school_name}</b></a></span>
+//      <p className="card-text">{university.description}</p>
+//      <small className="text-muted">Tuition $ {university.tuition}</small><br/>
+//      <small className="text-muted">Acceptance rate: {university.acceptance_rate}%</small>
+//    </div>
+// </div>
 // <div className="card" style={{width: "30rem"}}>
 //   <img className="card-img-top" src="/img/Logo.png" alt="Card image cap"/>
 //   <div className="card-block" style={{marginLeft: "10"}}>
@@ -75,4 +100,12 @@ const pStyle ={
 //     <a href="#" className="card-link">Card link</a>
 //     <a href="#" className="card-link">Another link</a>
 //   </div>
+// </div>
+
+// <div className="card" style={{width: "25rem", margin: "10"}}>
+//    <img className="card-img-top" src="" alt="Card image cap"/>
+//    <div className="card-block">
+//      <p style={pStyle} className="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
+//    </div>
+//  </div>
 // </div>

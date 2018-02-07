@@ -6321,12 +6321,65 @@ var University = function (_Component) {
   _createClass(University, [{
     key: 'render',
     value: function render() {
-      var match = match ? match.imgURL : "";
+      var selectedUniversities = this.props.university.selectedUniversities.length ? this.props.university.selectedUniversities : [];
+      console.log("selectedUniversities in the University component", selectedUniversities);
+      selectedUniversities = selectedUniversities.map(function (university, index) {
+        return _react2.default.createElement(
+          'div',
+          { key: index, className: 'row' },
+          _react2.default.createElement(
+            'div',
+            { className: 'col-sm-8 col-md-6' },
+            _react2.default.createElement(
+              'div',
+              { className: 'thumbnail' },
+              _react2.default.createElement('img', { src: university.imgURL, alt: 'university_img' }),
+              _react2.default.createElement(
+                'div',
+                { className: 'caption' },
+                _react2.default.createElement(
+                  'h3',
+                  null,
+                  university.school_name
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  university.description
+                ),
+                _react2.default.createElement(
+                  'small',
+                  { className: 'text-muted' },
+                  'Tuition $ ',
+                  university.tuition
+                ),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement(
+                  'small',
+                  { className: 'text-muted' },
+                  'Acceptance rate: ',
+                  university.acceptance_rate,
+                  '%'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  _react2.default.createElement(
+                    'a',
+                    { href: '#', className: 'btn btn-primary', role: 'button' },
+                    'Save'
+                  )
+                )
+              )
+            )
+          )
+        );
+      });
 
       return _react2.default.createElement(
         'div',
         null,
-        match ? _react2.default.createElement(
+        selectedUniversities.length ? _react2.default.createElement(
           'div',
           null,
           _react2.default.createElement(
@@ -6334,20 +6387,7 @@ var University = function (_Component) {
             null,
             'This is University component!'
           ),
-          _react2.default.createElement(
-            'div',
-            { className: 'card', style: { width: "25rem", margin: "10" } },
-            _react2.default.createElement('img', { className: 'card-img-top', src: '', alt: 'Card image cap' }),
-            _react2.default.createElement(
-              'div',
-              { className: 'card-block' },
-              _react2.default.createElement(
-                'p',
-                { style: pStyle, className: 'card-text' },
-                'Some quick example text to build on the card title and make up the bulk of the cards content.'
-              )
-            )
-          )
+          selectedUniversities
         ) : null
       );
     }
@@ -6369,11 +6409,20 @@ var dispatchToProps = function dispatchToProps(dispatch) {
 exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(University);
 
 
-var pStyle = {
-  padding: "5px",
-  margin: "5px"
+var divStyle = {
+  padding: "5px 5px 5px 5px",
+  margin: "10px 10px 10px 10px"
 };
 
+// <div style={divStyle} key={index} className="card" style={{width: "25rem", margin: "10"}}>
+//    <img className="card-img-top" src={university.imgURL} alt="Card image cap"/>
+//    <div  className="card-block">
+//      <span><a href="#"><b>{university.school_name}</b></a></span>
+//      <p className="card-text">{university.description}</p>
+//      <small className="text-muted">Tuition $ {university.tuition}</small><br/>
+//      <small className="text-muted">Acceptance rate: {university.acceptance_rate}%</small>
+//    </div>
+// </div>
 // <div className="card" style={{width: "30rem"}}>
 //   <img className="card-img-top" src="/img/Logo.png" alt="Card image cap"/>
 //   <div className="card-block" style={{marginLeft: "10"}}>
@@ -6389,6 +6438,14 @@ var pStyle = {
 //     <a href="#" className="card-link">Card link</a>
 //     <a href="#" className="card-link">Another link</a>
 //   </div>
+// </div>
+
+// <div className="card" style={{width: "25rem", margin: "10"}}>
+//    <img className="card-img-top" src="" alt="Card image cap"/>
+//    <div className="card-block">
+//      <p style={pStyle} className="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
+//    </div>
+//  </div>
 // </div>
 
 /***/ }),
