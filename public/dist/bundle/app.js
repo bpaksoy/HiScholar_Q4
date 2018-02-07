@@ -6336,6 +6336,9 @@ var University = function (_Component) {
         })["catch"](function (err) {
           console.log("we have not got the data!");
         });
+        this.setState({
+          isSaved: !this.state.isSaved
+        });
       }
     }
   }, {
@@ -6348,7 +6351,8 @@ var University = function (_Component) {
       var numberWithCommas = function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       };
-      console.log("isSaved: ", this.state.isSaved);
+      var isSaved = this.state.isSaved;
+      console.log("isSaved: ", isSaved);
       selectedUniversities = selectedUniversities.map(function (university, index) {
         return _react2.default.createElement(
           'div',
@@ -6398,10 +6402,15 @@ var University = function (_Component) {
                 _react2.default.createElement(
                   'p',
                   null,
-                  _react2.default.createElement(
+                  !isSaved ? _react2.default.createElement(
                     'a',
                     { href: '#', className: 'btn btn-primary', role: 'button' },
                     'Save ',
+                    _react2.default.createElement('i', { className: 'fa fa-heart' })
+                  ) : _react2.default.createElement(
+                    'a',
+                    { href: '#', className: 'btn btn-primary', role: 'button' },
+                    'Saved! ',
                     _react2.default.createElement('i', { className: 'fa fa-heart' })
                   )
                 )

@@ -27,6 +27,9 @@ class University extends Component {
  			 })["catch"](function (err) {
  		 console.log("we have not got the data!");
  		 });
+     this.setState({
+       isSaved: !this.state.isSaved
+     })
    }
  }
 
@@ -37,7 +40,8 @@ class University extends Component {
   const numberWithCommas = (x) => {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
  }
-  console.log("isSaved: ", this.state.isSaved);
+ const isSaved = this.state.isSaved;
+console.log("isSaved: ", isSaved);
   selectedUniversities = selectedUniversities.map((university, index) => {
     return(
       <div key={index} className="row" onClick={this.saveSchool.bind(this, university)}>
@@ -50,8 +54,10 @@ class University extends Component {
               <small className="text-muted">Ranked #{university.ranking} among universities in the US.</small><br/>
               <small className="text-muted">Annual tuition $ {numberWithCommas(university.tuition)}</small><br/>
               <small className="text-muted">Acceptance rate: {university.acceptance_rate}%</small>
-              <p>
-                  <a href="#" className="btn btn-primary" role="button">Save <i className="fa fa-heart"></i></a>
+              <p>{(!isSaved)?
+                  <a href="#" className="btn btn-primary" role="button">Save <i className="fa fa-heart"></i></a>:
+                  <a href="#" className="btn btn-primary" role="button">Saved! <i className="fa fa-heart"></i></a>
+                 }
               </p>
             </div>
           </div>
