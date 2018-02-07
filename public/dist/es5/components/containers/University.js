@@ -31,7 +31,9 @@ var University = (function (Component) {
     _classCallCheck(this, University);
 
     _get(Object.getPrototypeOf(University.prototype), "constructor", this).call(this, props);
-    this.state = {};
+    this.state = {
+      isSaved: false
+    };
   }
 
   _inherits(University, Component);
@@ -45,7 +47,7 @@ var University = (function (Component) {
           //const selectedUniversities = this.props.university.selectedUniversities;
           var universityName = university.school_name;
           console.log("universityName", universityName);
-          axios.put("/auth/savedschools", _defineProperty({}, universityName, university)).then(function (result) {
+          axios.put("/api/universities/savedschools", _defineProperty({}, universityName, university)).then(function (result) {
             console.log("saved school is ", result);
           })["catch"](function (err) {
             console.log("we have not got the data!");
@@ -60,6 +62,7 @@ var University = (function (Component) {
         var _this = this;
         var selectedUniversities = this.props.university.selectedUniversities.length ? this.props.university.selectedUniversities : [];
         //console.log("selectedUniversities in the University component", selectedUniversities)
+        console.log("isSaved: ", this.state.isSaved);
         selectedUniversities = selectedUniversities.map(function (university, index) {
           return React.createElement(
             "div",
