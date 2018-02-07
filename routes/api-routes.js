@@ -72,7 +72,30 @@ router.get("/universities/name/:school_name", (req, res, next) => {
 });
 
 
+//save schools to the database
+router.put("/universities/savedschools", (req, res, next) => {
+  const id = (req.session.localUser)? req.session.localUser._id : req.user._id;
+  let collection = (req.session.localUser)? Student : User;
+  let schoolName;
+  for(var key in req.body){
+    schoolName = key;
+  }
 
+  console.log("university name in the router", schoolName)
+
+  collection.findOne({_id: id})
+    .then(user => {
+      const match = user.selectedSchools.filter(school => school[schoolName]);
+        if(match.length){
+           console.log("school already saved");
+           return;
+        }
+        user.selectedSchools.push(req.body);
+        user.save().then(result => {
+          res.send(result)
+        })
+      })
+})
 
 
 //get all universities

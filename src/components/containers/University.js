@@ -10,7 +10,7 @@ class University extends Component {
  constructor(props){
     super(props);
     this.state = {
-
+     isSaved: false
     };
 
   }
@@ -22,7 +22,7 @@ class University extends Component {
      //const selectedUniversities = this.props.university.selectedUniversities;
      const universityName = university.school_name;
      console.log("universityName", universityName);
-     axios.put("/auth/savedschools", {[universityName]: university}).then(function (result){
+     axios.put("/api/universities/savedschools", {[universityName]: university}).then(function (result){
  			  console.log("saved school is ", result);
  			 })["catch"](function (err) {
  		 console.log("we have not got the data!");
@@ -34,6 +34,7 @@ class University extends Component {
   render(){
   let selectedUniversities = (this.props.university.selectedUniversities.length) ? this.props.university.selectedUniversities : [];
   //console.log("selectedUniversities in the University component", selectedUniversities)
+  console.log("isSaved: ", this.state.isSaved);
   selectedUniversities = selectedUniversities.map((university, index) => {
     return(
       <div key={index} className="row" onClick={this.saveSchool.bind(this, university)}>
