@@ -2,6 +2,8 @@
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
+var _defineProperty = function (obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); };
+
 var _prototypeProperties = function (child, staticProps, instanceProps) { if (staticProps) Object.defineProperties(child, staticProps); if (instanceProps) Object.defineProperties(child.prototype, instanceProps); };
 
 var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc && desc.writable) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
@@ -38,12 +40,16 @@ var University = (function (Component) {
     saveSchool: {
       value: function saveSchool(university, event) {
         if (event) {
+          console.log("university in save school", university);
           event.preventDefault();
-          // axios.put("/api/universities/savedschools", { savedSchools: [...savedSchools, university] }).then(function (result){
-          //   console.log("saved school is ", result);
-          //  })["catch"](function (err) {
-          // console.log("we have not got the data!");
-          // });
+          //const selectedUniversities = this.props.university.selectedUniversities;
+          var universityName = university.school_name;
+          console.log("universityName", universityName);
+          axios.put("/auth/savedschools", _defineProperty({}, universityName, university)).then(function (result) {
+            console.log("saved school is ", result);
+          })["catch"](function (err) {
+            console.log("we have not got the data!");
+          });
         }
       },
       writable: true,
@@ -53,7 +59,7 @@ var University = (function (Component) {
       value: function render() {
         var _this = this;
         var selectedUniversities = this.props.university.selectedUniversities.length ? this.props.university.selectedUniversities : [];
-        console.log("selectedUniversities in the University component", selectedUniversities);
+        //console.log("selectedUniversities in the University component", selectedUniversities)
         selectedUniversities = selectedUniversities.map(function (university, index) {
           return React.createElement(
             "div",

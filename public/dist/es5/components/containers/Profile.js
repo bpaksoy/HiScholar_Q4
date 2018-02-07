@@ -73,6 +73,7 @@ var Profile = (function (Component) {
 					var payload = response.body;
 					var user = payload.user; // this is the currently logged-in user
 					_this.props.currentUserReceived(user);
+					console.log("hahahhahah", _this.props.user.currentUser);
 					_this.setState({
 						info_ui: user.personal.city && user.personal.country ? "card" : "form",
 						statement_ui: user.personal_statement ? "card" : "form"
@@ -146,9 +147,11 @@ var Profile = (function (Component) {
 					var value = event.target.value ? event.target.value : "";
 					var personal = Object.assign({}, this.state.personal);
 					personal[_name] = value;
+
 					// let user = this.props.user.currentUser;
 					this.setState({
-						personal: personal });
+						personal: personal
+					});
 				}
 			},
 			writable: true,
@@ -183,6 +186,7 @@ var Profile = (function (Component) {
 				if (event) {
 					event.preventDefault();
 					var personal = this.state.personal;
+					console.log("personal?????", personal);
 					this.props.personalInfoReceived(personal);
 					//console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
 					axios.put("/auth/currentuser", { personal: personal }).then(function (result) {
@@ -203,7 +207,7 @@ var Profile = (function (Component) {
 				var currentUser = this.props.user.currentUser; // can be null
 				//console.log("currentUser", currentUser);
 				var personal = currentUser ? currentUser.personal : {};
-				//console.log("personal", personal)
+				//console.log("personal in the profile form", personal)
 				var personal_statement = currentUser ? currentUser.personal_statement : null;
 				//console.log("personal_statement in the profile", personal_statement)
 

@@ -10,7 +10,7 @@ var Component = _react.Component;
 module.exports = function (props) {
 	var user = props.user ? props.user : {}; // can be null
 	//console.log("user", user)
-	var personal = user ? user.personal : {};
+	var personal = Object.keys(user.personal).length ? user.personal : {};
 	//console.log("personal", personal)
 
 	return React.createElement(

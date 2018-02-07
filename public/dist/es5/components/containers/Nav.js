@@ -61,7 +61,7 @@ var Nav = (function (Component) {
 					return axios.get(url).then(function (result) {
 						var data = result.data;
 						_this.props.selectedUniversityReceived(data[0]);
-						console.log("result is ", result);
+						//console.log("result is ", result);
 					})["catch"](function (err) {
 						console.log("we have not got the data!");
 					});
@@ -73,7 +73,7 @@ var Nav = (function (Component) {
 		render: {
 			value: function render() {
 				var selectedUniversity = this.props.university.selectedUniversities.length ? this.props.university.selectedUniversities[0] : [];
-				console.log("selectedUniversity", selectedUniversity);
+				//console.log("selectedUniversity", selectedUniversity)
 
 				return React.createElement(
 					"nav",
