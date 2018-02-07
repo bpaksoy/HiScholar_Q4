@@ -33,8 +33,8 @@ class University extends Component {
               <small className="text-muted">Tuition $ {university.tuition}</small><br/>
               <small className="text-muted">Acceptance rate: {university.acceptance_rate}%</small>
               <p>
-                  <a href="#" className="btn btn-primary" role="button">Save</a>
-             </p>
+                  <a href="#" className="btn btn-primary" role="button">Save <i className="fa fa-heart"></i></a>
+              </p>
             </div>
           </div>
         </div>

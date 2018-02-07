@@ -6375,7 +6375,8 @@ var University = function (_Component) {
                   _react2.default.createElement(
                     'a',
                     { href: '#', className: 'btn btn-primary', role: 'button' },
-                    'Save'
+                    'Save ',
+                    _react2.default.createElement('i', { className: 'fa fa-heart' })
                   )
                 )
               )
