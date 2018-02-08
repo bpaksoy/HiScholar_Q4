@@ -23,13 +23,9 @@ module.exports = function (_x, action) {
       return newState;
 
     case constants.SELECTED_UNIVERSITY_RECEIVED:
-      newState.selectedUniversities.push(action.data);
-      //console.log("action.data", action.data)
-      //console.log("newState: ", newState);
-      return newState;
 
-    case constants.SAVED_UNIVERSITY_RECEIVED:
-      newState.savedUniversities.push(action.data);
+
+      newState.selectedUniversities.push(action.data);
       // console.log("action.data", action.data)
       // console.log("newState: ", newState);
       return newState;
@@ -38,8 +34,8 @@ module.exports = function (_x, action) {
       newState.selectedUniversities = newState.selectedUniversities.filter(function (el, ind, arr) {
         return ind !== action.data;
       });
-      console.log("action.data", action.data);
-      console.log("newState: ", newState);
+      // console.log("action.data", action.data)
+      // console.log("newState: ", newState);
       return newState;
 
     default:

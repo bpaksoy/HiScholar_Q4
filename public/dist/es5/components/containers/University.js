@@ -39,32 +39,26 @@ var University = (function (Component) {
   _inherits(University, Component);
 
   _prototypeProperties(University, null, {
+    componentDidMount: {
+      value: function componentDidMount() {},
+      writable: true,
+      configurable: true
+    },
     saveSchool: {
-
-
-      // selectSchool(event){
-      //   if(event){
-      //     event.preventDefault();
-      //     const selectedUniversities = this.props.university.selectedUniversities;
-      //     console.log("universityName", universityName);
-      //       this.setState({
-      //         isSaved: !this.state.isSaved
-      //       })
-      //   }
-      // }
-
       value: function saveSchool(university, index, event) {
         if (event) {
           //console.log("university in save school", university);
           event.preventDefault();
           var universityName = university.school_name;
-          console.log("universityName", universityName);
+          //console.log("universityName", universityName);
           axios.put("/api/universities/savedschools", _defineProperty({}, universityName, university)).then(function (result) {
             console.log("saved school is ", result);
           })["catch"](function (err) {
             console.log("we have not got the data!");
           });
-          this.props.savedUniversityReceived(university);
+          this.setState({
+            isSaved: !this.state.isSaved
+          });
         }
       },
       writable: true,
@@ -90,11 +84,11 @@ var University = (function (Component) {
           return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         };
         var isSaved = this.state.isSaved;
-        // console.log("isSaved: ", isSaved);
+        console.log("isSaved: ", isSaved);
         selectedUniversities = selectedUniversities.map(function (university, index) {
           return React.createElement(
             "div",
-            { key: index, onClick: _this.saveSchool.bind(_this, university, index), className: "col-sm-6 col-md-6" },
+            { key: index, className: "col-sm-6 col-md-6" },
             React.createElement("i", { onClick: _this.closeSchoolCard.bind(_this, index), style: { size: "20" }, className: "fa fa-window-close pull-right" }),
             React.createElement(
               "div",
@@ -138,15 +132,10 @@ var University = (function (Component) {
                 React.createElement(
                   "p",
                   null,
-                  !isSaved ? React.createElement(
+                  React.createElement(
                     "a",
-                    { href: "#", className: "btn btn-primary", role: "button" },
+                    { href: "#", onClick: _this.saveSchool.bind(_this, university, index), className: "btn btn-primary", role: "button" },
                     "Save ",
-                    React.createElement("i", { className: "fa fa-heart" })
-                  ) : React.createElement(
-                    "a",
-                    { href: "#", className: "btn btn-primary", disabled: _this.state.isSaved, role: "button" },
-                    "Saved! ",
                     React.createElement("i", { className: "fa fa-heart" })
                   )
                 )
@@ -184,16 +173,12 @@ var University = (function (Component) {
 
 var stateToProps = function (state) {
   return {
-    university: state.university,
-    index: state.index
+    university: state.university
   };
 };
 
 var dispatchToProps = function (dispatch) {
   return {
-    savedUniversityReceived: function (university) {
-      return dispatch(actions.savedUniversityReceived(university));
-    },
     schoolCardClosed: function (index) {
       return dispatch(actions.schoolCardClosed(index));
     }

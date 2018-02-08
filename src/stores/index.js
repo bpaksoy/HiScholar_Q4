@@ -18,8 +18,7 @@ export default {
 			user: userReducer,
 			information: userReducer,
 			statement: userReducer,
-			university: universityReducer,
-			index: universityReducer
+			university: universityReducer
 		})
 
 		if (initialState){

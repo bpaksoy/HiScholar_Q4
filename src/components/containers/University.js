@@ -14,31 +14,27 @@ class University extends Component {
     };
 
   }
+ componentDidMount(){
 
 
- // selectSchool(event){
- //   if(event){
- //     event.preventDefault();
- //     const selectedUniversities = this.props.university.selectedUniversities;
- //     console.log("universityName", universityName);
- //       this.setState({
- //         isSaved: !this.state.isSaved
- //       })
- //   }
- // }
+ }
+
+
 
  saveSchool(university, index, event){
    if(event){
      //console.log("university in save school", university);
      event.preventDefault();
      const universityName = university.school_name;
-     console.log("universityName", universityName);
+     //console.log("universityName", universityName);
      axios.put("/api/universities/savedschools", {[universityName]: university}).then(function (result){
  			  console.log("saved school is ", result);
  			 })["catch"](function (err) {
  		 console.log("we have not got the data!");
  		 });
-     this.props.savedUniversityReceived(university);
+     this.setState({
+       isSaved: !this.state.isSaved
+     })
   }
 }
 
@@ -57,10 +53,10 @@ class University extends Component {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
  }
  const isSaved = this.state.isSaved;
- // console.log("isSaved: ", isSaved);
+  console.log("isSaved: ", isSaved);
   selectedUniversities = selectedUniversities.map((university, index) => {
     return(
-        <div key={index}  onClick={this.saveSchool.bind(this, university, index)} className="col-sm-6 col-md-6"><i onClick={this.closeSchoolCard.bind(this, index)} style={{size: "20"}} className="fa fa-window-close pull-right"></i>
+        <div key={index} className="col-sm-6 col-md-6"><i onClick={this.closeSchoolCard.bind(this, index)} style={{size: "20"}} className="fa fa-window-close pull-right"></i>
           <div className="thumbnail">
             <img style={style.img} className="card-img-top" src={university.imgURL} alt="university_img"/>
             <div className="caption">
@@ -69,10 +65,8 @@ class University extends Component {
               <small className="text-muted">Ranked #{university.ranking} among universities in the US.</small><br/>
               <small className="text-muted">Annual tuition $ {numberWithCommas(university.tuition)}</small><br/>
               <small className="text-muted">Acceptance rate: {university.acceptance_rate}%</small>
-              <p>{(!isSaved)?
-                  <a href="#" className="btn btn-primary" role="button">Save <i className="fa fa-heart"></i></a>:
-                  <a href="#" className="btn btn-primary" disabled={this.state.isSaved} role="button">Saved! <i className="fa fa-heart"></i></a>
-                 }
+              <p>
+                  <a href="#"  onClick={this.saveSchool.bind(this, university, index)} className="btn btn-primary" role="button">Save <i className="fa fa-heart"></i></a>
               </p>
             </div>
           </div>
@@ -97,14 +91,12 @@ class University extends Component {
 
 const stateToProps = (state) => {
 	return {
-    university: state.university,
-    index: state.index
+    university: state.university
 	}
 }
 
 const dispatchToProps = (dispatch) => {
 	return {
-     savedUniversityReceived: (university) => dispatch(actions.savedUniversityReceived(university)),
      schoolCardClosed: (index) => dispatch(actions.schoolCardClosed(index))
 	 }
  }

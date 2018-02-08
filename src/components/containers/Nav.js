@@ -31,14 +31,14 @@ class Nav extends Component {
 		 const searchedUniversity = this.state.searchedUniversity.trim();
      this.props.searchedUniversityReceived(searchedUniversity)
 		 search.value = "";
-		 console.log("searchedUniversity in the Nav", this.state.searchedUniversity);
+		// console.log("searchedUniversity in the Nav", this.state.searchedUniversity);
 
 		 const url = "/api/universities/name/" + searchedUniversity;
 			 return axios.get(url)
 				.then( result => {
 					const data = result.data
 					this.props.selectedUniversityReceived(data[0]);
-					//console.log("result is ", result);
+					console.log("result is ", result);
 				})["catch"]( err =>{
 				console.log("we have not got the data!");
 			 });
@@ -46,8 +46,7 @@ class Nav extends Component {
  }
 
  render(){
- const selectedUniversity = (this.props.university.selectedUniversities.length) ? this.props.university.selectedUniversities[0] : [];
- //console.log("selectedUniversity", selectedUniversity)
+ 
 
 	return (
 		<nav className="navbar navbar-transparent navbar-absolute">
