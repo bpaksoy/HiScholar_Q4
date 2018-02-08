@@ -22,6 +22,8 @@ var actions = _interopRequire(require("../../actions"));
 
 var Nav = _interopRequire(require("./Nav"));
 
+var SavedUniversities = _interopRequire(require("../presentation/SavedUniversities"));
+
 var axios = _interopRequire(require("axios"));
 
 var superagent = _interopRequire(require("superagent"));
@@ -32,15 +34,26 @@ var University = (function (Component) {
 
     _get(Object.getPrototypeOf(University.prototype), "constructor", this).call(this, props);
     this.state = {
-      isSaved: false
+      isSaved: false,
+      clicked: false
     };
   }
 
   _inherits(University, Component);
 
   _prototypeProperties(University, null, {
-    componentDidMount: {
-      value: function componentDidMount() {},
+    getSavedUniversities: {
+      value: function getSavedUniversities(event) {
+        var _this = this;
+        if (event) {
+          axios.get("/api/universities/user/savedschools").then(function (result) {
+            console.log("saved schools are ", result);
+            _this.props.savedUniversityReceived(result.data);
+          })["catch"](function (err) {
+            console.log("we have not got the data!");
+          });
+        }
+      },
       writable: true,
       configurable: true
     },
@@ -59,6 +72,7 @@ var University = (function (Component) {
           this.setState({
             isSaved: !this.state.isSaved
           });
+          this.props.savedUniversityReceived(university);
         }
       },
       writable: true,
@@ -75,16 +89,33 @@ var University = (function (Component) {
       writable: true,
       configurable: true
     },
+    closeSavedUniversities: {
+      value: function closeSavedUniversities(event) {
+        if (event) {
+          event.preventDefault();
+          this.setState({
+            clicked: !this.state.clicked
+          });
+        }
+      },
+      writable: true,
+      configurable: true
+    },
     render: {
       value: function render() {
         var _this = this;
         var selectedUniversities = this.props.university.selectedUniversities.length ? this.props.university.selectedUniversities : [];
-        console.log("selectedUniversities in the University component", selectedUniversities);
+        //console.log("selectedUniversities in the University component", selectedUniversities)
         var numberWithCommas = function (x) {
           return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         };
+        var savedUniversities = this.props.university.savedUniversities.length ? this.props.university.savedUniversities : [];
+
         var isSaved = this.state.isSaved;
-        console.log("isSaved: ", isSaved);
+        //console.log("isSaved: ", isSaved);
+        var clicked = this.state.clicked;
+        console.log("clicked", clicked);
+
         selectedUniversities = selectedUniversities.map(function (university, index) {
           return React.createElement(
             "div",
@@ -149,6 +180,8 @@ var University = (function (Component) {
           );
         });
 
+
+
         return React.createElement(
           "div",
           null,
@@ -165,7 +198,16 @@ var University = (function (Component) {
               { style: style.card, className: "row" },
               selectedUniversities
             )
-          ) : null
+          ) : null,
+          !savedUniversities.length ? React.createElement(
+            "div",
+            null,
+            React.createElement(
+              "a",
+              { href: "#", onClick: this.getSavedUniversities.bind(this), className: "btn btn-primary", role: "button" },
+              "See Saved"
+            )
+          ) : React.createElement(SavedUniversities, { clicked: clicked, closeSavedUniversities: this.closeSavedUniversities.bind(this), savedUniversities: savedUniversities })
         );
       },
       writable: true,
@@ -186,6 +228,9 @@ var dispatchToProps = function (dispatch) {
   return {
     schoolCardClosed: function (index) {
       return dispatch(actions.schoolCardClosed(index));
+    },
+    savedUniversityReceived: function (university) {
+      return dispatch(actions.savedUniversityReceived(university));
     }
   };
 };
@@ -215,3 +260,4 @@ var style = {
     flex: "0 0 auto"
   }
 };
+// this is an array

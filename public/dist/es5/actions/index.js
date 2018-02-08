@@ -36,6 +36,12 @@ module.exports = {
 			data: university
 		};
 	},
+	savedUniversityReceived: function (university) {
+		return {
+			type: constants.SAVED_UNIVERSITY_RECEIVED,
+			data: university
+		};
+	},
 	schoolCardClosed: function (index) {
 		return {
 			type: constants.SCHOOL_CARD_CLOSED,

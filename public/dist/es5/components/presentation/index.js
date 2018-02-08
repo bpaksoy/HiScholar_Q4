@@ -16,6 +16,8 @@ var PersonalStatement = _interopRequire(require("./PersonalStatement"));
 
 var StatementCard = _interopRequire(require("./StatementCard"));
 
+var SavedUniversities = _interopRequire(require("./SavedUniversities"));
+
 exports.Sidebar = Sidebar;
 exports.Footer = Footer;
 exports.ProfileCard = ProfileCard;
