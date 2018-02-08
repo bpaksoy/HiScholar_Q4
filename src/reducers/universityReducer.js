@@ -19,11 +19,18 @@ export default (state = initialState, action) => {
 
     case constants.SELECTED_UNIVERSITY_RECEIVED:
       newState.selectedUniversities.push(action.data);
-      console.log("newState", newState);
+      //console.log("newState", newState);
       return newState;
 
     case constants.SCHOOL_CARD_CLOSED:
-     newState.selectedUniversities = newState.selectedUniversities.filter((el, ind, arr) => {return ind !== action.data });
+      newState.selectedUniversities = newState.selectedUniversities.filter((el, ind, arr) => {return ind !== action.data });
+      return newState;
+
+    case constants.SAVED_UNIVERSITY_RECEIVED:
+      console.log("action.data", action.data);
+      console.log("newState", newState);
+      newState.savedUniversities = action.data;
+
      return newState;
 
 		default:

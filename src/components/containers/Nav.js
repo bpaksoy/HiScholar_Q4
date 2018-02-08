@@ -38,7 +38,7 @@ class Nav extends Component {
 				.then( result => {
 					const data = result.data
 					this.props.selectedUniversityReceived(data[0]);
-					console.log("result is ", result);
+					//console.log("result is ", result);
 				})["catch"]( err =>{
 				console.log("we have not got the data!");
 			 });
@@ -46,7 +46,7 @@ class Nav extends Component {
  }
 
  render(){
- 
+
 
 	return (
 		<nav className="navbar navbar-transparent navbar-absolute">

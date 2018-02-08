@@ -59,13 +59,13 @@ router.get("/universities/:university_id", (req, res, next) => {
 //get university by name
 router.get("/universities/name/:school_name", (req, res, next) => {
   const school_name = req.params.school_name.trim();
-   console.log("name in the router: ", school_name)
+  // console.log("name in the router: ", school_name)
    University.find({school_name: school_name}, (err, university) => {
      if(err){
        console.log(err);
        return res.status(500).send();
      }
-     console.log("university in the router:", university)
+     //console.log("university in the router:", university)
       res.send(university);
     })
 
@@ -97,6 +97,24 @@ router.put("/universities/savedschools", (req, res, next) => {
       })
 })
 
+
+//get all saved saved saved universities
+router.get("/universities/user/savedschools", (req, res, next)=> {
+  const id = (req.session.localUser)? req.session.localUser._id : req.user._id;
+  console.log("id", id)
+  let collection = (req.session.localUser)? Student : User;
+  console.log("collection", collection)
+  collection.findOne({_id: id})
+    .then(user => {
+         console.log("user", user)
+         const savedSchools = user.savedSchools;
+         res.send(savedSchools);
+       }).catch(err => {
+         res.json({
+           err: err.message
+         })
+       })
+})
 
 //get all universities
 router.get("/universities", (req, res, next) => {

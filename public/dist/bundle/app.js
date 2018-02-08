@@ -3700,7 +3700,10 @@ function isPlainObject(value) {
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.default = {
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+exports.default = _defineProperty({
 
 	CURRENT_USER_RECEIVED: 'CURRENT_USER_RECEIVED',
 	PERSONAL_INFO_RECEIVED: 'PERSONAL_INFO_RECEIVED',
@@ -3709,8 +3712,7 @@ exports.default = {
 	SELECTED_UNIVERSITY_RECEIVED: 'SELECTED_UNIVERSITY_RECEIVED',
 	SAVED_UNIVERSITY_RECEIVED: "SAVED_UNIVERSITY_RECEIVED",
 	SCHOOL_CARD_CLOSED: "SCHOOL_CARD_CLOSED"
-
-};
+}, 'SAVED_UNIVERSITY_RECEIVED', "SAVED_UNIVERSITY_RECEIVED");
 
 /***/ }),
 /* 104 */
@@ -3786,6 +3788,12 @@ exports.default = {
 	selectedUniversityReceived: function selectedUniversityReceived(university) {
 		return {
 			type: _constants2.default.SELECTED_UNIVERSITY_RECEIVED,
+			data: university
+		};
+	},
+	savedUniversityReceived: function savedUniversityReceived(university) {
+		return {
+			type: _constants2.default.SAVED_UNIVERSITY_RECEIVED,
 			data: university
 		};
 	},
@@ -3873,7 +3881,7 @@ var Nav = function (_Component) {
 				return axios.get(url).then(function (result) {
 					var data = result.data;
 					_this2.props.selectedUniversityReceived(data[0]);
-					console.log("result is ", result);
+					//console.log("result is ", result);
 				})["catch"](function (err) {
 					console.log("we have not got the data!");
 				});
@@ -6258,6 +6266,10 @@ var _StatementCard = __webpack_require__(424);
 
 var _StatementCard2 = _interopRequireDefault(_StatementCard);
 
+var _SavedUniversities = __webpack_require__(452);
+
+var _SavedUniversities2 = _interopRequireDefault(_SavedUniversities);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.Sidebar = _Sidebar2.default;
@@ -6297,6 +6309,10 @@ var _Nav = __webpack_require__(106);
 
 var _Nav2 = _interopRequireDefault(_Nav);
 
+var _SavedUniversities = __webpack_require__(452);
+
+var _SavedUniversities2 = _interopRequireDefault(_SavedUniversities);
+
 var _axios = __webpack_require__(161);
 
 var _axios2 = _interopRequireDefault(_axios);
@@ -6331,8 +6347,19 @@ var University = function (_Component) {
   }
 
   _createClass(University, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {}
+    key: 'getSavedUniversities',
+    value: function getSavedUniversities(event) {
+      var _this2 = this;
+
+      if (event) {
+        _axios2.default.get("/api/universities/user/savedschools").then(function (result) {
+          console.log("saved schools are ", result);
+          _this2.props.savedUniversityReceived(result.data); // this is an array
+        })["catch"](function (err) {
+          console.log("we have not got the data!");
+        });
+      }
+    }
   }, {
     key: 'saveSchool',
     value: function saveSchool(university, index, event) {
@@ -6349,6 +6376,7 @@ var University = function (_Component) {
         this.setState({
           isSaved: !this.state.isSaved
         });
+        this.props.savedUniversityReceived(university);
       }
     }
   }, {
@@ -6363,20 +6391,23 @@ var University = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var selectedUniversities = this.props.university.selectedUniversities.length ? this.props.university.selectedUniversities : [];
       console.log("selectedUniversities in the University component", selectedUniversities);
       var numberWithCommas = function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       };
+      var savedUniversities = this.props.university.savedUniversities.length ? this.props.university.savedUniversities : [];
+
       var isSaved = this.state.isSaved;
       console.log("isSaved: ", isSaved);
+
       selectedUniversities = selectedUniversities.map(function (university, index) {
         return _react2.default.createElement(
           'div',
           { key: index, className: 'col-sm-6 col-md-6' },
-          _react2.default.createElement('i', { onClick: _this2.closeSchoolCard.bind(_this2, index), style: { size: "20" }, className: 'fa fa-window-close pull-right' }),
+          _react2.default.createElement('i', { onClick: _this3.closeSchoolCard.bind(_this3, index), style: { size: "20" }, className: 'fa fa-window-close pull-right' }),
           _react2.default.createElement(
             'div',
             { className: 'thumbnail' },
@@ -6421,12 +6452,12 @@ var University = function (_Component) {
                 null,
                 isSaved ? _react2.default.createElement(
                   'a',
-                  { href: '#', onClick: _this2.saveSchool.bind(_this2, university, index), className: 'btn btn-primary', role: 'button' },
+                  { href: '#', onClick: _this3.saveSchool.bind(_this3, university, index), className: 'btn btn-primary', role: 'button' },
                   'Save ',
                   _react2.default.createElement('i', { className: 'fa fa-heart' })
                 ) : _react2.default.createElement(
                   'a',
-                  { href: '#', onClick: _this2.saveSchool.bind(_this2, university, index), className: 'btn btn-primary', role: 'button' },
+                  { href: '#', onClick: _this3.saveSchool.bind(_this3, university, index), className: 'btn btn-primary', role: 'button' },
                   'Saved! ',
                   _react2.default.createElement('i', { className: 'fa fa-heart' })
                 )
@@ -6452,7 +6483,16 @@ var University = function (_Component) {
             { style: style.card, className: 'row' },
             selectedUniversities
           )
-        ) : null
+        ) : null,
+        !savedUniversities.length ? _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'a',
+            { href: '#', onClick: this.getSavedUniversities.bind(this), className: 'btn btn-primary', role: 'button' },
+            'Go to Saved Universities'
+          )
+        ) : _react2.default.createElement(_SavedUniversities2.default, { closeSchoolCard: this.closeSchoolCard.bind(this), savedUniversities: savedUniversities })
       );
     }
   }]);
@@ -6470,6 +6510,9 @@ var dispatchToProps = function dispatchToProps(dispatch) {
   return {
     schoolCardClosed: function schoolCardClosed(index) {
       return dispatch(_actions2.default.schoolCardClosed(index));
+    },
+    savedUniversityReceived: function savedUniversityReceived(university) {
+      return dispatch(_actions2.default.savedUniversityReceived(university));
     }
   };
 };
@@ -6487,6 +6530,9 @@ var style = {
     msFlex: "0 0 auto",
     flex: "0 0 auto"
   }
+
+  // <div><SavedUniversities savedUniversities={savedUniversities}/></div>
+
 };
 
 /***/ }),
@@ -31095,13 +31141,20 @@ exports.default = function () {
 
     case _constants2.default.SELECTED_UNIVERSITY_RECEIVED:
       newState.selectedUniversities.push(action.data);
-      console.log("newState", newState);
+      //console.log("newState", newState);
       return newState;
 
     case _constants2.default.SCHOOL_CARD_CLOSED:
       newState.selectedUniversities = newState.selectedUniversities.filter(function (el, ind, arr) {
         return ind !== action.data;
       });
+      return newState;
+
+    case _constants2.default.SAVED_UNIVERSITY_RECEIVED:
+      console.log("action.data", action.data);
+      console.log("newState", newState);
+      newState.savedUniversities = action.data;
+
       return newState;
 
     default:
@@ -36164,6 +36217,114 @@ module.exports = self.fetch.bind(self);
   self.fetch.polyfill = true
 })(typeof self !== 'undefined' ? self : this);
 
+
+/***/ }),
+/* 452 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _card;
+
+var _react = __webpack_require__(11);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var numberWithCommas = function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
+exports.default = function (props) {
+
+  var savedUniversities = props.savedUniversities.length ? props.savedUniversities : [];
+  console.log("saved universities in the component", savedUniversities);
+
+  savedUniversities = savedUniversities.map(function (university, index) {
+    console.log("university", university);
+    var universityName = Object.keys(university);
+    console.log("universityName", universityName);
+    return _react2.default.createElement(
+      "div",
+      { key: index, className: "col-sm-6 col-md-6" },
+      _react2.default.createElement(
+        "div",
+        { className: "thumbnail" },
+        _react2.default.createElement("img", { style: style.img, className: "card-img-top", src: university[universityName].imgURL, alt: "university_img" }),
+        _react2.default.createElement(
+          "div",
+          { className: "caption" },
+          _react2.default.createElement(
+            "h3",
+            null,
+            university[universityName].school_name
+          ),
+          _react2.default.createElement(
+            "p",
+            null,
+            university[universityName].description
+          ),
+          _react2.default.createElement(
+            "small",
+            { className: "text-muted" },
+            "Ranked #",
+            university[universityName].ranking,
+            " among universities in the US."
+          ),
+          _react2.default.createElement("br", null),
+          _react2.default.createElement(
+            "small",
+            { className: "text-muted" },
+            "Annual tuition $ ",
+            numberWithCommas(university[universityName].tuition)
+          ),
+          _react2.default.createElement("br", null),
+          _react2.default.createElement(
+            "small",
+            { className: "text-muted" },
+            "Acceptance rate: ",
+            university[universityName].acceptance_rate,
+            "%"
+          )
+        )
+      )
+    );
+  });
+
+  return _react2.default.createElement(
+    "div",
+    null,
+    savedUniversities.length ? _react2.default.createElement(
+      "div",
+      null,
+      savedUniversities
+    ) : null
+  );
+};
+
+var style = {
+  card: (_card = {
+    display: "-webkit-box"
+  }, _defineProperty(_card, "display", "-webkit-flex"), _defineProperty(_card, "display", "ms-flexbox"), _defineProperty(_card, "display", "flex"), _defineProperty(_card, "WebkitBoxOrient", "horizontal"), _defineProperty(_card, "WebkitBoxDirection", "normal"), _defineProperty(_card, "WebkitFlexDirection", "column"), _defineProperty(_card, "msFlexDirection", "column"), _defineProperty(_card, "flexDirection", "column"), _defineProperty(_card, "width", "100%"), _card),
+  img: {
+    WebkitBoxFlex: "0",
+    WebkitFlex: "0 0 auto",
+    msFlex: "0 0 auto",
+    flex: "0 0 auto"
+  }
+
+  // <div style={style.card} className="row">
+  //</div>
+
+};
 
 /***/ })
 ],[169]);

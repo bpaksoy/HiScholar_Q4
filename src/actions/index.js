@@ -32,6 +32,12 @@ export default {
 			data: university
 		}
 	},
+	savedUniversityReceived: (university) => {
+		return {
+			type: constants.SAVED_UNIVERSITY_RECEIVED,
+			data: university
+		}
+	},
 	schoolCardClosed: (index) => {
 		return{
 		type: constants.SCHOOL_CARD_CLOSED,

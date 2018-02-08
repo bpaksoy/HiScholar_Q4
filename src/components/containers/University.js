@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../../actions';
 import  Nav  from './Nav';
+import  SavedUniversities  from '../presentation/SavedUniversities';
 import axios from "axios";
 import superagent from 'superagent';
 
@@ -14,9 +15,16 @@ class University extends Component {
     };
 
   }
- componentDidMount(){
-
-
+ getSavedUniversities(event){
+   if(event){
+      axios.get("/api/universities/user/savedschools")
+      .then(result => {
+ 			  console.log("saved schools are ", result);
+        this.props.savedUniversityReceived(result.data) // this is an array
+      })["catch"](err => {
+ 		 console.log("we have not got the data!");
+ 		 });
+  }
  }
 
 
@@ -35,6 +43,7 @@ class University extends Component {
      this.setState({
        isSaved: !this.state.isSaved
      })
+     this.props.savedUniversityReceived(university);
   }
 }
 
@@ -50,10 +59,13 @@ class University extends Component {
   let selectedUniversities = (this.props.university.selectedUniversities.length) ? this.props.university.selectedUniversities : [];
   console.log("selectedUniversities in the University component", selectedUniversities)
   const numberWithCommas = (x) => {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
- }
+   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+  let savedUniversities = (this.props.university.savedUniversities.length)? this.props.university.savedUniversities : [];
+
  const isSaved = this.state.isSaved;
-  console.log("isSaved: ", isSaved);
+ console.log("isSaved: ", isSaved);
+
   selectedUniversities = selectedUniversities.map((university, index) => {
     return(
         <div key={index} className="col-sm-6 col-md-6"><i onClick={this.closeSchoolCard.bind(this, index)} style={{size: "20"}} className="fa fa-window-close pull-right"></i>
@@ -76,6 +88,8 @@ class University extends Component {
     );
   })
 
+
+
     return(
       <div>
        {(selectedUniversities.length)?
@@ -84,6 +98,10 @@ class University extends Component {
           <div style={style.card} className="row">{selectedUniversities}</div>
         </div>
        : null }
+       {(!savedUniversities.length)?
+        <div><a href="#" onClick={this.getSavedUniversities.bind(this)} className="btn btn-primary" role="button">Go to Saved Universities</a></div>:
+        <SavedUniversities closeSchoolCard={this.closeSchoolCard.bind(this)} savedUniversities={savedUniversities}/>
+       }
       </div>
     );
   }
@@ -99,7 +117,8 @@ const stateToProps = (state) => {
 
 const dispatchToProps = (dispatch) => {
 	return {
-     schoolCardClosed: (index) => dispatch(actions.schoolCardClosed(index))
+     schoolCardClosed: (index) => dispatch(actions.schoolCardClosed(index)),
+     savedUniversityReceived: (university) => dispatch(actions.savedUniversityReceived(university))
 	 }
  }
 
@@ -127,3 +146,6 @@ const style = {
     flex: "0 0 auto"
   }
 }
+
+
+// <div><SavedUniversities savedUniversities={savedUniversities}/></div>
