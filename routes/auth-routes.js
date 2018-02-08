@@ -142,21 +142,6 @@ router.put("/personal_statement", (req,res, next) => {
 })
 
 
-//save schools to the database
-router.put("/savedschools", (req, res, next) => {
-  const id = (req.session.localUser)? req.session.localUser._id : req.user._id;
-  let collection = (req.session.localUser)? Student : User;
-  //const selectedSchool = req.body;
-
- collection.findOne({_id: id})
-    .then(user => {
-      user.selectedSchools.push(req.body);
-      user.save().then(result => {
-        res.send(result)
-      })
-    })
-})
-
 //post personal information to the user collection
 router.put("/currentuser", (req, res, next) => {
   const id = (req.session.localUser)? req.session.localUser._id : req.user._id;

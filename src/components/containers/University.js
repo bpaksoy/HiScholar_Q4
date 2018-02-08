@@ -65,8 +65,10 @@ class University extends Component {
               <small className="text-muted">Ranked #{university.ranking} among universities in the US.</small><br/>
               <small className="text-muted">Annual tuition $ {numberWithCommas(university.tuition)}</small><br/>
               <small className="text-muted">Acceptance rate: {university.acceptance_rate}%</small>
-              <p>
-                  <a href="#"  onClick={this.saveSchool.bind(this, university, index)} className="btn btn-primary" role="button">Save <i className="fa fa-heart"></i></a>
+              <p>{(isSaved)?
+                  <a href="#"  onClick={this.saveSchool.bind(this, university, index)} className="btn btn-primary" role="button">Save <i className="fa fa-heart"></i></a>:
+                  <a href="#"  onClick={this.saveSchool.bind(this, university, index)} className="btn btn-primary" role="button">Saved! <i className="fa fa-heart"></i></a>
+                }
               </p>
             </div>
           </div>

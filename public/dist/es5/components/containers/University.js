@@ -132,10 +132,15 @@ var University = (function (Component) {
                 React.createElement(
                   "p",
                   null,
-                  React.createElement(
+                  isSaved ? React.createElement(
                     "a",
                     { href: "#", onClick: _this.saveSchool.bind(_this, university, index), className: "btn btn-primary", role: "button" },
                     "Save ",
+                    React.createElement("i", { className: "fa fa-heart" })
+                  ) : React.createElement(
+                    "a",
+                    { href: "#", onClick: _this.saveSchool.bind(_this, university, index), className: "btn btn-primary", role: "button" },
+                    "Saved! ",
                     React.createElement("i", { className: "fa fa-heart" })
                   )
                 )

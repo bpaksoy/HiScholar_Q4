@@ -73,7 +73,7 @@ var Profile = (function (Component) {
 					var payload = response.body;
 					var user = payload.user; // this is the currently logged-in user
 					_this.props.currentUserReceived(user);
-					console.log("hahahhahah", _this.props.user.currentUser);
+					//console.log("currentUser",this.props.user.currentUser);
 					_this.setState({
 						info_ui: user.personal.city && user.personal.country ? "card" : "form",
 						statement_ui: user.personal_statement ? "card" : "form"

@@ -45,7 +45,7 @@ class Profile extends Component {
 			const payload = response.body
 			const user = payload.user // this is the currently logged-in user
 			this.props.currentUserReceived(user)
-			console.log("hahahhahah",this.props.user.currentUser);
+			//console.log("currentUser",this.props.user.currentUser);
 			this.setState({
 				info_ui: user.personal.city && user.personal.country ? 'card' : 'form',
 				statement_ui: user.personal_statement ? 'card': 'form'

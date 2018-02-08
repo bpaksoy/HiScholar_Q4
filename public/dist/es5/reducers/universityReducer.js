@@ -23,19 +23,20 @@ module.exports = function (_x, action) {
       return newState;
 
     case constants.SELECTED_UNIVERSITY_RECEIVED:
-
-
-      newState.selectedUniversities.push(action.data);
-      // console.log("action.data", action.data)
-      // console.log("newState: ", newState);
+      if (!newState.selectedUniversities.length) {
+        newState.selectedUniversities.push(action.data);
+        return newState;
+      }
+      var exists = newState.selectedUniversities.filter(function (el) {
+        return el._id === action.data("_id");
+      });
+      !exists.length ? newState.selectedUniversities.push(action.data) : null;
       return newState;
 
     case constants.SCHOOL_CARD_CLOSED:
       newState.selectedUniversities = newState.selectedUniversities.filter(function (el, ind, arr) {
         return ind !== action.data;
       });
-      // console.log("action.data", action.data)
-      // console.log("newState: ", newState);
       return newState;
 
     default:
