@@ -40,11 +40,23 @@ var University = (function (Component) {
 
   _prototypeProperties(University, null, {
     saveSchool: {
-      value: function saveSchool(university, event) {
+
+
+      // selectSchool(event){
+      //   if(event){
+      //     event.preventDefault();
+      //     const selectedUniversities = this.props.university.selectedUniversities;
+      //     console.log("universityName", universityName);
+      //       this.setState({
+      //         isSaved: !this.state.isSaved
+      //       })
+      //   }
+      // }
+
+      value: function saveSchool(university, index, event) {
         if (event) {
-          console.log("university in save school", university);
+          //console.log("university in save school", university);
           event.preventDefault();
-          //const selectedUniversities = this.props.university.selectedUniversities;
           var universityName = university.school_name;
           console.log("universityName", universityName);
           axios.put("/api/universities/savedschools", _defineProperty({}, universityName, university)).then(function (result) {
@@ -52,6 +64,18 @@ var University = (function (Component) {
           })["catch"](function (err) {
             console.log("we have not got the data!");
           });
+          this.props.savedUniversityReceived(university);
+        }
+      },
+      writable: true,
+      configurable: true
+    },
+    closeSchoolCard: {
+      value: function closeSchoolCard(index, event) {
+        if (event) {
+          event.preventDefault();
+          console.log("index", index);
+          this.props.schoolCardClosed(index);
         }
       },
       writable: true,
@@ -61,63 +85,69 @@ var University = (function (Component) {
       value: function render() {
         var _this = this;
         var selectedUniversities = this.props.university.selectedUniversities.length ? this.props.university.selectedUniversities : [];
-        //console.log("selectedUniversities in the University component", selectedUniversities)
-        console.log("isSaved: ", this.state.isSaved);
+        console.log("selectedUniversities in the University component", selectedUniversities);
+        var numberWithCommas = function (x) {
+          return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        };
+        var isSaved = this.state.isSaved;
+        // console.log("isSaved: ", isSaved);
         selectedUniversities = selectedUniversities.map(function (university, index) {
           return React.createElement(
             "div",
-            { key: index, className: "row", onClick: _this.saveSchool.bind(_this, university) },
+            { key: index, onClick: _this.saveSchool.bind(_this, university, index), className: "col-sm-6 col-md-6" },
+            React.createElement("i", { onClick: _this.closeSchoolCard.bind(_this, index), style: { size: "20" }, className: "fa fa-window-close pull-right" }),
             React.createElement(
               "div",
-              { className: "col-sm-6 col-md-6" },
+              { className: "thumbnail" },
+              React.createElement("img", { style: style.img, className: "card-img-top", src: university.imgURL, alt: "university_img" }),
               React.createElement(
                 "div",
-                { className: "thumbnail" },
-                React.createElement("img", { src: university.imgURL, alt: "university_img" }),
+                { className: "caption" },
                 React.createElement(
-                  "div",
-                  { className: "caption" },
-                  React.createElement(
-                    "h3",
-                    null,
-                    university.school_name
-                  ),
-                  React.createElement(
-                    "p",
-                    null,
-                    university.description
-                  ),
-                  React.createElement(
-                    "small",
-                    { className: "text-muted" },
-                    "Ranked #",
-                    university.ranking,
-                    " among universities in the US."
-                  ),
-                  React.createElement("br", null),
-                  React.createElement(
-                    "small",
-                    { className: "text-muted" },
-                    "Tuition $ ",
-                    university.tuition
-                  ),
-                  React.createElement("br", null),
-                  React.createElement(
-                    "small",
-                    { className: "text-muted" },
-                    "Acceptance rate: ",
-                    university.acceptance_rate,
-                    "%"
-                  ),
-                  React.createElement(
-                    "p",
-                    null,
-                    React.createElement(
-                      "a",
-                      { href: "#", className: "btn btn-primary", role: "button" },
-                      "Save ",
-                      React.createElement("i", { className: "fa fa-heart" })
-                    )
+                  "h3",
+                  null,
+                  university.school_name
+                ),
+                React.createElement(
+                  "p",
+                  null,
+                  university.description
+                ),
+                React.createElement(
+                  "small",
+                  { className: "text-muted" },
+                  "Ranked #",
+                  university.ranking,
+                  " among universities in the US."
+                ),
+                React.createElement("br", null),
+                React.createElement(
+                  "small",
+                  { className: "text-muted" },
+                  "Annual tuition $ ",
+                  numberWithCommas(university.tuition)
+                ),
+                React.createElement("br", null),
+                React.createElement(
+                  "small",
+                  { className: "text-muted" },
+                  "Acceptance rate: ",
+                  university.acceptance_rate,
+                  "%"
+                ),
+                React.createElement(
+                  "p",
+                  null,
+                  !isSaved ? React.createElement(
+                    "a",
+                    { href: "#", className: "btn btn-primary", role: "button" },
+                    "Save ",
+                    React.createElement("i", { className: "fa fa-heart" })
+                  ) : React.createElement(
+                    "a",
+                    { href: "#", className: "btn btn-primary", disabled: _this.state.isSaved, role: "button" },
+                    "Saved! ",
+                    React.createElement("i", { className: "fa fa-heart" })
                   )
                 )
               )
@@ -136,7 +166,11 @@ var University = (function (Component) {
               null,
               "This is University component!"
             ),
-            selectedUniversities
+            React.createElement(
+              "div",
+              { style: style.card, className: "row" },
+              selectedUniversities
+            )
           ) : null
         );
       },
@@ -150,18 +184,44 @@ var University = (function (Component) {
 
 var stateToProps = function (state) {
   return {
-    university: state.university
+    university: state.university,
+    index: state.index
   };
 };
 
 var dispatchToProps = function (dispatch) {
-  return {};
+  return {
+    savedUniversityReceived: function (university) {
+      return dispatch(actions.savedUniversityReceived(university));
+    },
+    schoolCardClosed: function (index) {
+      return dispatch(actions.schoolCardClosed(index));
+    }
+  };
 };
 
 module.exports = connect(stateToProps, dispatchToProps)(University);
 
 
-var divStyle = {
-  padding: "5px 5px 5px 5px",
-  margin: "10px 10px 10px 10px"
+
+
+var style = {
+  card: {
+    display: "-webkit-box",
+    display: "-webkit-flex",
+    display: "ms-flexbox",
+    display: "flex",
+    WebkitBoxOrient: "horizontal",
+    WebkitBoxDirection: "normal",
+    WebkitFlexDirection: "column",
+    msFlexDirection: "column",
+    flexDirection: "column",
+    width: "100%"
+  },
+  img: {
+    WebkitBoxFlex: "0",
+    WebkitFlex: "0 0 auto",
+    msFlex: "0 0 auto",
+    flex: "0 0 auto"
+  }
 };

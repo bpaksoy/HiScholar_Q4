@@ -32,7 +32,8 @@ module.exports = {
 			user: userReducer,
 			information: userReducer,
 			statement: userReducer,
-			university: universityReducer
+			university: universityReducer,
+			index: universityReducer
 		});
 
 		if (initialState) {
