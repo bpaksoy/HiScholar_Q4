@@ -18,12 +18,8 @@ export default (state = initialState, action) => {
 			return newState;
 
     case constants.SELECTED_UNIVERSITY_RECEIVED:
-      if(!newState.selectedUniversities.length){
-        newState.selectedUniversities.push(action.data);
-        return newState;
-      }
-      const exists = newState.selectedUniversities.filter((el) => { return el["_id"] === action.data("_id")});
-      (!exists.length)? newState.selectedUniversities.push(action.data) : null;
+      newState.selectedUniversities.push(action.data);
+      console.log("newState", newState);
       return newState;
 
     case constants.SCHOOL_CARD_CLOSED:
@@ -34,3 +30,15 @@ export default (state = initialState, action) => {
 			return state;
 	}
 }
+
+
+
+
+// if(!newState.selectedUniversities.length){
+//   newState.selectedUniversities.push(action.data);
+//   console.log("newState", newState)
+// } else{
+//   const exists = newState.selectedUniversities.filter(el => el["_id"] === action.data("_id"));
+//   console.log("exists", exists, exists.length,"action.data", action.data)
+//   (!exists.length)?
+// }
