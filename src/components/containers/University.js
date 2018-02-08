@@ -11,7 +11,8 @@ class University extends Component {
  constructor(props){
     super(props);
     this.state = {
-     isSaved: false
+     isSaved: false,
+     clicked: false
     };
 
   }
@@ -26,7 +27,6 @@ class University extends Component {
  		 });
   }
  }
-
 
 
  saveSchool(university, index, event){
@@ -55,16 +55,27 @@ class University extends Component {
    }
   }
 
-  render(){
+  closeSavedUniversities(event){
+    if(event){
+      event.preventDefault();
+      this.setState({
+        clicked:!this.state.clicked
+      })
+    }
+  }
+
+render(){
   let selectedUniversities = (this.props.university.selectedUniversities.length) ? this.props.university.selectedUniversities : [];
-  console.log("selectedUniversities in the University component", selectedUniversities)
+  //console.log("selectedUniversities in the University component", selectedUniversities)
   const numberWithCommas = (x) => {
    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
   let savedUniversities = (this.props.university.savedUniversities.length)? this.props.university.savedUniversities : [];
 
  const isSaved = this.state.isSaved;
- console.log("isSaved: ", isSaved);
+ //console.log("isSaved: ", isSaved);
+ const clicked = this.state.clicked;
+ console.log("clicked", clicked);
 
   selectedUniversities = selectedUniversities.map((university, index) => {
     return(
@@ -99,8 +110,8 @@ class University extends Component {
         </div>
        : null }
        {(!savedUniversities.length)?
-        <div><a href="#" onClick={this.getSavedUniversities.bind(this)} className="btn btn-primary" role="button">Go to Saved Universities</a></div>:
-        <SavedUniversities closeSchoolCard={this.closeSchoolCard.bind(this)} savedUniversities={savedUniversities}/>
+        <div><a href="#" onClick={this.getSavedUniversities.bind(this)} className="btn btn-primary" role="button">See Saved</a></div>:
+        <SavedUniversities clicked={clicked} closeSavedUniversities={this.closeSavedUniversities.bind(this)} savedUniversities={savedUniversities}/>
        }
       </div>
     );
@@ -146,6 +157,3 @@ const style = {
     flex: "0 0 auto"
   }
 }
-
-
-// <div><SavedUniversities savedUniversities={savedUniversities}/></div>
