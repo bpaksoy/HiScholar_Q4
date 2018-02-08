@@ -3706,7 +3706,9 @@ exports.default = {
 	PERSONAL_INFO_RECEIVED: 'PERSONAL_INFO_RECEIVED',
 	PERSONAL_STATEMENT_RECEIVED: 'PERSONAL_STATEMENT_RECEIVED',
 	SEARCHED_UNIVERSITY_RECEIVED: 'SEARCHED_UNIVERSITY_RECEIVED',
-	SELECTED_UNIVERSITY_RECEIVED: 'SELECTED_UNIVERSITY_RECEIVED'
+	SELECTED_UNIVERSITY_RECEIVED: 'SELECTED_UNIVERSITY_RECEIVED',
+	SAVED_UNIVERSITY_RECEIVED: "SAVED_UNIVERSITY_RECEIVED",
+	SCHOOL_CARD_CLOSED: "SCHOOL_CARD_CLOSED"
 
 };
 
@@ -3785,6 +3787,18 @@ exports.default = {
 		return {
 			type: _constants2.default.SELECTED_UNIVERSITY_RECEIVED,
 			data: university
+		};
+	},
+	savedUniversityReceived: function savedUniversityReceived(university) {
+		return {
+			type: _constants2.default.SAVED_UNIVERSITY_RECEIVED,
+			data: university
+		};
+	},
+	schoolCardClosed: function schoolCardClosed(index) {
+		return {
+			type: _constants2.default.SCHOOL_CARD_CLOSED,
+			data: index
 		};
 	}
 
@@ -6273,6 +6287,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _card;
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(11);
@@ -6322,13 +6338,23 @@ var University = function (_Component) {
     return _this;
   }
 
+  // selectSchool(event){
+  //   if(event){
+  //     event.preventDefault();
+  //     const selectedUniversities = this.props.university.selectedUniversities;
+  //     console.log("universityName", universityName);
+  //       this.setState({
+  //         isSaved: !this.state.isSaved
+  //       })
+  //   }
+  // }
+
   _createClass(University, [{
     key: 'saveSchool',
-    value: function saveSchool(university, event) {
+    value: function saveSchool(university, index, event) {
       if (event) {
-        console.log("university in save school", university);
+        //console.log("university in save school", university);
         event.preventDefault();
-        //const selectedUniversities = this.props.university.selectedUniversities;
         var universityName = university.school_name;
         console.log("universityName", universityName);
         _axios2.default.put("/api/universities/savedschools", _defineProperty({}, universityName, university)).then(function (result) {
@@ -6336,9 +6362,16 @@ var University = function (_Component) {
         })["catch"](function (err) {
           console.log("we have not got the data!");
         });
-        this.setState({
-          isSaved: !this.state.isSaved
-        });
+        this.props.savedUniversityReceived(university);
+      }
+    }
+  }, {
+    key: 'closeSchoolCard',
+    value: function closeSchoolCard(index, event) {
+      if (event) {
+        event.preventDefault();
+        console.log("index", index);
+        this.props.schoolCardClosed(index);
       }
     }
   }, {
@@ -6347,72 +6380,69 @@ var University = function (_Component) {
       var _this2 = this;
 
       var selectedUniversities = this.props.university.selectedUniversities.length ? this.props.university.selectedUniversities : [];
-      //console.log("selectedUniversities in the University component", selectedUniversities)
+      console.log("selectedUniversities in the University component", selectedUniversities);
       var numberWithCommas = function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       };
       var isSaved = this.state.isSaved;
-      console.log("isSaved: ", isSaved);
+      // console.log("isSaved: ", isSaved);
       selectedUniversities = selectedUniversities.map(function (university, index) {
         return _react2.default.createElement(
           'div',
-          { key: index, className: 'row', onClick: _this2.saveSchool.bind(_this2, university) },
+          { key: index, onClick: _this2.saveSchool.bind(_this2, university, index), className: 'col-sm-6 col-md-6' },
+          _react2.default.createElement('i', { onClick: _this2.closeSchoolCard.bind(_this2, index), style: { size: "20" }, className: 'fa fa-window-close pull-right' }),
           _react2.default.createElement(
             'div',
-            { className: 'col-sm-6 col-md-6' },
+            { className: 'thumbnail' },
+            _react2.default.createElement('img', { style: style.img, className: 'card-img-top', src: university.imgURL, alt: 'university_img' }),
             _react2.default.createElement(
               'div',
-              { className: 'thumbnail' },
-              _react2.default.createElement('img', { src: university.imgURL, alt: 'university_img' }),
+              { className: 'caption' },
               _react2.default.createElement(
-                'div',
-                { className: 'caption' },
-                _react2.default.createElement(
-                  'h3',
-                  null,
-                  university.school_name
-                ),
-                _react2.default.createElement(
-                  'p',
-                  null,
-                  university.description
-                ),
-                _react2.default.createElement(
-                  'small',
-                  { className: 'text-muted' },
-                  'Ranked #',
-                  university.ranking,
-                  ' among universities in the US.'
-                ),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement(
-                  'small',
-                  { className: 'text-muted' },
-                  'Annual tuition $ ',
-                  numberWithCommas(university.tuition)
-                ),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement(
-                  'small',
-                  { className: 'text-muted' },
-                  'Acceptance rate: ',
-                  university.acceptance_rate,
-                  '%'
-                ),
-                _react2.default.createElement(
-                  'p',
-                  null,
-                  !isSaved ? _react2.default.createElement(
-                    'a',
-                    { href: '#', className: 'btn btn-primary', role: 'button' },
-                    'Save ',
-                    _react2.default.createElement('i', { className: 'fa fa-heart' })
-                  ) : _react2.default.createElement(
-                    'a',
-                    { href: '#', className: 'btn btn-primary', role: 'button' },
-                    'Saved! ',
-                    _react2.default.createElement('i', { className: 'fa fa-heart' })
-                  )
+                'h3',
+                null,
+                university.school_name
+              ),
+              _react2.default.createElement(
+                'p',
+                null,
+                university.description
+              ),
+              _react2.default.createElement(
+                'small',
+                { className: 'text-muted' },
+                'Ranked #',
+                university.ranking,
+                ' among universities in the US.'
+              ),
+              _react2.default.createElement('br', null),
+              _react2.default.createElement(
+                'small',
+                { className: 'text-muted' },
+                'Annual tuition $ ',
+                numberWithCommas(university.tuition)
+              ),
+              _react2.default.createElement('br', null),
+              _react2.default.createElement(
+                'small',
+                { className: 'text-muted' },
+                'Acceptance rate: ',
+                university.acceptance_rate,
+                '%'
+              ),
+              _react2.default.createElement(
+                'p',
+                null,
+                !isSaved ? _react2.default.createElement(
+                  'a',
+                  { href: '#', className: 'btn btn-primary', role: 'button' },
+                  'Save ',
+                  _react2.default.createElement('i', { className: 'fa fa-heart' })
+                ) : _react2.default.createElement(
+                  'a',
+                  { href: '#', className: 'btn btn-primary', disabled: _this2.state.isSaved, role: 'button' },
+                  'Saved! ',
+                  _react2.default.createElement('i', { className: 'fa fa-heart' })
                 )
               )
             )
@@ -6431,7 +6461,11 @@ var University = function (_Component) {
             null,
             'This is University component!'
           ),
-          selectedUniversities
+          _react2.default.createElement(
+            'div',
+            { style: style.card, className: 'row' },
+            selectedUniversities
+          )
         ) : null
       );
     }
@@ -6442,20 +6476,35 @@ var University = function (_Component) {
 
 var stateToProps = function stateToProps(state) {
   return {
-    university: state.university
+    university: state.university,
+    index: state.index
   };
 };
 
 var dispatchToProps = function dispatchToProps(dispatch) {
-  return {};
+  return {
+    savedUniversityReceived: function savedUniversityReceived(university) {
+      return dispatch(_actions2.default.savedUniversityReceived(university));
+    },
+    schoolCardClosed: function schoolCardClosed(index) {
+      return dispatch(_actions2.default.schoolCardClosed(index));
+    }
+  };
 };
 
 exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(University);
 
 
-var divStyle = {
-  padding: "5px 5px 5px 5px",
-  margin: "10px 10px 10px 10px"
+var style = {
+  card: (_card = {
+    display: "-webkit-box"
+  }, _defineProperty(_card, 'display', "-webkit-flex"), _defineProperty(_card, 'display', "ms-flexbox"), _defineProperty(_card, 'display', "flex"), _defineProperty(_card, 'WebkitBoxOrient', "horizontal"), _defineProperty(_card, 'WebkitBoxDirection', "normal"), _defineProperty(_card, 'WebkitFlexDirection', "column"), _defineProperty(_card, 'msFlexDirection', "column"), _defineProperty(_card, 'flexDirection', "column"), _defineProperty(_card, 'width', "100%"), _card),
+  img: {
+    WebkitBoxFlex: "0",
+    WebkitFlex: "0 0 auto",
+    msFlex: "0 0 auto",
+    flex: "0 0 auto"
+  }
 };
 
 /***/ }),
@@ -30324,7 +30373,8 @@ exports.default = {
 			user: _reducers.userReducer,
 			information: _reducers.userReducer,
 			statement: _reducers.userReducer,
-			university: _reducers.universityReducer
+			university: _reducers.universityReducer,
+			index: _reducers.universityReducer
 		});
 
 		if (initialState) {
@@ -31033,7 +31083,7 @@ exports.default = function () {
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _constants = __webpack_require__(103);
@@ -31043,33 +31093,48 @@ var _constants2 = _interopRequireDefault(_constants);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var initialState = {
-	searchedUniversity: "",
-	selectedUniversities: []
+  searchedUniversity: "",
+  selectedUniversities: [],
+  savedUniversities: []
 };
 
 exports.default = function () {
-	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-	var action = arguments[1];
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
 
-	var newState = Object.assign({}, state);
+  var newState = Object.assign({}, state);
 
-	switch (action.type) {
+  switch (action.type) {
 
-		case _constants2.default.SEARCHED_UNIVERSITY_RECEIVED:
-			newState.searchedUniversity = action.data;
-			//console.log("action.data", action.data);
-			//console.log("newState: ", newState);
-			return newState;
+    case _constants2.default.SEARCHED_UNIVERSITY_RECEIVED:
+      newState.searchedUniversity = action.data;
+      //console.log("action.data", action.data);
+      //console.log("newState: ", newState);
+      return newState;
 
-		case _constants2.default.SELECTED_UNIVERSITY_RECEIVED:
-			newState.selectedUniversities.push(action.data);
-			//console.log("action.data", action.data)
-			//console.log("newState: ", newState);
-			return newState;
+    case _constants2.default.SELECTED_UNIVERSITY_RECEIVED:
+      newState.selectedUniversities.push(action.data);
+      //console.log("action.data", action.data)
+      //console.log("newState: ", newState);
+      return newState;
 
-		default:
-			return state;
-	}
+    case _constants2.default.SAVED_UNIVERSITY_RECEIVED:
+      newState.savedUniversities.push(action.data);
+      // console.log("action.data", action.data)
+      // console.log("newState: ", newState);
+      return newState;
+
+    case _constants2.default.SCHOOL_CARD_CLOSED:
+      newState.selectedUniversities = newState.selectedUniversities.filter(function (el, ind, arr) {
+        return ind !== action.data;
+      });
+      console.log("action.data", action.data);
+      console.log("newState: ", newState);
+      return newState;
+
+    default:
+      return state;
+  }
 };
 
 /***/ }),

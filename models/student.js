@@ -59,7 +59,7 @@ const studentSchema = new Schema({
     type: String,
     default: ""
   },
-  selectedSchools: [],
+  savedSchools: [],
   personal: {
        city: {
           type: String,

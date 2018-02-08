@@ -85,12 +85,12 @@ router.put("/universities/savedschools", (req, res, next) => {
 
   collection.findOne({_id: id})
     .then(user => {
-      const match = user.selectedSchools.filter(school => school[schoolName]);
+      const match = user.savedSchools.filter(school => school[schoolName]);
         if(match.length){
            console.log("school already saved");
            return;
         }
-        user.selectedSchools.push(req.body);
+        user.savedSchools.push(req.body);
         user.save().then(result => {
           res.send(result)
         })
