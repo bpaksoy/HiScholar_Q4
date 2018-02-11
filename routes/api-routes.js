@@ -60,10 +60,10 @@ router.get("/universities/:university_id", (req, res, next) => {
 router.get("/universities/name/:school_name", (req, res, next) => {
   const school_name = req.params.school_name.trim();
   // console.log("name in the router: ", school_name)
-   University.find({school_name: school_name}, (err, university) => {
+   University.find({school_name: {'$regex' : `.*${school_name}.*`,  $options: 'i'}}, (err, university) => {
      if(err){
-       console.log(err);
-       return res.status(500).send();
+       console.log(err, "oops not in the system");
+       return res.status(500).send("University not found");
      }
      //console.log("university in the router:", university)
       res.send(university);
