@@ -4,6 +4,7 @@ const keys = require("../../../config/keys");
 import { connect } from 'react-redux';
 import actions from '../../actions';
 import axios from "axios";
+import superagent from 'superagent';
 
 class ProfileCard extends Component {
   constructor(props){
@@ -11,6 +12,20 @@ class ProfileCard extends Component {
 		this.state = {
 			user: props.user
 		}
+	}
+
+	componentDidMount(){
+		superagent.get('/auth/currentuser')
+			.query(null)
+			.set('Accept', 'application/json')
+			.end((err, response) => {
+				if (err)
+					return
+				const payload = response.body
+				const user = payload.user // this is the currently logged-in user
+				const imgURL = user.thumbnail;
+				this.props.profilePicUrlReceived(imgURL);
+			})
 	}
 
 
@@ -42,15 +57,15 @@ class ProfileCard extends Component {
 	  };
 
 	  axios.post(url, fd, config)
-	     .then(function (res) {
+	    .then(function (res) {
 				 //console.log(res.data)
 				const imgURL = res.data.secure_url;
 				axios.put("/dashboard/profile_picture", { thumbnail : imgURL }).then(function (result){
 					  console.log("result is ", result);
-					 })["catch"](function (err) {
+					})["catch"](function (err) {
 				 console.log("we have not got the data!");
 				 });
-				 imgPreview.src = res.data.secure_url;
+
 			 })
 	     .catch(function (err) {
 				 console.log("err", err)
@@ -62,12 +77,16 @@ class ProfileCard extends Component {
 
  render(){
 	 const user = this.state.user // can be null
- 	 const fullName = (user == null) ? '' : user.firstName + ' ' + user.lastName
-
+ 	 const fullName = (user == null) ? '' : user.firstName + ' ' + user.lastName;
+	 const thumbnail = (this.props.user.currentUser.thumbnail)? this.props.user.currentUser.thumbnail : "";
+   console.log("thumbnail: ", thumbnail)
  	return (
 		<div className="card card-profile">
 			<div className="card-avatar">
+			 {(thumbnail)?
+				  <img id="img-preview" className="img" src={thumbnail} /> :
 					<img id="img-preview" className="img" src="/img/faces/marc.jpg" />
+			 }
 			</div>
         <label className="btn btn-primary btn-round" name="file-upload">
 				 <input id="file-input" onChange={this.uploadFile.bind(this)} type="file" accept="image/*" style={{display:"none"}}/>Upload Photo
@@ -98,3 +117,11 @@ const dispatchToProps = (dispatch) => {
  }
 
 export default connect(stateToProps, dispatchToProps)(ProfileCard);
+
+
+// .then(() => {
+// 	axios.get("/dashboard/currentuser")
+// 	.then(user => {
+// 		imgPreview.src = user.thumbnail;
+// 	})
+// })

@@ -15,12 +15,13 @@ var React = _interopRequire(_react);
 var Component = _react.Component;
 var _presentation = require("../presentation");
 
-var Sidebar = _presentation.Sidebar;
 var Footer = _presentation.Footer;
 var ProfileCard = _presentation.ProfileCard;
 var ProfileForm = _presentation.ProfileForm;
 var Profile = require("../containers").Profile;
 var Nav = _interopRequire(require("../containers/Nav"));
+
+var Sidebar = _interopRequire(require("../containers/Sidebar"));
 
 var Dashboard = (function (Component) {
 	function Dashboard() {

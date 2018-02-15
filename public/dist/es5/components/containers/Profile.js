@@ -23,10 +23,11 @@ var actions = _interopRequire(require("../../actions"));
 var _presentation = require("../presentation");
 
 var ProfileForm = _presentation.ProfileForm;
-var ProfileCard = _presentation.ProfileCard;
 var InfoCard = _presentation.InfoCard;
 var PersonalStatement = _presentation.PersonalStatement;
 var StatementCard = _presentation.StatementCard;
+var ProfileCard = _interopRequire(require("./ProfileCard"));
+
 var University = _interopRequire(require("./University"));
 
 var axios = _interopRequire(require("axios"));
@@ -129,7 +130,7 @@ var Profile = (function (Component) {
 					});
 					//console.log("personal statement in the submit method", personal_statement);
 					this.props.personalStatementReceived(personal_statement);
-					axios.put("/auth/personal_statement", { personal_statement: personal_statement }).then(function (result) {
+					axios.put("/dashboard/personal_statement", { personal_statement: personal_statement }).then(function (result) {
 						console.log("result is ", result);
 					})["catch"](function (err) {
 						console.log("we have not got the data!");
@@ -189,7 +190,7 @@ var Profile = (function (Component) {
 					console.log("personal?????", personal);
 					this.props.personalInfoReceived(personal);
 					//console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
-					axios.put("/auth/currentuser", { personal: personal }).then(function (result) {
+					axios.put("/dashboard/currentuser", { personal: personal }).then(function (result) {
 						console.log("result is ", result);
 					})["catch"](function (err) {
 						console.log("we have not got the data!");

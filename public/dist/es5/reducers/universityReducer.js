@@ -33,11 +33,10 @@ module.exports = function (_x, action) {
       });
       return newState;
 
-    case constants.SAVED_UNIVERSITY_RECEIVED:
-      console.log("action.data", action.data);
-      console.log("newState", newState);
+    case constants.SAVED_UNIVERSITIES_RECEIVED:
+      console.log("action.data", action.data); // this is an array of universities coming from the axios req.
       newState.savedUniversities = action.data;
-
+      console.log("newState", newState);
       return newState;
 
     default:

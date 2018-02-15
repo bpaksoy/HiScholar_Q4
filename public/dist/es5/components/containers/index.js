@@ -8,9 +8,12 @@ var University = _interopRequire(require("./University"));
 
 var Nav = _interopRequire(require("./Nav"));
 
+var ProfileCard = _interopRequire(require("./ProfileCard"));
+
 exports.Profile = Profile;
 exports.University = University;
 exports.Nav = Nav;
+exports.ProfileCard = ProfileCard;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });

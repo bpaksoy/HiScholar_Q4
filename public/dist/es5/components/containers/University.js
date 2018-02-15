@@ -48,7 +48,7 @@ var University = (function (Component) {
         if (event) {
           axios.get("/api/universities/user/savedschools").then(function (result) {
             console.log("saved schools are ", result);
-            _this.props.savedUniversityReceived(result.data);
+            _this.props.savedUniversitiesReceived(result.data);
           })["catch"](function (err) {
             console.log("we have not got the data!");
           });
@@ -65,6 +65,9 @@ var University = (function (Component) {
           var universityName = university.school_name;
           //console.log("universityName", universityName);
           axios.put("/api/universities/savedschools", _defineProperty({}, universityName, university)).then(function (result) {
+            // this.setState({
+            //   isSaved: !this.state.isSaved
+            // })
             console.log("saved school is ", result);
           })["catch"](function (err) {
             console.log("we have not got the data!");
@@ -72,7 +75,6 @@ var University = (function (Component) {
           this.setState({
             isSaved: !this.state.isSaved
           });
-          this.props.savedUniversityReceived(university);
         }
       },
       writable: true,
@@ -119,7 +121,7 @@ var University = (function (Component) {
         selectedUniversities = selectedUniversities.map(function (university, index) {
           return React.createElement(
             "div",
-            { key: index, className: "col-sm-6 col-md-6" },
+            { key: index },
             React.createElement("i", { onClick: _this.closeSchoolCard.bind(_this, index), style: { size: "20" }, className: "fa fa-window-close pull-right" }),
             React.createElement(
               "div",
@@ -163,15 +165,14 @@ var University = (function (Component) {
                 React.createElement(
                   "p",
                   null,
-                  isSaved ? React.createElement(
+                  !isSaved ? React.createElement(
                     "a",
                     { href: "#", onClick: _this.saveSchool.bind(_this, university, index), className: "btn btn-primary", role: "button" },
-                    "Save ",
-                    React.createElement("i", { className: "fa fa-heart" })
+                    "Save"
                   ) : React.createElement(
                     "a",
                     { href: "#", onClick: _this.saveSchool.bind(_this, university, index), className: "btn btn-primary", role: "button" },
-                    "Saved! ",
+                    "Saved ",
                     React.createElement("i", { className: "fa fa-heart" })
                   )
                 )
@@ -185,23 +186,27 @@ var University = (function (Component) {
         return React.createElement(
           "div",
           null,
-          selectedUniversities.length ? React.createElement(
+          React.createElement(
             "div",
-            null,
-            React.createElement(
-              "h3",
-              null,
-              "This is University component!"
-            ),
-            React.createElement(
+            { className: "col-md-12", style: { display: "inline" } },
+            selectedUniversities.length ? React.createElement(
               "div",
-              { style: style.card, className: "row" },
-              selectedUniversities
-            )
-          ) : null,
+              { className: "col-md-6" },
+              React.createElement(
+                "h3",
+                null,
+                "This is University component!"
+              ),
+              React.createElement(
+                "div",
+                { style: style.card, className: "row" },
+                selectedUniversities
+              )
+            ) : null
+          ),
           !savedUniversities.length ? React.createElement(
             "div",
-            null,
+            { className: "col-md-12" },
             React.createElement(
               "a",
               { href: "#", onClick: this.getSavedUniversities.bind(this), className: "btn btn-primary", role: "button" },
@@ -229,8 +234,8 @@ var dispatchToProps = function (dispatch) {
     schoolCardClosed: function (index) {
       return dispatch(actions.schoolCardClosed(index));
     },
-    savedUniversityReceived: function (university) {
-      return dispatch(actions.savedUniversityReceived(university));
+    savedUniversitiesReceived: function (universities) {
+      return dispatch(actions.savedUniversitiesReceived(universities));
     }
   };
 };
@@ -260,4 +265,4 @@ var style = {
     flex: "0 0 auto"
   }
 };
-// this is an array
+// this is an array of universities

@@ -63,7 +63,7 @@ module.exports = function (props) {
 					null,
 					React.createElement(
 						"a",
-						{ href: "./table.html" },
+						{ href: "/" },
 						React.createElement(
 							"i",
 							{ className: "material-icons" },
@@ -72,7 +72,7 @@ module.exports = function (props) {
 						React.createElement(
 							"p",
 							null,
-							"Table List"
+							"Saved Schools"
 						)
 					)
 				),
@@ -85,12 +85,12 @@ module.exports = function (props) {
 						React.createElement(
 							"i",
 							{ className: "material-icons" },
-							"library_books"
+							"info_outline"
 						),
 						React.createElement(
 							"p",
 							null,
-							"Typography"
+							"Need help?"
 						)
 					)
 				),
@@ -108,7 +108,7 @@ module.exports = function (props) {
 						React.createElement(
 							"p",
 							null,
-							"Icons"
+							"Meet with Recruiters"
 						)
 					)
 				),

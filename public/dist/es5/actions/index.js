@@ -36,16 +36,22 @@ module.exports = {
 			data: university
 		};
 	},
-	savedUniversityReceived: function (university) {
+	savedUniversitiesReceived: function (universities) {
 		return {
-			type: constants.SAVED_UNIVERSITY_RECEIVED,
-			data: university
+			type: constants.SAVED_UNIVERSITIES_RECEIVED,
+			data: universities
 		};
 	},
 	schoolCardClosed: function (index) {
 		return {
 			type: constants.SCHOOL_CARD_CLOSED,
 			data: index
+		};
+	},
+	profilePicUrlReceived: function (url) {
+		return {
+			type: constants.PROFILE_PICTURE_URL_RECEIVED,
+			data: url
 		};
 	}
 
