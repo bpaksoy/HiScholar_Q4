@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 const keys = require("../../../config/keys");
-import sha1 from "sha1";
+//import sha1 from "sha1";
+import { connect } from 'react-redux';
+import actions from '../../actions';
 import axios from "axios";
-import Dropzone from 'react-dropzone';
 
 class ProfileCard extends Component {
   constructor(props){
@@ -39,14 +40,22 @@ class ProfileCard extends Component {
 	  const config = {
 	    headers: { "X-Requested-With": "XMLHttpRequest" },
 	  };
+
 	  axios.post(url, fd, config)
 	     .then(function (res) {
 				 //console.log(res.data)
+				const imgURL = res.data.secure_url;
+				axios.put("/dashboard/profile_picture", { thumbnail : imgURL }).then(function (result){
+					  console.log("result is ", result);
+					 })["catch"](function (err) {
+				 console.log("we have not got the data!");
+				 });
 				 imgPreview.src = res.data.secure_url;
 			 })
 	     .catch(function (err) {
 				 console.log("err", err)
 			 })
+
 		 }
 
 	}
@@ -74,8 +83,18 @@ class ProfileCard extends Component {
 }
 
 
-export default ProfileCard;
 
+const stateToProps = (state) => {
+	return {
+		user: state.user,
+		picture_url: state.picture_url
+	}
+}
 
+const dispatchToProps = (dispatch) => {
+	return {
+	  profilePicUrlReceived: (url) => dispatch(actions.profilePicUrlReceived(url))
+	}
+ }
 
-// <label className="btn btn-primary btn-round" name="file-upload">// </label>
+export default connect(stateToProps, dispatchToProps)(ProfileCard);

@@ -36,7 +36,7 @@ router.get("/personal_statement", (req, res, next) => {
 router.put("/profile_picture", (req,res, next) => {
  const id = (req.session.localUser)? req.session.localUser._id : req.user._id;
  let collection = (req.session.localUser)? Student : User;
- const profilePicUrl= req.body;
+ const profilePicUrl= req.body.thumbnail;
  console.log("profile picture url in the router", profilePicUrl)
  collection.findOne({_id: id})
     .then(user =>{

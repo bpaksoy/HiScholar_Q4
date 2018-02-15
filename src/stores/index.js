@@ -18,7 +18,8 @@ export default {
 			user: userReducer,
 			information: userReducer,
 			statement: userReducer,
-			university: universityReducer
+			picture_url: userReducer,
+			university: universityReducer,
 		})
 
 		if (initialState){

@@ -25,6 +25,13 @@ export default (state = initialState, action) => {
 			//console.log("newState: ", newState)
 	    return newState;
 
+
+	  case constants.PROFILE_PICTURE_URL_RECEIVED:
+		  newState["thumbnail"]= action.data;
+				console.log("action.data", action.data)
+				console.log("newState: ", newState)
+		  return newState;
+
 		default:
 			return state;
 	}

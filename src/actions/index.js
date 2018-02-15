@@ -39,10 +39,16 @@ export default {
 		}
 	},
 	schoolCardClosed: (index) => {
-		return{
+		return {
 		type: constants.SCHOOL_CARD_CLOSED,
 		data: index
 	 }
-	}
+ },
+ profilePicUrlReceived: (url) => {
+	 return {
+		 type: constants.PROFILE_PICTURE_URL_RECEIVED,
+		 data: url
+	 }
+ }
 
 }
