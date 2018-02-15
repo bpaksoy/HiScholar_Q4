@@ -76,10 +76,10 @@ class ProfileCard extends Component {
 	}
 
  render(){
-	 const user = this.state.user // can be null
+	 const user = this.props.user.currentUser // can be null
  	 const fullName = (user == null) ? '' : user.firstName + ' ' + user.lastName;
 	 const thumbnail = (this.props.user.currentUser.thumbnail)? this.props.user.currentUser.thumbnail : "";
-   console.log("thumbnail: ", thumbnail)
+   //console.log("thumbnail: ", thumbnail)
  	return (
 		<div className="card card-profile">
 			<div className="card-avatar">
