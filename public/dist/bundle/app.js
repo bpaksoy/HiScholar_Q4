@@ -6462,31 +6462,39 @@ var ProfileCard = function (_Component) {
 
 	_createClass(ProfileCard, [{
 		key: "uploadFile",
-		value: function uploadFile() {
+		value: function uploadFile(event) {
+			if (event) {
+				event.preventDefault();
+				var files = document.getElementById('file-input').files;
+				var file = files[0];
+				//console.log("file:", file);
+				var imgPreview = document.getElementById("img-preview");
 
-			var files = document.getElementById('file-input').files;
-			var file = files[0];
-			console.log("file:", file);
-			var cloudName = keys.cloudinary.cloudName;
-			var imgPreview = document.getElementById("img-preview");
-			//console.log("url is ", url, "imgPreview", imgPreview)
-			var uploadPreset = keys.cloudinary.uploadPreset;
-			//console.log("uploadPreset", uploadPreset)
-			var apiKey = keys.cloudinary.apiKey;
-			var url = "https://api.cloudinary.com/v1_1/" + cloudName + "/upload";
-			var fd = new FormData();
-			fd.append("upload_preset", uploadPreset);
-			fd.append("tags", "browser_upload"); // Optional - add tag for image admin in Cloudinary
-			fd.append("file", file);
-			var config = {
-				headers: { "X-Requested-With": "XMLHttpRequest" }
-			};
-			_axios2.default.post(url, fd, config).then(function (res) {
-				console.log(res.data);
-				imgPreview.src = res.data.secure_url;
-			}).catch(function (err) {
-				console.log("err", err);
-			});
+				var cloudName = keys.cloudinary.cloudName;
+				//const apiSecret = keys.cloudinary.apiSecret;
+				var uploadPreset = keys.cloudinary.uploadPreset;
+				//console.log("uploadPreset", uploadPreset)
+				//const apiKey = keys.cloudinary.apiKey;
+
+				var timestamp = Date.now() / 1000;
+				var url = "https://api.cloudinary.com/v1_1/" + cloudName + "/image/upload";
+
+				var fd = new FormData();
+				fd.append("file", file);
+				fd.append("upload_preset", uploadPreset);
+				fd.append("tags", "browser_upload"); // Optional - add tag for image admin in Cloudinary
+				//console.log("fd", fd)
+
+				var config = {
+					headers: { "X-Requested-With": "XMLHttpRequest" }
+				};
+				_axios2.default.post(url, fd, config).then(function (res) {
+					//console.log(res.data)
+					imgPreview.src = res.data.secure_url;
+				}).catch(function (err) {
+					console.log("err", err);
+				});
+			}
 		}
 	}, {
 		key: "render",
@@ -6500,11 +6508,7 @@ var ProfileCard = function (_Component) {
 				_react2.default.createElement(
 					"div",
 					{ className: "card-avatar" },
-					_react2.default.createElement(
-						"a",
-						{ href: "/" },
-						_react2.default.createElement("img", { id: "img-preview", className: "img", src: "/img/faces/marc.jpg" })
-					)
+					_react2.default.createElement("img", { id: "img-preview", className: "img", src: "/img/faces/marc.jpg" })
 				),
 				_react2.default.createElement(
 					"label",
@@ -33692,7 +33696,7 @@ var Profile = function (_Component) {
 				});
 				//console.log("personal statement in the submit method", personal_statement);
 				this.props.personalStatementReceived(personal_statement);
-				_axios2.default.put("/auth/personal_statement", { personal_statement: personal_statement }).then(function (result) {
+				_axios2.default.put("/dashboard/personal_statement", { personal_statement: personal_statement }).then(function (result) {
 					console.log("result is ", result);
 				})["catch"](function (err) {
 					console.log("we have not got the data!");
@@ -33745,7 +33749,7 @@ var Profile = function (_Component) {
 				console.log("personal?????", personal);
 				this.props.personalInfoReceived(personal);
 				//console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
-				_axios2.default.put("/auth/currentuser", { personal: personal }).then(function (result) {
+				_axios2.default.put("/dashboard/currentuser", { personal: personal }).then(function (result) {
 					console.log("result is ", result);
 				})["catch"](function (err) {
 					console.log("we have not got the data!");

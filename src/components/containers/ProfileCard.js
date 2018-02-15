@@ -13,33 +13,41 @@ class ProfileCard extends Component {
 	}
 
 
-  uploadFile(){
-
+  uploadFile(event){
+		if(event){
+    event.preventDefault();
 		const files = document.getElementById('file-input').files;
     const file = files[0];
-		console.log("file:", file);
+		//console.log("file:", file);
+    const imgPreview = document.getElementById("img-preview");
+
 		const cloudName = keys.cloudinary.cloudName;
-		const imgPreview = document.getElementById("img-preview");
-		//console.log("url is ", url, "imgPreview", imgPreview)
+    //const apiSecret = keys.cloudinary.apiSecret;
 		const uploadPreset = keys.cloudinary.uploadPreset;
 		//console.log("uploadPreset", uploadPreset)
-		const apiKey = keys.cloudinary.apiKey;
-		var url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
+		//const apiKey = keys.cloudinary.apiKey;
+
+		const timestamp = Date.now()/1000;
+		var url = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
+
 	  var fd = new FormData();
-	  fd.append("upload_preset", uploadPreset);
-	  fd.append("tags", "browser_upload"); // Optional - add tag for image admin in Cloudinary
-	  fd.append("file", file);
+		fd.append("file", file);
+		fd.append("upload_preset", uploadPreset);
+		fd.append("tags", "browser_upload"); // Optional - add tag for image admin in Cloudinary
+		//console.log("fd", fd)
+
 	  const config = {
 	    headers: { "X-Requested-With": "XMLHttpRequest" },
 	  };
 	  axios.post(url, fd, config)
 	     .then(function (res) {
-				 console.log(res.data)
+				 //console.log(res.data)
 				 imgPreview.src = res.data.secure_url;
 			 })
 	     .catch(function (err) {
 				 console.log("err", err)
 			 })
+		 }
 
 	}
 
@@ -50,9 +58,7 @@ class ProfileCard extends Component {
  	return (
 		<div className="card card-profile">
 			<div className="card-avatar">
-				<a href="/">
 					<img id="img-preview" className="img" src="/img/faces/marc.jpg" />
-				</a>
 			</div>
         <label className="btn btn-primary btn-round" name="file-upload">
 				 <input id="file-input" onChange={this.uploadFile.bind(this)} type="file" accept="image/*" style={{display:"none"}}/>Upload Photo
