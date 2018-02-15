@@ -32,10 +32,10 @@ export default {
 			data: university
 		}
 	},
-	savedUniversityReceived: (university) => {
+	savedUniversitiesReceived: (universities) => {
 		return {
-			type: constants.SAVED_UNIVERSITY_RECEIVED,
-			data: university
+			type: constants.SAVED_UNIVERSITIES_RECEIVED,
+			data: universities
 		}
 	},
 	schoolCardClosed: (index) => {

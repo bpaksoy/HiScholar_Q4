@@ -22,21 +22,21 @@ export default (props) => {
 						</a>
 					</li>
 					<li>
-						<a href="./table.html">
+						<a href="/">
 							<i className="material-icons">content_paste</i>
-							<p>Table List</p>
+							<p>Saved Schools</p>
 						</a>
 					</li>
 					<li>
 						<a href="./typography.html">
-							<i className="material-icons">library_books</i>
-							<p>Typography</p>
+							<i className="material-icons">info_outline</i>
+							<p>Need help?</p>
 						</a>
 					</li>
 					<li>
 						<a href="./icons.html">
 							<i className="material-icons">bubble_chart</i>
-							<p>Icons</p>
+							<p>Meet with Recruiters</p>
 						</a>
 					</li>
 					<li>

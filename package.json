@@ -44,11 +44,13 @@
     "path": "^0.12.7",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-dropzone": "^4.2.8",
     "react-hot-loader": "^4.0.0-beta.18",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "regenerator-runtime": "^0.11.1",
+    "sha1": "^1.1.1",
     "superagent": "^3.8.2",
     "whatwg-fetch": "^2.0.3"
   },

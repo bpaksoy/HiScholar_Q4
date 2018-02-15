@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../../actions';
-import { ProfileForm, ProfileCard, InfoCard, PersonalStatement, StatementCard } from '../presentation';
+import { ProfileForm, InfoCard, PersonalStatement, StatementCard } from '../presentation';
+import ProfileCard from "./ProfileCard";
 import University from './University';
 import axios from 'axios';
 import superagent from 'superagent';

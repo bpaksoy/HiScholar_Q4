@@ -21,7 +21,7 @@ class University extends Component {
       axios.get("/api/universities/user/savedschools")
       .then(result => {
  			  console.log("saved schools are ", result);
-        this.props.savedUniversityReceived(result.data) // this is an array
+        this.props.savedUniversitiesReceived(result.data) // this is an array of universities
       })["catch"](err => {
  		 console.log("we have not got the data!");
  		 });
@@ -36,6 +36,9 @@ class University extends Component {
      const universityName = university.school_name;
      //console.log("universityName", universityName);
      axios.put("/api/universities/savedschools", {[universityName]: university}).then(function (result){
+       // this.setState({
+       //   isSaved: !this.state.isSaved
+       // })
  			  console.log("saved school is ", result);
  			 })["catch"](function (err) {
  		 console.log("we have not got the data!");
@@ -43,7 +46,6 @@ class University extends Component {
      this.setState({
        isSaved: !this.state.isSaved
      })
-     this.props.savedUniversityReceived(university);
   }
 }
 
@@ -79,7 +81,7 @@ render(){
 
   selectedUniversities = selectedUniversities.map((university, index) => {
     return(
-        <div key={index} className="col-sm-6 col-md-6"><i onClick={this.closeSchoolCard.bind(this, index)} style={{size: "20"}} className="fa fa-window-close pull-right"></i>
+        <div key={index}><i onClick={this.closeSchoolCard.bind(this, index)} style={{size: "20"}} className="fa fa-window-close pull-right"></i>
           <div className="thumbnail">
             <img style={style.img} className="card-img-top" src={university.imgURL} alt="university_img"/>
             <div className="caption">
@@ -88,9 +90,9 @@ render(){
               <small className="text-muted">Ranked #{university.ranking} among universities in the US.</small><br/>
               <small className="text-muted">Annual tuition $ {numberWithCommas(university.tuition)}</small><br/>
               <small className="text-muted">Acceptance rate: {university.acceptance_rate}%</small>
-              <p>{(isSaved)?
-                  <a href="#"  onClick={this.saveSchool.bind(this, university, index)} className="btn btn-primary" role="button">Save <i className="fa fa-heart"></i></a>:
-                  <a href="#"  onClick={this.saveSchool.bind(this, university, index)} className="btn btn-primary" role="button">Saved! <i className="fa fa-heart"></i></a>
+              <p>{(!isSaved)?
+                  <a href="#"  onClick={this.saveSchool.bind(this, university, index)} className="btn btn-primary" role="button">Save</a>:
+                  <a href="#"  onClick={this.saveSchool.bind(this, university, index)} className="btn btn-primary" role="button">Saved <i className="fa fa-heart"></i></a>
                 }
               </p>
             </div>
@@ -103,14 +105,16 @@ render(){
 
     return(
       <div>
-       {(selectedUniversities.length)?
-        <div>
-          <h3>This is University component!</h3>
-          <div style={style.card} className="row">{selectedUniversities}</div>
+        <div className="col-md-12" style={{display:"inline"}}>
+         {(selectedUniversities.length)?
+          <div className="col-md-6">
+            <h3>This is University component!</h3>
+            <div style={style.card} className="row">{selectedUniversities}</div>
+          </div>
+         : null }
         </div>
-       : null }
        {(!savedUniversities.length)?
-        <div><a href="#" onClick={this.getSavedUniversities.bind(this)} className="btn btn-primary" role="button">See Saved</a></div>:
+        <div className="col-md-12"><a href="#" onClick={this.getSavedUniversities.bind(this)} className="btn btn-primary" role="button">See Saved</a></div>:
         <SavedUniversities clicked={clicked} closeSavedUniversities={this.closeSavedUniversities.bind(this)} savedUniversities={savedUniversities}/>
        }
       </div>
@@ -129,7 +133,7 @@ const stateToProps = (state) => {
 const dispatchToProps = (dispatch) => {
 	return {
      schoolCardClosed: (index) => dispatch(actions.schoolCardClosed(index)),
-     savedUniversityReceived: (university) => dispatch(actions.savedUniversityReceived(university))
+     savedUniversitiesReceived: (universities) => dispatch(actions.savedUniversitiesReceived(universities))
 	 }
  }
 
