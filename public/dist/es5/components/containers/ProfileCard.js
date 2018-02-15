@@ -96,10 +96,10 @@ var ProfileCard = (function (Component) {
 		},
 		render: {
 			value: function render() {
-				var user = this.state.user; // can be null
+				var user = this.props.user.currentUser; // can be null
 				var fullName = user == null ? "" : user.firstName + " " + user.lastName;
-				var thumbnail = this.props.user.currentUser.thumbnail ? this.props.user.currentUser.thumbnail : "";
-				console.log("thumbnail: ", thumbnail);
+				var thumbnail = user.thumbnail ? user.thumbnail : "";
+				//console.log("thumbnail: ", thumbnail)
 				return React.createElement(
 					"div",
 					{ className: "card card-profile" },

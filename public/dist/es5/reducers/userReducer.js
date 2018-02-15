@@ -33,8 +33,8 @@ module.exports = function (_x, action) {
 
 		case constants.PROFILE_PICTURE_URL_RECEIVED:
 			newState.thumbnail = action.data;
-			console.log("action.data", action.data);
-			console.log("newState: ", newState);
+			//console.log("action.data", action.data)
+			//console.log("newState: ", newState)
 			return newState;
 
 		default:
