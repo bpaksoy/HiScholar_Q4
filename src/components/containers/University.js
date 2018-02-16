@@ -102,7 +102,6 @@ render(){
   })
 
 
-
     return(
       <div>
         <div className="col-md-12" style={{display:"inline"}}>

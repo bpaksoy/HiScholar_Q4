@@ -29,9 +29,8 @@ class ProfileCard extends Component {
 	}
 
 
-  uploadFile(event){
-		if(event){
-    event.preventDefault();
+  uploadFile(){
+
 		const files = document.getElementById('file-input').files;
     const file = files[0];
 		//console.log("file:", file);
@@ -60,6 +59,7 @@ class ProfileCard extends Component {
 	    .then(function (res) {
 				 //console.log(res.data)
 				const imgURL = res.data.secure_url;
+        imgPreview.src = imgURL;
 				axios.put("/dashboard/profile_picture", { thumbnail : imgURL }).then(function (result){
 					  console.log("result is ", result);
 					})["catch"](function (err) {
@@ -70,8 +70,6 @@ class ProfileCard extends Component {
 	     .catch(function (err) {
 				 console.log("err", err)
 			 })
-
-		 }
 
 	}
 

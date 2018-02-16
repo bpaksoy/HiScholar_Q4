@@ -52,44 +52,42 @@ var ProfileCard = (function (Component) {
 			configurable: true
 		},
 		uploadFile: {
-			value: function uploadFile(event) {
-				if (event) {
-					event.preventDefault();
-					var files = document.getElementById("file-input").files;
-					var file = files[0];
-					//console.log("file:", file);
-					var imgPreview = document.getElementById("img-preview");
+			value: function uploadFile() {
+				var files = document.getElementById("file-input").files;
+				var file = files[0];
+				//console.log("file:", file);
+				var imgPreview = document.getElementById("img-preview");
 
-					var cloudName = keys.cloudinary.cloudName;
-					//const apiSecret = keys.cloudinary.apiSecret;
-					var uploadPreset = keys.cloudinary.uploadPreset;
-					//console.log("uploadPreset", uploadPreset)
-					//const apiKey = keys.cloudinary.apiKey;
+				var cloudName = keys.cloudinary.cloudName;
+				//const apiSecret = keys.cloudinary.apiSecret;
+				var uploadPreset = keys.cloudinary.uploadPreset;
+				//console.log("uploadPreset", uploadPreset)
+				//const apiKey = keys.cloudinary.apiKey;
 
-					var timestamp = Date.now() / 1000;
-					var url = "https://api.cloudinary.com/v1_1/" + cloudName + "/image/upload";
+				var timestamp = Date.now() / 1000;
+				var url = "https://api.cloudinary.com/v1_1/" + cloudName + "/image/upload";
 
-					var fd = new FormData();
-					fd.append("file", file);
-					fd.append("upload_preset", uploadPreset);
-					fd.append("tags", "browser_upload"); // Optional - add tag for image admin in Cloudinary
-					//console.log("fd", fd)
+				var fd = new FormData();
+				fd.append("file", file);
+				fd.append("upload_preset", uploadPreset);
+				fd.append("tags", "browser_upload"); // Optional - add tag for image admin in Cloudinary
+				//console.log("fd", fd)
 
-					var config = {
-						headers: { "X-Requested-With": "XMLHttpRequest" } };
+				var config = {
+					headers: { "X-Requested-With": "XMLHttpRequest" } };
 
-					axios.post(url, fd, config).then(function (res) {
-						//console.log(res.data)
-						var imgURL = res.data.secure_url;
-						axios.put("/dashboard/profile_picture", { thumbnail: imgURL }).then(function (result) {
-							console.log("result is ", result);
-						})["catch"](function (err) {
-							console.log("we have not got the data!");
-						});
+				axios.post(url, fd, config).then(function (res) {
+					//console.log(res.data)
+					var imgURL = res.data.secure_url;
+					imgPreview.src = imgURL;
+					axios.put("/dashboard/profile_picture", { thumbnail: imgURL }).then(function (result) {
+						console.log("result is ", result);
 					})["catch"](function (err) {
-						console.log("err", err);
+						console.log("we have not got the data!");
 					});
-				}
+				})["catch"](function (err) {
+					console.log("err", err);
+				});
 			},
 			writable: true,
 			configurable: true
