@@ -23,48 +23,50 @@ module.exports = function (props) {
     // console.log("universityName", universityName);
     return React.createElement(
       "div",
-      { style: style.card, key: index, className: "col-sm-6 col-md-6" },
+      { key: index, className: "thumbnail" },
+      React.createElement("i", { onClick: props.closeSavedUniversities.bind(undefined), style: { size: "20" }, className: "fa fa-window-close pull-right" }),
+      React.createElement("img", { style: style.img, className: "card-img-top", src: university[universityName].imgURL, alt: "university_img" }),
       React.createElement(
         "div",
-        { className: "thumbnail" },
-        React.createElement("i", { onClick: props.closeSavedUniversities.bind(undefined), style: { size: "20" }, className: "fa fa-window-close pull-right" }),
-        React.createElement("img", { style: style.img, className: "card-img-top", src: university[universityName].imgURL, alt: "university_img" }),
+        { className: "caption" },
         React.createElement(
-          "div",
-          { className: "caption" },
-          React.createElement(
-            "h3",
-            null,
-            university[universityName].school_name
-          ),
-          React.createElement(
-            "p",
-            null,
-            university[universityName].description
-          ),
-          React.createElement(
-            "small",
-            { className: "text-muted" },
-            "Ranked #",
-            university[universityName].ranking,
-            " among universities in the US."
-          ),
-          React.createElement("br", null),
-          React.createElement(
-            "small",
-            { className: "text-muted" },
-            "Annual tuition $ ",
-            numberWithCommas(university[universityName].tuition)
-          ),
-          React.createElement("br", null),
-          React.createElement(
-            "small",
-            { className: "text-muted" },
-            "Acceptance rate: ",
-            university[universityName].acceptance_rate,
-            "%"
-          ),
-          React.createElement("br", null)
+          "h3",
+          null,
+          university[universityName].school_name
+        ),
+        React.createElement(
+          "p",
+          null,
+          university[universityName].description
+        ),
+        React.createElement(
+          "small",
+          { className: "text-muted" },
+          "Ranked #",
+          university[universityName].ranking,
+          " among universities in the US."
+        ),
+        React.createElement("br", null),
+        React.createElement(
+          "small",
+          { className: "text-muted" },
+          "Annual tuition $ ",
+          numberWithCommas(university[universityName].tuition)
+        ),
+        React.createElement("br", null),
+        React.createElement(
+          "small",
+          { className: "text-muted" },
+          "Acceptance rate: ",
+          university[universityName].acceptance_rate,
+          "%"
+        ),
+        React.createElement("br", null),
+        React.createElement(
+          "a",
+          { href: "#", className: "btn btn-primary", role: "button" },
+          "Saved ",
+          React.createElement("i", { className: "fa fa-heart" })
         )
       )
     );
@@ -79,7 +81,7 @@ module.exports = function (props) {
       null,
       React.createElement(
         "div",
-        null,
+        { style: style.card },
         savedUniversities
       ),
       React.createElement(

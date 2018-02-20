@@ -24,6 +24,8 @@ var Nav = _interopRequire(require("./Nav"));
 
 var SavedUniversities = _interopRequire(require("../presentation/SavedUniversities"));
 
+var SelectedUniversities = _interopRequire(require("../presentation/SelectedUniversities"));
+
 var axios = _interopRequire(require("axios"));
 
 var superagent = _interopRequire(require("superagent"));
@@ -35,22 +37,37 @@ var University = (function (Component) {
     _get(Object.getPrototypeOf(University.prototype), "constructor", this).call(this, props);
     this.state = {
       isSaved: false,
-      clicked: false
-    };
+      clicked: false };
   }
 
   _inherits(University, Component);
 
   _prototypeProperties(University, null, {
+    componentDidMount: {
+      value: function componentDidMount() {
+        var _this = this;
+        axios.get("/api/universities/user/savedschools").then(function (result) {
+          //console.log("saved schools are ", result);
+          _this.props.savedUniversitiesReceived(result.data);
+        })["catch"](function (err) {
+          console.log("we have not got the data!");
+        });
+      },
+      writable: true,
+      configurable: true
+    },
     getSavedUniversities: {
       value: function getSavedUniversities(event) {
         var _this = this;
         if (event) {
           axios.get("/api/universities/user/savedschools").then(function (result) {
-            console.log("saved schools are ", result);
+            //console.log("saved schools are ", result);
             _this.props.savedUniversitiesReceived(result.data);
           })["catch"](function (err) {
             console.log("we have not got the data!");
+          });
+          this.setState({
+            isSaved: !this.state.isSaved
           });
         }
       },
@@ -65,9 +82,24 @@ var University = (function (Component) {
           var universityName = university.school_name;
           //console.log("universityName", universityName);
           axios.put("/api/universities/savedschools", _defineProperty({}, universityName, university)).then(function (result) {
-            // this.setState({
-            //   isSaved: !this.state.isSaved
-            // })
+            console.log("saved school is ", result);
+          })["catch"](function (err) {
+            console.log("we have not got the data!");
+          });
+          this.setState({
+            isSaved: !this.state.isSaved
+          });
+        }
+      },
+      writable: true,
+      configurable: true
+    },
+    deleteSchool: {
+      value: function deleteSchool(university, index, event) {
+        if (event) {
+          event.preventDefault();
+          var universityName = university.school_name;
+          axios["delete"]("/api/universities/savedschools", _defineProperty({}, universityName, university)).then(function (result) {
             console.log("saved school is ", result);
           })["catch"](function (err) {
             console.log("we have not got the data!");
@@ -84,7 +116,7 @@ var University = (function (Component) {
       value: function closeSchoolCard(index, event) {
         if (event) {
           event.preventDefault();
-          console.log("index", index);
+          // console.log("index", index)
           this.props.schoolCardClosed(index);
         }
       },
@@ -105,81 +137,18 @@ var University = (function (Component) {
     },
     render: {
       value: function render() {
-        var _this = this;
         var selectedUniversities = this.props.university.selectedUniversities.length ? this.props.university.selectedUniversities : [];
         //console.log("selectedUniversities in the University component", selectedUniversities)
-        var numberWithCommas = function (x) {
-          return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        };
         var savedUniversities = this.props.university.savedUniversities.length ? this.props.university.savedUniversities : [];
+        //console.log("saved universities in the university component", savedUniversities);
+
+        var selectedUniversity = selectedUniversities.length ? selectedUniversities[selectedUniversities.length - 1] : "";
+        //console.log("selectedUniversity", selectedUniversity);
 
         var isSaved = this.state.isSaved;
         //console.log("isSaved: ", isSaved);
         var clicked = this.state.clicked;
-        console.log("clicked", clicked);
-
-        selectedUniversities = selectedUniversities.map(function (university, index) {
-          return React.createElement(
-            "div",
-            { key: index },
-            React.createElement("i", { onClick: _this.closeSchoolCard.bind(_this, index), style: { size: "20" }, className: "fa fa-window-close pull-right" }),
-            React.createElement(
-              "div",
-              { className: "thumbnail" },
-              React.createElement("img", { style: style.img, className: "card-img-top", src: university.imgURL, alt: "university_img" }),
-              React.createElement(
-                "div",
-                { className: "caption" },
-                React.createElement(
-                  "h3",
-                  null,
-                  university.school_name
-                ),
-                React.createElement(
-                  "p",
-                  null,
-                  university.description
-                ),
-                React.createElement(
-                  "small",
-                  { className: "text-muted" },
-                  "Ranked #",
-                  university.ranking,
-                  " among universities in the US."
-                ),
-                React.createElement("br", null),
-                React.createElement(
-                  "small",
-                  { className: "text-muted" },
-                  "Annual tuition $ ",
-                  numberWithCommas(university.tuition)
-                ),
-                React.createElement("br", null),
-                React.createElement(
-                  "small",
-                  { className: "text-muted" },
-                  "Acceptance rate: ",
-                  university.acceptance_rate,
-                  "%"
-                ),
-                React.createElement(
-                  "p",
-                  null,
-                  !isSaved ? React.createElement(
-                    "a",
-                    { href: "#", onClick: _this.saveSchool.bind(_this, university, index), className: "btn btn-primary", role: "button" },
-                    "Save"
-                  ) : React.createElement(
-                    "a",
-                    { href: "#", onClick: _this.saveSchool.bind(_this, university, index), className: "btn btn-primary", role: "button" },
-                    "Saved ",
-                    React.createElement("i", { className: "fa fa-heart" })
-                  )
-                )
-              )
-            )
-          );
-        });
+        //console.log("clicked", clicked);
 
 
         return React.createElement(
@@ -187,10 +156,10 @@ var University = (function (Component) {
           null,
           React.createElement(
             "div",
-            { className: "col-md-12", style: { display: "inline" } },
+            null,
             selectedUniversities.length ? React.createElement(
               "div",
-              { className: "col-md-6" },
+              null,
               React.createElement(
                 "h3",
                 null,
@@ -198,20 +167,32 @@ var University = (function (Component) {
               ),
               React.createElement(
                 "div",
-                { style: style.card, className: "row" },
-                selectedUniversities
+                { className: "col-md-6" },
+                React.createElement(SelectedUniversities, { savedUniversities: savedUniversities, closeSchoolCard: this.closeSchoolCard.bind(this), saveSchool: this.saveSchool.bind(this), deleteSchool: this.deleteSchool.bind(this), selectedUniversities: selectedUniversities })
               )
             ) : null
           ),
-          !savedUniversities.length ? React.createElement(
+          React.createElement(
             "div",
-            { className: "col-md-12" },
-            React.createElement(
-              "a",
-              { href: "#", onClick: this.getSavedUniversities.bind(this), className: "btn btn-primary", role: "button" },
-              "See Saved"
+            null,
+            !savedUniversities.length || !isSaved ? React.createElement(
+              "div",
+              null,
+              React.createElement(
+                "a",
+                { href: "#", onClick: this.getSavedUniversities.bind(this), className: "btn btn-primary", role: "button" },
+                "See Saved"
+              )
+            ) : React.createElement(
+              "div",
+              null,
+              React.createElement(
+                "div",
+                { className: "col-md-6" },
+                React.createElement(SavedUniversities, { clicked: clicked, closeSavedUniversities: this.closeSavedUniversities.bind(this), savedUniversities: savedUniversities })
+              )
             )
-          ) : React.createElement(SavedUniversities, { clicked: clicked, closeSavedUniversities: this.closeSavedUniversities.bind(this), savedUniversities: savedUniversities })
+          )
         );
       },
       writable: true,
@@ -240,28 +221,5 @@ var dispatchToProps = function (dispatch) {
 };
 
 module.exports = connect(stateToProps, dispatchToProps)(University);
-
-
-
-
-var style = {
-  card: {
-    display: "-webkit-box",
-    display: "-webkit-flex",
-    display: "ms-flexbox",
-    display: "flex",
-    WebkitBoxOrient: "horizontal",
-    WebkitBoxDirection: "normal",
-    WebkitFlexDirection: "column",
-    msFlexDirection: "column",
-    flexDirection: "column",
-    width: "100%"
-  },
-  img: {
-    WebkitBoxFlex: "0",
-    WebkitFlex: "0 0 auto",
-    msFlex: "0 0 auto",
-    flex: "0 0 auto"
-  }
-};
+// this is an array of universities
 // this is an array of universities

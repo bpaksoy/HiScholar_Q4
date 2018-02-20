@@ -15,11 +15,15 @@ var StatementCard = _interopRequire(require("./StatementCard"));
 
 var SavedUniversities = _interopRequire(require("./SavedUniversities"));
 
+var SelectedUniversities = _interopRequire(require("./SelectedUniversities"));
+
 exports.Footer = Footer;
 exports.ProfileForm = ProfileForm;
 exports.InfoCard = InfoCard;
 exports.PersonalStatement = PersonalStatement;
 exports.StatementCard = StatementCard;
+exports.SavedUniversities = SavedUniversities;
+exports.SelectedUniversities = SelectedUniversities;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
