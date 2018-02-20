@@ -72,7 +72,7 @@ router.get("/universities/name/:school_name", (req, res, next) => {
 });
 
 
-//save schools to the database
+//save schools to the user database
 router.put("/universities/savedschools", (req, res, next) => {
   const id = (req.session.localUser)? req.session.localUser._id : req.user._id;
   let collection = (req.session.localUser)? Student : User;
@@ -97,8 +97,28 @@ router.put("/universities/savedschools", (req, res, next) => {
       })
 })
 
+//delete school from the user database
+router.delete("/universities/savedschools", (req, res, next) => {
+  const id = (req.session.localUser)? req.session.localUser._id : req.user._id;
+  let collection = (req.session.localUser)? Student : User;
+  let schoolName;
+  for(var key in req.body){
+    schoolName = key;
+  }
 
-//get all saved saved saved universities
+  console.log("university name in the router", schoolName)
+
+  collection.findOne({_id: id})
+    .then(user => {
+       user.savedSchools.filter(school => !school[schoolName]);
+        user.save().then(result => {
+          res.send(result)
+        })
+    })
+})
+
+
+//get all saved universities for the user
 router.get("/universities/user/savedschools", (req, res, next)=> {
   const id = (req.session.localUser)? req.session.localUser._id : req.user._id;
   console.log("id", id)

@@ -14,11 +14,14 @@ export default (state = initialState, action) => {
 		case constants.SEARCHED_UNIVERSITY_RECEIVED:
       newState.searchedUniversity = action.data;
       //console.log("action.data", action.data);
-			//console.log("newState: ", newState);
+			console.log("newState: ", newState);
 			return newState;
 
     case constants.SELECTED_UNIVERSITY_RECEIVED:
-      newState.selectedUniversities.push(action.data);
+      const school = action.data.school_name;
+      const newSchool = {};
+      newSchool[school] = action.data;
+      newState.selectedUniversities.push(newSchool);
       //console.log("newState", newState);
       return newState;
 
@@ -27,9 +30,9 @@ export default (state = initialState, action) => {
       return newState;
 
     case constants.SAVED_UNIVERSITIES_RECEIVED:
-      console.log("action.data", action.data); // this is an array of universities coming from the axios req.
+      //console.log("action.data", action.data); // this is an array of universities coming from the axios req.
       newState.savedUniversities = action.data;
-      console.log("newState", newState);
+    //  console.log("newState", newState);
      return newState;
 
 		default:

@@ -5,6 +5,7 @@ import InfoCard from "./InfoCard"
 import PersonalStatement from "./PersonalStatement"
 import StatementCard from "./StatementCard"
 import SavedUniversities from "./SavedUniversities"
+import SelectedUniversities from "./SelectedUniversities"
 
 export {
 
@@ -12,6 +13,8 @@ export {
 	ProfileForm,
 	InfoCard,
 	PersonalStatement,
-	StatementCard
+	StatementCard,
+	SavedUniversities,
+	SelectedUniversities
 
 }

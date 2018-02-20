@@ -14,8 +14,7 @@ export default (props) => {
      let universityName = Object.keys(university);
     // console.log("universityName", universityName);
     return(
-        <div style={style.card} key={index} className="col-sm-6 col-md-6">
-          <div className="thumbnail"><i onClick={props.closeSavedUniversities.bind(this)} style={{size: "20"}} className="fa fa-window-close pull-right"></i>
+          <div key={index} className="thumbnail"><i onClick={props.closeSavedUniversities.bind(this)} style={{size: "20"}} className="fa fa-window-close pull-right"></i>
             <img style={style.img} className="card-img-top" src={university[universityName].imgURL} alt="university_img"/>
             <div className="caption">
               <h3>{university[universityName].school_name}</h3>
@@ -23,10 +22,9 @@ export default (props) => {
               <small className="text-muted">Ranked #{university[universityName].ranking} among universities in the US.</small><br/>
               <small className="text-muted">Annual tuition $ {numberWithCommas(university[universityName].tuition)}</small><br/>
               <small className="text-muted">Acceptance rate: {university[universityName].acceptance_rate}%</small><br/>
-
+              <a href="#" className="btn btn-primary" role="button">Saved <i className="fa fa-heart"></i></a>
             </div>
           </div>
-        </div>
     );
   })
 
@@ -36,7 +34,7 @@ export default (props) => {
 
        {(savedUniversities.length && !props.clicked)?
         <div>
-          <div>{savedUniversities}</div>
+          <div style={style.card}>{savedUniversities}</div>
           <div className="col-md-12">
             <a href="#" onClick={props.closeSavedUniversities} className="btn btn-primary pull-right" role="button">Go back</a>
           </div>

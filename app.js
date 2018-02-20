@@ -52,8 +52,8 @@ app.use(session({
       maxAge: 24 * 60 * 60 * 1000,
       keys: [keys.session.cookieKey]
 }),
-  resave: false,
-  saveUnInitialized: false,
+  resave: true,
+  saveUnInitialized: true,
   unset: 'destroy'
 }));
 
