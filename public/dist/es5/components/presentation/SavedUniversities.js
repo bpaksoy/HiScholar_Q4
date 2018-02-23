@@ -15,7 +15,7 @@ var numberWithCommas = function (x) {
 
 module.exports = function (props) {
   var savedUniversities = props.savedUniversities.length ? props.savedUniversities : [];
-  //console.log("saved universities in the component", savedUniversities);
+  console.log("saved universities in the component", savedUniversities);
 
   savedUniversities = savedUniversities.map(function (university, index) {
     // console.log("university", university)
@@ -76,7 +76,7 @@ module.exports = function (props) {
   return React.createElement(
     "div",
     null,
-    savedUniversities.length && !props.clicked ? React.createElement(
+    savedUniversities.length && props.clicked ? React.createElement(
       "div",
       null,
       React.createElement(
@@ -98,7 +98,7 @@ module.exports = function (props) {
       null,
       React.createElement(
         "a",
-        { href: "#", onClick: props.closeSavedUniversities, className: "btn btn-primary", role: "button" },
+        { href: "#", onClick: props.getSavedUniversities, className: "btn btn-primary", role: "button" },
         "See Saved"
       )
     )

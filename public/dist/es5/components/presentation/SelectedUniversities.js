@@ -21,6 +21,9 @@ module.exports = function (props) {
   var savedUniversities = props.savedUniversities.length ? props.savedUniversities : [];
   console.log("saved Unis", savedUniversities);
 
+  var isSaved = props.isSaved;
+  var buttonChange = props.buttonChange;
+
   var lastSearched = selectedUniversities.length ? selectedUniversities[selectedUniversities.length - 1] : "";
   //console.log("selectedUniversity", selectedUniversity);
 
@@ -33,7 +36,7 @@ module.exports = function (props) {
 
   var compare = savedUniversities.length ? savedUniversities.filter(function (university) {
     return [].concat(_toConsumableArray(university), [university[universityName]]);
-  }) : null;
+  }) : [];
 
   console.log("compare", compare);
 
@@ -96,7 +99,7 @@ module.exports = function (props) {
           React.createElement(
             "p",
             null,
-            button.length ? React.createElement(
+            button.length || buttonChange ? React.createElement(
               "a",
               { href: "/", onClick: props.deleteSchool.bind(undefined, university, index), className: "btn btn-primary", role: "button" },
               "Saved ",

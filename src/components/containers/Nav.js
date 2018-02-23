@@ -27,9 +27,8 @@ class Nav extends Component {
 	 let search = this.refs.search;
 	 if(event){
 		 event.preventDefault();
-
 		 const searchedUniversity = this.state.searchedUniversity.trim();
-     this.props.searchedUniversityReceived(searchedUniversity)
+     this.props.searchedUniversityReceived(searchedUniversity);
 		 search.value = "";
 		// console.log("searchedUniversity in the Nav", this.state.searchedUniversity);
 
@@ -42,6 +41,7 @@ class Nav extends Component {
 				})["catch"]( err =>{
 				console.log("we have not got the data!");
 			 });
+      
 		 }
  }
 

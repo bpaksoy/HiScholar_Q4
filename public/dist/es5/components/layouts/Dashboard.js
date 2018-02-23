@@ -37,9 +37,6 @@ var Dashboard = (function (Component) {
 	_prototypeProperties(Dashboard, null, {
 		render: {
 			value: function render() {
-				var selectedUniversity = this.state ? this.state.selectedUniversity : "";
-				console.log("selectedUniversity in the Dashboard", selectedUniversity);
-
 				return React.createElement(
 					"div",
 					{ className: "wrapper" },
@@ -54,7 +51,7 @@ var Dashboard = (function (Component) {
 							React.createElement(
 								"div",
 								{ className: "container-fluid" },
-								React.createElement(Profile, { selectedUniversity: selectedUniversity })
+								React.createElement(Profile, null)
 							)
 						),
 						React.createElement(Footer, null)

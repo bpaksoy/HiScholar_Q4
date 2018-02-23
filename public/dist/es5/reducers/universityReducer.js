@@ -7,7 +7,8 @@ var constants = _interopRequire(require("../constants"));
 var initialState = {
   searchedUniversity: "",
   selectedUniversities: [],
-  savedUniversities: []
+  savedUniversities: [],
+  isSaved: false
 };
 
 module.exports = function (_x, action) {
@@ -39,7 +40,12 @@ module.exports = function (_x, action) {
     case constants.SAVED_UNIVERSITIES_RECEIVED:
       //console.log("action.data", action.data); // this is an array of universities coming from the axios req.
       newState.savedUniversities = action.data;
-      //  console.log("newState", newState);
+      console.log("newState", newState);
+      return newState;
+
+    case constants.SAVE_RECEIVED:
+      newState.isSaved = action.data;
+      //console.log("newState", newState)
       return newState;
 
     default:

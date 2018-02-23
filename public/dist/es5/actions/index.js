@@ -53,6 +53,12 @@ module.exports = {
 			type: constants.PROFILE_PICTURE_URL_RECEIVED,
 			data: url
 		};
+	},
+	saveReceived: function (saveState) {
+		return {
+			type: constants.SAVE_RECEIVED,
+			data: saveState
+		};
 	}
 
 };

@@ -11,6 +11,9 @@ export default (props) => {
  let savedUniversities = (props.savedUniversities.length)? props.savedUniversities : [];
  console.log("saved Unis", savedUniversities);
 
+ const isSaved = props.isSaved;
+ const buttonChange= props.buttonChange;
+
  const lastSearched = (selectedUniversities.length)? selectedUniversities[selectedUniversities.length - 1] : "";
  //console.log("selectedUniversity", selectedUniversity);
 
@@ -23,7 +26,7 @@ export default (props) => {
 
  const compare = (savedUniversities.length)? savedUniversities.filter(university => {
   return  [...university, university[universityName]];
-}) : null;
+}) : [];
 
 console.log("compare", compare)
 
@@ -50,7 +53,7 @@ console.log("compare", compare)
              <small className="text-muted">Ranked #{selected.ranking} among universities in the US.</small><br/>
              <small className="text-muted">Annual tuition $ {numberWithCommas(selected.tuition)}</small><br/>
              <small className="text-muted">Acceptance rate: {selected.acceptance_rate}%</small>
-             <p>{(button.length)? <a href="/" onClick={props.deleteSchool.bind(this, university, index)} className="btn btn-primary" role="button">Saved <i className="fa fa-heart"></i></a> : <a href="/"  onClick={props.saveSchool.bind(this, university, index)} className="btn btn-primary" role="button">Save</a>}</p>
+             <p>{(button.length || buttonChange)? <a href="/" onClick={props.deleteSchool.bind(this, university, index)} className="btn btn-primary" role="button">Saved <i className="fa fa-heart"></i></a> : <a href="/"  onClick={props.saveSchool.bind(this, university, index)} className="btn btn-primary" role="button">Save</a>}</p>
            </div>
          </div>
        </div>

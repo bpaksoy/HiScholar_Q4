@@ -5,11 +5,8 @@ import Nav from '../containers/Nav'
 import Sidebar from '../containers/Sidebar'
 
 class Dashboard extends Component {
-
-
+  
 	render() {
-		const selectedUniversity = (this.state)? this.state.selectedUniversity : "";
-		console.log("selectedUniversity in the Dashboard", selectedUniversity);
 
 		return (
 			<div className="wrapper">
@@ -20,12 +17,12 @@ class Dashboard extends Component {
 
 					<div className="content">
 						<div className="container-fluid">
-							<Profile selectedUniversity={selectedUniversity}/>
+							<Profile/>
 						</div>
 
 					</div>
 
-					<Footer />
+					<Footer/>
 				</div>
 			</div>
 		)

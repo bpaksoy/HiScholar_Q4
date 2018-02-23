@@ -7,11 +7,11 @@ const numberWithCommas = (x) => {
 export default (props) => {
 
  let savedUniversities = (props.savedUniversities.length)? props.savedUniversities : [];
- //console.log("saved universities in the component", savedUniversities);
+ console.log("saved universities in the component", savedUniversities);
 
   savedUniversities = savedUniversities.map((university, index) => {
     // console.log("university", university)
-     let universityName = Object.keys(university);
+    let universityName = Object.keys(university);
     // console.log("universityName", universityName);
     return(
           <div key={index} className="thumbnail"><i onClick={props.closeSavedUniversities.bind(this)} style={{size: "20"}} className="fa fa-window-close pull-right"></i>
@@ -25,23 +25,22 @@ export default (props) => {
               <a href="#" className="btn btn-primary" role="button">Saved <i className="fa fa-heart"></i></a>
             </div>
           </div>
-    );
+       );
   })
 
 
 	return (
 	  <div>
 
-       {(savedUniversities.length && !props.clicked)?
+       {(savedUniversities.length && props.clicked)?
         <div>
           <div style={style.card}>{savedUniversities}</div>
           <div className="col-md-12">
             <a href="#" onClick={props.closeSavedUniversities} className="btn btn-primary pull-right" role="button">Go back</a>
           </div>
         </div>
-        : <div><a href="#" onClick={props.closeSavedUniversities} className="btn btn-primary" role="button">See Saved</a></div>
+        : <div><a href="#" onClick={props.getSavedUniversities} className="btn btn-primary" role="button">See Saved</a></div>
        }
-
 
 	  </div>
 	)

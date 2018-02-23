@@ -37,7 +37,8 @@ var University = (function (Component) {
     _get(Object.getPrototypeOf(University.prototype), "constructor", this).call(this, props);
     this.state = {
       isSaved: false,
-      clicked: false };
+      clicked: false,
+      buttonChange: false };
   }
 
   _inherits(University, Component);
@@ -51,6 +52,9 @@ var University = (function (Component) {
           _this.props.savedUniversitiesReceived(result.data);
         })["catch"](function (err) {
           console.log("we have not got the data!");
+        });
+        this.setState({
+          isSaved: false
         });
       },
       writable: true,
@@ -67,7 +71,8 @@ var University = (function (Component) {
             console.log("we have not got the data!");
           });
           this.setState({
-            isSaved: !this.state.isSaved
+            isSaved: !this.state.isSaved,
+            clicked: !this.state.clicked
           });
         }
       },
@@ -77,17 +82,24 @@ var University = (function (Component) {
     saveSchool: {
       value: function saveSchool(university, index, event) {
         if (event) {
-          //console.log("university in save school", university);
           event.preventDefault();
-          var universityName = university.school_name;
-          //console.log("universityName", universityName);
+          var universityName = undefined;
+          for (var key in university) {
+            universityName = key;
+          }
+
+          console.log("university", university, "universityName", universityName);
+          university = university[universityName];
           axios.put("/api/universities/savedschools", _defineProperty({}, universityName, university)).then(function (result) {
             console.log("saved school is ", result);
+            //const savedSchool = result.data.savedSchools[result.data.savedSchools.length - 1];
+            this.props.savedUniversitiesReceived(university);
           })["catch"](function (err) {
             console.log("we have not got the data!");
           });
           this.setState({
-            isSaved: !this.state.isSaved
+            isSaved: !this.state.isSaved,
+            buttonChange: !this.state.buttonChange
           });
         }
       },
@@ -140,16 +152,13 @@ var University = (function (Component) {
         var selectedUniversities = this.props.university.selectedUniversities.length ? this.props.university.selectedUniversities : [];
         //console.log("selectedUniversities in the University component", selectedUniversities)
         var savedUniversities = this.props.university.savedUniversities.length ? this.props.university.savedUniversities : [];
-        //console.log("saved universities in the university component", savedUniversities);
-
-        var selectedUniversity = selectedUniversities.length ? selectedUniversities[selectedUniversities.length - 1] : "";
-        //console.log("selectedUniversity", selectedUniversity);
+        console.log("saved universities in the university component", savedUniversities);
 
         var isSaved = this.state.isSaved;
-        //console.log("isSaved: ", isSaved);
+        console.log("isSaved: ", isSaved);
         var clicked = this.state.clicked;
-        //console.log("clicked", clicked);
-
+        console.log("clicked", clicked);
+        var buttonChange = this.state.buttonChange;
 
         return React.createElement(
           "div",
@@ -168,28 +177,20 @@ var University = (function (Component) {
               React.createElement(
                 "div",
                 { className: "col-md-6" },
-                React.createElement(SelectedUniversities, { savedUniversities: savedUniversities, closeSchoolCard: this.closeSchoolCard.bind(this), saveSchool: this.saveSchool.bind(this), deleteSchool: this.deleteSchool.bind(this), selectedUniversities: selectedUniversities })
+                React.createElement(SelectedUniversities, { isSaved: isSaved, buttonChange: buttonChange, savedUniversities: savedUniversities, closeSchoolCard: this.closeSchoolCard.bind(this), saveSchool: this.saveSchool.bind(this), deleteSchool: this.deleteSchool.bind(this), selectedUniversities: selectedUniversities })
               )
             ) : null
           ),
           React.createElement(
             "div",
             null,
-            !savedUniversities.length || !isSaved ? React.createElement(
-              "div",
-              null,
-              React.createElement(
-                "a",
-                { href: "#", onClick: this.getSavedUniversities.bind(this), className: "btn btn-primary", role: "button" },
-                "See Saved"
-              )
-            ) : React.createElement(
+            !savedUniversities.length ? null : React.createElement(
               "div",
               null,
               React.createElement(
                 "div",
                 { className: "col-md-6" },
-                React.createElement(SavedUniversities, { clicked: clicked, closeSavedUniversities: this.closeSavedUniversities.bind(this), savedUniversities: savedUniversities })
+                React.createElement(SavedUniversities, { getSavedUniversities: this.getSavedUniversities.bind(this), clicked: clicked, closeSavedUniversities: this.closeSavedUniversities.bind(this), savedUniversities: savedUniversities })
               )
             )
           )
@@ -216,6 +217,9 @@ var dispatchToProps = function (dispatch) {
     },
     savedUniversitiesReceived: function (universities) {
       return dispatch(actions.savedUniversitiesReceived(universities));
+    },
+    saveReceived: function (saveState) {
+      return dispatch(actions.saveReceived(saveState));
     }
   };
 };

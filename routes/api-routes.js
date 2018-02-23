@@ -77,6 +77,7 @@ router.put("/universities/savedschools", (req, res, next) => {
   const id = (req.session.localUser)? req.session.localUser._id : req.user._id;
   let collection = (req.session.localUser)? Student : User;
   let schoolName;
+  console.log("req.body", req.body)
   for(var key in req.body){
     schoolName = key;
   }

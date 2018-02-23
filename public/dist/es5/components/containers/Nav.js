@@ -51,7 +51,6 @@ var Nav = (function (Component) {
 				var search = this.refs.search;
 				if (event) {
 					event.preventDefault();
-
 					var searchedUniversity = this.state.searchedUniversity.trim();
 					this.props.searchedUniversityReceived(searchedUniversity);
 					search.value = "";
