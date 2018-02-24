@@ -50,6 +50,7 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "regenerator-runtime": "^0.11.1",
+    "scrollto-element": "^1.0.4",
     "sha1": "^1.1.1",
     "superagent": "^3.8.2",
     "whatwg-fetch": "^2.0.3"

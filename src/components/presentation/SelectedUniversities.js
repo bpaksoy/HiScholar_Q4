@@ -5,85 +5,57 @@ const numberWithCommas = (x) => {
 }
 
 export default (props) => {
-
- let selectedUniversities = (props.selectedUniversities.length)? props.selectedUniversities : [];
- //console.log("saved universities in the component", savedUniversities);
- let savedUniversities = (props.savedUniversities.length)? props.savedUniversities : [];
- console.log("saved Unis", savedUniversities);
-
- const isSaved = props.isSaved;
- const buttonChange= props.buttonChange;
-
- const lastSearched = (selectedUniversities.length)? selectedUniversities[selectedUniversities.length - 1] : "";
- //console.log("selectedUniversity", selectedUniversity);
-
- let universityName;
- for(var key in lastSearched){
-   universityName = key;
- }
-
- console.log("universityName", universityName)
-
- const compare = (savedUniversities.length)? savedUniversities.filter(university => {
-  return  [...university, university[universityName]];
-}) : [];
-
-console.log("compare", compare)
-
- let selectedUniversity = selectedUniversities.map((university, index, array) => {
-   let schoolName;
-   for(var key in university){
-     schoolName = key;
-   }
-   let selected = university[schoolName];
-   console.log("selected", selected, schoolName)
-   let button = (compare.length)? compare.filter(university => {
-     //console.log("university[schoolName]", university[schoolName], schoolName)
-    return university[schoolName];
-   }): [];
-
-   console.log("button", button);
-   return(
-       <div key={index}><i onClick={props.closeSchoolCard.bind(this, index)} style={{size: "20"}} className="fa fa-window-close pull-right"></i>
-         <div className="thumbnail">
-           <img style={style.img} className="card-img-top" src={selected.imgURL} alt="university_img"/>
-           <div className="caption">
-             <h3>{selected.school_name}</h3>
-             <p>{selected.description}</p>
-             <small className="text-muted">Ranked #{selected.ranking} among universities in the US.</small><br/>
-             <small className="text-muted">Annual tuition $ {numberWithCommas(selected.tuition)}</small><br/>
-             <small className="text-muted">Acceptance rate: {selected.acceptance_rate}%</small>
-             <p>{(button.length || buttonChange)? <a href="/" onClick={props.deleteSchool.bind(this, university, index)} className="btn btn-primary" role="button">Saved <i className="fa fa-heart"></i></a> : <a href="/"  onClick={props.saveSchool.bind(this, university, index)} className="btn btn-primary" role="button">Save</a>}</p>
+  const { selectedUniversities = [], savedUniversities = [] } = props;
+  let selected_universities_markup = selectedUniversities.map((university, index, array) => {
+    const is_already_saved = savedUniversities.some(saved_university => {
+      return saved_university._id == university._id;
+    })
+    const { school_name = '', description = '', ranking = '', tuition = '', _id = '', imgURL = '', acceptance_rate = '' } = university;
+    const should_have_row = index%2;
+    return(
+      <div key={_id} className='col-md-6' style={style.card}>
+        <i onClick={props.removeUniversityFromSelected.bind(this, _id)} style={{size: "20"}} style={style.closeButton} className="fa fa-window-close pull-right"></i>
+        <div className="thumbnail">
+          <img style={style.img} className="card-img-top" src={ imgURL } alt="university_img"/>
+            <div className="caption">
+            <h3>{ school_name }</h3>
+              <p>{ description }</p>
+                <small className="text-muted">Ranked #{ ranking } among universities in the US.</small><br/>
+                <small className="text-muted">Annual tuition $ {numberWithCommas( tuition )}</small><br/>
+                <small className="text-muted">Acceptance rate: { acceptance_rate }%</small>
+              <p>
+              {(is_already_saved)?
+                <button onClick={props.deleteSchool.bind(this, _id)} className="btn btn-primary" role="button"> Saved <i className="fa fa-heart"></i></button>:
+                <button onClick={props.saveSchool.bind(this, university)} className="btn btn-primary" role="button"> Save </button>}
+              </p>
            </div>
          </div>
        </div>
-   );
- })
-
-
-
-	return (
-	  <div style={style.card}>{selectedUniversity}</div>
-	)
+    );
+  })
+  const all_cards = [];
+  selected_universities_markup.forEach((university_markup, index, array) => {
+    const arraylen = array.length;
+    all_cards.push
+  })
+  return (
+    <div > { selected_universities_markup } </div>
+  )
 }
 
 const style = {
-  card : {
-    display: "-webkit-box",
-    display: "-webkit-flex",
-    display: "ms-flexbox",
-    display: "flex",
-    WebkitBoxOrient: "horizontal",
-    WebkitBoxDirection: "normal",
-    WebkitFlexDirection: "column",
-    msFlexDirection: "column",
-    flexDirection: "column",
-    width: "100%"
+  card: {
+    minHeight: '550px',
   },
-  img : {
+  img: {
     WebkitBoxFlex: "0",
     WebkitFlex: "0 0 auto",
     msFlex: "0 0 auto",
     flex: "0 0 auto"
+  },
+  closeButton: {
+    position: 'absolute',
+    top: '-3px',
+    right: '11px'
   }
 }
