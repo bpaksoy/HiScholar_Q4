@@ -33,7 +33,7 @@ class ProfileCard extends Component {
 
 		const files = document.getElementById('file-input').files;
     const file = files[0];
-		//console.log("file:", file);
+		console.log("file:", file);
     const imgPreview = document.getElementById("img-preview");
 
 		const cloudName = keys.cloudinary.cloudName;
