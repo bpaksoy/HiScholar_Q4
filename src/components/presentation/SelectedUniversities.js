@@ -14,7 +14,7 @@ export default (props) => {
     const should_have_row = index%2;
     return(
       <div key={_id} className='col-md-6' style={style.card}>
-        {/*<i onClick={props.closeSchoolCard.bind(this, index)} style={{size: "20"}} className="fa fa-window-close pull-right"></i>*/}
+        <i onClick={props.removeUniversityFromSelected.bind(this, _id)} style={{size: "20"}} style={style.closeButton} className="fa fa-window-close pull-right"></i>
         <div className="thumbnail">
           <img style={style.img} className="card-img-top" src={ imgURL } alt="university_img"/>
             <div className="caption">
@@ -44,13 +44,18 @@ export default (props) => {
 }
 
 const style = {
-  card : {
+  card: {
     minHeight: '550px',
   },
-  img : {
+  img: {
     WebkitBoxFlex: "0",
     WebkitFlex: "0 0 auto",
     msFlex: "0 0 auto",
     flex: "0 0 auto"
+  },
+  closeButton: {
+    position: 'absolute',
+    top: '-3px',
+    right: '11px'
   }
 }

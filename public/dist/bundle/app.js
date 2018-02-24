@@ -2248,6 +2248,12 @@ exports.default = {
 			data: university_id
 		};
 	},
+	removeUniversityFromSelected: function removeUniversityFromSelected(university_id) {
+		return {
+			type: _constants2.default.REMOVE_SELECTED_UNIVERSITY,
+			data: university_id
+		};
+	},
 	selectedUniversitiesReceived: function selectedUniversitiesReceived(universities) {
 		return {
 			type: _constants2.default.SELECTED_UNIVERSITIES_RECEIVED,
@@ -3877,6 +3883,7 @@ exports.default = {
 
 	//Selected Universities actions
 	SELECTED_UNIVERSITIES_RECEIVED: 'SELECTED_UNIVERSITIES_RECEIVED',
+	REMOVE_SELECTED_UNIVERSITY: 'REMOVE_SELECTED_UNIVERSITY',
 
 	// Saved Universities actions
 	REMOVE_SAVED_UNIVERSITY: 'REMOVE_SAVED_UNIVERSITY',
@@ -7317,6 +7324,8 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var numberWithCommas = function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
@@ -7329,6 +7338,8 @@ exports.default = function (props) {
 
 
   var saved_universities_markup = savedUniversities.map(function (university, index) {
+    var _React$createElement;
+
     var _university$school_na = university.school_name,
         school_name = _university$school_na === undefined ? '' : _university$school_na,
         _university$descripti = university.description,
@@ -7347,7 +7358,7 @@ exports.default = function (props) {
     return _react2.default.createElement(
       'div',
       { key: _id, className: 'col-md-6', style: style.card },
-      _react2.default.createElement('i', { onClick: props.deleteSchool.bind(undefined, _id), style: { size: "20" }, className: 'fa fa-window-close pull-right' }),
+      _react2.default.createElement('i', (_React$createElement = { onClick: props.deleteSchool.bind(undefined, _id), style: { size: "20" } }, _defineProperty(_React$createElement, 'style', style.closeButton), _defineProperty(_React$createElement, 'className', 'fa fa-window-close pull-right'), _React$createElement)),
       _react2.default.createElement(
         'div',
         { className: 'thumbnail' },
@@ -7428,6 +7439,11 @@ var style = {
     WebkitFlex: "0 0 auto",
     msFlex: "0 0 auto",
     flex: "0 0 auto"
+  },
+  closeButton: {
+    position: 'absolute',
+    top: '-3px',
+    right: '11px'
   }
 
   // <div style={style.card} className="row">
@@ -7452,6 +7468,8 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var numberWithCommas = function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
@@ -7463,6 +7481,8 @@ exports.default = function (props) {
       savedUniversities = _props$savedUniversit === undefined ? [] : _props$savedUniversit;
 
   var selected_universities_markup = selectedUniversities.map(function (university, index, array) {
+    var _React$createElement;
+
     var is_already_saved = savedUniversities.some(function (saved_university) {
       return saved_university._id == university._id;
     });
@@ -7486,6 +7506,7 @@ exports.default = function (props) {
     return _react2.default.createElement(
       'div',
       { key: _id, className: 'col-md-6', style: style.card },
+      _react2.default.createElement('i', (_React$createElement = { onClick: props.removeUniversityFromSelected.bind(undefined, _id), style: { size: "20" } }, _defineProperty(_React$createElement, 'style', style.closeButton), _defineProperty(_React$createElement, 'className', 'fa fa-window-close pull-right'), _React$createElement)),
       _react2.default.createElement(
         'div',
         { className: 'thumbnail' },
@@ -7566,6 +7587,11 @@ var style = {
     WebkitFlex: "0 0 auto",
     msFlex: "0 0 auto",
     flex: "0 0 auto"
+  },
+  closeButton: {
+    position: 'absolute',
+    top: '-3px',
+    right: '11px'
   }
 };
 
@@ -8103,6 +8129,7 @@ var University = function (_Component) {
     _this.state = {
       shouldShowSavedUniversities: true
     };
+
     _this.getSavedUniversities = _this.getSavedUniversities.bind(_this);
     _this.toggleSavedSchools = _this.toggleSavedSchools.bind(_this);
     _this.deleteSchool = _this.deleteSchool.bind(_this);
@@ -8189,6 +8216,7 @@ var University = function (_Component) {
               'div',
               null,
               _react2.default.createElement(_SelectedUniversities2.default, {
+                removeUniversityFromSelected: this.props.removeUniversityFromSelected,
                 savedUniversities: savedUniversities,
                 saveSchool: this.saveSchool.bind(this),
                 selectedUniversities: selectedUniversities,
@@ -8264,6 +8292,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     removeUniversityFromSaved: function removeUniversityFromSaved(universities_id) {
       return dispatch(_actions2.default.removeUniversityFromSaved(universities_id));
+    },
+    removeUniversityFromSelected: function removeUniversityFromSelected(universities_id) {
+      return dispatch(_actions2.default.removeUniversityFromSelected(universities_id));
     }
   };
 };
@@ -31639,7 +31670,16 @@ function removeSavedUniversityReducer() {
   var all_saved_universities = state['savedUniversities'];
   delete all_saved_universities[varsity_id_to_remove];
   return Object.assign({}, state, { 'savedUniversities': all_saved_universities });
-  return state;
+}
+
+function removeSelectedUniversityReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments[1];
+
+  var varsity_id_to_remove = action.data;
+  var all_selected_universities = state['selectedUniversities'];
+  delete all_selected_universities[varsity_id_to_remove];
+  return Object.assign({}, state, { 'selectedUniversities': all_selected_universities });
 }
 
 function searchedUniversityReceievedReducer() {
@@ -31666,6 +31706,9 @@ exports.default = function () {
 
     case _constants2.default.REMOVE_SAVED_UNIVERSITY:
       return removeSavedUniversityReducer(state, action);
+
+    case _constants2.default.REMOVE_SELECTED_UNIVERSITY:
+      return removeSelectedUniversityReducer(state, action);
 
     case _constants2.default.SEARCHED_UNIVERSITY_RECEIVED:
       return searchedUniversityReceievedReducer(state, action);

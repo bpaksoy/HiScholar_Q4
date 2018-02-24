@@ -14,6 +14,7 @@ class University extends Component {
   this.state = {
     shouldShowSavedUniversities: true
   }
+
   this.getSavedUniversities = this.getSavedUniversities.bind(this);
   this.toggleSavedSchools = this.toggleSavedSchools.bind(this);
   this.deleteSchool = this.deleteSchool.bind(this);
@@ -75,6 +76,7 @@ render() {
               <h3> Found { selectedUniversities.length } { selectedUniversities.length == 1 ? 'result' : 'results'}  </h3>
               <div>
                 <SelectedUniversities
+                  removeUniversityFromSelected={this.props.removeUniversityFromSelected}
                   savedUniversities={savedUniversities}
                   saveSchool={this.saveSchool.bind(this)}
                   selectedUniversities={selectedUniversities}
@@ -134,7 +136,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     schoolCardClosed: (index) => dispatch(actions.schoolCardClosed(index)),
     savedUniversitiesReceived: (universities) => dispatch(actions.savedUniversitiesReceived(universities)),
-    removeUniversityFromSaved: (universities_id) => dispatch(actions.removeUniversityFromSaved(universities_id))
+    removeUniversityFromSaved: (universities_id) => dispatch(actions.removeUniversityFromSaved(universities_id)),
+    removeUniversityFromSelected: (universities_id) => dispatch(actions.removeUniversityFromSelected(universities_id))
   }
 }
 
