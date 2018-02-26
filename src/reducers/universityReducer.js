@@ -32,7 +32,13 @@ function removeSavedUniversityReducer(state = {}, action) {
   const all_saved_universities = state['savedUniversities'];
   delete all_saved_universities[varsity_id_to_remove];
   return Object.assign({}, state, {'savedUniversities': all_saved_universities })
-  return state;
+}
+
+function removeSelectedUniversityReducer(state = {}, action) {
+  const varsity_id_to_remove = action.data;
+  const all_selected_universities = state['selectedUniversities'];
+  delete all_selected_universities[varsity_id_to_remove];
+  return Object.assign({}, state, {'selectedUniversities': all_selected_universities })
 }
 
 function searchedUniversityReceievedReducer(state = {}, action) {
@@ -53,6 +59,9 @@ export default (state = initialState, action) => {
 
     case constants.REMOVE_SAVED_UNIVERSITY:
       return removeSavedUniversityReducer(state, action);
+
+    case constants.REMOVE_SELECTED_UNIVERSITY:
+      return removeSelectedUniversityReducer(state, action);
 
     case constants.SEARCHED_UNIVERSITY_RECEIVED:
       return searchedUniversityReceievedReducer(state, action);

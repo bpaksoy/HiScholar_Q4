@@ -14,7 +14,7 @@ export default (props) => {
 
     return(
       <div key={_id} className='col-md-6' style={style.card}>
-        {<i onClick={props.deleteSchool.bind(this, _id)} style={{size: "20"}} className="fa fa-window-close pull-right"></i>}
+        <i onClick={props.deleteSchool.bind(this, _id)} style={{size: "20"}} style={style.closeButton} className="fa fa-window-close pull-right"></i>
         <div className="thumbnail">
           <img style={style.img} className="card-img-top" src={ imgURL } alt="university_img"/>
             <div className="caption">
@@ -52,6 +52,11 @@ const style = {
     WebkitFlex: "0 0 auto",
     msFlex: "0 0 auto",
     flex: "0 0 auto"
+  },
+  closeButton: {
+    position: 'absolute',
+    top: '-3px',
+    right: '11px'
   }
 }
 
