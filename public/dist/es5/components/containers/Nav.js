@@ -20,6 +20,8 @@ var Component = _react.Component;
 var connect = require("react-redux").connect;
 var actions = _interopRequire(require("../../actions"));
 
+var scrolltoElement = _interopRequire(require("scrollto-element"));
+
 var Nav = (function (Component) {
 	function Nav(props) {
 		_classCallCheck(this, Nav);
@@ -28,6 +30,7 @@ var Nav = (function (Component) {
 		this.state = {
 			searchedUniversity: ""
 		};
+		this.handleScroll = this.handleScroll.bind(this);
 	}
 
 	_inherits(Nav, Component);
@@ -41,6 +44,18 @@ var Nav = (function (Component) {
 					var value = event.target.value;
 					this.setState(_defineProperty({}, _name, value));
 				}
+			},
+			writable: true,
+			configurable: true
+		},
+		handleScroll: {
+			value: function handleScroll() {
+				console.log("handleScroll");
+				scrolltoElement({
+					element: document.querySelector(".universities_section"),
+					offset: 100, // default is 0
+					bezier: [0.19, 1, 0.22, 1], // default is [0.19, 1, 0.22, 1]
+					duration: 1000 });
 			},
 			writable: true,
 			configurable: true
@@ -59,8 +74,8 @@ var Nav = (function (Component) {
 					var url = "/api/universities/name/" + searchedUniversity;
 					return axios.get(url).then(function (result) {
 						var data = result.data;
-						_this.props.selectedUniversityReceived(data[0]);
-						//console.log("result is ", result);
+						_this.props.selectedUniversitiesReceived(data);
+						_this.handleScroll();
 					})["catch"](function (err) {
 						console.log("we have not got the data!");
 					});
@@ -71,8 +86,6 @@ var Nav = (function (Component) {
 		},
 		render: {
 			value: function render() {
-
-
 				return React.createElement(
 					"nav",
 					{ className: "navbar navbar-transparent navbar-absolute" },
@@ -191,10 +204,11 @@ var dispatchToProps = function (dispatch) {
 		searchedUniversityReceived: function (university) {
 			return dispatch(actions.searchedUniversityReceived(university));
 		},
-		selectedUniversityReceived: function (university) {
-			return dispatch(actions.selectedUniversityReceived(university));
+		selectedUniversitiesReceived: function (universities) {
+			return dispatch(actions.selectedUniversitiesReceived(universities));
 		}
 	};
 };
 
 module.exports = connect(stateToProps, dispatchToProps)(Nav);
+// default is 100
