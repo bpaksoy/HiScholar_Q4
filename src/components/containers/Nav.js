@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../../actions';
+import { Link } from "react-router-dom";
 import scrolltoElement from 'scrollto-element'
 
 class Nav extends Component {
@@ -65,7 +66,7 @@ class Nav extends Component {
 							<span className="icon-bar"></span>
 							<span className="icon-bar"></span>
 						</button>
-						<a className="navbar-brand" href="#"> Dashboard </a>
+						
 					</div>
 					<div className="collapse navbar-collapse">
 						<ul className="nav navbar-nav navbar-right">
@@ -77,7 +78,9 @@ class Nav extends Component {
 								</a>
 							</li>
 							<li>
-								<a href="#">Newsfeed</a>
+                <Link to="newsfeed">
+  								Newsfeed
+                </Link>
 							</li>
 							<li>
 								<a href="/auth/logout">Log Out</a>
@@ -107,6 +110,9 @@ const stateToProps = (state) => {
 }
 
 const dispatchToProps = (dispatch) => {
+  console.log("date is ", new Date().toJSON().slice(0,10));
+
+
 	return {
 		searchedUniversityReceived: (university) => dispatch(actions.searchedUniversityReceived(university)),
 		selectedUniversitiesReceived: (universities) => dispatch(actions.selectedUniversitiesReceived(universities))
