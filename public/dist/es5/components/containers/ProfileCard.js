@@ -55,7 +55,7 @@ var ProfileCard = (function (Component) {
 			value: function uploadFile() {
 				var files = document.getElementById("file-input").files;
 				var file = files[0];
-				//console.log("file:", file);
+				console.log("file:", file);
 				var imgPreview = document.getElementById("img-preview");
 
 				var cloudName = keys.cloudinary.cloudName;

@@ -26,10 +26,23 @@ export default {
 			data: university
 		}
 	},
-	selectedUniversityReceived: (university) => {
+	removeUniversityFromSaved: (university_id) => {
+		console.log('university_id', university_id);
 		return {
-			type: constants.SELECTED_UNIVERSITY_RECEIVED,
-			data: university
+			type: constants.REMOVE_SAVED_UNIVERSITY,
+			data: university_id
+		}
+	},
+	removeUniversityFromSelected: (university_id) => {
+		return {
+			type: constants.REMOVE_SELECTED_UNIVERSITY,
+			data: university_id
+		}
+	},
+	selectedUniversitiesReceived: (universities) => {
+		return {
+			type: constants.SELECTED_UNIVERSITIES_RECEIVED,
+			data: universities
 		}
 	},
 	savedUniversitiesReceived: (universities) => {

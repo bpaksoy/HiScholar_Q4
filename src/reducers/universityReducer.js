@@ -2,9 +2,48 @@ import constants from '../constants'
 
 var initialState = {
   searchedUniversity: "",
-	selectedUniversities: [],
-  savedUniversities: [],
-  isSaved: false
+	selectedUniversities: {},
+  savedUniversities: {},
+}
+
+function selectedUniversityReceivedReducer(state = {}, action) {
+  const { data = [] } = action;
+  const all_schools = {};
+  data.map((university) => {
+    all_schools[university._id] = university;
+  })
+  const all_selected_universities = Object.assign({}, state['selectedUniversities'], all_schools);
+  return Object.assign({}, state, {'selectedUniversities': all_selected_universities })
+}
+
+function addNewSavedUniversityReducer(state = {}, action) {
+  const { data = [] } = action;
+  const all_schools = {};
+  data.map((university) => {
+    all_schools[university._id] = university;
+  })
+  const all_saved_universities = Object.assign({}, state['savedUniversities'], all_schools);
+  return Object.assign({}, state, {'savedUniversities': all_saved_universities })
+  return state;
+}
+
+function removeSavedUniversityReducer(state = {}, action) {
+  const varsity_id_to_remove = action.data;
+  const all_saved_universities = state['savedUniversities'];
+  delete all_saved_universities[varsity_id_to_remove];
+  return Object.assign({}, state, {'savedUniversities': all_saved_universities })
+}
+
+function removeSelectedUniversityReducer(state = {}, action) {
+  const varsity_id_to_remove = action.data;
+  const all_selected_universities = state['selectedUniversities'];
+  delete all_selected_universities[varsity_id_to_remove];
+  return Object.assign({}, state, {'selectedUniversities': all_selected_universities })
+}
+
+function searchedUniversityReceievedReducer(state = {}, action) {
+  state['searchedUniversity'] = action.data;
+  return state;
 }
 
 export default (state = initialState, action) => {
@@ -12,34 +51,20 @@ export default (state = initialState, action) => {
 
 	switch (action.type) {
 
-		case constants.SEARCHED_UNIVERSITY_RECEIVED:
-      newState.searchedUniversity = action.data;
-      //console.log("action.data", action.data);
-			console.log("newState: ", newState);
-			return newState;
-
-    case constants.SELECTED_UNIVERSITY_RECEIVED:
-      const school = action.data.school_name;
-      const newSchool = {};
-      newSchool[school] = action.data;
-      newState.selectedUniversities.push(newSchool);
-      //console.log("newState", newState);
-      return newState;
-
-    case constants.SCHOOL_CARD_CLOSED:
-      newState.selectedUniversities = newState.selectedUniversities.filter((el, ind, arr) => {return ind !== action.data });
-      return newState;
+		case constants.SELECTED_UNIVERSITIES_RECEIVED:
+			return selectedUniversityReceivedReducer(newState, action);
 
     case constants.SAVED_UNIVERSITIES_RECEIVED:
-      //console.log("action.data", action.data); // this is an array of universities coming from the axios req.
-     newState.savedUniversities = action.data;
-     console.log("newState", newState);
-     return newState;
+      return addNewSavedUniversityReducer(state, action);
 
-    case constants.SAVE_RECEIVED:
-     newState.isSaved = action.data;
-     //console.log("newState", newState)
-     return newState;
+    case constants.REMOVE_SAVED_UNIVERSITY:
+      return removeSavedUniversityReducer(state, action);
+
+    case constants.REMOVE_SELECTED_UNIVERSITY:
+      return removeSelectedUniversityReducer(state, action);
+
+    case constants.SEARCHED_UNIVERSITY_RECEIVED:
+      return searchedUniversityReceievedReducer(state, action);
 
 		default:
 			return state;

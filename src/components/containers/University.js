@@ -9,153 +9,136 @@ import superagent from 'superagent';
 
 class University extends Component {
 
- constructor(props){
-    super(props);
-    this.state = {
-     isSaved: false,
-     clicked: false,
-     buttonChange: false,
-    };
+ constructor(props) {
+  super(props);
+  this.state = {
+    shouldShowSavedUniversities: true
   }
 
-componentDidMount(){
+  this.getSavedUniversities = this.getSavedUniversities.bind(this);
+  this.toggleSavedSchools = this.toggleSavedSchools.bind(this);
+  this.deleteSchool = this.deleteSchool.bind(this);
+}
+
+componentDidMount() {
+  this.getSavedUniversities();
+}
+
+getSavedUniversities() {
   axios.get("/api/universities/user/savedschools")
   .then(result => {
-    //console.log("saved schools are ", result);
     this.props.savedUniversitiesReceived(result.data) // this is an array of universities
-  })["catch"](err => {
-   console.log("we have not got the data!");
- });
- this.setState({
-  isSaved : false
- })
+  })
+  .catch(err => {
+    console.log("we have not got the data!");
+  });
 }
 
-
- getSavedUniversities(event){
-   if(event){
-      axios.get("/api/universities/user/savedschools")
-      .then(result => {
- 			  //console.log("saved schools are ", result);
-        this.props.savedUniversitiesReceived(result.data) // this is an array of universities
-      })["catch"](err => {
- 		 console.log("we have not got the data!");
- 		 });
-     this.setState({
-       isSaved: !this.state.isSaved,
-       clicked: !this.state.clicked
-     })
-  }
- }
-
-
- saveSchool(university, index, event){
-   if(event){
-
-     event.preventDefault();
-     let universityName;
-     for(var key in university){
-       universityName = key;
-     }
-
-     console.log("university", university,"universityName", universityName);
-     university = university[universityName];
-     axios.put("/api/universities/savedschools", {[universityName]: university}).then(function (result){
- 			  console.log("saved school is ", result);
-        //const savedSchool = result.data.savedSchools[result.data.savedSchools.length - 1];
-        this.props.savedUniversitiesReceived(university);
- 			 })["catch"](function (err) {
- 		 console.log("we have not got the data!");
- 		 });
-     this.setState({
-       isSaved: !this.state.isSaved,
-       buttonChange: !this.state.buttonChange
-     })
-  }
+saveSchool(university) {
+  this.props.savedUniversitiesReceived([university]);
+  axios.put("/api/universities/savedschools", {
+    data: university._id
+  }).then(result => {
+    //Success
+  })
+  .catch(err => {
+    console.log("Error occured while saving school " + err);
+  });
 }
 
-deleteSchool(university, index, event){
-  if(event){
-    event.preventDefault();
-     const universityName = university.school_name;
-     axios.delete("/api/universities/savedschools", {[universityName]: university}).then(function (result){
-         console.log("saved school is ", result);
-        })["catch"](function (err) {
-      console.log("we have not got the data!");
-      });
-      this.setState({
-        isSaved: !this.state.isSaved
-      })
-
-   }
-
+deleteSchool(university_id) {
+  this.props.removeUniversityFromSaved(university_id);
+  axios.delete("/api/universities/savedschools/" + university_id)
+  .then(result => {
+    console.log("deleted school is ", result);
+  })
+  .catch(err => {
+    console.log("Error occured while deleting school " + err);
+  });
 }
 
-  closeSchoolCard(index, event){
-    if(event){
-     event.preventDefault()
-    // console.log("index", index)
-     this.props.schoolCardClosed(index);
-   }
-  }
-
-  closeSavedUniversities(event){
-    if(event){
-      event.preventDefault();
-      this.setState({
-        clicked:!this.state.clicked
-      })
-    }
-  }
-
-render(){
-  let selectedUniversities = (this.props.university.selectedUniversities.length) ? this.props.university.selectedUniversities : [];
-  //console.log("selectedUniversities in the University component", selectedUniversities)
-  let savedUniversities = (this.props.university.savedUniversities.length)? this.props.university.savedUniversities : [];
-  console.log("saved universities in the university component", savedUniversities);
-
-  const isSaved =  this.state.isSaved;
-  console.log("isSaved: ", isSaved);
-  const clicked = this.state.clicked;
-  console.log("clicked", clicked);
-  const buttonChange = this.state.buttonChange;
-
+toggleSavedSchools() {
+  this.setState({
+    shouldShowSavedUniversities: !this.state.shouldShowSavedUniversities
+  })
+}
+render() {
+    const { shouldShowSavedUniversities = false } = this.state;
+    let { selectedUniversities = [], savedUniversities = [] } = this.props;
+    const saved_universities_visible = !!savedUniversities.length && shouldShowSavedUniversities;
+    const see_saved_button_text = saved_universities_visible  ? 'Hide saved' : 'See saved';
     return(
-      <div>
+      <div className='universities_section'>
         <div>
-         {(selectedUniversities.length)?
-          <div>
-            <h3>This is University component!</h3>
-            <div className="col-md-6"><SelectedUniversities isSaved={isSaved} buttonChange={buttonChange} savedUniversities={savedUniversities} closeSchoolCard={this.closeSchoolCard.bind(this)} saveSchool={this.saveSchool.bind(this)} deleteSchool={this.deleteSchool.bind(this)} selectedUniversities={selectedUniversities}/></div>
-          </div>
-         : null }
+         {
+            (selectedUniversities.length) ?
+            <div className='row'>
+              <h3> Found { selectedUniversities.length } { selectedUniversities.length == 1 ? 'result' : 'results'}  </h3>
+              <div>
+                <SelectedUniversities
+                  removeUniversityFromSelected={this.props.removeUniversityFromSelected}
+                  savedUniversities={savedUniversities}
+                  saveSchool={this.saveSchool.bind(this)}
+                  selectedUniversities={selectedUniversities}
+                  deleteSchool={this.deleteSchool}
+                />
+              </div>
+            </div>
+           : null
+          }
         </div>
        <div>
-         {(!savedUniversities.length)?
-          null:
-          <div>
-            <div className="col-md-6"><SavedUniversities getSavedUniversities={this.getSavedUniversities.bind(this)} clicked={clicked}  closeSavedUniversities={this.closeSavedUniversities.bind(this)} savedUniversities={savedUniversities}/></div>
-          </div>
-         }
+
+         {
+            <div className='row'>
+              <div className="col-md-8">
+                { saved_universities_visible ? <h3>Saved Universities</h3> : null }
+              </div>
+              <div className="col-md-4">
+                {
+                  !!savedUniversities.length &&
+                  <button href="#" onClick={this.toggleSavedSchools} className="btn btn-primary pull-right" role="button">
+                    {see_saved_button_text}
+                  </button>
+                }
+              </div>
+              {
+                saved_universities_visible &&
+                <SavedUniversities
+                  savedUniversities={savedUniversities}
+                  shouldShowSavedUniversities={shouldShowSavedUniversities}
+                  getSavedUniversities={this.getSavedUniversities}
+                  deleteSchool={this.deleteSchool}
+                  toggleSavedSchools={this.toggleSavedSchools}
+                />
+              }
+            </div>
+          }
        </div>
       </div>
     );
   }
-
 }
 
-const stateToProps = (state) => {
-	return {
-    university: state.university
-	}
+const mapStateToProps = (state) => {
+  const { university = {} } = state;
+  const { selectedUniversities = {}, savedUniversities = {} } = university;
+  const selected_universities_list = Object.values(selectedUniversities);
+  const saved_universities_list = Object.values(savedUniversities);
+
+  return {
+    selectedUniversities: selected_universities_list,
+    savedUniversities: saved_universities_list,
+  }
 }
 
-const dispatchToProps = (dispatch) => {
-	return {
-     schoolCardClosed: (index) => dispatch(actions.schoolCardClosed(index)),
-     savedUniversitiesReceived: (universities) => dispatch(actions.savedUniversitiesReceived(universities)),
-     saveReceived: (saveState) => dispatch(actions.saveReceived(saveState))
-	 }
- }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    schoolCardClosed: (index) => dispatch(actions.schoolCardClosed(index)),
+    savedUniversitiesReceived: (universities) => dispatch(actions.savedUniversitiesReceived(universities)),
+    removeUniversityFromSaved: (universities_id) => dispatch(actions.removeUniversityFromSaved(universities_id)),
+    removeUniversityFromSelected: (universities_id) => dispatch(actions.removeUniversityFromSelected(universities_id))
+  }
+}
 
-export default connect(stateToProps, dispatchToProps)(University);
+export default connect(mapStateToProps, mapDispatchToProps)(University);
