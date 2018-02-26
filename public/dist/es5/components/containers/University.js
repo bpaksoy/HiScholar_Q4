@@ -2,8 +2,6 @@
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
-var _defineProperty = function (obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); };
-
 var _prototypeProperties = function (child, staticProps, instanceProps) { if (staticProps) Object.defineProperties(child, staticProps); if (instanceProps) Object.defineProperties(child.prototype, instanceProps); };
 
 var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc && desc.writable) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
@@ -36,9 +34,12 @@ var University = (function (Component) {
 
     _get(Object.getPrototypeOf(University.prototype), "constructor", this).call(this, props);
     this.state = {
-      isSaved: false,
-      clicked: false,
-      buttonChange: false };
+      shouldShowSavedUniversities: true
+    };
+
+    this.getSavedUniversities = this.getSavedUniversities.bind(this);
+    this.toggleSavedSchools = this.toggleSavedSchools.bind(this);
+    this.deleteSchool = this.deleteSchool.bind(this);
   }
 
   _inherits(University, Component);
@@ -46,152 +47,129 @@ var University = (function (Component) {
   _prototypeProperties(University, null, {
     componentDidMount: {
       value: function componentDidMount() {
-        var _this = this;
-        axios.get("/api/universities/user/savedschools").then(function (result) {
-          //console.log("saved schools are ", result);
-          _this.props.savedUniversitiesReceived(result.data);
-        })["catch"](function (err) {
-          console.log("we have not got the data!");
-        });
-        this.setState({
-          isSaved: false
-        });
+        this.getSavedUniversities();
       },
       writable: true,
       configurable: true
     },
     getSavedUniversities: {
-      value: function getSavedUniversities(event) {
+      value: function getSavedUniversities() {
         var _this = this;
-        if (event) {
-          axios.get("/api/universities/user/savedschools").then(function (result) {
-            //console.log("saved schools are ", result);
-            _this.props.savedUniversitiesReceived(result.data);
-          })["catch"](function (err) {
-            console.log("we have not got the data!");
-          });
-          this.setState({
-            isSaved: !this.state.isSaved,
-            clicked: !this.state.clicked
-          });
-        }
+        axios.get("/api/universities/user/savedschools").then(function (result) {
+          _this.props.savedUniversitiesReceived(result.data);
+        })["catch"](function (err) {
+          console.log("we have not got the data!");
+        });
       },
       writable: true,
       configurable: true
     },
     saveSchool: {
-      value: function saveSchool(university, index, event) {
-        if (event) {
-          event.preventDefault();
-          var universityName = undefined;
-          for (var key in university) {
-            universityName = key;
-          }
-
-          console.log("university", university, "universityName", universityName);
-          university = university[universityName];
-          axios.put("/api/universities/savedschools", _defineProperty({}, universityName, university)).then(function (result) {
-            console.log("saved school is ", result);
-            //const savedSchool = result.data.savedSchools[result.data.savedSchools.length - 1];
-            this.props.savedUniversitiesReceived(university);
-          })["catch"](function (err) {
-            console.log("we have not got the data!");
-          });
-          this.setState({
-            isSaved: !this.state.isSaved,
-            buttonChange: !this.state.buttonChange
-          });
-        }
+      value: function saveSchool(university) {
+        this.props.savedUniversitiesReceived([university]);
+        axios.put("/api/universities/savedschools", {
+          data: university._id
+        }).then(function (result) {})["catch"](function (err) {
+          console.log("Error occured while saving school " + err);
+        });
       },
       writable: true,
       configurable: true
     },
     deleteSchool: {
-      value: function deleteSchool(university, index, event) {
-        if (event) {
-          event.preventDefault();
-          var universityName = university.school_name;
-          axios["delete"]("/api/universities/savedschools", _defineProperty({}, universityName, university)).then(function (result) {
-            console.log("saved school is ", result);
-          })["catch"](function (err) {
-            console.log("we have not got the data!");
-          });
-          this.setState({
-            isSaved: !this.state.isSaved
-          });
-        }
+      value: function deleteSchool(university_id) {
+        this.props.removeUniversityFromSaved(university_id);
+        axios["delete"]("/api/universities/savedschools/" + university_id).then(function (result) {
+          console.log("deleted school is ", result);
+        })["catch"](function (err) {
+          console.log("Error occured while deleting school " + err);
+        });
       },
       writable: true,
       configurable: true
     },
-    closeSchoolCard: {
-      value: function closeSchoolCard(index, event) {
-        if (event) {
-          event.preventDefault();
-          // console.log("index", index)
-          this.props.schoolCardClosed(index);
-        }
-      },
-      writable: true,
-      configurable: true
-    },
-    closeSavedUniversities: {
-      value: function closeSavedUniversities(event) {
-        if (event) {
-          event.preventDefault();
-          this.setState({
-            clicked: !this.state.clicked
-          });
-        }
+    toggleSavedSchools: {
+      value: function toggleSavedSchools() {
+        this.setState({
+          shouldShowSavedUniversities: !this.state.shouldShowSavedUniversities
+        });
       },
       writable: true,
       configurable: true
     },
     render: {
       value: function render() {
-        var selectedUniversities = this.props.university.selectedUniversities.length ? this.props.university.selectedUniversities : [];
-        //console.log("selectedUniversities in the University component", selectedUniversities)
-        var savedUniversities = this.props.university.savedUniversities.length ? this.props.university.savedUniversities : [];
-        console.log("saved universities in the university component", savedUniversities);
-
-        var isSaved = this.state.isSaved;
-        console.log("isSaved: ", isSaved);
-        var clicked = this.state.clicked;
-        console.log("clicked", clicked);
-        var buttonChange = this.state.buttonChange;
-
+        var _state$shouldShowSavedUniversities = this.state.shouldShowSavedUniversities;
+        var shouldShowSavedUniversities = _state$shouldShowSavedUniversities === undefined ? false : _state$shouldShowSavedUniversities;
+        var _props = this.props;
+        var _props$selectedUniversities = _props.selectedUniversities;
+        var selectedUniversities = _props$selectedUniversities === undefined ? [] : _props$selectedUniversities;
+        var _props$savedUniversities = _props.savedUniversities;
+        var savedUniversities = _props$savedUniversities === undefined ? [] : _props$savedUniversities;
+        var saved_universities_visible = !!savedUniversities.length && shouldShowSavedUniversities;
+        var see_saved_button_text = saved_universities_visible ? "Hide saved" : "See saved";
         return React.createElement(
           "div",
-          null,
+          { className: "universities_section" },
           React.createElement(
             "div",
             null,
             selectedUniversities.length ? React.createElement(
               "div",
-              null,
+              { className: "row" },
               React.createElement(
                 "h3",
                 null,
-                "This is University component!"
+                " Found ",
+                selectedUniversities.length,
+                " ",
+                selectedUniversities.length == 1 ? "result" : "results",
+                "  "
               ),
               React.createElement(
                 "div",
-                { className: "col-md-6" },
-                React.createElement(SelectedUniversities, { isSaved: isSaved, buttonChange: buttonChange, savedUniversities: savedUniversities, closeSchoolCard: this.closeSchoolCard.bind(this), saveSchool: this.saveSchool.bind(this), deleteSchool: this.deleteSchool.bind(this), selectedUniversities: selectedUniversities })
+                null,
+                React.createElement(SelectedUniversities, {
+                  removeUniversityFromSelected: this.props.removeUniversityFromSelected,
+                  savedUniversities: savedUniversities,
+                  saveSchool: this.saveSchool.bind(this),
+                  selectedUniversities: selectedUniversities,
+                  deleteSchool: this.deleteSchool
+                })
               )
             ) : null
           ),
           React.createElement(
             "div",
             null,
-            !savedUniversities.length ? null : React.createElement(
+            React.createElement(
               "div",
-              null,
+              { className: "row" },
               React.createElement(
                 "div",
-                { className: "col-md-6" },
-                React.createElement(SavedUniversities, { getSavedUniversities: this.getSavedUniversities.bind(this), clicked: clicked, closeSavedUniversities: this.closeSavedUniversities.bind(this), savedUniversities: savedUniversities })
-              )
+                { className: "col-md-8" },
+                saved_universities_visible ? React.createElement(
+                  "h3",
+                  null,
+                  "Saved Universities"
+                ) : null
+              ),
+              React.createElement(
+                "div",
+                { className: "col-md-4" },
+                !!savedUniversities.length && React.createElement(
+                  "button",
+                  { href: "#", onClick: this.toggleSavedSchools, className: "btn btn-primary pull-right", role: "button" },
+                  see_saved_button_text
+                )
+              ),
+              saved_universities_visible && React.createElement(SavedUniversities, {
+                savedUniversities: savedUniversities,
+                shouldShowSavedUniversities: shouldShowSavedUniversities,
+                getSavedUniversities: this.getSavedUniversities,
+                deleteSchool: this.deleteSchool,
+                toggleSavedSchools: this.toggleSavedSchools
+              })
             )
           )
         );
@@ -204,13 +182,22 @@ var University = (function (Component) {
   return University;
 })(Component);
 
-var stateToProps = function (state) {
+var mapStateToProps = function (state) {
+  var _state$university = state.university;
+  var university = _state$university === undefined ? {} : _state$university;
+  var _university$selectedUniversities = university.selectedUniversities;
+  var selectedUniversities = _university$selectedUniversities === undefined ? {} : _university$selectedUniversities;
+  var _university$savedUniversities = university.savedUniversities;
+  var savedUniversities = _university$savedUniversities === undefined ? {} : _university$savedUniversities;
+  var selected_universities_list = Object.values(selectedUniversities);
+  var saved_universities_list = Object.values(savedUniversities);
+
   return {
-    university: state.university
-  };
+    selectedUniversities: selected_universities_list,
+    savedUniversities: saved_universities_list };
 };
 
-var dispatchToProps = function (dispatch) {
+var mapDispatchToProps = function (dispatch) {
   return {
     schoolCardClosed: function (index) {
       return dispatch(actions.schoolCardClosed(index));
@@ -218,12 +205,15 @@ var dispatchToProps = function (dispatch) {
     savedUniversitiesReceived: function (universities) {
       return dispatch(actions.savedUniversitiesReceived(universities));
     },
-    saveReceived: function (saveState) {
-      return dispatch(actions.saveReceived(saveState));
+    removeUniversityFromSaved: function (universities_id) {
+      return dispatch(actions.removeUniversityFromSaved(universities_id));
+    },
+    removeUniversityFromSelected: function (universities_id) {
+      return dispatch(actions.removeUniversityFromSelected(universities_id));
     }
   };
 };
 
-module.exports = connect(stateToProps, dispatchToProps)(University);
+module.exports = connect(mapStateToProps, mapDispatchToProps)(University);
 // this is an array of universities
-// this is an array of universities
+//Success
