@@ -26,3 +26,6 @@
 
 ** for routing
 *** npm install react-router-dom --save-d
+
+** for twitter api
+*** npm install twit
