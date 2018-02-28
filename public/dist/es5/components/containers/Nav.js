@@ -20,6 +20,7 @@ var Component = _react.Component;
 var connect = require("react-redux").connect;
 var actions = _interopRequire(require("../../actions"));
 
+var Link = require("react-router-dom").Link;
 var scrolltoElement = _interopRequire(require("scrollto-element"));
 
 var Nav = (function (Component) {
@@ -106,11 +107,6 @@ var Nav = (function (Component) {
 								React.createElement("span", { className: "icon-bar" }),
 								React.createElement("span", { className: "icon-bar" }),
 								React.createElement("span", { className: "icon-bar" })
-							),
-							React.createElement(
-								"a",
-								{ className: "navbar-brand", href: "#" },
-								" Dashboard "
 							)
 						),
 						React.createElement(
@@ -146,8 +142,8 @@ var Nav = (function (Component) {
 									"li",
 									null,
 									React.createElement(
-										"a",
-										{ href: "#" },
+										Link,
+										{ to: "newsfeed" },
 										"Newsfeed"
 									)
 								),
@@ -200,6 +196,9 @@ var stateToProps = function (state) {
 };
 
 var dispatchToProps = function (dispatch) {
+	console.log("date is ", new Date().toJSON().slice(0, 10));
+
+
 	return {
 		searchedUniversityReceived: function (university) {
 			return dispatch(actions.searchedUniversityReceived(university));

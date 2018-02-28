@@ -6,10 +6,14 @@ import { Provider } from 'react-redux';
 import { Dashboard } from './components/layouts';
 import "babel-polyfill";
 import "isomorphic-fetch";
+import { BrowserRouter as Router, Route, Link, hashHistory} from "react-router-dom";
 
 const app = (
 	<Provider store={store.configure(null)}>
-		<Dashboard />
+	 <Router history={hashHistory}>
+		  <Route path="/" component={Dashboard}>
+			</Route>
+	 </Router>
 	</Provider>
 )
 

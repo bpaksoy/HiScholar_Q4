@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../../actions';
 import { Link } from "react-router-dom";
-const Twit = require("twit");
+const keys = require("../../../config/keys");
 
 class Newsfeed extends Component {
 	constructor(props){
@@ -18,34 +18,11 @@ class Newsfeed extends Component {
 }
 
 
-getTweets() {
-	const twitter = new Twit({
-	  consumer_key: "",
-	  consumer_secret: "",
-	  access_token: "",
-	  access_token_secret: "",
-	  timeout_ms: 5000,
-	});
-
-
-	// let twitter_handle = 'nyuniversity'
-	// let twitter_handle = 'hamiltonhall'
-	let twitter_handle = "MeetNYU"
-
-	// gets tweets of specific user by querying Twitter Handle
-	twitter.get('statuses/user_timeline', { screen_name: twitter_handle, count: 3 },
-	function (err, data, response) {
-	  data.forEach(school => {
-	    // console.log(JSON.stringify(data, null, ' '));
-	    console.log(data);
-	  })
-	})
-}
-
-
 	render() {
 		const currentUser = this.props.user.currentUser; // can be null
-		//console.log("currentUser", currentUser);
+
+		console.log("currentUser", currentUser);
+
 			return(
 				<div>
 					<div className="col-md-8">

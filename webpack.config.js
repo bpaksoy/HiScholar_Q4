@@ -16,7 +16,9 @@ module.exports = {
 		publicPath: '/public/'
 	},
 	node: {
-		fs: 'empty'
+		fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
 	},
 	devtool: '#source-map',
 	plugins: process.env.NODE_ENV === 'production' ? [
