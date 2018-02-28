@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../../actions';
 import { Link } from "react-router-dom";
-const keys = require("../../../config/keys");
+
 
 class Newsfeed extends Component {
 	constructor(props){

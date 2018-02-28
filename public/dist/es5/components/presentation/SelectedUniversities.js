@@ -12,6 +12,17 @@ var Component = _react.Component;
 var numberWithCommas = function (x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
+var getImageStyle = function (url) {
+  return {
+    backgroundSize: "cover",
+    backgroundImage: "url(" + url + ")",
+    height: "230px",
+    width: "100%",
+    display: "block",
+    borderRadius: "4px",
+    backgroundPosition: "center center"
+  };
+};
 
 module.exports = function (props) {
   var _props$selectedUniversities = props.selectedUniversities;
@@ -40,11 +51,11 @@ module.exports = function (props) {
     return React.createElement(
       "div",
       { key: _id, className: "col-md-6", style: style.card },
-      React.createElement("i", { onClick: props.removeUniversityFromSelected.bind(undefined, _id), style: { size: "20" }, style: style.closeButton, className: "fa fa-window-close pull-right" }),
+      React.createElement("i", { onClick: props.removeUniversityFromSelected.bind(undefined, _id), style: style.closeButton, className: "fa fa-window-close pull-right" }),
       React.createElement(
         "div",
         { className: "thumbnail" },
-        React.createElement("img", { style: style.img, className: "card-img-top", src: imgURL, alt: "university_img" }),
+        React.createElement("div", { style: getImageStyle(imgURL), className: "card-img-top" }),
         React.createElement(
           "div",
           { className: "caption" },
@@ -116,14 +127,13 @@ var style = {
   card: {
     minHeight: "550px" },
   img: {
-    WebkitBoxFlex: "0",
-    WebkitFlex: "0 0 auto",
-    msFlex: "0 0 auto",
-    flex: "0 0 auto"
+    width: "100%"
   },
   closeButton: {
     position: "absolute",
-    top: "-3px",
-    right: "11px"
+    top: "-5px",
+    fontSize: "20px",
+    right: "12px",
+    background: "white"
   }
 };

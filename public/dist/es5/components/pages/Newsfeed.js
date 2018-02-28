@@ -19,9 +19,6 @@ var connect = require("react-redux").connect;
 var actions = _interopRequire(require("../../actions"));
 
 var Link = require("react-router-dom").Link;
-var keys = require("../../../config/keys");
-//const Twit = require("twit");
-
 var Newsfeed = (function (Component) {
 	function Newsfeed(props) {
 		_classCallCheck(this, Newsfeed);
@@ -39,36 +36,11 @@ var Newsfeed = (function (Component) {
 			configurable: true
 		},
 		render: {
-
-
-			// getTweets() {
-			// 	const twitter = new Twit({
-			// 	  consumer_key:keys.twitter.consumerKey,
-			// 	  consumer_secret: keys.twitter.consumerSecret,
-			// 	  access_token: keys.twitter.accessToken,
-			// 	  access_token_secret: keys.twitter.accessTokenSecret,
-			// 	  timeout_ms: 5000,
-			// 	});
-			// 	// let twitter_handle = 'nyuniversity'
-			// 	// let twitter_handle = 'hamiltonhall'
-			// 	let twitter_handle = "MeetNYU"
-
-			// gets tweets of specific user by querying Twitter Handle
-			// twitter.get('statuses/user_timeline', { screen_name: twitter_handle, count: 3 },
-			// function (err, data, response) {
-			//   data.forEach(school => {
-			//     // console.log(JSON.stringify(data, null, ' '));
-			//     console.log(school);
-			//   })
-			// })
-			// }
-
-
 			value: function render() {
 				var currentUser = this.props.user.currentUser; // can be null
 
-				getTweets();
 				console.log("currentUser", currentUser);
+
 				return React.createElement(
 					"div",
 					null,

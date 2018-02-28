@@ -26,10 +26,8 @@ var Sidebar = _interopRequire(require("../containers/Sidebar"));
 
 var _reactRouterDom = require("react-router-dom");
 
-var Router = _reactRouterDom.BrowserRouter;
 var Route = _reactRouterDom.Route;
 var Link = _reactRouterDom.Link;
-var hashHistory = _reactRouterDom.hashHistory;
 var Dashboard = (function (Component) {
 	function Dashboard() {
 		_classCallCheck(this, Dashboard);
@@ -49,28 +47,24 @@ var Dashboard = (function (Component) {
 					{ className: "wrapper" },
 					React.createElement(Sidebar, null),
 					React.createElement(
-						Router,
-						{ history: hashHistory },
+						"div",
+						{ className: "main-panel" },
+						React.createElement(Nav, null),
 						React.createElement(
 							"div",
-							{ className: "main-panel" },
-							React.createElement(Nav, null),
+							{ className: "content" },
 							React.createElement(
 								"div",
-								{ className: "content" },
+								{ className: "container-fluid" },
 								React.createElement(
 									"div",
-									{ className: "container-fluid" },
-									React.createElement(
-										"div",
-										null,
-										React.createElement(Route, { exact: true, path: "/", component: Profile }),
-										React.createElement(Route, { path: "/newsfeed", component: Newsfeed })
-									)
+									null,
+									React.createElement(Route, { exact: true, path: "/", component: Profile }),
+									React.createElement(Route, { path: "/newsfeed", component: Newsfeed })
 								)
-							),
-							React.createElement(Footer, null)
-						)
+							)
+						),
+						React.createElement(Footer, null)
 					)
 				);
 			},
