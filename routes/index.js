@@ -20,6 +20,14 @@ router.get("/", authCheck, (req, res) => {
 })
 
 
+router.get("/newsfeed", authCheck, (req, res) => {
+  (req.user)? res.render("index", {
+    user: req.user
+  }): res.render("index", { localUser: req.session.localUser,
+  user: null });;
+})
+
+
 router.get('/landing', function(req, res){
 	res.render('Landing', null)
 })

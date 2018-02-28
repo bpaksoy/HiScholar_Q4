@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import actions from '../../actions';
 import { Link } from "react-router-dom";
 import scrolltoElement from 'scrollto-element'
-import Twitter from "twitter";
-const keys = require("../../../config/keys");
 
 class Nav extends Component {
 
@@ -58,26 +56,7 @@ class Nav extends Component {
   }
 
   getTweets() {
-    console.log("HI MOM")
-  	const twitter = new Twitter({
-  	  consumer_key:keys.twitter.consumerKey,
-  	  consumer_secret: keys.twitter.consumerSecret,
-  	  access_token: keys.twitter.accessToken,
-  	  access_token_secret: keys.twitter.accessTokenSecret,
-  	  timeout_ms: 5000,
-  	});
-  	// let twitter_handle = 'nyuniversity'
-  	// let twitter_handle = 'hamiltonhall'
-  	let twitter_handle = "MeetNYU"
-
-  	//gets tweets of specific user by querying Twitter Handle
-  	twitter.get('statuses/user_timeline', { screen_name: twitter_handle, count: 3 },
-  	function (err, data, response) {
-  	  data.forEach(school => {
-  	    // console.log(JSON.stringify(data, null, ' '));
-  	    console.log(school);
-  	  })
-  	})
+    console.log("hey there");
   }
 
   render() {

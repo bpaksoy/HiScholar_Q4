@@ -53,6 +53,7 @@
     "scrollto-element": "^1.0.4",
     "sha1": "^1.1.1",
     "superagent": "^3.8.2",
+    "twit": "^2.2.9",
     "twitter": "^1.7.1",
     "whatwg-fetch": "^2.0.3"
   },
