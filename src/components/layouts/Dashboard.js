@@ -5,7 +5,7 @@ import Nav from '../containers/Nav'
 import Sidebar from '../containers/Sidebar'
 
 class Dashboard extends Component {
-  
+
 	render() {
 
 		return (
