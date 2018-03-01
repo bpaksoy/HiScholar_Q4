@@ -13,8 +13,11 @@ module.exports = {
 		path: __dirname+'/public/dist',
 		filename: 'bundle/[name].js',
     sourceMapFilename: 'bundle/[name].map',
-		publicPath: '/public/'
+		publicPath: '/'
 	},
+	devServer: {
+    historyApiFallback: true,
+  },
 	node: {
 		fs: 'empty'
 	},
@@ -45,6 +48,12 @@ module.exports = {
 			chunks: chunks
 		})
 	],
+	node: {
+    net: 'empty',
+    tls: 'empty',
+    dns: 'empty',
+    fs: 'empty'
+  },
 	module: {
 		loaders: [
 			{
