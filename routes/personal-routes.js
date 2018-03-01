@@ -81,7 +81,7 @@ router.put("/currentuser", (req, res, next) => {
   const toefl = personal.toefl;
   const sat = personal.sat;
   const act = personal.act;
- collection.findOne({_id: id})
+  collection.findOne({_id: id})
     .then(user => {
       user.personal = personal;
       user.save().then(result => {

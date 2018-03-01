@@ -20,9 +20,7 @@ class Newsfeed extends Component {
 
 	render() {
 		const currentUser = this.props.user.currentUser; // can be null
-
-		console.log("currentUser", currentUser);
-
+		//console.log("currentUser", currentUser);
 			return(
 				<div>
 					<div className="col-md-8">
