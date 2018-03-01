@@ -38,9 +38,7 @@ var Newsfeed = (function (Component) {
 		render: {
 			value: function render() {
 				var currentUser = this.props.user.currentUser; // can be null
-
-				console.log("currentUser", currentUser);
-
+				//console.log("currentUser", currentUser);
 				return React.createElement(
 					"div",
 					null,
