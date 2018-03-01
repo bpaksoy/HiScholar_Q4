@@ -45,7 +45,7 @@ router.post("/universities", (req, res, next) => {
 
 
 //update universities
-router.put("/universities/:university_id", (req, res, next) => {
+router.put("/universities/update/:university_id", (req, res, next) => {
   const id = req.params.university_id;
   console.log("id", id,"req.body", req.body)
   University.findOneAndUpdate({_id: id}, req.body)

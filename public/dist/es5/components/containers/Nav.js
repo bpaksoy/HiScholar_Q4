@@ -23,10 +23,6 @@ var actions = _interopRequire(require("../../actions"));
 var Link = require("react-router-dom").Link;
 var scrolltoElement = _interopRequire(require("scrollto-element"));
 
-var Twitter = _interopRequire(require("twitter"));
-
-var keys = require("../../../config/keys");
-
 var Nav = (function (Component) {
   function Nav(props) {
     _classCallCheck(this, Nav);
@@ -91,24 +87,7 @@ var Nav = (function (Component) {
     },
     getTweets: {
       value: function getTweets() {
-        console.log("HI MOM");
-        var twitter = new Twitter({
-          consumer_key: keys.twitter.consumerKey,
-          consumer_secret: keys.twitter.consumerSecret,
-          access_token: keys.twitter.accessToken,
-          access_token_secret: keys.twitter.accessTokenSecret,
-          timeout_ms: 5000 });
-        // let twitter_handle = 'nyuniversity'
-        // let twitter_handle = 'hamiltonhall'
-        var twitter_handle = "MeetNYU";
-
-        //gets tweets of specific user by querying Twitter Handle
-        twitter.get("statuses/user_timeline", { screen_name: twitter_handle, count: 3 }, function (err, data, response) {
-          data.forEach(function (school) {
-            // console.log(JSON.stringify(data, null, ' '));
-            console.log(school);
-          });
-        });
+        console.log("hey there");
       },
       writable: true,
       configurable: true
