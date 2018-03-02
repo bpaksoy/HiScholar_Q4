@@ -20,7 +20,8 @@ class Newsfeed extends Component {
 	.then(result => {
 		console.log("data", result.data[0])
     const text = result.data[0].text;
-		const imgURL = result.data[0].extended_entities.media[0].media_url;
+		const imgURL = (result.data[0].extended_entities) ? result.data[0].extended_entities.media[0].media_url : result.data[0].user.profile_banner_url;
+		console.log("imgURL", imgURL);
 		const name = result.data[0].user.name;
 		this.setState({
       tweet: text,
@@ -35,7 +36,7 @@ class Newsfeed extends Component {
 		const currentUser = this.props.user.currentUser; // can be null
 		console.log("currentUser", currentUser);
 			return(
-				<div>
+		    <div>
 					<div className="col-md-8">
 						 <div className="jumbotron" style={{backgroundColor:"white"}}>
 						  <div style={{border:"1px solid black", borderRadius:"3px", padding:"5px"}}>
@@ -46,8 +47,8 @@ class Newsfeed extends Component {
 						</div>
 				  </div>
 					<div className="col-md-4">
-					</div>
 				</div>
+			</div>
 		 	);
 	 	}
 
