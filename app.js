@@ -57,15 +57,13 @@ app.use(session({
   unset: 'destroy'
 }));
 
-
 //set up routes
 app.use("/auth", authRoutes);
 //app.use("/dashboard", profileRoutes);
 app.use("/api", apiRoutes);
 app.use("/dashboard", personalRoutes);
-app.use("/", index);
-
 app.use(express.static("public"))
+app.use("*", index);
 
 app.listen(process.env.port || 5000, () => {
   console.log("App listening for requests on port 5000");

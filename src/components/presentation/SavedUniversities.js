@@ -3,7 +3,15 @@ import React, { Component } from 'react';
 const numberWithCommas = (x) => {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-
+const getImageStyle = url => ({
+  backgroundSize: 'cover',
+  backgroundImage: 'url('+url+')',
+  height: '230px',
+  width: '100%',
+  display: 'block',
+  borderRadius: '4px',
+  backgroundPosition: 'center center'
+});
 export default (props) => {
 
   const { shouldShowSavedUniversities = false, savedUniversities = [] } = props;
@@ -16,7 +24,7 @@ export default (props) => {
       <div key={_id} className='col-md-6' style={style.card}>
         <i onClick={props.deleteSchool.bind(this, _id)} style={{size: "20"}} style={style.closeButton} className="fa fa-window-close pull-right"></i>
         <div className="thumbnail">
-          <img style={style.img} className="card-img-top" src={ imgURL } alt="university_img"/>
+            <div style={getImageStyle(imgURL)} className="card-img-top"></div>
             <div className="caption">
             <h3>{ school_name }</h3>
               <p>{ description }</p>
@@ -47,16 +55,15 @@ const style = {
   card : {
     minHeight: '550px',
   },
-  img : {
-    WebkitBoxFlex: "0",
-    WebkitFlex: "0 0 auto",
-    msFlex: "0 0 auto",
-    flex: "0 0 auto"
+  img: {
+    width: '100%'
   },
   closeButton: {
     position: 'absolute',
-    top: '-3px',
-    right: '11px'
+    top: '-5px',
+    fontSize: '20px',
+    right: '12px',
+    background: 'white'
   }
 }
 
