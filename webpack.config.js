@@ -50,18 +50,9 @@ module.exports = {
 			chunks: chunks
 		})
 	],
-<<<<<<< HEAD
 	resolve: {
 		 modules: [path.resolve(__dirname, "src"), "node_modules"]
 	},
-=======
-	node: {
-    net: 'empty',
-    tls: 'empty',
-    dns: 'empty',
-    fs: 'empty'
-  },
->>>>>>> 4e61d2e74ef6383ae0113522b40fe79f7fb73af6
 	module: {
 		loaders: [
 			{
