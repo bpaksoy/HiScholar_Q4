@@ -4,7 +4,7 @@ export default class PersonalStatementForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isDisabled: true
+      isDisabled: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.submitStatement = this.submitStatement.bind(this);
