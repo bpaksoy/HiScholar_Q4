@@ -20,8 +20,8 @@ module.exports = {
   },
 	node: {
 		fs: 'empty',
-    net: 'empty',
-    tls: 'empty'
+		net: 'empty',
+		tls: 'empty'
 	},
 	devtool: '#source-map',
 	plugins: process.env.NODE_ENV === 'production' ? [
@@ -50,12 +50,9 @@ module.exports = {
 			chunks: chunks
 		})
 	],
-	node: {
-    net: 'empty',
-    tls: 'empty',
-    dns: 'empty',
-    fs: 'empty'
-  },
+	resolve: {
+		 modules: [path.resolve(__dirname, "src"), "node_modules"]
+	},
 	module: {
 		loaders: [
 			{

@@ -31,7 +31,5 @@ export default (props) => {
 				</nav>
 			</div>
 		</footer>
-
 	)
-
 }
