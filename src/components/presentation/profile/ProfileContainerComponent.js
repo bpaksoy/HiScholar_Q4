@@ -51,7 +51,7 @@ export default class ProfileContainerComponent extends Component {
                 updateStatement={this.props.toggleStatement}
               />
             }
-            {/*<University />*/}
+            <University />
           </div>
           <div className="col-md-4">
             <ProfileCard user={user} />
