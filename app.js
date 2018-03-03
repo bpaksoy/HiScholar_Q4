@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const authRoutes = require("./routes/auth-routes");
 const apiRoutes = require("./routes/api-routes");
 const personalRoutes = require("./routes/personal-routes");
+const twitterRoutes = require("./routes/twitter-routes");
 const index = require('./routes/index');
 const passportSetup = require("./config/passport-setup");
 const mongoose = require("mongoose");
@@ -61,6 +62,7 @@ app.use("/auth", authRoutes);
 //app.use("/dashboard", profileRoutes);
 app.use("/api", apiRoutes);
 app.use("/dashboard", personalRoutes);
+app.use("/newsfeed", twitterRoutes);
 app.use(express.static("public"))
 app.use("*", index);
 

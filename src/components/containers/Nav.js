@@ -55,6 +55,10 @@ class Nav extends Component {
     }
   }
 
+  getTweets() {
+    console.log("hey there");
+  }
+
   render() {
 		return (
 			<nav className="navbar navbar-transparent navbar-absolute">
@@ -66,7 +70,7 @@ class Nav extends Component {
 							<span className="icon-bar"></span>
 							<span className="icon-bar"></span>
 						</button>
-						
+
 					</div>
 					<div className="collapse navbar-collapse">
 						<ul className="nav navbar-nav navbar-right">
@@ -78,7 +82,7 @@ class Nav extends Component {
 								</a>
 							</li>
 							<li>
-                <Link to="newsfeed">
+                <Link to="/newsfeed" onClick={this.getTweets.bind(this)}>
   								Newsfeed
                 </Link>
 							</li>

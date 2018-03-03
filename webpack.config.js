@@ -13,8 +13,11 @@ module.exports = {
 		path: __dirname+'/public/dist',
 		filename: 'bundle/[name].js',
     sourceMapFilename: 'bundle/[name].map',
-		publicPath: '/public/'
+		publicPath: '/'
 	},
+	devServer: {
+    historyApiFallback: true,
+  },
 	node: {
 		fs: 'empty',
 		net: 'empty',
@@ -47,9 +50,18 @@ module.exports = {
 			chunks: chunks
 		})
 	],
+<<<<<<< HEAD
 	resolve: {
 		 modules: [path.resolve(__dirname, "src"), "node_modules"]
 	},
+=======
+	node: {
+    net: 'empty',
+    tls: 'empty',
+    dns: 'empty',
+    fs: 'empty'
+  },
+>>>>>>> 4e61d2e74ef6383ae0113522b40fe79f7fb73af6
 	module: {
 		loaders: [
 			{

@@ -30,7 +30,11 @@ const universitySchema = new Schema({
       default: ""
     },
     latitude: Number,
-    longitude: Number
+    longitude: Number,
+    twitter_handle: {
+      type: String,
+      default: ""
+    }
 });
 
 const University = mongoose.model("university", universitySchema);

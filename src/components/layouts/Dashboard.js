@@ -5,7 +5,7 @@ import Newsfeed from 'components/pages/Newsfeed';
 import Nav from 'components/containers/Nav';
 import Sidebar from 'components/containers/Sidebar';
 
-import { BrowserRouter as Router, Route, Link, hashHistory} from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 
 class Dashboard extends Component {
 

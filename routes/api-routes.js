@@ -44,6 +44,21 @@ router.post("/universities", (req, res, next) => {
 });
 
 
+//update universities
+router.put("/universities/update/:university_id", (req, res, next) => {
+  const id = req.params.university_id;
+  console.log("id", id,"req.body", req.body)
+  University.findOneAndUpdate({_id: id}, req.body)
+  .then(() => {
+    University.findOne({_id: id})
+    .then((school)=>{
+      res.send(school);
+    })
+  })
+});
+
+
+
 // get university by id
 router.get("/universities/:university_id", (req, res, next) => {
   const id = req.params.university_id;
@@ -100,6 +115,7 @@ router.put("/universities/savedschools", (req, res, next) => {
     }
     user.savedSchools.push(new_school_id);
     user.save().then(result => {
+      console.log("saved school is", result)
       res.send(result)
     })
   })
