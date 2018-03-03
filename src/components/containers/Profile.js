@@ -13,7 +13,6 @@ const dispatchToProps = (dispatch) => {
 	return {
 		updateCurrentUser: (updated_user) => {
 			dispatch(currentUserReceived(updated_user));
-			console.log('disdis', syncUserStoreWithDB())
 			dispatch(syncUserStoreWithDB());
 		},
 		toggleStatement: () => {

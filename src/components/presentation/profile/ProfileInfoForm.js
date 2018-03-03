@@ -40,7 +40,11 @@ export default class ProfileInfoForm extends Component {
   submitInfo(e) {
     e.preventDefault();
     const { user = {} } = this.state;
-    this.props.updateUser(user);
+    const updated_user = {
+      ...this.props.user,
+      ...user
+    }
+    this.props.updateUser(updated_user);
   }
 
   render() {

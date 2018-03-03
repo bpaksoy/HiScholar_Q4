@@ -16,7 +16,6 @@ export function updateCurrentUserData(user) {
     user
   })
   .then((response) => {
-    console.log('response isssss ', response);
     const { data = {} } = response
     const { user = {} } = data
     return user;
@@ -28,7 +27,6 @@ export function syncUserStoreWithDB() {
     const state = getState();
     const { user = {} } = state;
     const { currentUser = {} } = user;
-    console.log('user sending from here');
     if (Object.keys(currentUser).length) {
       updateCurrentUserData(currentUser);
     }

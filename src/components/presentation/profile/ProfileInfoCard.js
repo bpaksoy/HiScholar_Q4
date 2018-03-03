@@ -4,11 +4,11 @@ export default (props) => {
 
   const user = props.user ? props.user : {}; // can be null
   const personal = (Object.keys(user.personal).length) ? user.personal : {};
-  console.log('personal', personal);
   return (
-  <div>
-   {(user)?
-    <div className="card card-profile">
+    <div>
+    {
+      (user)?
+      <div className="card card-profile">
       <div className="col-md-12">
        <div style={{backgroundColor: "#A8A8A8 "}} className="card-header">
          <h3 style={{textTransform:'capitalize'}} className="category text-gray">Personal</h3>
@@ -51,7 +51,8 @@ export default (props) => {
             </div>
          <button onClick={props.updateInformation.bind(this)} className="btn btn-primary">Update Profile</button>
      </div>
-   : null }
+      : null
+    }
    </div>
   )
 }
