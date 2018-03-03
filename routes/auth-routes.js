@@ -77,7 +77,7 @@ router.post("/login", (req, res, next) => {
 //fetch the current user
 router.get("/currentuser", (req, res) => {
 	// Check the session:
-	if (req.session == null){ // no one logged in
+	if (req.session == null) { // no one logged in
 		res.json({
 			confirmation: 'fail',
 			user: null
@@ -86,7 +86,7 @@ router.get("/currentuser", (req, res) => {
 		return
 	}
 
-	if (req.user == null && req.session.localUser == null){ // no one logged in
+	if (req.user == null && req.session.localUser == null) { // no one logged in
 		res.json({
 			confirmation: 'fail',
 			user: null
@@ -124,6 +124,45 @@ router.get("/currentuser", (req, res) => {
       })
 })
 
+// Update user information
+
+router.put("/currentuser", (req, res) => {
+  const updated_user = req.body.user;
+  if (req.session == null) { // no one logged in
+    res.json({
+      confirmation: 'fail',
+      user: null
+    })
+    return
+  }
+  (req.user) ?
+    User.findOneAndUpdate({"_id": req.data._id}, {$set: updated_user}, {new : true})
+    .then(data => {
+      res.json({
+        confirmation: 'success',
+        user: data
+      })
+    })
+    .catch(err => {
+       res.json({
+         confirmation: 'fail',
+         message: err.message
+       })
+    }) :
+    Student.findOneAndUpdate({"_id": req.session.localUser._id}, {$set: updated_user}, {new : true})
+    .then(data => {
+      res.json({
+        confirmation: 'success',
+        user: data
+      })
+    })
+    .catch(err => {
+      res.json({
+        confirmation: 'fail',
+        message: err.message
+      })
+    })
+});
 
 //auth logout
 router.get("/logout", (req,res, next) => {

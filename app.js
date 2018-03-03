@@ -47,11 +47,10 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(session({
- secret:
-    cookieSession({
-      maxAge: 24 * 60 * 60 * 1000,
-      keys: [keys.session.cookieKey]
-}),
+  secret: cookieSession({
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: [keys.session.cookieKey]
+  }),
   resave: true,
   saveUnInitialized: true,
   unset: 'destroy'

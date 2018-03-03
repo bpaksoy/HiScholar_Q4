@@ -16,9 +16,6 @@ export default {
 
 		const reducers = combineReducers({ // insert reducers here
 			user: userReducer,
-			information: userReducer,
-			statement: userReducer,
-			picture_url: userReducer,
 			university: universityReducer,
 		})
 

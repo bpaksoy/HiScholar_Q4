@@ -1,164 +1,71 @@
 import React, { Component } from 'react';
-import ProfileForm from '../ProfileForm';
-import InfoCard from '../InfoCard';
-import PersonalStatement from '../PersonalStatement';
-import StatementCard from "../StatementCard";
-import ProfileCard from "../../containers/ProfileCard";
-import University from '../../containers/University';
-import axios from 'axios';
-import superagent from 'superagent';
+import ProfileInfoForm from './ProfileInfoForm';
+import ProfileInfoCard from './ProfileInfoCard';
+import PersonalStatementForm from './PersonalStatementForm';
+import PersonalStatementCard from './PersonalStatementCard';
+import ProfileCard from 'components/containers/ProfileCard';
+import University from 'components/containers/University';
 
-function validate(city, country) {
-  return {
-    city: city.length === 0,
-    country: country.length === 0,
-  };
-}
+export default class ProfileContainerComponent extends Component {
 
-function validateStatement(statement) {
-  return statement.length === 0;
-}
-
-export default class Profile extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      info_ui : 'form',
-      statement_ui: 'form'
-    }
+    this.updateUser = this.updateUser.bind(this);
   }
 
-  handleStatement(event) {
-    if(event){
-      event.preventDefault();
-      let name = event.target.name;
-      let value = event.target.value ? event.target.value : '';
-      this.setState({
-        [name]: value
-      })
-    }
+  componentDidMount() {
   }
 
-  updateInformation(event) {
-    if(event){
-      event.preventDefault();
-      this.setState({
-        info_ui: 'form'
-      })
-    }
+  updateUser(updated_user) {
+    this.props.updateCurrentUser(updated_user);
   }
-
-  updateStatement(event) {
-    if(event){
-      event.preventDefault();
-      this.setState({
-        statement_ui: 'form'
-      })
-    }
-  }
-
-  submitStatement(event) {
-    if(event){
-      event.preventDefault();
-      let personal_statement = this.state.personal_statement;
-      this.setState({
-        statement_ui: 'card'
-      })
-      //console.log("personal statement in the submit method", personal_statement);
-      this.props.personalStatementReceived(personal_statement);
-      axios.put("/dashboard/personal_statement", { personal_statement : personal_statement }).then(function (result){
-          console.log("result is ", result);
-         })["catch"](function (err) {
-       console.log("we have not got the data!");
-       });
-    }
-
-  }
-
-  handleChange(event) {
-    if(event){
-      event.preventDefault();
-      let name = event.target.name;
-      let value = event.target.value ? event.target.value : '';
-      let personal = Object.assign({}, this.state.personal);
-      personal[name]= value;
-
-      // let user = this.props.user.currentUser;
-      this.setState({
-        personal: personal
-      })
-      //console.log("this.state", this.state);
-    }
-  }
-
-
-  handleCity(event) {
-    if(event){
-      event.preventDefault();
-      this.setState({
-        city: event.target.value
-      })
-    }
-  }
-
-  handleCountry(event) {
-    if(event){
-      event.preventDefault();
-      this.setState({
-        country: event.target.value
-      })
-    }
-  }
-
-  updateUser (event) {
-    if (event){
-      event.preventDefault();
-      let personal = this.state.personal;
-      console.log("personal?????", personal);
-      this.props.personalInfoReceived(personal);
-      //console.log("firstName: ", this.state.firstName, "lastName: ", this.state.lastName);
-      axios.put("/dashboard/currentuser", { personal: personal}).then(function (result){
-          console.log("result is ", result);
-        })["catch"](function (err) {
-        console.log("we have not got the data!");
-      });
-      this.setState({
-        info_ui: 'card'
-      })
-    }
-  }
-
 
   render() {
-    // const currentUser = this.props.user.currentUser; // can be null
-    // //console.log("currentUser", currentUser);
-    // const personal = (currentUser)? currentUser.personal : {};
-    // //console.log("personal in the profile form", personal)
-    // const personal_statement = (currentUser)? currentUser.personal_statement : null;
-    // //console.log("personal_statement in the profile", personal_statement)
+    const { user = {} } = this.props;
+    const { currentUser, ui } = user;
+    const { profileInfo: info_ui, statement: statement_ui } = ui;
+    const { personal = {}, personal_statement = '' } = currentUser;
+    if (Object.keys(currentUser).length) {
+      return(
+        <div>
+          <div className="col-md-8">
+            {
+              info_ui == 'form' &&
+              <ProfileInfoForm
+                updateUser={this.updateUser.bind(this)}
+                user={currentUser}
+              />
+            }
+            {
+              statement_ui == 'form' &&
+              <PersonalStatementForm
+                updateUser={this.updateUser.bind(this)}
+                user={currentUser}
+              />
+            }
 
-    // const errors = validate(this.state.city, this.state.country);
-    // const isDisabled = Object.keys(errors).some(key => errors[key]);
-    // //console.log(errors, isDisabled);
-    // const noStatement = validateStatement(this.state.personal_statement);
-    // //console.log("no statement status: ", noStatement)
-
-    // if (this.props.user && this.props.user.currentUser) {
-    //   return(
-    //     <div>
-    //       <div className="col-md-8">
-    //         {this.state.info_ui == 'form' && <ProfileForm handleChange={this.handleChange.bind(this)} onUpdate={this.updateUser.bind(this)} user={currentUser} personal={personal} isDisabled={isDisabled} handleCity={this.handleCity.bind(this)} handleCountry={this.handleCountry.bind(this)}/>}
-    //         {this.state.statement_ui == 'form' && <PersonalStatement submitStatement={this.submitStatement.bind(this)} handleStatement={this.handleStatement.bind(this)} user={currentUser} personal_statement={this.state.personal_statement} noStatement={noStatement}/>}
-    //         {this.state.statement_ui == 'card' && <StatementCard user={currentUser} personal_statement={personal_statement} updateStatement={this.updateStatement.bind(this)} />}
-    //         <University />
-    //       </div>
-    //       <div className="col-md-4">
-    //          <ProfileCard user={currentUser} />
-    //         {this.state.info_ui == 'card' && <InfoCard user={currentUser} personal={personal} updateInformation={this.updateInformation.bind(this)}/>}
-    //       </div>
-    //     </div>
-    //   );
-    // }
+            {
+              statement_ui == 'card' &&
+              <PersonalStatementCard
+                user={currentUser}
+                updateStatement={this.props.toggleStatement}
+              />
+            }
+            {/*<University />*/}
+          </div>
+          <div className="col-md-4">
+            <ProfileCard user={user} />
+            {
+              info_ui == 'card' &&
+              <ProfileInfoCard
+                user={currentUser}
+                updateInformation={this.props.toggleProfileInfo}
+              />
+            }
+         </div>
+        </div>
+      );
+    }
     return 'Loading...';
   }
 }

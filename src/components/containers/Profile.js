@@ -1,26 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import actions from '../../actions';
+import { currentUserReceived, syncUserStoreWithDB, toggleProfileInfoUi, toggleStatementUi } from 'actions/Profile';
 import ProfileContainerComponent from '../presentation/profile/ProfileContainerComponent';
-import ProfileCard from "./ProfileCard";
-import University from './University';
-import axios from 'axios';
-import superagent from 'superagent';
 
 const stateToProps = (state) => {
 	return {
-		user: state.user,
-		information: state.information,
-		statement: state.statement
+		user: state.user
 	}
 }
 
 const dispatchToProps = (dispatch) => {
 	return {
-	  currentUserReceived: (user) => dispatch(actions.currentUserReceived(user)),
-		personalInfoReceived: (information) => dispatch(actions.personalInfoReceived(information)),
-		personalStatementReceived: (statement) => dispatch(actions.personalStatementReceived(statement))
+		updateCurrentUser: (updated_user) => {
+			dispatch(currentUserReceived(updated_user));
+			console.log('disdis', syncUserStoreWithDB())
+			dispatch(syncUserStoreWithDB());
+		},
+		toggleStatement: () => {
+			dispatch(toggleStatementUi())
+		},
+		toggleProfileInfo: () => {
+			dispatch(toggleProfileInfoUi())
+		}
 	}
- }
+}
 
 export default connect(stateToProps, dispatchToProps)(ProfileContainerComponent);
