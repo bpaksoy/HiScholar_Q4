@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "index": "nodemon app.js",
-    "build": "npm run clean && NODE_ENV=production webpack && gulp prod --history-api-fallback",
+    "build": "npm run clean && NODE_ENV=production webpack && gulp prod",
     "clean": "rm -rf ./public/dist"
   },
   "author": "",
