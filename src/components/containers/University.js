@@ -39,7 +39,12 @@ saveSchool(university) {
   axios.put("/api/universities/savedschools", {
     data: university._id
   }).then(result => {
-    //Success
+    console.log("HERE IS THE RESULT FOR SAVED SCHOOL", result.data.savedSchools);
+    const savedSchool = result.data.savedSchools[0]
+    axios.get("/newsfeed/tweets", {
+      savedSchool: savedSchool
+    })
+
   })
   .catch(err => {
     console.log("Error occured while saving school " + err);

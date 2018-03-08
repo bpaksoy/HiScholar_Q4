@@ -55,9 +55,6 @@ class Nav extends Component {
     }
   }
 
-  getTweets() {
-    console.log("hey there");
-  }
 
   render() {
 		return (
@@ -82,7 +79,7 @@ class Nav extends Component {
 								</a>
 							</li>
 							<li>
-                <Link to="/newsfeed" onClick={this.getTweets.bind(this)}>
+                <Link to="/newsfeed" >
   								Newsfeed
                 </Link>
 							</li>

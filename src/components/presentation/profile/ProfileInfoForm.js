@@ -30,6 +30,7 @@ export default class ProfileInfoForm extends Component {
         [name]: value
       }
     }
+
     const isDisabled = !this.isFormValid(updated_user.personal);
     this.setState({
       user: updated_user,

@@ -115,7 +115,7 @@ router.put("/universities/savedschools", (req, res, next) => {
     }
     user.savedSchools.push(new_school_id);
     user.save().then(result => {
-      console.log("saved school is", result)
+      console.log("user is", result)
       res.send(result)
     })
   })
