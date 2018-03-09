@@ -17,15 +17,20 @@ router.get("/tweets", (req, res, next) => {
 
   let all_tweets = []
   //let all_handles;
+   let promises = [];
 
   collection.findOne({_id: id})
      .then(user => {
+       console.log("user twitter handle", user.twitter_handles)
         user.twitter_handles.forEach((handle) => {
-          twitter.get('search/tweets', { q: handle, count: 1 }, function (err, data, response) {
-              //console.log("all_tweets", all_tweets[0].statuses[0].text)
-             all_tweets.push(data);
-             res.send(all_tweets);
-          })
+         const p =  twitter.get('search/tweets', { q: handle, count: 1 })
+         .then(response => response)
+         promises.push(p);
+        })
+        Promise.all(promises)
+        .then(all_tweets => {
+            console.log("all tweets ", all_tweets[0].data.statuses[0].text);
+            res.send(all_tweets);
         })
      }).catch(err => {
        console.log("No handle found");
