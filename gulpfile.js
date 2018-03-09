@@ -6,7 +6,7 @@ var gp_concat = require('gulp-concat')
 var gp_rename = require('gulp-rename')
 var gp_uglify = require('gulp-uglify')
 // var less = require('gulp-less')
-var to5 = require('gulp-6to5')
+var babel = require('gulp-babel')
 var path = require('path')
 
 gulp.task('css', function(){
@@ -60,7 +60,9 @@ gulp.task('es6-es5', ['js'], function(){
                 './src/*/*/**.js'
             ]
         )
-        .pipe(to5())
+        .pipe(babel({
+            presets: ['react', 'env']
+        }))
         .pipe(gulp.dest('./public/dist/es5/'))
 });
 
