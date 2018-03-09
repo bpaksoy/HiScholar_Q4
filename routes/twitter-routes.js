@@ -23,13 +23,13 @@ router.get("/tweets", (req, res, next) => {
      .then(user => {
        console.log("user twitter handle", user.twitter_handles)
         user.twitter_handles.forEach((handle) => {
-         const p =  twitter.get('search/tweets', { q: handle, count: 1 })
+         const p =  twitter.get('statuses/user_timeline', { screen_name: handle, count: 2 })
          .then(response => response)
          promises.push(p);
         })
         Promise.all(promises)
         .then(all_tweets => {
-            console.log("all tweets ", all_tweets[0].data.statuses[0].text);
+            console.log("all tweets ", all_tweets[0].data[0].text);
             res.send(all_tweets);
         })
      }).catch(err => {

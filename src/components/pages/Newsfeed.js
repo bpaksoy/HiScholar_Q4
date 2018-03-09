@@ -17,11 +17,7 @@ class Newsfeed extends Component {
   axios.get("/newsfeed/tweets")
 	.then(result => {
 		console.log("data", result.data)
-		const data = result.data[0].data.statuses[0]
-    // const text = data.text;
-		// const imgURL = (data.extended_entities) ? data.extended_entities.media[0].media_url : data.user.profile_banner_url;
-		// console.log("imgURL", imgURL);
-		// const name = data.user.name;
+		const data = result.data[0].data
 		this.setState({
 			data: result.data
 		})
@@ -33,22 +29,32 @@ class Newsfeed extends Component {
 	render() {
 		const currentUser = this.props.user.currentUser; // can be null
     const data = this.state.data;
-	  const	stream = data.map((result, i) => {
-		  const tweet = result.data.statuses[0].text;
-		  const name = result.data.statuses[0].user.name
-			//console.log("result is ", result)
-		  const imgURL = (result.data.statuses[0].extended_entities) ? result.data.statuses[0].extended_entities.media[0].media_url : result.data.statuses[0].user.profile_banner_url;
-			 return(
-				<div key={i} style={{border:"1px solid black", borderRadius:"3px", padding:"5px"}}>
-					<h3>{name}</h3>
-					<img style={style.img} src={imgURL} alt="media"/>
-					<h4>{tweet}</h4>
-				</div>
-			  );
+		var feeds = [];
+	   data.map((result, i) => {
+			 console.log("result", result)
+			 result.data.forEach((feed) => {
+				 console.log("feed", feed)
+			  feeds.push(feed)
+		  })
 		})
+
+	 var stream = feeds.map((result, i) => {
+		 const tweet = result.text;
+		 const name = result.user.name
+		 const imgURL = (result.extended_entities) ? result.extended_entities.media[0].media_url : result.user.profile_banner_url;
+
+		 return(
+		 <div key={i} style={{border:"1px solid black", borderRadius:"3px", padding:"5px"}}>
+		 	<h3>{name}</h3>
+		 	<img style={style.img} src={imgURL} alt="media"/>
+		 	<h4>{tweet}</h4>
+		 </div>
+		 );
+	 })
 
 
 		console.log("currentUser", currentUser);
+
 			return(
 		    <div>
 					<div className="col-md-8">
