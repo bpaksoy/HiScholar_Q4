@@ -18,24 +18,24 @@ class Newsfeed extends Component {
  componentDidMount() {
   axios.get("/newsfeed/tweets")
 	.then(result => {
-		console.log("data", result.data.statuses[0])
-		const data = result.data.statuses[0]
-    const text = data.text;
-		const imgURL = (data.extended_entities) ? data.extended_entities.media[0].media_url : data.user.profile_banner_url;
-		console.log("imgURL", imgURL);
-		const name = data.user.name;
-		this.setState({
-      tweet: text,
-			imgURL:imgURL,
-      name: name
-		})
-	})
+		console.log("data", result.data)
+	// 	const data = result.data[0].statuses[0]
+  //   const text = data.text;
+	// 	const imgURL = (data.extended_entities) ? data.extended_entities.media[0].media_url : data.user.profile_banner_url;
+	// 	console.log("imgURL", imgURL);
+	// 	const name = data.user.name;
+	// 	this.setState({
+  //     tweet: text,
+	// 		imgURL:imgURL,
+  //     name: name
+	// 	})
+	 })
 }
+
 
 
 	render() {
 		const currentUser = this.props.user.currentUser; // can be null
-
 		console.log("currentUser", currentUser);
 			return(
 		    <div>

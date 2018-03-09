@@ -93,7 +93,8 @@ const studentSchema = new Schema({
           type: Number,
           default: ""
         }
-   }
+   },
+   twitter_handles: []
 
 });
 
