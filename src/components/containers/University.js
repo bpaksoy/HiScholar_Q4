@@ -39,12 +39,11 @@ saveSchool(university) {
   axios.put("/api/universities/savedschools", {
     data: university._id
   }).then(result => {
-    console.log("HERE IS THE RESULT FOR SAVED SCHOOL", result.data.savedSchools);
-    const savedSchool = result.data.savedSchools[0]
-    axios.get("/newsfeed/tweets", {
-      savedSchool: savedSchool
+    const savedSchool = this.props.savedUniversities[this.props.savedUniversities.length - 1]
+    console.log("HERE IS THE SAVED SCHOOL", savedSchool);
+    axios.post("/newsfeed/tweets", {
+      savedSchool
     })
-
   })
   .catch(err => {
     console.log("Error occured while saving school " + err);
@@ -70,6 +69,7 @@ toggleSavedSchools() {
 render() {
     const { shouldShowSavedUniversities = false } = this.state;
     let { selectedUniversities = [], savedUniversities = [] } = this.props;
+    console.log("this.props.savedUniversities: ", this.props.savedUniversities);
     const saved_universities_visible = !!savedUniversities.length && shouldShowSavedUniversities;
     const see_saved_button_text = saved_universities_visible  ? 'Hide saved' : 'See saved';
     return(

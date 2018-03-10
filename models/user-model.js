@@ -81,7 +81,8 @@ const userSchema = new Schema({
           type: Number,
           default: ""
         }
-   }
+   },
+    twitter_handle: []
 
 });
 
