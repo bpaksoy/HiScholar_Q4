@@ -1,0 +1,2249 @@
+College Name, Twitter Handle
+UPRAGOFICIAL , UPRAGOFICIAL
+Pardee RAND , PardeeRAND
+Rosalind Franklin U , RFUniversity
+Northeast Catholic , Northeast_CC
+St.Vincent's College , StVincentsColl
+Salus University , SalusUniversity
+Piedmont College , PiedmontGA
+Notre Dame Seminary , NDS_NOLA
+UPR Carolina Informa , UPRCA_Informa
+BSC Wauwatosa , BSCWauwatosa
+Rush University , RushUniversity
+Fort Hays State Univ , FortHaysState
+WeArePanhandle , WeArePanhandle
+Wentworth Institute , wentworthinst
+MayoClinicSOM , MayoClinicSOM
+Morton College , MCadvising
+Penn State Fayette , psu_fayette
+Pitt-Greensburg , Pitt_Greensburg
+Palo Alto University , LifeAtPAU
+MACU , MAChristianUniv
+PillarCollege , PillarCollege
+SanJoseCityCollege , OfficialSJCC
+Jefferson , JeffersonUniv
+Texas Gulf Coast CCC , TexasGulfCCCC
+UPR Humacao , UPRHComunica
+WhereSuccessStarts , pccc_edu
+Penn State Mont Alto , montaltopsu
+Trinity College FL , trincollegefl
+CCD City Hawks , IAMCCD1
+HCC Coleman College , HCCColeman
+Oakwood University , OakwoodU
+CC of Spokane , CCofSpokane
+Trinity Lutheran , TLS_Ohio
+Suffolk Community College , SUNYSFLK
+University System MD , Univ_System_MD
+Norwalk Comm College , NewsNCC
+4CD Live , 4CDLive
+Pentecostal Seminary , PentecostalTS
+Norco College , NorcoCollege
+MontserratCollegeArt , MontCollegeArt
+College of Desert  , CODBoard
+MPCC.edu , MPCCedu
+Regis , RegisCollege_MA
+TCC Chesapeake , TCCChesapeake
+St. Charles Seminary , StCharlesSem
+MC Germantown Campus , MC_Germantown
+Guttman CC|CUNY , guttmancc
+SoutheasternOklahoma , SE1909
+FelicianUniversity , FelicianUniv
+GCSC , GCSC1957
+North Greenville , ngucrusaders
+BHCC Boston , BHCCBoston
+Webber , Webber_edu
+Southwest Campus , Southwest_JCTC
+Shelby Co. Campus , ShelbyCo_JCTC
+Yavapai College , YavapaiCollege
+Delgado CC West Bank , DelgadoWB
+OlneyCentralCollege , OlneyCentral
+Richmond Comm Coll , Richmond_CC
+Stark State College , TheStarkState
+PRCC Wildcats , PRCC_Wildcats
+UNT Dallas , UNTDallas
+South Georgia State , southGAstate
+Northern NM College , NorthernNNMC
+NGS , NGSedu
+Cerro Coso Com. Col. , cerrocosocoyote
+PennStateDuBois , PennStateDuBois
+BlueMountainCollege , tweetbmc
+WFDDrakeState , WFDDrakeState
+WETCC , WetccEdu
+Bay Mills , BayMillsEDU
+UVI , UVI_edu
+STLCC-FV , STLCCFV
+Southern Oregon Univ , SOUAshland
+Touro California , TouroCalifornia
+NC CommunityColleges , NCCommColleges
+SUNY Columbia-Greene , ColGreeneCC
+Kenrick-Glennon Sem , KenrickGlennon
+Mendocino College , MendocinoEagles
+Barclay College , BarclayCollege
+SVC , SoVtCollege
+Evangel Undergrad , EUndergrad
+WSCC , wscctweets
+SAC , SACChicago
+CCAC , CCAC
+Icahn School of Medicine at Mount Sinai , IcahnMountSinai
+Southern Utah University , SUUtbirds
+Clarkson Univ. CRC , ClarksonCRC
+Reinhardt University , Reinhardt_Univ
+LSC-University Park , LSC_UP
+St Joseph's Seminary , sjsdunwoodie
+UofM Duluth , UMNDuluth
+WGU Tennessee , WGUTennessee
+WGU Missouri , WGUMissouri
+SaintPaulSchTheology , spst
+Presentation College , PresentationPC
+Beacon College , beacon_college
+AACC , AnneArundelCC
+Lamar Comm. College , lamarcomcollege
+Collin College , collincollege
+College of Desert , CollegeofDesert
+Anguilla Com College , acceduai
+Roxbury CC , SeeRCC
+Western State Law , WesternStateLaw
+Our Lady of the Lake , TheLakeHealth
+SUNY Oneonta , SUNY_Oneonta
+UWA Online , UWAOnline
+Penn State Shenango , PSU_Shenango
+UNC Asheville , UncAvl
+LA Southwest College , LASCCampus
+JFK University , JFKUniversity
+SLCC , southlacc
+Minot State , Minotstateu
+SVD vocations , DWCiowa
+NLU , NationalLouisU
+U of South Alabama , UofSouthAlabama
+Brevard College , BrevardCollege
+Samuel Merritt University , SamuelMerrittU
+NCCC - North Country , NorthCountryCC
+UWyo News , UWyonews
+TiffinU , TiffinU
+FGCU , fgcu
+MidwesternUniversity , MidwesternUniv
+CMCC , CMCCMaine
+Wartburg Seminary , WartburgSem
+HopkinsvilleCC , HopkinsvilleCC
+IYRSedu , IYRSedu
+MiSPP , misppedu
+Muskingum Admission , MuskieAdmission
+FPCC , fpcc_edu
+Pacifica Graduate , PacificaPost
+Memphis Seminary , MemphisSeminary
+Seton Hill U. , setonhill
+Clark Atlanta Univ. , CAU
+MCLA , MCLA_EDU
+Anna Maria College , goannamaria
+Stanly Comm. College , StanlyCC
+Knox College , KnoxCollege1837
+PA College , PAHealthSciEDU
+USW , USW_HobbsNM
+Scripps Research , scrippsresearch
+Mount Ida College , MountIdaCollege
+Roanoke-ChowanCC , RoanokeChowanCC
+Pine Manor College , PineManorMA
+TSU Global Campus , TSUGlobalCampus
+Sofia University USA , SofiauCA
+PSU Schuylkill , PennStateSL
+Pfeiffer University , Pfeiffer1885
+Ellis University , EllisUniv
+University of Nebraska-Lincoln , UNLincoln
+CUAnschutz , CUAnschutz
+Santa Rosa JC , SantaRosaJC
+Nebraska Indian CC , NebraskaIndian
+AZ Christian Univ , ACUphoenix
+MS Univ for Women , MUWedu
+GTCC | Guilford Tech , _gtcc
+Rockingham CC , RockinghamCC
+GardenCityCC , GCCCBroncbuster
+CU Boulder , CUBoulder
+Concordia College , ConcordiaAL
+CCSJ , _CCSJ
+Boricua College , BoricuaCollege1
+UMES , UMESNews
+Central Alabama , CentralAlabama1
+Emmaus Bible College , EmmausBibleCo
+PennStateWS , PennStateWS
+BCCC , bmoreccc
+CrowleysRidgeCollege , CRCPioneers
+UProvidence , uprovidence
+Cascadia College , CascadiaCollege
+BPCC , BPCCCavs
+CCCTigers , _TigerNation
+CCC, NM , ClovisCommunity
+MECC , MECCVa
+Christ King Seminary , cksedu
+Cecil College , CecilCollege
+ICO , ICO_Optometry
+RiverParishesCC , RiverParishesCC
+Moore College of Art , MooreCollegeArt
+FloridaNationalU , FNUniversity
+Grand View Univ. , GrandViewUniv
+Olivet University , OlivetU
+Graduate Center CUNY , GradCenterNews
+Assumption College , AssumptionNews
+Regis University , RegisUniversity
+Ave Maria University , avemariauniv
+Dega Admissions , TalladegaEDU
+Middle Georgia State , MGAstateU
+William Carey Univ. , WmCareyU
+Penn State Behrend , PSBehrend
+UniversityofLaVerne , ULaVerne
+UM School of Nursing , UMichNursing
+SFCC , sfccmo
+LSTC , LSTChicago
+MaineMaritimeAcademy , Maine_Maritime
+Olivet College , olivetcollege
+Copiah-LincolnCC , CopiahLincolnCC
+UDubuque Alumni , UDSpartanNation
+Patten University , PattenU
+Jacksonville U , JacksonvilleU
+EmmanuelNews , EmmanuelNews
+Delaware Cty CommCol , DelawareCCC
+WesternU , WesternUNews
+NE Methodist College , NMComaha
+Concordia Seminary , ConcordiaSem
+Midwestern State , MidwesternState
+Sitting Bull College , SittingBullColl
+AIC , AIConcampus
+PSU Wilkes-Barre , PennStateWB
+BFIT , BFITinvolved
+Rider University , RiderUniversity
+CMN , cmn_live
+VT Corps of Cadets , VTCorpsofCadets
+Armstrong State , Armstrong_U
+Dickinson State Univ , DickinsonU
+Alabama Southern CC , ASCCNews
+St Mary's College MD , StMarysMD
+Faulkner University , FaulknerEdu
+Catholic Theological Union , ChicagoCTU
+NC State University , NCState
+Quincy University , Quincy_U
+clevelandunivkc , clevelandunivkc
+Sullivan University , SullivanU
+SW Christian Univ. , SCUinfo
+NBCC , myNBCC
+Santa Fe University , SantaFeUAD
+SaintJoseph'sCollege , SaintJosephsME
+Trinity Luth College , TrinityLuthColl
+MTSO , MTSOedu
+National Defense U , NDU_EDU
+CCS , CCS_Detroit
+Peninsula College , pencollege
+NationalLaborCollege , NLCLaborCollege
+Neumann University , NeumannUniv
+JohnsonUniv , JohnsonUniv
+SouthCentral College , SCCollege
+Westmoreland , ConnectWCCC
+NECO , NECO424
+PittBradford , PittBradford
+RBHSNews , RBHSNews
+Western Piedmont CC , WPCC_Morganton
+Southern Miss , SouthernMiss
+Edison State College , EdisonState
+NWIC , NWIndianCollege
+National Hispanic U , NHUFamilia
+Wilmington University , theWilmU
+Touro College , WeAreTouro
+Univ. of Findlay , ufindlay
+Salt Lake CC , SaltLakeCC
+William Paterson , wpunj_edu
+NCU , NCUCommunity
+UMRochester , UMRochester
+Albertus Magnus , AlbertusSocial
+MacMurray College , MacMurray1846
+St.Gregory the Great , stgknights
+Metropolitan State U , Choose_Metro
+BMCC , BayMillsCollege
+HarfordCC , HarfordCC
+BrookdaleCC-Neptune , BrookdaleCCNept
+Southern Wesleyan U , SWU_edu
+Ohlone CommEd , OhloneCommEd
+NTCC , NTCCgators
+LSU Law Center , LSULawCenter
+Renton Tech , RentonTech
+UW-Stevens Point , UWStevensPoint
+JTS , JTSVoice
+Peru State College , PeruState
+Manhattan College , ManhattanEdu
+UH Maui College , UHMaui
+WWUtournaments , WWUtournaments
+RCBC , RowanBurlington
+Alamo Colleges District , AlamoColleges1
+GraniteStateCollege , GraniteStateCol
+UMA , UMAugusta
+Southwestern Univ. , SouthwesternU
+Ohio State Marion , OSUMarion
+Calhoun College , CalhounCollege
+Southeast , KctcsSoutheast
+Lawson State CC , LawsonStateCC
+Albany State Univ , AlbanyStateUniv
+Cal State San Marcos , CSUSM
+Portage College , PortageCollege
+York College , YorkCollegeNeb
+Trident University , TridentUniv
+Greenfield Community College , GfldCommCollege
+Cincinnati State , CinState
+PennStateHarrisburg , PSUHarrisburg
+LIU Hudson , LIUHudson
+BCC , BlkftComCollege
+Marymount University , marymountu
+Curry College , CurryEdu
+STCL Houston , STCL_Houston
+St. Louis Comm Coll , STLCC_Archers
+UMPI , UMPIowls
+Brunswick CC , Brunswick_CC
+Davidson College , DavidsonCollege
+BYU-Idaho , byuidaho
+Prairie State College , PrairieStateCol
+Western Iowa Tech , WesternIowaTech
+Hunter College , Hunter_College
+ShippensburgU , shippensburgU
+U of Cincinnati , uofcincy
+Pierce College , PierceCollegeCA
+The Official HCCSW , HCC_Southwest
+Morningside College , MorningsideEdu
+Johnson C. Smith U. , JCSUniversity
+CLTCC , goCLTCC
+Governors State , Governors_State
+William Peace Univ. , WPeaceU
+Earlham College , earlham1847
+Klamath CC , KlamathCC
+SMSU Today , SMSUToday
+Princeton Seminary , ptseminary
+Virginia Union , VAUnion1865
+UC San Diego , UCSanDiego
+MCCN , mccnedu
+Northwestern State , nsula
+Santa Fe University , SantaFeU
+Crown College , CrownCollege
+Reconstructing Judaism , ReconJudaism
+TTIC , TTIC_Connect
+Grambling State Univ , Grambling1901
+USC Beaufort , UofSCBeaufort
+MT University System , MtUniversitySys
+StThomasAquinasColl , STAC_edu
+Sul Ross State , Sul_Ross
+La Politécnica , pupr_edu
+MilesCollege , MilesCollege
+SWTJC , SWTJC
+University of Montana , umontana
+ResU , Resuniversity
+Webb Institute , WebbInstitute
+NEOMED , NEOMEDedu
+New River CTC , newriverctc
+Alice Lloyd College , ALCeagles
+Christian Theological Seminary (CTS) , CTS_Indy
+Saint John's School of Theology and Seminary , CollegevilleMN
+Fort Lewis College , FLCDurango
+BelmontAbbey , BelmontAbbey
+Hood College , hood_college
+UL Lafayette , ULLafayette
+CollegeoftheAtlantic , collegeatlantic
+Calvary University , CalvaryUniv
+Ozark Christian , Ozark1942
+FVCCMT , fvccmt
+Louisiana College , LA_College
+CSUB , CSUBakersfield
+UVa-Wise (official) , UVa_Wise
+UPIKE , upikebears
+Touro Nevada , TouroNevada
+Chipola College , ChipolaCollege
+Florida Memorial University (Official) , FLMemorialUniv
+TrinityCollegeQC , TrinityCollegQC
+Navajo Tech , NavajoTech
+Dalton State , DaltonState
+Culver-Stockton , CSC1853
+Perimeter College , GSU_Perimeter
+Aspen University , aspenuniversity
+Abraham Baldwin Agricultural College , ABAC_College
+Colorado Mesa U , ColoradoMesaU
+WGU Washington , WGUWashington
+CDU , cdrewu
+Trinity Bapt College , tbc_edu
+CC of Philadelphia , CCPedu
+Johnston CC , JCC_NC
+Massasoit CC , MassasoitTweets
+Wayne Comm. College , wayneccnc
+UNC Charlotte , unccharlotte
+Brescia University , BresciaPR
+MCCS , MCCSme
+EMCC , EMCC_Community
+Coconino CC , CoconinoCC
+Whitman College , whitmancollege
+Wright State University (Dayton, OH) , wrightstate
+Umaine at Fort Kent , UMaineFortKent
+Rust College , Bearcat_News
+UNOH.edu , UNOH_edu
+Miami Dade College , MDCollege
+Corning CC , corning_cc
+Simpson College , SimpsonCollege
+The College of Idaho , collegeofidaho
+ThomasAquinasCollege , TACollege
+Virginia Western CC , vawestern
+Slippery Rock U ❄️ , slipperyrockU
+Pitt-Johnstown , PittJohnstown
+SUNY Optometry , sunyopt
+UpperIowa , UpperIowa
+SWBaptist University , SBUniv
+Communications , CalCommColleges
+SDMiramarCollege , SDMiramar
+TCM International , TCMIntl
+U. of New Hampshire , UofNH
+Comm. Coll. of DC , CCofDC
+Midstate College , midstatecollege
+Southern University , SouthernU_BR
+Chicago State University , ChicagoState
+York County CC , YCCCMaine
+GlobalHE , GlobalHE
+Silver Lake College , SilverLake54220
+Elms College , ElmsCollege
+Methodist University , Methodist_News
+LakeForestGradSchool , LFGSM
+LCTCS , golctcs
+Brookdale CC News , BrookdaleCCNews
+U. of New Haven , UNewHaven
+Surry CC , surrycc
+South University , SouthU
+OCU , OaklandCityU
+WesternNevadaCollege , WNC_Information
+Penn State Hazleton , PSUHazleton
+Georgia Southwestern , GaSouthwestern
+PSU Lehigh Valley , PSULehighValley
+Great Bay CC , greatbaycc
+US Military Academy , WestPoint_USMA
+Lyme Academy College , LymeAcademy
+TVCC , TrinityValleyCC
+Columbia University , Columbia
+FBBC&TS , faithedu
+Central Carolina , CentralCarolina
+SCI-Arc , sciarc
+UTTC , UnitedTribesND
+University of Nebraska , u_nebraska
+Amer. Indian College , aicagphx
+Polk State College , PolkState
+CollegeofCentralFL , CFedu
+Univ. of Mount Olive , OfficialUMO
+Chaminade News , Chaminade_Univ
+Inter SG , InterSG1912
+Point University , PointUniv
+IrvineValleyCollege , MyIrvineValley
+MBKU , MBKetchumU
+Monroe College , monroe_college
+Southern Virginia U. , SVUedu
+Northwestern Health U , NWHealthU
+Texas A&M Galveston , AggiesByTheSea
+Reformed Seminary , ReformTheoSem
+College of Alameda , CollegeAlameda
+SUNY GCC , sunygcc
+Merritt College , MerrittCollege
+Wayland Baptist Univ , WaylandBaptist
+Montreat College , montreatcollege
+Middlesex County Col , MiddlesexCounCo
+Williston State , willistonstate
+Taylor University , tayloru
+Eastern CT State U. , EasternCTStateU
+National University , nuhsedu
+Oberlin College , oberlincollege
+CMC Leadville , CMCLeadville
+#MontanaState , montanastate
+Grossmont-Cuyamaca , gcccdtweets
+Haskell University , HaskellU
+ScottsdaleCC , ScottsdaleCC
+Purdue North Central , PURDUENC
+Reynolds , ReynoldsCollege
+Philander Smith , PhilanderSmith
+CCRI , CCRINews
+Carlos Albizu Univer , carlosalbizuITU
+SouthArk , SouthArkCC
+Corcoran School @ GW , CorcoranGW
+Prince George's CC , pgccnews
+Arapahoe CC , ArapahoeCC
+City Colleges Chicago , ChiCityColleges
+UAFS , UAFS
+VMI News , VMInews
+SUNY Sullivan , suny_sullivan
+IowaStateU , IowaStateU
+StVincents MedCenter , StVincentsMC
+Rose-Hulman , RoseHulman
+NJ City University , NJCUniversity
+SanDiegoMesaCollege , sdmesacollege
+Thomas More College , ThomasMoreKY
+Virginia Wesleyan , vawesleyan
+PCOM , PCOMeducation
+Vaughn College , VaughnCollege
+Humphreys University , humphreysedu
+NY Medical College , nymedcollege
+Southwestern College , swc_news
+UAA , UAApuertorico
+UH Manoa , uhmanoa
+SUNY Maritime , MaritimeCollege
+Madonna University , MadonnaU
+CorporateCollege-Laf , IvyTechWorks
+Universidad Turabo , UniTurabo
+Marymount College , MCAdvantage
+Itawamba CC , ItawambaCC
+Morrisville State , sunymorrisville
+Tunxis Comm. College , tunxiscc
+Alliant , AlliantU
+Marylhurst Univ. , Marylhurst
+SCNM , SCNMAZ
+Seattle Colleges , SeattleColleges
+Cty College Morris , CCM_edu
+MWCC , MountWachusett
+CollegeOfTheOzarks , CofOHardWorkU
+UMass Medical School , UMassMedical
+PVCC , PiedmontVaCC
+Bethel College , bethelks
+UT System , utsystem
+Laney College , LaneyCollege
+Lexington College , LexCollege
+CGA Bears , CoastGuardBears
+Southwestern College , Southwesternsf
+Newbury College , NewburyColl
+LIU Brooklyn , LIUBrooklyn
+Stillman College , StillmanCollege
+Midland University , MidlandU
+Missouri Community College Association , MCCATweet
+Univ. of Baltimore , EubieBee
+Lawrence Tech , LawrenceTechU
+MGH Institute , MGHInstitute
+KCTCS , KCTCS
+SFTS , SanFranSeminary
+ECC West Campus , ECCWest
+Penn State Hershey , PennStHershey
+Texas A&M-Kingsville , JavelinaNation
+Columbus State , cscc_edu
+Missouri Baptist U , MoBaptistU
+North Hennepin C.C. , NorthHennepin
+Robert Morris IL , RobertMorrisU
+Southeastern Bible , SEBCOfficial
+Hartwick College , HartwickCollege
+BGSP , BGSPsyA
+ECU , EastCarolina
+LakelandCommunityCol , LakelandCommCol
+Manchester University , ManchesterUniv
+UC Berkeley , UCBerkeley
+Queens College|CUNY , QC_News
+MN State Mankato , MNSUMankato
+Sweet Briar College , Sweetbriaredu
+Tabor College , TaborCollege
+Mount Marty College , mountmarty
+Univ.ofNorthFlorida , UofNorthFlorida
+Lake Forest College , LFCollege
+ASU Mid-South , asumidsouth
+Craven Comm. College , cravencc
+Holy Names Univ. , HolyNamesUniv
+Paine College , PaineCollege
+Framingham State , FraminghamU
+Asbury University , AsburyUniv
+NPS Monterey , NPS_Monterey
+David Henahan , SUNYEmpireState
+WMU-Cooley , WMUcooleylaw
+KCU Knights , knightskcu
+UPR Cayey Viva , uprcayey
+The Citadel , Citadel1842
+Harding University , HardingU
+West Chester U , WCUofPA
+ASU Downtown Phoenix , asudpc
+U. of New Orleans , UofNO
+Marywood University , MarywoodU
+New Orleans Seminary , NOBTS
+U. of Saint Joseph , USJCT
+TidewaterCommCollege , TCCva
+WVU Tech , WVU_Tech
+Pensacola State , PensacolaState
+Union Pres. Seminary , UPSeminary
+DCCC , davidsonccc
+NorthernEssexCC , NorthernEssex
+Kansas Wesleyan , goKWU
+Folsom Lake College , flcfalcons
+Pacific Oaks College , pacificoaks
+Molloy College , MolloyCollege
+Bennett College , BennettCollege
+Wiregrass Tech , wiregrasstech
+Cabrillo College , CabrilloCollege
+Athens State , AthensState
+VCU , VCU
+CTS Chicago , CTS_Chicago
+Florida State University , floridastate
+WGU Indiana , WGUIndiana
+CapTechU , captechu
+MCTC , MCTCtweets
+Saint Paul College , StPaulCollege
+Barry University , BarryUniversity
+Maine College of Art , mecaart
+St. John's College , stjohnscollege
+Alabama State , alabamastateu
+Maine Law , UMaineLaw
+IUPUC , IUPUC
+Nebraska Christian , nechristian
+UW-River Falls , UWRiverFalls
+A&M-Texarkana , TAMUTexarkana
+BerkCommunityCollege , BerkshireCC
+LSU Health Shreveport , LSUHS
+VanderCook , VanderCook
+USF St Petersburg , USFSPevents
+Henderson State U , HendersonStateU
+College of St Rose , CollegeofStRose
+Aquinas Institute , aitheology
+Wesley College , WesleyCollegeDE
+Nebraska Wesleyan , NEWesleyan
+Inter de Aguadilla , InterAguadilla
+OHIO U Lancaster , ohiou_lancaster
+Spike the Whale , uas_news
+UNK , UNKearney
+HCC Northeast , HCC_Northeast
+NAUniversity , NatAmericanU
+SCC IOWA , scciowa
+American Public U , AmericanPublicU
+Stockton University , Stockton_edu
+Widener University , WidenerUniv
+Hendrix College , hendrixcollege
+NECB , NECBedu
+Franciscan School , TFSRaleigh
+UA Fairbanks , uafairbanks
+HVCC , HudsonValleyCC
+UC Blue Ash College , UCBlueAsh
+Southwest Tech , swtc
+Hartford Seminary , HartSem
+American Military U , AmericanMilU
+Truman State University , TrumanState
+UChicago , UChicago
+Wells College , wellscollege
+UPR Ciencias Médicas , rcmupr
+Rowan-Cabarrus CC , RCCCedu
+Trevecca University , Trevecca
+Touro University TUW , TouroUniversity
+Univ. of the Potomac , UOTPotomac
+OCC , OCCollege
+Samford University , SamfordU
+Avila University , AvilaUniversity
+IU South Bend , IUSouthBend
+MoodyBible Institute , Moody_Bible
+Syracuse University , SyracuseU
+Clark College , ClarkCollege
+Livingstone College , Livingstone1879
+Susquehanna U , SusquehannaU
+Everett CC , EverettCC
+TheLA9 , TheLA9
+Saybrook University , SaybrookU
+Alma College , almacollege
+SC STATE UNIVERSITY , SCSTATE1896
+Concordia College NY , Concordiany
+CUNY , CUNY
+UPR , UPR_Oficial
+LBC | Capital , lancasterbible
+Cuesta College , Cuesta_College
+Penn State , penn_state
+McPherson College , Mac_College
+Worcester State , WorcesterState
+A&M-San Antonio , TAMUSanAntonio
+University of Mobile , umobilenews
+ITC , elearning10
+Montana Western , MontanaWestern
+Chowan University , ChowanU
+MCC Admissions , MCCNHAdmit
+IAUPR Optometry , iau_optoschool
+Marion Military Inst , MarionMilitary
+ITC , ITC_AACC
+Stillman College , StillmanPride
+St Charles Community , StCComm
+UNW , NorthwesternMN
+Lehman College , LehmanCollege
+Jackson College , JacksonCollege
+Northern Seminary , nseminary
+A-B Tech , abtech_cc
+Tri-County Technical College , tctcedu
+NashuaCC , Nashua_Online
+SFCM , SFConservMusic
+The Juilliard School , JuilliardSchool
+BYU–Hawaii , byuhawaii
+InterBayamon , InterBayamon
+Centralia College , CCBlazers
+Benedictine College , BenedictineKS
+Moreno Valley College , mvcollege
+NaugatuckValley (NV) , NaugatuckValley
+TCC , GoToTCC
+Central Michigan U. , CMUniversity
+Salish Kootenai Coll , skcollege
+Morehouse College , Morehouse
+Graceland University , GracelandU
+The King's College , TheKingsCollege
+UMaine-Machias , UMaineMachias
+MUIH , MUIHealth
+Briar Cliff , briar_cliff
+HCCC , HudsonCCC
+Rhode Island College , RICNews
+UTChattanooga , UTChattanooga
+Univ of South Dakota , usd
+Kentucky State U. , KyStateU
+LCCC , lorainccc
+RRCC , rrccedu
+Hastings College , HastingsCollege
+FIT , FIT
+Chadron State , chadronstate
+PacificSchReligion , psrberkeley
+University of Houston , UHouston
+Bay Path University , Bay_Path
+Northeast Iowa CC , NEiowaCC
+Texas Wesleyan , TexasWesleyan
+JSRCC VC , jsrccvc
+TheBAC , TheBACBoston
+Soka University , SokaUniv
+Fisher News , FisherNews
+Youngstown State University , youngstownstate
+Tri-C , TriCedu
+Vance-Granville CC , VanceGranville
+Boston University , BU_Tweets
+Millikin University , MillikinU
+Belhaven University , BelhavenU
+StateCollegeFlorida , SCFnow
+UHDowntown , uhdowntown
+Spalding University , SpaldingU
+SUNY Ulster , SUNYUlster
+Valley Forge , UValleyForge
+MSMC , msmc_events
+Saint Louis University , SLU_Official
+WKCTC , WKCTC
+CCRC , CommunityCCRC
+Merced College , mercedcollege
+UMUC , UMUC
+Clayton State , ClaytonState
+Yuba College , DustyNiner
+Oglethorpe U , OglethorpeUniv
+Great Basin College , gbcnevada
+Vermont Law School , VTLawSchool
+Embry-Riddle Univ , EmbryRiddle
+University of Alaska , UA_System
+Reed College , Reed_College_
+Colby-Sawyer College , colbysawyer
+Central Christian , cccwichita
+Warner University , WarnerU
+BRCC , MyBRCC
+NewSchool San Diego , NewSchoolArch
+Hawaii CC , HawCC
+Stevens , FollowStevens
+KU Medical Center , KUMedCenter
+Southwest University , SUVAedu
+Maricopa CC District , mcccd
+VFMAC , VFMAC
+United States Univ. , USUniversity
+Hannibal-LaGrange U , HLGuniversity
+ASUMH , ASUMountainHome
+Paradise Valley Community College , PVCC_Official
+York College of PA , yorkcollegepa
+Fuller Seminary , fullerseminary
+CC of Aurora , CCAurora
+Missouri Western , MissouriWestern
+UMSL , umsl
+UW-La Crosse , UWLaCrosse
+Montgomery College , montcollegejobs
+SD Community College , SDCCD
+SUNY Canton , SUNYCantonNews
+AlbanyMedicalCenter , AlbanyMed
+Great Lakes C.C. , GLCCCrusaders
+Housatonic , HCCBridgeport
+Union County College , UCCweb
+CornerstoneU , CornerstoneU
+UNC Pembroke , uncpembroke
+Fielding University , FieldingGradU
+Purdue Polytechnic Institute—West Lafayette , TechPurdue
+WSU Tri-Cities , WSUTriCities
+LamarInstituteofTech , LITBMT
+UW-Superior , uw_superior
+BCF , baptistcollege
+Albany Pharmacy , ACPHS518
+Univ. of Michigan , UMich
+Western Seminary , WesternSeminary
+Emporia State , emporiastate
+UAM Admissions , UAMAdmissions
+Casper College , CasperCollege
+Tennessee Wesleyan , TNWesleyan
+UH Kapiolani , uhkapiolani
+CSB/SJU , CSBSJU
+Dillard University , du1869
+SJCL , SJCL1969
+SUNY Old Westbury , SUNYOldWestbury
+Alabama A&M , aamuedu
+Montana Tech , montana_tech
+Univ. of St. Thomas , UofStThomasMN
+MVCC Mohawk Valley , MVCC_UticaRome
+Ohio State Newark , OhioStateNewark
+West Liberty U , westlibertyu
+Savannah State , savannahstate
+EICC , tweet_eicc
+Universidad del Este , univdeleste
+Univ. Metropolitana , UMET_PR
+Loyola New Orleans , Loyola_NOLA
+Alcorn State , AlcornStateU
+AmericanCollegeofEd , ACEedu
+Ana G. Méndez , SUAGM
+Notre Dame College , NotreDameOhio
+MSJC , MSJCedu
+Terra State , TerraCC
+WA Campus Compact , WACampusCompact
+Central Seminary , CBTSKansas
+NSCC , northshore_cc
+NIACC , myniacc
+UTSA , UTSA
+GordonStateCollege , GordonState
+Ohio Wesleyan Univ. , OhioWesleyan
+Briarcliffe College , BriarcliffeEdu
+Highline College , highlinenews
+UConn , UConn
+BismarckStateCollege , Bismarck_State
+U of Mary Washington , UMaryWash
+Cuyamaca College , cuyamacacollege
+IRSC - The River , IRSCTheRiver
+New River CC , NRCCedu
+Wheelock College , WheelockCollege
+Cazenovia College , CazCollege
+WSSU , WSSURAMS
+Norfolk State , NSU_SA
+UTMB Health , utmbhealth
+Chamberlain , chamberlainedu
+Monroe Comm College , MonroeCC
+COTC , COTCedu
+Clatsop CC , ClatsopCC
+Triton College , tritoncollege
+Niagara University , NiagaraUniv
+Eastern Michigan , EasternMichU
+Highland College , HighlandCollege
+St. Lawrence University , StLawrenceU
+Phillips Seminary , phillipstheosem
+LindenwoodUniversity , LindenwoodU
+Lord Fairfax CC , lfccedu
+NDSCS , ndscswildcats
+Moraine Park Tech , MoraineParkTech
+SFBCollege , SFBCollege
+ICSW , ICSW_Chicago
+McKendree University , McKendreeU
+Franklin Pierce , FPUniversity
+Scripps College , scrippscollege
+OhioValleyUniversity , OVUniversity
+Heartland C.C. , Heartland_CC
+Sonoma State , SSU_1961
+York College CUNY , YorkCollegeCUNY
+HCC Florida , HCCFL
+MSU Northern , MSUNorthern
+NorthCentralState , ncstatecollege
+SVCC , saukvalleycc
+Vincennes University , VincennesU
+William Penn University , WilliamPennU
+PasadenaCityCollege , PCCLancer
+Richmont Grad U , richmontgradu
+Covenant Seminary , CovSeminary
+TAMIU , txamiu
+NortheasternSeminary , NESeminary
+Crossroads College , CrossrdsCollege
+San Jacinto College , SanJacCollege
+New Mexico Tech , newmexicotech
+Siena Heights , sienaheights
+AIU Online , AIUniv
+University of Guam , UOGTriton
+Alaska Pacific Univ. , AlaskaPacificU
+SouthSeattleCollege , SouthSeattleCC
+Westminster Seminary , wscal
+Xavier University , XavierUniv
+Ohio State Mansfield , osumansfield
+Morgan State University , MorganStateU
+OttawaU , OttawaU
+Grace Bible College , gbcol
+OU-Tulsa , OUTulsa
+OSUIT , OSUIT
+City Tech-CUNY , CityTechNews
+Shawnee State , ShawneeState
+SMU News , SMUNews
+Raritan Valley CC , raritanvalleycc
+Nyack College , NyackCollege
+Vermont Tech , vttech
+Salem College , SalemCollege
+Claremont Theology , CST_News
+ASU West campus , asuwestcampus
+MSU Denver , msudenver
+DePauw University , DePauwU
+Alfred State , AlfredState
+Essex County College , EssexCountyNwk
+NOBTS Enlistment , OSEnews
+Edward Waters Coll. , ewctigers
+Covenant College , CovenantCollege
+IN Wesleyan Univ. , IndWes
+SUNY , SUNY
+GraduateTheologicalU , tweetGTU
+Marion Tech , MarionTech
+LSC-Montgomery , LSC_Montgomery
+McDaniel College , McDanielCollege
+Oak Hills College , OakHillsCollege
+ENMU , enmu
+Louisiana Delta CC , LADeltaCC
+MLC Athletics , mlcknights
+Vassar College , Vassar
+University of Dallas , UofDallas
+LeechLkTribalCollege , LLTribalCollege
+Mills College , MillsCollege
+Vanguard University , VanguardU
+IAIA , IAIASantaFe
+National University , NatUniv
+USAFA (Official) , AF_Academy
+Santa Clara Univ , SantaClaraUniv
+Mid-Continent , MCUCOUGARS
+Missouri Southern , mosolions
+University of Pittsburgh , PittTweet
+Catholic University , CatholicUniv
+St. Andrews , SA_Knight
+Welch College , WelchCollege
+TAMU Corps of Cadets , AggieCorps
+SFAI , SFAIofficial
+Gallaudet University , GallaudetU
+Dean College , DeanCollege
+Husson University , HussonU
+Fresno State , Fresno_State
+CTU , ctuniversity
+MSM , MSMEDU
+NMU , NorthernMichU
+MCC Kansas City , MCCKansasCity
+GA Piedmont Tech Col , GoGPTC
+Blinn College , BlinnCollege
+CalArts , CalArts
+Lone Star College , LSCnews
+HSBC , hobesoundbible
+CCA , CACollegeofArts
+South Mountain CC , smcccougar
+Ruth A Myers Library , RAMyersLibrary
+Wabash College , WabashCollege
+Manhattanville , Mville_College
+UNC Greensboro , UNCG
+Thomas More College , ThomasMoreNH
+CGCC , ColumbiaGorgeCC
+SJC , SJC_Pumas
+Walters State , WaltersState
+NOVA WD (AN Updates) , NOVACEAnnandale
+LB City College , LBCityCollege
+Henderson CC , hendersoncc
+SVA News , SVA_News
+UIW , uiwcardinals
+VCFA , VCFA
+Thomas University , ThomasU1950
+Texas State , txst
+LaGrange  College , LaGrangeCollege
+Brandman University , BrandmanU
+Lyon College , LyonCollege
+Frostburg State University , frostburgstate
+Brooklyn College , BklynCollege411
+Cal State East Bay , CalStateEastBay
+SalemUTigers , SalemUTigers
+McCormick Seminary , McCormickSem
+JeffersonC&TCollege , JeffersonCTC
+Mid-America Seminary , MABTS
+Ilisagvik College , Ilisagvik
+COD Newsroom , codnewsroom
+PLU , PLUNEWS
+Antioch Los Angeles , AntiochLA
+Norwich University , norwichnews
+Villanova University , VillanovaU
+Fairleigh Dickinson University , FDUWhatsNew
+Five Towns College , FiveTownsNY
+Dona Ana CC , DonaAnaCC
+NDNU , NDNU
+William Woods Univ. , WilliamWoodsU
+NazareneBibleCollege , NazBibleCollege
+CTSFW , CTSFWedu
+Lesley University , lesley_u
+LIU Brentwood , LIUBrentwood
+Thomas Edison State , tesu_edu
+Mount Mary , MountMary
+Gateway Tech College , gatewaytech
+Jefferson College , JCHSRoanokeVA
+UACC-Morrilton , UACCM
+UNH Manchester , UNHManchester
+DePaul Admission , DePaulAdmission
+DMACC , DMACCNews
+Hebrew Union College , HUCJIR
+Parker University , ParkerUniv
+Ursuline College , UrsulineCampus
+Union College , UnionCollegeNY
+TrinityBibleCollege , trinitybible
+University of Southern Indiana , USIedu
+HCC District , HCCDistrict
+Bates Tech College , BatesTechnical
+Kaplan University , Kaplan_Univ
+Georgia College , GeorgiaCollege
+Wartburg College , WartburgCollege
+Sterling College , SterlingCLife
+UniversityofArkansas , UArkansas
+Fredonia , FredoniaU
+Grace University , graceuniversity
+UAPB News , uapbinfo
+Mount Saint Vincent , MountStVincent
+Shaw University , ShawUniversity
+Augustana College , Augustana_IL
+UMass , UMass
+Univ. of Sioux Falls , USiouxFalls
+Adelphi University , AdelphiU
+Valley College , valleycollege
+University of San Francisco , usfca
+Medgar Evers College , NewsatMedgar
+Hilbert College , HilbertCollege
+LSU Alexandria , LSUAlexandria
+CCBC , CCBCedu
+Eureka College , EurekaCollege
+Clear Creek , Clear_Creek
+Lincoln Christian , LCU1944
+Utica College , uticacollege
+#SJUNOW , StJohnsNow
+Western Int'l. Univ. , westedu
+Delaware Tech Terry , dtccterry
+USF - Fort Wayne , USFFW
+NMMI , NMMI
+TUSKEGEE UNIVERSITY , TuskegeeUniv
+Rivier University , RivUniversity
+PCA&D , pcad_edu
+Cambridge College , CambridgeCollg
+Salem State , SalemState
+DCC | danville.edu , DCCPR
+Trinity Christian College , TrinityTroll
+Univ. of the Rockies , URockies
+Ashford University , AshfordU
+Phillips College , PCCUA
+OUEasternCampus , OUEasternCampus
+NJCommunityColleges , NJCommColleges
+Paul Quinn College , PaulQuinnTigers
+Nichols College , Nichols_College
+Montserrat Gallery , montgallery
+New College of FL , NewCollegeofFL
+Clover Park Tech , CloverParkTech
+Muskegon Community College , MuskegonCC
+WAU News , WAUnews
+Florida Tech , FloridaTech
+VirginiaStateUniv , VSUTrojans
+Mercy College Iowa , MercyCollege_IA
+The Master's Seminary , MastersSeminary
+Kennesaw State , kennesawstate
+Washington College , washcoll
+Manhattan S of Music , MSMnyc
+Clarke University , ClarkeU
+Pellissippi State , ps
+Salisbury University , SalisburyU
+Union Seminary , UnionSeminary
+Military Schools , militaryschools
+KCU , Kcumb
+U. of Holy Cross , UofHC
+Barton College , bartoncollege
+Rancho Santiago CCD , RSCCD
+Newberry College , NewberryCollege
+Garrett Hinshaw , cvccled
+SCU Health Sciences , SCUHS
+North Carolina A&T , ncatsuaggies
+Rappahannock CC , rappahannockcc
+VHCC , VHCC
+ChurchDivinitySchool , CDSPTweet
+Santa Fe College , SantaFeCollege
+St. Edward's University , stedwardsu
+Marymount California , MarymountCU
+Wentworth News , WITNews
+Redlands CC , redlandscougars
+Madison College , MadisonCollege
+Northern NM College , NNMC
+Stony Brook U. , stonybrooku
+Vernon College , VernonCollege
+Southern U. at N.O. , SUNOKnights
+St. Bonaventure U , StBonaventure
+FarmingdaleState , FarmingdaleSC
+Delaware State Univ , DelStateUniv
+Dominican University , DominicanU
+UHartfordNews , UHartfordNews
+Post University , PostUniversity
+Seminary Southwest , mySSW
+Maricopa News , MaricopaNews
+UVU , UVU
+Schreiner University , SchreinerU
+Wesleyan College , WesleyanCollege
+KCAI , KCArtInstitute
+Washburn University , WashburnUniv
+TXWoman's University , txwomans
+IWP , theIWP
+MiddlesexCommCollege , middlesex_cc
+Quinebaug Valley CC , QVCC
+Methodist University , KingMonarch
+Marygrove College , MGCollege
+Eastern Nazarene , EasternNazarene
+Clackamas College , ClackCollege
+RISD , risd
+Georgian Court , Georgiancourt
+CSUSB News , CSUSBNews
+K-State , KState
+John Jay College , JohnJayCollege
+WV Wesleyan , WVWesleyan
+Longy , LongyMusic
+UMaine Admissions , GoUMaine
+StPetersburgCollege , spcnews
+SJRState , SJRState
+UWG , UnivWestGa
+Garrett-ETS , GarrettSeminary
+UW-Eau Claire , UWEauClaire
+Sheridan College , sheridancollege
+Prairie View A&M , PVAMU
+UPR Río Piedras , uprrp
+College...Ouachitas , coto4me
+LCAD , lcad
+USD , uofsandiego
+Cañada College , CanadaCollege
+Point Loma Naz Univ , PLNU
+SNC Tahoe , snclaketahoe
+United Seminary , unitedtheologic
+Edison State CC , EdisonOhio
+Los Medanos College , losmedanos
+Coppin State U , CoppinStateUniv
+Montclair State U , montclairstateu
+SUNY Upstate Medical , UpstateNews
+Rock Valley College , rvcgoldeneagles
+Golden West College , gwchb
+MountAloysiusCollege , mountaloysius
+Eastfield College , EastfieldDCCCD
+Mountain View College , MVConline
+Cedar Valley College , CVCOnline
+El Centro College , ECCOnline
+LA Valley College , LAValleyCollege
+Manhattan Christian , MCCAdmissions
+UCumberlands , UCumberlands
+Chandler-Gilbert CC , chandlergilbert
+Huntington Univ , HuntingtonU
+PSU Brandywine , PSUBrandywine
+Denver Seminary , denverseminary
+Valencia Foundation , valenciagiving
+Skidmore College , SkidmoreCollege
+Winona State U , winonastateu
+Loyola University MD , LoyolaMaryland
+RMCAD® , RMCAD
+Life Pacific College , LifePacific
+Weber State Univ. , WeberStateU
+Lees-McRae College , LeesMcRae
+Northeastern U. , Northeastern
+Judson University , JudsonU
+Delta College , DeltaCollege
+UMaine Farmington , UMFinthenews
+Foothill College , Foothillnews
+Western Oregon Univ. , WOUnews
+UWest , u_west
+Spring Arbor Univ. , springarboru
+Waldorf University , Waldorf_U
+Tennessee State Univ , TSUedu
+OSU-CHS , OSUCHS
+Hinds Comm. College , HindsCC
+Valencia College , valenciacollege
+Campbellsville Uni. , CampbellsvilleU
+Montgomery CC , MontgomeryCC
+GMC Columbus , GMCColumbus
+National ParkCollege , NationalParkC
+IU Kokomo , IUKokomo
+North Orange CCCD , nocccd
+Milligan College , MilliganCollege
+Keller Graduate , KellerGraduate
+School of the Arts , UNCSchoolofArts
+SCSU (Southern) , SCSU
+Maryville College , MaryvilleC
+Northwest Nazarene , nwnazarene
+UBridgeport , UBridgeport
+Agnes Scott College , agnesscott
+Young Harris College , YH_College
+Weatherford College , WfordCollege
+Mercer University , MercerYou
+U.S. Sports Academy , USSportsAcademy
+WNCC , WNCC
+Virginia Western , VirginiaWestern
+Cleveland State , clevelandstate
+TXChiroCollege , TXChiroCollege
+UofMemphis , uofmemphis
+San Diego Christian , SDChristian
+Andrews University , AndrewsUniv
+Wilson Comm College , wccwilsonnc
+Lewis University , LewisUniversity
+COA , COA_Dolphins
+LowerColumbiaCollege , LowerCC
+The Chicago School , GradPsychology
+Ripon College , riponcollege
+NTC , NTCNews
+FLORIDA , UF
+LSU , lsu
+MGCCC Bulldogs , MGCCCBulldogs
+Army War College , ArmyWarCollege
+Gardner-Webb , TheGardnerWebb
+TAMU-Corpus Christi , IslandCampus
+Wilmington College (OH) , WilmingtonColl
+DeVry University , devryuniv
+Boston Conservatory at Berklee , BosConservatory
+Occidental College , Occidental
+Western Tech College , WesternTC
+CBU , calbaptist
+Mount Vernon Nazarene University , MVNUNews
+Wellesley College , Wellesley
+Miami University , miamiuniversity
+McMurry University , mcmuniv
+Kean University , KeanUniversity
+Owens CC , OwensCC
+OCAC |  PDX , OCAC_edu
+Prensa RUM , PrensaRUM
+Illinois State , IllinoisStateU
+Queensborough | CUNY , QCC_CUNY
+BHU , BeulahHeights
+Bethune-Cookman , bethunecookman
+NW Ark Comm College , NWACC
+University of St. Francis , UofStFrancis
+Maryland Institute College of Art , mica
+Harrington College , hcdinfo
+DACC , DanvilleAreaCC
+Villa Maria College , VillaMariaClg
+Santa Monica College , SMC_edu
+Warner Pacific , WarnerPacific
+St. Kate's , StKate
+South Dakota State , SDState
+Dakota College , DakotaCollege
+York Tech , yorktech
+MSU , michiganstateu
+MO Valley College , missourivalley
+Palo Alto College , PACPR
+Mars Hill University , MarsHillU
+SMCC , SMCCMaine
+Western Michigan U , WesternMichU
+Penn State Greater Allegheny , PennStateGA
+PCC , piedmontcc
+Dordt College , dordtcollege
+University of Oregon , uoregon
+Academy of Art Univ. , academy_of_art
+Louisville Seminary , lptsNOW
+Normandale CECT , NormandaleCECT
+Inver Hills CC , InverHillsCC
+Marymount Manhattan , NYCMarymount
+UNLV , unlv
+Blackhawk Tech , blackhawk_tech
+Seattle Pacific Univ , SeattlePacific
+WV State University , WVStateU
+Fayetteville State , uncfsu
+Truett McConnell , TruettMcConnell
+OU Zanesville , ouzanesville
+Logan University , LoganUniversity
+USF Sarasota-Manatee , USFSM
+NWF State College , nwfstatecollege
+South Piedmont CC , SouthPiedmontCC
+Southwestern Online , SCHigherEd
+Bloomfield College , bloomfieldedu
+GCC , gccaz
+Zaytuna College , zaytunacollege
+Woodbury University , WoodburyU
+HCC Central , HCCcentral
+LaGuardia CC , LaGuardiaCC
+Palm Beach State , PBStateCollege
+Harvard University , Harvard
+FIU , FIU
+Illinois Wesleyan , IL_Wesleyan
+BCCC , beaufortccc
+University of Louisville , uofl
+Northwest University , northwestu
+UMBC , UMBC
+Xavier Univ. of LA , XULA1925
+Lincoln Land College , LincolnLand
+USF , USouthFlorida
+UW System , UWSystem
+Detroit Mercy , UDMDetroit
+Columbia Seminary , CTSeminary
+PennHighlands , PennHighlands
+Northern State U. , NorthernStateU
+Alvin College , accnews
+SB City College , SantaBarbaraCC
+La Sierra University , lasierranews
+MCPHS - Worcester , MCPHSWorcester
+Columbia State , columbiastate
+Lewis and Clark , lewisandclarkcc
+Wade College , WadeCollege
+Frontier University , FrontierNursing
+Antioch New England , AntiochNewEng
+Univ of the South , univofthesouth
+ASU Polytechnic , asupoly
+Wiley College , WileyCollege
+Univ. of Evansville , UEvansville
+Rockhurst University , RockhurstU
+Spring Hill College , sprhill
+Centenary University , Centenary_NJ
+New England College , NewEngCollege
+#MSMUnstoppable , MSMU_LA
+Mayland CC , maylandcc
+Clarks Summit U , ClarksSummitU
+Union Inst. & Univ. , myunionedu
+Columbia College , ColumbiaColg
+Florida Southern , FLSouthern
+Gateway Seminary , GatewaySeminary
+Univ of Indianapolis , uindy
+Diablo Valley Coll. , DVC_updates
+Lincoln University , LUBlueTigers
+Master's University , mastersuniv
+Durham Tech , durhamtech
+Misericordia U , MisericordiaU
+Benedictine Univ. , BenU1887
+UT Dallas , UT_Dallas
+Campbell University , campbelledu
+Crowder College , CrowderCollege
+Wesley Seminary , WesleyTheoSem
+Northwest State , NorthwestState
+TTUHSC , TTUHSC
+LakeSuperiorCollege , LSC_Duluth
+Stanislaus State , stan_state
+Lee College , leecollege
+Fullerton College , FullColl
+Bethany Lutheran , BethanyLutheran
+Georgetown McDonough , msbgu
+Georgia Gwinnett , GeorgiaGwinnett
+Central AZ College , CACadmissions
+SUSLA , SUShreveport
+Drew University , DrewUniversity
+Forsyth Tech , ForsythTechCC
+Central Baptist , CentBaptCollege
+Temple University , TempleUniv
+SFCC , SFCCNM
+Roberts Wesleyan , RobertsWesleyan
+Jackson State U. , JacksonStateU
+CCCC , iamcccc
+Hope International , HIUnow
+Barnard College , BarnardCollege
+OBU , Ouachita
+Rush University Medical Center , RushMedical
+CollegeOfTheMainland , COMDucks
+Florida College , floridacollege
+Ball State , BallState
+Baptist Bible College Springfield, MO. , BBCandTS
+PFIC News , pficnews
+University of Mary , umary
+ClevelandCommCollege , ClevelandCC
+UniversitySystemofGA , BORUSG
+U of North Dakota , UofNorthDakota
+Judson College , JudsonCollege
+Houghton College , HoughtonCollege
+LSCS Recruiting , LSCSRecruiting
+Isothermal Comm Coll , isothermal_edu
+Mass. School of Law , MSLandover
+Dominican University , DominicanCANews
+Lane CC , LaneTitans
+Ohio State Lima , OhioStateLima
+Nashville State CC , NashvilleState
+Saint Mary , USMSpireWire
+Iona College , ionacollege
+NYCC , NYChiroCollege
+Glendale College CA , GCCPIO
+KeiserUniversity , KeiserU
+Teachers College, CU , TeachersCollege
+University of Northern Iowa , northerniowa
+Bemidji State Univ. , BemidjiState
+Coastline College , CoastlineInOC
+Chaffey College , chaffeycollege
+Catawba Valley CC , CatawbaValleyCC
+Wake Forest University , WakeForest
+Lynn University , LynnUniversity
+CommunityCollegeofVT , CCV_VT
+Reading Area CC , RACC_edu
+Kendall College , KendallCollege
+NHW , nhweber
+Franciscan U , FranciscanU
+UCB , ucbpr
+Northcentral U , NorthcentralU
+Park University , ParkUniversity
+Univ. of Mount Union , mountunion
+Claremont McKenna , CMCnews
+Loma Linda U. Health , LLUHealth
+Westminster College , WestminsterMO
+Saint Joseph's , saintjosephs
+MCC , mccneb
+University of Kentucky , universityofky
+USTHouston , stthomashouston
+NEC , necmusic
+MassArt , MassArt
+Iowa Lakes , IowaLakes
+Wingate University , WingateUniv
+Texas Southern University , TexasSouthern
+Doane University , DoaneUniversity
+Rhodes College , RhodesCollege
+SUNY Cortland , suny_cortland
+RCC , SUNYRockland
+OUHSC , OUHSC
+South College , SouthCollege
+El Camino College , elcaminocollege
+Northwestern , NorthwesternU
+SouthwesternCC , southwesterncc
+Connecticut College , ConnCollege
+St. Charles CC , SCC_StCharlesCC
+Trinity College , trinitycollege
+Del Mar College , DelMarCollege
+AlamanceCC , AlamanceCC
+Midwestern Seminary , MBTS
+Grindle Honors , HonorsInstitute
+MACU , MACUniversity
+St. Clair County CC , followSC4
+Carleton College , CarletonCollege
+Auburn Montgomery , aumontgomery
+Cranbrook Art , cranbrookart
+New Saint Andrews , NewSaintAndrews
+Anoka-Ramsey College , AnokaRamseyCC
+Naropa University , NaropaU
+American University , AmericanU
+North Central U , NorthCentral_MN
+Randolph Macon , RandolphMacon
+Messiah College , messiahcollege
+Keuka College , KeukaCollege
+Roosevelt University , RooseveltU
+OralRobertsU , OralRobertsU
+SUNY Plattsburgh , SUNYPlattsburgh
+University of Kansas , KUnews
+Southeastern_CC , Southeastern_CC
+LSSU , LifeatLSSU
+Cooper Union , cooperunion
+Simon's Rock , SimonsRock
+Bethany College KS , bethanynews
+Georgia Bulldogs , UGAAthletics
+Saint Peter's Univ. , saintpetersuniv
+Clearwater Christian , clearwatercc
+SEBTS , SEBTS
+Rogue CC , RogueCC
+UW-Parkside , uwparkside
+Williams Baptist , williamsbaptist
+Louisiana Tech University , LATech
+Pratt Institute , PrattInstitute
+Rose State College , RoseState
+Uni of New England , unetweets
+Rio Salado College , RioSaladoOnline
+University of Tampa , UofTampa
+Adler University , AdlerUniversity
+UT Martin , utmartin
+Sioux Falls Seminary , SFSeminary
+UC Berkeley News , UCBerkeleyNews
+Mt. Hood CC , MtHoodCommunity
+OBU , obunews
+SUNY-ESF , sunyesf
+AU Santa Barbara , antiochsb
+U of Jamestown , JimmieKnight
+LIU Post , LIUPost
+Green River College , GreenRiverCC
+Brazosport College , BCgators
+HighPointUniversity , HighPointU
+IU Southeast , IUSoutheast
+Camden Cty. College , camdencc
+SaintMaryoftheWoods , smwc
+Gadsden State , gadsdenstate
+NUNM , NUNM_EDU
+UNTHSC , UNTHSC
+Southeastern , seuniversity
+Univ. Hawaii at Hilo , UHHilo
+Brenau University , BrenauU
+Presbyterian College , presbycollege
+Mary Hardin-Baylor , UMHB
+FloridaA&MUniversity , FAMU_1887
+IowaWesleyan , IowaWesleyan
+Idaho State U. , IdahoStateU
+Western State Colo U , WesternColoU
+QuinnipiacUniversity , QuinnipiacU
+Mount St. Mary's U , MSMU
+The Wright Institute , wrightinstitute
+Montgomery College , montgomerycoll
+ATSU , ATSU_news
+St Thomas Univ Miami , StThomasUniv
+UVM , uvmvermont
+Univ. of Delaware , UDelaware
+W&J College , wjcollege
+NC Wesleyan College , ncwesleyan
+U of Miss. Med. Ctr. , UMMCnews
+Olivet Nazarene , olivetnazarene
+Asnuntuck , AsnuntuckCC
+Wichita State , WichitaState
+Trinity Washington U , TrinityDC
+College at Brockport , Brockport
+MidAmerica Nazarene , followMNU
+WVU Parkersburg , WVUParkersburg
+Appalachian State , appstate
+JolietJuniorCollege , JolietJrCollege
+FIDM San Diego , FIDMSanDiego
+Toccoa Falls College , ToccoaFalls
+CSM Headline News , CSMHeadlines
+SAGU , sagu
+SMU , SMU
+Warren Wilson , WWCasheville
+Clark University , ClarkUniversity
+CIIS , CIIS_SF
+PacificUnionCollege , PUCNow
+New York University , nyuniversity
+TCNJ , TCNJ
+NIU , NIUlive
+Wis Tech Colleges , WisTechColleges
+Albany Tech , AlbanyTech
+Queens Univ of CLT , QueensUniv
+Shoreline CC , shorelinecc
+UB News Source , UBNewsSource
+Northeastern State , NSURiverHawks
+Pittsburgh Seminary , pghseminary
+PCC , PortlandCC
+Frederick CC , FrederickCC
+Univ. of Puget Sound , univpugetsound
+University of South Carolina , UofSC
+CO School of Mines , coschoolofmines
+Delaware Tech , delawaretech
+Spelman College , SpelmanCollege
+Tulane University , TulaneNews
+GW University , GWtweets
+SJRState Chapter,AFC , AFC_SJRState
+Sinclair College , SinclairCC
+Southwestern OR CC , swocc
+Donnelly College , DonnellyCollege
+UW Tacoma , uwtacoma
+MCAD , MCAD
+Texas Lutheran Univ , txlutheran
+St. Cloud State , stcloudstate
+Bowie State Uni. , BowieState
+Huntingdon College , HuntingdonColl
+MATC (Milwaukee) , DiscoverMATC
+Coe College , CoeCollege
+Macalester College , Macalester
+Highland (HCC) , highlandcc
+College of Saint Mary , CSM_Omaha
+CWI , cwidaho
+GreenvilleUniversity , GreenvilleUniv
+WHOI Media Relations , WHOImedia
+Ramapo College , RamapoCollegeNJ
+Howard University , HowardU
+U. of Washington , UW
+Colorado State Univ , ColoradoStateU
+SE Missouri State , SEMissouriState
+Strayer University , StrayerU
+U.S. Army CGSC , USACGSC
+Caldwell University , CaldwellUniv
+Seminole State , SeminoleState
+D'Youville College , DYouville
+Creighton University , Creighton
+SIUC , SIUC
+Parkland College , parklandcollege
+WKU News , wkunews
+Wesleyan University , wesleyan_u
+Mass Maritime , MMAAdmissions
+Shepherd University , ShepherdU
+Rockford University , RockfordUniv
+Wagner College , WagnerCollege
+SouthwesternAU , SouthwesternAU
+Central Methodist U , cmuniv
+CSN , CSNCoyote
+Georgia State U. , GeorgiaStateU
+Northwood University , NorthwoodU
+Life University , LifeUniversity
+JohnBrownUniversity , JohnBrownUniv
+UW Bothell , UWBothell
+Merrimack College , merrimack
+North Lake College , northlakenow
+Erikson Institute , EriksonInst
+Sacramento State , sacstate
+Elmhurst College , ElmhurstCollege
+Point Park U , PointParkU
+U of MN Morris , UMMorris
+Daytona State , DSC_News
+MercyhurstUniversity , MercyhurstU
+HACC , HACC_info
+Mott College , MottCollege
+Menlo College , menlocollege
+UAH , UAHuntsville
+Newman University , NewmanU
+WWCC , WWCCWarriors
+MesaCommunityCollege , mesacc
+Catawba College , CatawbaCollege
+Univ. of Nevada Reno , unevadareno
+AllanHancockCollege , HancockCollege
+DSLCC , DSLCC
+CarlSandburgCollege , sandburg
+Augusta University , AUG_University
+Meredith College , MeredithCollege
+WilliamJamesCollege , WilliamJamesEdu
+NVC , govista
+USC Web , uscweb
+Old Dominion University , ODU
+Illinois College , ictrueblue
+MSU Moorhead , MSUMoorhead
+Mississippi Valley , MVSUDEVILS
+Delta State , DeltaState
+Wisconsin Lutheran , InsideWLC
+Saint Augustine's , SAU_News
+SUNY Delhi , SUNYDelhi
+UA - Pulaski Tech , pulaskitech
+CSU-Pueblo , CSUPueblo
+Goucher College , gouchercollege
+Univ. of Oklahoma , UofOklahoma
+Fisher College , FisherCollege
+Tennessee Tech , tennesseetech
+Cal Maritime , Cal_Maritime
+Plymouth State , PlymouthState
+EKU , EKUStories
+Fresno City College , fresnocity
+WNMU , WNMU
+Penn State York , PennStateYork
+Penn , Penn
+Penn State Berks , PennStateBerks
+Ohio Christian U , OhioChristian
+Waynesburg University , WaynesburgU
+OCCRL , occrl
+Colorado College , ColoradoCollege
+Brewton-Parker , BrewtonParker
+Peirce College , PeirceCollege
+Hebrew College , hebrewcollege
+Lehigh CarbonCC , LehighCarbonCC
+Hamline University , HamlineU
+Cabarrus College , CabarrusCollege
+AFI , AmericanFilm
+OSU-Oklahoma City , OSUOKC
+LIM College , LIMCollege
+Otterbein University , Otterbein
+UT Southwestern News , UTSWNews
+Moravian College , MoravianCollege
+Olin College , OlinCollege
+Bard College , BardCollege
+New England Tech , NEInstituteTech
+UIC News , UICnews
+Westminster Seminary , WestminsterTS
+NCC , NorthamptonComm
+Kutztown University , KutztownU
+Holy Cross College , HolyCrossND
+Jefferson State , jeffstate
+OCC , OnondagaCC
+BinghamtonUniversity , binghamtonu
+CNM , CNMonline
+St. John's University , StJohnsU
+Bridgewater State , BridgeStateU
+BarnesJewishCollege , GoldfarbNursing
+Rosemont College , RosemontCollege
+Hawaii Pacific Univ. , HPU
+Bentley University , bentleyu
+Luther Seminary , LutherSeminary
+Bevill State , bevillstate
+UniversityofRedlands , UofRedlands
+Steve Rottinghaus , Rhaus90
+University of Maryland, Baltimore , UMBaltimore
+Gordon College , gordoncollege
+Arkansas Tech , ArkansasTech
+Mizzou , Mizzou
+Goodwin College , GoodwinCollege
+Hillsdale College , Hillsdale
+Greensboro College , GCPride
+HWS Colleges , HWSColleges
+Andover Newton , AndoverNewton
+IVC , IVCCollege
+MitchellCollege , MitchellCollege
+Duke University , DukeU
+Wilkes University , WilkesU
+STCC , S_T_C_C
+St. Vincent College , MySaintVincent
+Indiana Tech , IndianaTech
+Brooks Institute , BrooksInstitute
+Rochester College , rcwarriors
+FRCC , frcc
+Transylvania U. , Transy
+Paul Smith's College , paulsmiths
+CCSU (Central) , CCSU
+Maxwell AFB , MaxwellAFB
+Cal Poly Pomona , calpolypomona
+Westfield State , WestfieldState
+Citrus College , CitrusCollege
+Cogswell College , CogswellCollege
+CCCC , cankdeskacikana
+University of Southern Maine , USouthernMaine
+Ferris State Univ. , FerrisState
+Aurora University , AuroraU
+Olympic College , OlympicCollege
+ShenandoahU , ShenandoahU
+Monmouth College , Monmouth
+Santiago Canyon Coll , SantiagoCanyon
+Santa Ana College , SantaAnaCollege
+Blackburn College , bbcollege
+UWF , UWF
+LSU Health Sciences , LSUHealthNO
+Montevallo , Montevallo
+SF State , SFSU
+OLLU , OLLUnivSATX
+Unity College , UnityCollege
+The University of Toledo , UToledo
+Portland State , Portland_State
+Carroll College , CarrollCollege
+Saint Xavier , SaintXavier
+Hazelden Betty Ford , hazldnbettyford
+DallasCollegesOnline , DCCCD_Online
+The University of Houston-Victoria , UHVictoria
+RAND Corporation , RANDCorporation
+MiraCosta College , MiraCosta
+Shorter University , shorteruniv
+ArtCenter College , artcenteredu
+Wallace State , wallacestate
+NAU , NAU
+UNT News , UNTnews
+NEIU , NEIU
+Bellevue College , BellevueCollege
+Univ. of Colorado , CUSystem
+Hampshire College , hampshirecolg
+WSU Pullman , WSUPullman
+Oklahoma City Univ. , OKCU
+Bethel College , BethelCollegeIN
+Midway University , MidwayUniv
+SCAD , SCADdotedu
+Metropolitan College , mcnyedu
+NorthCentralCollege , northcentralcol
+SUNY Polytechnic Institute , SUNYPolyInst
+FSCJ , FSCJ_Official
+Univ Sagrado Corazón , sagradoedu
+Schoolcraft College , schoolcraftnow
+Mercy College , mercycollege
+City College of NY , CityCollegeNY
+Argosy University , ArgosyU
+Palm Beach Atlantic , PBAUniversity
+Boise State , boisestatelive
+Gordon-Conwell , GordonConwell
+Thiel College , thielcollege
+UM System , umsystem
+Trinity Int'l Univ. , TIU
+BerkeleyCityCollege , berkeleycc
+Excelsior College , ExcelsiorColl
+Whatcom Comm College , WhatcomCC
+Rowan University , RowanUniversity
+Muhlenberg College , Muhlenberg
+Northwestern OK St U , NWOSU
+Centre College , CentreC
+Simpson University , SimpsonU
+Bank Street College , bankstreetedu
+Westmont College , WestmontNews
+Wake Tech CC , waketechcc
+Rutgers–Camden , Rutgers_Camden
+Mount Mercy , MountMercy
+Murray State Univ , murraystateuniv
+Roseman University , rosemanuhs
+Maryville University , MaryvilleU
+Cleary University , ClearyUniverse
+Dartmouth , dartmouth
+Saint Mary's College , stmarysca
+Marian University , MarianUniv
+University of Minnesota Crookston , UMNCrookston
+Dominican College , DominicanOburg
+UNG , UNG_News
+LSU Shreveport , LSU_Shreveport
+Westminster College , WestminsterSLC
+BVU , BuenaVistaUniv
+WestConn , WestConn
+Columbus State Univ. , ColumbusState
+Baker College , bakercollege
+East Central College , ECC_Falcon
+SW Seminary , swbts
+UC Hastings Law ⚖️ , UCHastingsLaw
+Union College , UnionCollegeKY
+Endicott College , EndicottCollege
+Washington and Lee , wlunews
+Arkansas State , ArkansasState
+Meharry Med College , MeharryMedical
+Clarkson University , ClarksonUniv
+Walsh University , WalshUniversity
+Keck Graduate Inst , KeckGrad
+SUNY Geneseo , SUNYGeneseo
+UNC-Chapel Hill , UNC
+Hult Business School , Hult_Biz
+Bethel University , BethelU
+Viterbo University , Viterbo_Univ
+Becker College , BeckerCollege
+Western University , WesternU
+Canisius College , CanisiusCollege
+Concordia U Chicago , CUChicago
+Ivy Tech , IvyTechCC
+Whittier College , WhittierCollege
+UH-Clear Lake , UHClearLake
+Paris Junior College , ParisJC
+Nova Southeastern U. , NovaSE
+Am Academy of Art , AmAcademyofArt
+Concordia University , ConcordiaIrvine
+NWTC , NWTC
+AJU College , AJUCollege
+UC Riverside , UCRiverside
+Kettering University , KetteringU
+The Peralta Colleges , PeraltaColleges
+Prescott College , Prescottcollege
+Hagerstown CC , hagerstowncc
+Walsh College , walshcollege
+UofHartford , UofHartford
+WestCoastUniversity , westcoastu
+SAIC , saic_news
+OSU-Tulsa , osutulsa
+John Marshall Law , JMLSChicago
+MTSU , MTSUNews
+UNCW , UNCWilmington
+University Relations , NDSUNews
+University of DC , udc_edu
+Rollins College , rollinscollege
+CUNY Staten Island , csinews
+Sinclair360 , Sinclair360
+Spertus Institute , Spertus
+Mississippi College , MissCollege
+SUNY Cobleskill , SUNYCobleskill
+Florida Atlantic , FloridaAtlantic
+University at Albany , ualbany
+FORT VALLEY STATE , FVSU
+Principia College , PrinCollege
+IU Northwest (IUN) , iunorthwest
+Capella University , CapellaU
+WCCS , wccselma
+UCM , UCentralMO
+UMass Amherst , UMassAmherst
+USC , USC
+Harvey Mudd College , harveymudd
+UT Knoxville , UTKnoxville
+Fordham University , FordhamNYC
+Howard Comm. College , HowardCC
+Saint Mary's College , saintmarys
+Rice University , RiceUniversity
+Bakersfield College , BAKcollege
+OHSU News , OHSUNews
+Harper College News , HarperCollegePR
+Radford University , radfordu
+U. Northern Colorado , UNC_Colorado
+CGU , CGUnews
+UC Irvine , UCIrvine
+OaktonCollege , OaktonCollege
+Lone Star College , lonestarcollege
+SCO , SCOnews
+St. Francis College , SFCNY
+K-State Polytechnic , KStatePolytech
+Emmanuel College , EmmanuelCollege
+USU Health Sciences , USUhealthsci
+Minnesota State , MinnStateEdu
+Troy University , TROYUnews
+Holy Cross , holy_cross
+Luther College , luthercollege
+Brandeis University , BrandeisU
+WilliamJewellCollege , williamjewell
+WGUTexas , WGUTexas
+PPCC , ppccedu
+Wheeling Jesuit , WheelingJesuit
+MCC , MorganCC
+Westminster College , westminsterpa
+Phoenix College , PhoenixCollege
+Metropolitan State U , MetroStateU
+Butler CC , butlercc
+Albion College , albioncollege
+University of Dayton , univofdayton
+Macomb College , MacombCollege
+UM-Flint , UMFlint
+UAT , UATedu
+Rutgers University , RutgersU
+Waubonsee Comm. Col. , waubonsee
+SWOSU , swosu
+Univ of Scranton , univofscranton
+Bethany GU , BeGlobalU
+ECSU Viking , ECSU
+Mary Baldwin U , MaryBaldwinU
+Sarah Lawrence , SarahLawrence
+FHSU Univ Relations , FHSUnews
+Southern Nazarene , FollowSNU
+Georgia Tech , GeorgiaTech
+Germanna CC , germannacc
+Centenary College , CentenaryLA
+South Texas College , STCPR
+Midland College , MidlandCollege
+ACC District , accdistrict
+UCF , UCF
+SNHU , SNHU
+Fitchburg State , Fitchburg_State
+Dowling College , dowlingcollege
+Pomona College , pomonacollege
+Birmingham-Southern , FromTheHilltop
+CBC , CBCollege
+San Jose State , SJSU
+St. Mary's University , StMarysU
+The CIA , CIACulinary
+UCLA , UCLA
+University of Minnesota , UMNews
+Blue Ridge CC , BlueRidgeCC
+LakeAreaTech , LakeAreaTech
+Spartanburg Community College , SCCyourCollege
+University of Rio Grande and Rio Grande CC , RioEdu
+Ohio State , OhioState
+St. Olaf College , StOlaf
+South Puget Sound CC , SPSCC
+Hanover College , HanoverCollege
+AZ State University , ASU
+Adrian College , AdrianCollege
+IU East , iueast
+MontgomeryCountyCC , mccc
+Baruch College , BaruchCollege
+USciences , USciences
+Augsburg University , AugsburgU
+College Lake County , CLCNewsRoom
+The Univ. of Alabama , UofAlabama
+UMKC , UMKansasCity
+Hope College , HopeCollege
+ulmwarhawk , ulmwarhawk
+Adams State , adamsstate
+Naval War College , NavalWarCollege
+Cal State Monterey Bay , CSUMB
+Kirkwood , KirkwoodCC
+Amherst College , AmherstCollege
+Indiana University Bloomington , IUBloomington
+VCC , myVCC
+North Idaho College , NorthIdaho
+SFSCPanthers , SFSCPanthers
+UW-Stout , UWStout
+NYU Tandon , nyutandon
+Sac City College , SacCityCollege
+William Jessup Univ. , williamjessup
+NKU , nkuedu
+Roger Williams Univ , myrwu
+baystatecollege , baystatecollege
+Kentucky Wesleyan , KyWesleyan
+LSC-North Harris , LSCNorthHarris
+Oregon State University , OregonState
+DallasLearnSolutions , DallasLSolution
+Stevenson University , StevensonU
+Univ. of Illinois , Illinois_Alma
+Penn State Altoona , PSAltoona
+UCWV , UCWV
+Thunderbird , Thunderbird
+Berry College , berrycollege
+UC Santa Barbara , ucsantabarbara
+U.S. Naval Academy , NavalAcademy
+NorthlandCTC , NorthlandCTC
+DesMoinesUniversity , DesMoinesUniv
+Tarleton State University , tarletonstate
+Pace University , PaceUniversity
+Stetson University , StetsonU
+Harper College , HarperCollege
+Loyola Chicago , LoyolaChicago
+Stanford University , Stanford
+WSU Vancouver , WSUVancouver
+MSOE , MSOE
+Springfield College , SpfldCollege
+The New School , TheNewSchool
+Sam Houston State , SamHoustonState
+WashtenawCommCollege , washtenawcc
+Tusculum , TusculumCollege
+Southeastern LA Univ , oursoutheastern
+North Park Univ. , NPU
+WVU Mountaineers , WestVirginiaU
+Emerson College , EmersonCollege
+UT Arlington , utarlington
+Leeward CC , LeewardCC
+Pittsburg State , pittstate
+Combined Arms Center , usacac
+Indian Hills College , indianhills
+PhilaU , PhiladelphiaU
+Salve Regina , SalveRegina
+Seattle Central , SeattleCentral
+UT Brownsville , UTBrownsville
+University of Hawaii , UHawaiiNews
+Bellarmine University , bellarmineU
+Shimer Great Books School , ShimerSchool
+Cal State LA , CalStateLA
+Washington University in St. Louis , WUSTL
+ERAU Prescott , ERAUPrescott
+Northwestern College , nwciowa
+Grace College , gracecollege
+Notre Dame of MD , NotreDameofMD
+Grinnell College , GrinnellCollege
+Utah State University , USUAggies
+URI , universityofri
+Saint Meinrad , SaintMeinrad
+watkinscollege , watkinscollege
+Mayville State , mayvillestate
+University of Central Arkansas , ucabears
+Regent University , RegentU
+Orange Coast College , orangecoast
+UnionUniversity , UnionUniversity
+Nazareth College , NazarethCollege
+FontbonneU , FontbonneU
+Oakland University , oaklandu
+UA Little Rock , UALR
+Indiana State U , indianastate
+Hennepin Tech , HennepinTech
+Chapman University , ChapmanU
+ERAU Worldwide , ERAUWorldwide
+S. Arkansas Univ. , muleriders
+Virginia Tech , virginia_tech
+Whitworth University , whitworth
+UW Oshkosh , uwoshkosh
+University of Idaho , uidaho
+Cornell College , CornellCollege
+Cornell University , Cornell
+Univ. of New Mexico , UNM
+Fairfield University , FairfieldU
+University of Denver , UofDenver
+STLCOP , STLCOPedu
+Walden University , WaldenU
+LindseyWilson , LindseyWilson
+Phillips Graduate , phillipsgrad
+Anderson University , AndersonU
+StL. Comm. College , STLCC
+Lasell College , lasellcollege
+RPInews , RPInews
+UAMS , uamshealth
+Berea College , bereacollege
+Stonehill College , stonehill_info
+Texas A&M University , TAMU
+Cypress College , CypressCollege
+Bradley University , bradleyu
+UM-Dearborn , UM_Dearborn
+Nicholls State Univ. , NichollsState
+atlanticcape , atlanticcape
+UMass Boston , UMassBoston
+FlaglerCollege , FlaglerCollege
+WSUSpokane , WSUSpokane
+University of Tulsa , utulsa
+WNE University , WNEUniversity
+Kingsborough CC , KCCBrooklyn
+Trinity University , Trinity_U
+sunyoswego , sunyoswego
+OtisCollege , OtisCollege
+Chico State , ChicoState
+Marist College , Marist
+CSULB , CSULB
+Mount Holyoke College , mtholyoke
+McNeese , McNeese
+Smith College Tweets , smithcollege
+Seneca College , SenecaCollege
+Tougaloo College , TougalooCollege
+Rutgers-Newark , Rutgers_Newark
+UH West O‘ahu , UHWestOahu
+Illinois Tech , illinoistech
+Saint Leo University , SaintLeoUniv
+#EIU , eiu
+Illinois Springfield , UISedu
+Thomas College , ThomasCollege
+Biola University , biolau
+UA Anchorage , uaanchorage
+Friends University , FriendsU
+NOVA , NOVAcommcollege
+Siena College , SienaCollege
+UNO , UNOmaha
+Stephens College , stephenscollege
+UniversityofPhoenix , UOPX
+San Diego State University , SDSU
+UTHealth , UTHealth
+Ohio University , ohiou
+WPI , WPI
+Drury University , DruryUniversity
+NW Missouri State , NWMOSTATE
+Daemen College , daemencollege
+Webster University , websteru
+Alfred University , alfredu
+Boston College , BostonCollege
+U. of North Alabama , north_alabama
+Suffolk University , Suffolk_U
+Wake Tech Students , wtccstudents
+Caltech , Caltech
+Davenport University , DavenportU
+Asbury Seminary , AsburySeminary
+Wheaton College (MA) , wheaton
+Fox Valley Tech , FoxValleyTech
+cerritoscollege , cerritoscollege
+United Seminary , unitedseminary
+The Sage Colleges , sage_edu
+N.C. Central Univ. , NCCU
+New Mexico State , nmsu
+Emory University , EmoryUniversity
+UGA , universityofga
+Ozarka College , ozarkacollege
+GRCC , grcc
+Valparaiso University , ValpoU
+Western Carolina , WCU
+Berkeley College , BerkeleyCollege
+ManchesterCC , ManchesterCC
+UAB , UABNews
+Williams College , WilliamsCollege
+Dunwoody College , dunwoodycollege
+Elgin Comm College , ElginCommColl
+Jacksonville State University , JSUNews
+Amarillo College , AmarilloCollege
+Edmonds Comm_College , EdmondsCC
+MUSC Health , MUSChealth
+Lewis-Clark State , LCSC
+piercecollege , piercecollege
+IPFW , IPFW
+Saint Mary's University of Minnesota , smumn
+Robert Morris Univ. , RMU
+University of Nebraska Medical Center , unmc
+Simmons College , SimmonsCollege
+Purdue University , LifeAtPurdue
+Ithaca College , IthacaCollege
+Univ. of Maryland , UofMaryland
+UniversityoftheArts , UArts
+KCC , KCCedu
+FIDM , FIDM
+University Tx Tyler , UTTyler
+Millsaps College , millsapscollege
+sacredheartuniv , sacredheartuniv
+SD School of Mines , sdsmt
+UNH Law , UNHLaw
+A&M-Central Texas , TAMUCT
+Oklahoma State Univ. , okstate
+Iliff Edu-Denver , iliffontheroad
+UC Davis , ucdavis
+The CSU , calstate
+UMass Dartmouth , UMassD
+CU Denver , CUDenver
+Bates College , BatesCollege
+Western IL Univ , WesternILUniv
+Morehead State , moreheadstate
+Colby College , ColbyCollege
+Winthrop University , winthropu
+Monmouth University , monmouthu
+Cerro Coso CC , cerrocoso
+Randolph College , randolphcollege
+Fresno Pacific Univ. , fpu
+Elon University , elonuniversity
+Grand Canyon U , gcu
+Wheaton College , WheatonCollege
+UW-Whitewater , UWWhitewater
+Missouri State , MissouriState
+Brookhaven College , brookhaven
+RIT NEWS , RITNEWS
+SUNY Potsdam , sunypotsdam1816
+UW-Madison , UWMadison
+MCPHS News , MCPHS
+PurchaseCollege SUNY , SUNY_Purchase
+UW-Milwaukee , UWM
+U of Science Arts OK , usaodrovers
+UT Austin , UTAustin
+University of Richmond , urichmond
+Southern Seminary , SBTS
+St. Scholastica , StScholastica
+Georgetown College , GtownCollege
+Towson University , TowsonU
+msubillings , msubillings
+GeorgiaSouthern , GeorgiaSouthern
+Concordia University , cuaa
+University of Miami , univmiami
+Concordia College , Concordia_MN
+Broward College , BrowardCollege
+GuilfordCollege , GuilfordCollege
+Grand Valley State , GVSU
+Ranken Technical College , ranken
+UW-Platteville , uwplatteville
+Ringling College , RinglingCollege
+UCCS , UCCS
+Massachusetts Institute of Technology (MIT) , MIT
+WittenbergUniversity , wittenberg
+UC San Francisco , UCSF
+Loras College , lorascollege
+SVSU , SVSU
+Sherman College , shermancollege
+TMCC , tmccnevada
+Normandale College , normandale_cc
+TCU , TCU
+University of Akron , uakron
+Kalamazoo College , kcollege
+CSU Dominguez Hills , DominguezHills
+Western Governors U. , wgu
+Bucks County College , Bucks_edu
+Multnomah University , multnomahu
+Berklee College of Music , BerkleeCollege
+Cayuga Comm College , CayugaCC
+Yeshiva University , YUNews
+Penn College , PennCollege
+Cal State Fullerton , csuf
+Tufts University , TuftsUniversity
+Michigan Tech , michigantech
+Wayne State College , waynestcollege
+tacomacc , tacomacc
+Ole Miss , OleMissRebels
+Trine University , TrineUniversity
+Ohio Northern Univ. , ohionorthern
+Pine Tech & Comm Col , pinecollege
+University of the Pacific , UOPacific
+Humboldt State , humboldtstate
+WTAMU , wtamu
+Valdosta State , valdostastate
+WWU , WWU
+Lenoir-Rhyne Univ. , lenoirrhyne
+Concordia Nebraska , CUNE
+Le Moyne , LeMoyne
+BristolCC , BristolCC
+Univ. of Arizona 🐻⬇ , UofA
+UMass Lowell , UMassLowell
+SIUE , SIUE
+Stephen F. Austin , SFASU
+UC Merced , ucmerced
+St. Norbert College , stnorbert
+Southern Adventist U , SouthernNews
+Central College , CentralCollege
+Medaille College , MedailleCollege
+Univ. of the Ozarks , UOzarks
+SUNY New Paltz , newpaltz
+Univ. of Rochester , UofR
+VanderbiltU , VanderbiltU
+USC Upstate , USCUpstate
+CFCC , cfcc
+ULM , ULM_Official
+University of Utah , UUtah
+Providence College , providencecol
+Colorado Christian University , my_ccu
+UCO Bronchos , UCOBronchos
+Lincoln College , Lincolncollege
+Saint Michael's , saintmichaels
+CSU Channel Islands , csuci
+Mayo Clinic , MayoClinic
+SUNY Empire , SUNYEmpire
+University of Iowa , uiowa
+Wofford College , woffordcollege
+Ohio Dominican , ohiodominican
+Pitzer College , pitzercollege
+Penn State Abington , PSUabington
+Johns Hopkins U. , JohnsHopkins
+Dallas Community Colleges 🎓 , dcccd
+Colgate University , colgateuniv
+Swarthmore College , swarthmore
+Bowdoin College , BowdoinCollege
+Rogers State U. , RogersStateU
+UTHSC , uthsc
+Charter Oak State , CharterOak
+Oklahoma Christian U , okchristian
+Roanoke College , RoanokeCollege
+Franklin College , FranklinCollege
+Goshen College , GoshenCollege
+NJIT , NJIT
+Pepperdine University , pepperdine
+Texas Tech , TexasTech
+Auburn University , AuburnU
+USC Aiken , USCAiken
+MD Anderson Cancer Center , MDAndersonNews
+UW-Green Bay , uwgb
+Aquinas College , AquinasCollege
+SUNY Buffalo State , buffalostate
+Oklahoma Wesleyan University , OKWUniv
+PNCA , pnca
+Mississippi State , msstate
+Inter Ponce , InterPonce
+Babson College , babson
+The Art Institutes , Art_Institutes
+Butler University , butleru
+Cal State Northridge , csunorthridge
+Adventist University , ADUnews
+UC Santa Cruz , ucsc
+Concordia University , concordiastpaul
+Sterling College , sterlingcollege
+Pacific University , pacificu
+Drake University , DrakeUniversity
+Missouri S&T , MissouriSandT
+IUPUI , IUPUI
+UT Pan American , UTPA
+Bellevue University , BellevueU
+PalmerCollege , palmercollege
+Richland College 🎓 , richlandcollege
+Wayne State Univ , waynestate
+Gustavus Adolphus College , gustavus
+Loyola Marymount University , LoyolaMarymount
+Georgetown Univ. , Georgetown
+GoldenGateUniversity , GGU
+Rasmussen College , Rasmussen
+Notre Dame , NotreDame
+Saint Anselm College , SaintAnselm
+Seton Hall , SetonHall
+Yale University , Yale
+Princeton University , Princeton
+Seattle University , seattleu
+Eckerd College , eckerdcollege
+Hofstra University , HofstraU
+Keene State College , KeeneState_
+Calvin College , CalvinCollege
+UVA , UVA
+NYIT , nyit
