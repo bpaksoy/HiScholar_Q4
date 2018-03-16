@@ -15,23 +15,26 @@ const getImageStyle = url => ({
 
 export default (props) => {
   const { selectedUniversities = [], savedUniversities = [] } = props;
+  console.log('selectedUniversities', selectedUniversities)
   let selected_universities_markup = selectedUniversities.map((university, index, array) => {
     const is_already_saved = savedUniversities.some(saved_university => {
       return saved_university._id == university._id;
     })
-    const { school_name = '', description = '', ranking = '', tuition = '', _id = '', imgURL = '', acceptance_rate = '' } = university;
+    const { _id = '', school = {}, admission = {}, location = {} } = university;
     const should_have_row = index%2;
     return(
       <div key={_id} className='col-md-6' style={style.card}>
         <i onClick={props.removeUniversityFromSelected.bind(this, _id)} style={style.closeButton} className="fa fa-window-close pull-right"></i>
         <div className="thumbnail">
-          <div style={getImageStyle(imgURL)} className="card-img-top"></div>
+          <div style={getImageStyle(school.img)} className="card-img-top"></div>
           <div className="caption">
-            <h3>{ school_name }</h3>
-            <p>{ description }</p>
-              <small className="text-muted">Ranked #{ ranking } among universities in the US.</small><br/>
-              <small className="text-muted">Annual tuition $ {numberWithCommas( tuition )}</small><br/>
-              <small className="text-muted">Acceptance rate: { acceptance_rate }%</small>
+            <h3 style={style.ellipsis}>{ school.name }</h3>
+            <p>{ school.description }</p>
+              <small className="text-muted">Student faculty ratio : {school.studentFacultyRatio}</small><br/>
+              <small className="text-muted">{location.city},{location.state}</small><br/>
+              <small className="text-muted">Acceptance rate : { admission.acceptanceRate }%</small><br/>
+              <small className="text-muted">Out State tution fees : { school.outstateTuition }%</small><br/>
+              <small className="text-muted">Percent of Students on Fin aid : { admission.percentOnFA }%</small>
             <p>
             {(is_already_saved)?
               <button onClick={props.deleteSchool.bind(this, _id)} className="btn btn-primary" role="button"> Saved <i className="fa fa-heart"></i></button>:
@@ -65,5 +68,11 @@ const style = {
     fontSize: '20px',
     right: '12px',
     background: 'white'
+  },
+  ellipsis: {
+    width: '250px',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
   }
 }

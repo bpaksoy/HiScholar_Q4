@@ -81,8 +81,8 @@ router.get("/universities/name/:school_name", (req, res, next) => {
   const school_name = req.params.school_name.trim();
   // console.log("name in the router: ", school_name)
   University.find({
-    school_name: {
-      '$regex': `.*${school_name}.*`,
+    'school.name': {
+      $regex: `.*${school_name}.*`,
       $options: 'i'
     }
   }, (err, university) => {
